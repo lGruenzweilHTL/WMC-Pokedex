@@ -1,0 +1,6 @@
+# JetBrains idea folder
+.idea/
+
+# C# build folder
+bin/
+obj/
