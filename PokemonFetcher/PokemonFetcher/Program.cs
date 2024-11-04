@@ -6,7 +6,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        var jsonObject = FetchPokemon(0, 20);
+        var jsonObject = FetchPokemon(0, 100);
         var pokemonArray = jsonObject["results"].AsArray();
         var htmlGenerator = new HtmlBuilder();
         htmlGenerator.OpenTag("table");
@@ -32,8 +32,11 @@ class Program
             index + ".png' alt=\"\"/>";
         string type = string.Join('/', pokemon["types"]
             .AsArray()
-            .Select(type => type["type"]["name"]
-                .ToString()));
+            .Select(type =>
+            {
+                var t = type["type"]["name"];
+                return $"<a href=\"types.html#{t}\">{t}</a>";
+            }));
         var stats = pokemon["stats"]
             .AsArray()
             .Select(stat =>
