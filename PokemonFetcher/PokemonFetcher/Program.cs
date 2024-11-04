@@ -29,19 +29,19 @@ class Program
         string name = pokemon["name"].ToString();
         string image =
             "<img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" +
-            index + ".png' />";
+            index + ".png' alt=\"\"/>";
         string type = string.Join('/', pokemon["types"]
             .AsArray()
             .Select(type => type["type"]["name"]
                 .ToString()));
-        string stats = string.Join('\n', pokemon["stats"]
+        var stats = pokemon["stats"]
             .AsArray()
             .Select(stat =>
         {
             string statName = stat["stat"]["name"].ToString();
             string baseStat = stat["base_stat"].ToString();
             return $"{statName}: {baseStat}";
-        }));
+        });
 
         htmlGenerator.OpenTag("tr");
 
@@ -62,7 +62,14 @@ class Program
         htmlGenerator.CloseTag();
         
         htmlGenerator.OpenTag("td");
-        htmlGenerator.InsertText(stats);
+        htmlGenerator.OpenTag("ul");
+        foreach (var stat in stats)
+        {
+            htmlGenerator.OpenTag("li");
+            htmlGenerator.InsertText(stat);
+            htmlGenerator.CloseTag();
+        }
+        htmlGenerator.CloseTag();
         htmlGenerator.CloseTag();
 
         htmlGenerator.CloseTag();
