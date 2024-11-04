@@ -6,7 +6,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        var jsonObject = FetchPokemon(0, 100);
+        var jsonObject = FetchPokemon(0, 151);
         var pokemonArray = jsonObject["results"].AsArray();
         var htmlGenerator = new HtmlBuilder();
         htmlGenerator.OpenTag("table");
