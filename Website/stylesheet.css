@@ -14,8 +14,13 @@ table {
     margin-left: 15%;
     margin-right: 15%;
     border-collapse: collapse;
+    background-color: #6ed7fb;
 }
 
 li {
     list-style-type: none;
+}
+
+body {
+    background-color: rgb(255, 88, 88);
 }
