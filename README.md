@@ -52,3 +52,5 @@ Items are be obtained outside of battle or as a reward after a battle.
     - Resistances, Weaknesses and strengths
     - Routes where you can find the Pokemon
 - Explanation of Pokemon types (Common, Legendary, etc.)
+
+Leon Marazovic, Lukas Grünzweil, Almir Hadic, Matyas Darabos
