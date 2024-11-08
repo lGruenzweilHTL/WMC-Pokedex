@@ -20,6 +20,8 @@ class Program
         var jsonObject = FetchPokemon(0, 151);
         var pokemonArray = jsonObject["results"].AsArray();
         var htmlGenerator = new HtmlBuilder();
+        htmlGenerator.OpenDocument("Pokedex", stylesheetPath);
+        htmlGenerator.InsertText("<h1 style=\"text-align: center\">Pokedex</h1><p style=\"text-align: center\">(First Generation)</p>");
         htmlGenerator.OpenTag("table");
         foreach (var pokemon in pokemonArray)
         {
@@ -27,7 +29,9 @@ class Program
         }
 
         htmlGenerator.CloseTag();
-        Console.WriteLine(htmlGenerator.ToString());
+        htmlGenerator.CloseDocument();
+
+        File.WriteAllText(mainPagePath, htmlGenerator.ToString());
     }
 
     private static void BuildSinglePokemon(ref HtmlBuilder mainPageGenerator, string subPageDirectory, JsonNode pokemon)
@@ -113,8 +117,194 @@ class Program
 
         #region Build sub page content
 
+        /* Dummy site
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>Document</title>
+        </head>
+        <body>
+
+        <table>
+
+            <tr>
+                <td><img src="001.png"></td>
+            </tr>
+        </table>
+
+        <p>
+            small text about the Pokemon next to the picture
+        </p>
+
+        <table>
+
+            <thead>
+
+            <tr>
+                <th colspan="6">Weaknesses/Resistances</th>
+            </tr>
+            <tr>
+                <th>0x</th>
+                <th>1/4x</th>
+                <th>1/2x</th>
+                <th>1x</th>
+                <th>2x</th>
+                <th>4x</th>
+            </tr>
+            <tr>
+
+
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+
+        </table>
+
+        <br>
+
+        <table>
+            <thead>
+
+            <tr>
+                <th>Stats</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td>HP</td>
+            </tr>
+            <tr>
+                <td>Attack</td>
+            </tr>
+            <tr>
+                <td>Defense</td>
+            </tr>
+            <tr>
+
+                <td>Special-Attack</td>
+            </tr>
+            <tr>
+                <td>Special-Defenses</td>
+            </tr>
+            <tr>
+                <td>Speed</td>
+            </tr>
+            <tr>
+                <td>Sum of species-specific strengths</td>
+            </tr>
+
+
+            </tbody>
+        </table>
+        <br>
+        <table>
+            <thead>
+            <tr>
+                <th>Location</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>usw...</td>
+            </tr>
+            </tbody>
+        </table>
+
+
+        </body>
+        </html>
+        */
+
         var subPageGenerator = new HtmlBuilder();
 
+        subPageGenerator.OpenDocument(name, stylesheetPath);
+
+        // Image of pokemon
+        subPageGenerator.InsertText(image);
+
+        // Small text about the Pokemon
+        subPageGenerator.InsertText($"<p>TODO: insert some text manually</p>");
+
+        // Weaknesses/Resistances table
+        subPageGenerator.OpenTag("table");
+        subPageGenerator.OpenTag("thead");
+        subPageGenerator.OpenTag("tr");
+        subPageGenerator.OpenTag("th colspan=\"6\"");
+        subPageGenerator.InsertText("Weaknesses/Resistances");
+        subPageGenerator.CloseTag();
+        subPageGenerator.CloseTag();
+        subPageGenerator.OpenTag("tr");
+        subPageGenerator.InsertText("<th>0x</th><th>1/4x</th><th>1/2x</th><th>1x</th><th>2x</th><th>4x</th>");
+        subPageGenerator.CloseTag();
+        subPageGenerator.CloseTag();
+        subPageGenerator.OpenTag("tbody");
+        subPageGenerator.OpenTag("tr");
+        subPageGenerator.InsertText("<td>TODO</td><td>TODO</td><td>TODO</td><td>TODO</td><td>TODO</td><td>TODO</td>");
+        subPageGenerator.CloseTag();
+        subPageGenerator.CloseTag();
+        subPageGenerator.CloseTag();
+
+        // Stats table
+        subPageGenerator.OpenTag("table");
+        subPageGenerator.OpenTag("thead");
+        subPageGenerator.OpenTag("tr");
+        subPageGenerator.OpenTag("th");
+        subPageGenerator.InsertText("Stats");
+        subPageGenerator.CloseTag();
+        subPageGenerator.CloseTag();
+        subPageGenerator.CloseTag();
+        subPageGenerator.OpenTag("tbody");
+        foreach (var stat in stats)
+        {
+            subPageGenerator.OpenTag("tr");
+            subPageGenerator.OpenTag("td");
+            subPageGenerator.InsertText(stat);
+            subPageGenerator.CloseTag();
+            subPageGenerator.CloseTag();
+        }
+
+        // Locations table
+        subPageGenerator.OpenTag("table");
+        subPageGenerator.OpenTag("thead");
+        subPageGenerator.OpenTag("tr");
+        subPageGenerator.OpenTag("th");
+        subPageGenerator.InsertText("Location");
+        subPageGenerator.CloseTag();
+        subPageGenerator.CloseTag();
+        subPageGenerator.CloseTag();
+        subPageGenerator.OpenTag("tbody");
+        foreach (var location in locations)
+        {
+            subPageGenerator.OpenTag("tr");
+            subPageGenerator.OpenTag("td");
+            subPageGenerator.InsertText(location);
+            subPageGenerator.CloseTag();
+            subPageGenerator.CloseTag();
+        }
+
+        subPageGenerator.CloseDocument();
         File.WriteAllText(Path.Combine(subPageDirectory, $"{name}.html"), subPageGenerator.ToString());
 
         #endregion
