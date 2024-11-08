@@ -1,26 +1,7 @@
-img {
-    width: 100px;
-    height: 100px;
-}
-
-td {
-    border: 2px solid black;
+h1 {
     text-align: center;
 }
-
-table {
-    border: 1px solid black;
-    width: 70%;
-    margin-left: 15%;
-    margin-right: 15%;
-    border-collapse: collapse;
-    background-color: #6ed7fb;
-}
-
-li {
-    list-style-type: none;
-}
-
-body {
-    background-color: rgb(255, 88, 88);
+a {
+    color: black;
+    margin-left: 15px;
 }
