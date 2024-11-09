@@ -1,31 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Text.Json.Nodes;
+﻿using System.Text.Json.Nodes;
 
 namespace PokemonFetcher;
 
-class Program
-{
-    static void Main(string[] args)
-    {
-        if (!ArgsValid(args, out string mainPagePath, out string subPageDirectory, out string stylesheetPath))
-        {
+class Program {
+    static void Main(string[] args) {
+        if (!ArgsValid(args, out string mainPagePath, out string subPageDirectory, out string stylesheetPath, out string subPageStylesheet)) {
             return;
         }
 
         // Build main page
-        var jsonObject = FetchPokemon(0, 151);
+        var jsonObject = FetchPokemon(0, 10 /* Value is TEMP */);
         var pokemonArray = jsonObject["results"].AsArray();
         var htmlGenerator = new HtmlBuilder();
         htmlGenerator.OpenDocument("Pokedex", stylesheetPath);
         htmlGenerator.InsertText("<h1 style=\"text-align: center\">Pokedex</h1><p style=\"text-align: center\">(First Generation)</p>");
         htmlGenerator.OpenTag("table");
-        foreach (var pokemon in pokemonArray)
-        {
-            BuildSinglePokemon(ref htmlGenerator, subPageDirectory, pokemon);
+        foreach (var pokemon in pokemonArray) {
+            BuildSinglePokemon(ref htmlGenerator, mainPagePath, subPageDirectory, subPageStylesheet, pokemon);
         }
 
         htmlGenerator.CloseTag();
@@ -34,8 +25,7 @@ class Program
         File.WriteAllText(mainPagePath, htmlGenerator.ToString());
     }
 
-    private static void BuildSinglePokemon(ref HtmlBuilder mainPageGenerator, string subPageDirectory, JsonNode pokemon)
-    {
+    private static void BuildSinglePokemon(ref HtmlBuilder mainPageGenerator, string mainPagePath, string subPageDirectory, string stylesheet, JsonNode pokemon) {
         #region Get Data
 
         string index = pokemon["url"].ToString().Split("/")[6];
@@ -49,21 +39,28 @@ class Program
             index + ".png' alt=\"\"/>";
         string type = string.Join('/', pokemon["types"]
             .AsArray()
-            .Select(type =>
-            {
+            .Select(type => {
                 var t = type["type"]["name"];
                 return $"<a href=\"types.html#{t}\">{t}</a>";
             }));
-        var stats = pokemon["stats"]
+        /*var stats = pokemon["stats"]
             .AsArray()
-            .Select(stat =>
-            {
+            .Select(stat => {
                 string statName = stat["stat"]["name"].ToString();
                 string baseStat = stat["base_stat"].ToString();
                 return $"{statName}: {baseStat}";
-            });
+            });*/
+        var stats = pokemon["stats"];
+        string hp = stats[0]["base_stat"].ToString();
+        string attack = stats[1]["base_stat"].ToString();
+        string defense = stats[2]["base_stat"].ToString();
+        string specialAttack = stats[3]["base_stat"].ToString();
+        string specialDefense = stats[4]["base_stat"].ToString();
+        string speed = stats[5]["base_stat"].ToString();
+
         var locations = JsonObject.Parse(Fetch(pokemon["location_area_encounters"].ToString())).AsArray()
             .Select(location => location["location_area"]["name"].ToString());
+        string locationString = locations.Any() ? string.Join("", locations.Select(l => $"<tr><td>{l}</td></tr>")) : "None";
 
         #endregion
 
@@ -79,18 +76,24 @@ class Program
         mainPageGenerator.InsertText(image);
         mainPageGenerator.CloseTag();
 
-        mainPageGenerator.OpenTag("td");
-        mainPageGenerator.InsertText(name);
-        mainPageGenerator.CloseTag();
+        {
+            string basePath = Path.GetDirectoryName(mainPagePath);
+            string targetPath = Path.Combine(subPageDirectory, name + ".html");
+            string relativePath = Path.GetRelativePath(basePath, targetPath);
+
+            mainPageGenerator.OpenTag("td");
+            mainPageGenerator.InsertText($"<a href=\"{relativePath.Replace('\\', '/')}\">{name}</a>");
+            mainPageGenerator.CloseTag();
+        }
 
         mainPageGenerator.OpenTag("td");
         mainPageGenerator.InsertText(type);
         mainPageGenerator.CloseTag();
 
+        /*
         mainPageGenerator.OpenTag("td");
         mainPageGenerator.OpenTag("ul class=\"stats\"");
-        foreach (var stat in stats)
-        {
+        foreach (var stat in stats) {
             mainPageGenerator.OpenTag("li");
             mainPageGenerator.InsertText(stat);
             mainPageGenerator.CloseTag();
@@ -98,11 +101,11 @@ class Program
 
         mainPageGenerator.CloseTag();
         mainPageGenerator.CloseTag();
+        */
 
         mainPageGenerator.OpenTag("td");
         mainPageGenerator.OpenTag("ul class=\"locations\"");
-        foreach (var location in locations)
-        {
+        foreach (var location in locations) {
             mainPageGenerator.OpenTag("li");
             mainPageGenerator.InsertText(location);
             mainPageGenerator.CloseTag();
@@ -117,201 +120,95 @@ class Program
 
         #region Build sub page content
 
-        /* Dummy site
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>Document</title>
-        </head>
-        <body>
+        // TODO: calculate weaknesses/resistances based on types
+        string doc = $"""
+                      <!DOCTYPE html>
+                              <html lang="en">
+                              <head>
+                                  <meta charset="UTF-8">
+                                  <meta name="viewport" content="width=device-width, initial-scale=1">
+                                  <title>{name}</title>
+                                  <link rel="stylesheet" href="{stylesheet}">
+                              </head>
+                              <body>
+                              {image}
+                              <p>TODO: write text manually</p>
+                              <table>
+                              <thead>
+                              <tr>
+                              <th colspan="6">Weaknesses/Resistances</th>
+                              </tr>
+                                  <tr>
+                                      <th>0x</th>
+                                      <th>1/4x</th>
+                                      <th>1/2x</th>
+                                      <th>1x</th>
+                                      <th>2x</th>
+                                      <th>4x</th>
+                                  </tr>
+                                  <tr>
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+                                  <tr>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                  </tr>
+                                  </tbody>
+                              </table>
+                              <br>
+                              <div class="bar-chart">
+                          <div class="bar-container">
+                              <div class="bar-label">HP</div>
+                              <div class="bar" style="width: {hp}px;">{hp}</div>
+                          </div>
+                          <div class="bar-container">
+                              <div class="bar-label">Attack</div>
+                              <div class="bar" style="width: {attack}px;">{attack}</div>
+                          </div>
+                          <div class="bar-container">
+                              <div class="bar-label">Defense</div>
+                              <div class="bar" style="width: {defense}px;">{defense}</div>
+                          </div>
+                          <div class="bar-container">
+                              <div class="bar-label">Special Attack</div>
+                              <div class="bar" style="width: {specialAttack}px;">{specialAttack}</div>
+                          </div>
+                          <div class="bar-container">
+                              <div class="bar-label">Special Defense</div>
+                              <div class="bar" style="width: {specialDefense}px;">{specialDefense}</div>
+                          </div>
+                          <div class="bar-container">
+                              <div class="bar-label">Speed</div>
+                              <div class="bar" style="width: {speed}px;">{speed}</div>
+                          </div>
+                      </div>
+                              <br>
+                              <table>
+                                  <thead>
+                                  <tr>
+                                      <th>Locations</th>
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+                                     {locationString}
+                                  </tbody>
+                              </table>
+                              </body>
+                              </html>
+                      """;
 
-        <table>
-
-            <tr>
-                <td><img src="001.png"></td>
-            </tr>
-        </table>
-
-        <p>
-            small text about the Pokemon next to the picture
-        </p>
-
-        <table>
-
-            <thead>
-
-            <tr>
-                <th colspan="6">Weaknesses/Resistances</th>
-            </tr>
-            <tr>
-                <th>0x</th>
-                <th>1/4x</th>
-                <th>1/2x</th>
-                <th>1x</th>
-                <th>2x</th>
-                <th>4x</th>
-            </tr>
-            <tr>
-
-
-            </tr>
-            </thead>
-
-            <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            </tbody>
-
-        </table>
-
-        <br>
-
-        <table>
-            <thead>
-
-            <tr>
-                <th>Stats</th>
-            </tr>
-            </thead>
-
-            <tbody>
-            <tr>
-                <td>HP</td>
-            </tr>
-            <tr>
-                <td>Attack</td>
-            </tr>
-            <tr>
-                <td>Defense</td>
-            </tr>
-            <tr>
-
-                <td>Special-Attack</td>
-            </tr>
-            <tr>
-                <td>Special-Defenses</td>
-            </tr>
-            <tr>
-                <td>Speed</td>
-            </tr>
-            <tr>
-                <td>Sum of species-specific strengths</td>
-            </tr>
-
-
-            </tbody>
-        </table>
-        <br>
-        <table>
-            <thead>
-            <tr>
-                <th>Location</th>
-            </tr>
-            </thead>
-
-            <tbody>
-            <tr>
-                <td>1</td>
-            </tr>
-            <tr>
-                <td>2</td>
-            </tr>
-            <tr>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>usw...</td>
-            </tr>
-            </tbody>
-        </table>
-
-
-        </body>
-        </html>
-        */
-
-        var subPageGenerator = new HtmlBuilder();
-
-        subPageGenerator.OpenDocument(name, stylesheetPath);
-
-        // Image of pokemon
-        subPageGenerator.InsertText(image);
-
-        // Small text about the Pokemon
-        subPageGenerator.InsertText($"<p>TODO: insert some text manually</p>");
-
-        // Weaknesses/Resistances table
-        subPageGenerator.OpenTag("table");
-        subPageGenerator.OpenTag("thead");
-        subPageGenerator.OpenTag("tr");
-        subPageGenerator.OpenTag("th colspan=\"6\"");
-        subPageGenerator.InsertText("Weaknesses/Resistances");
-        subPageGenerator.CloseTag();
-        subPageGenerator.CloseTag();
-        subPageGenerator.OpenTag("tr");
-        subPageGenerator.InsertText("<th>0x</th><th>1/4x</th><th>1/2x</th><th>1x</th><th>2x</th><th>4x</th>");
-        subPageGenerator.CloseTag();
-        subPageGenerator.CloseTag();
-        subPageGenerator.OpenTag("tbody");
-        subPageGenerator.OpenTag("tr");
-        subPageGenerator.InsertText("<td>TODO</td><td>TODO</td><td>TODO</td><td>TODO</td><td>TODO</td><td>TODO</td>");
-        subPageGenerator.CloseTag();
-        subPageGenerator.CloseTag();
-        subPageGenerator.CloseTag();
-
-        // Stats table
-        subPageGenerator.OpenTag("table");
-        subPageGenerator.OpenTag("thead");
-        subPageGenerator.OpenTag("tr");
-        subPageGenerator.OpenTag("th");
-        subPageGenerator.InsertText("Stats");
-        subPageGenerator.CloseTag();
-        subPageGenerator.CloseTag();
-        subPageGenerator.CloseTag();
-        subPageGenerator.OpenTag("tbody");
-        foreach (var stat in stats)
-        {
-            subPageGenerator.OpenTag("tr");
-            subPageGenerator.OpenTag("td");
-            subPageGenerator.InsertText(stat);
-            subPageGenerator.CloseTag();
-            subPageGenerator.CloseTag();
-        }
-
-        // Locations table
-        subPageGenerator.OpenTag("table");
-        subPageGenerator.OpenTag("thead");
-        subPageGenerator.OpenTag("tr");
-        subPageGenerator.OpenTag("th");
-        subPageGenerator.InsertText("Location");
-        subPageGenerator.CloseTag();
-        subPageGenerator.CloseTag();
-        subPageGenerator.CloseTag();
-        subPageGenerator.OpenTag("tbody");
-        foreach (var location in locations)
-        {
-            subPageGenerator.OpenTag("tr");
-            subPageGenerator.OpenTag("td");
-            subPageGenerator.InsertText(location);
-            subPageGenerator.CloseTag();
-            subPageGenerator.CloseTag();
-        }
-
-        subPageGenerator.CloseDocument();
-        File.WriteAllText(Path.Combine(subPageDirectory, $"{name}.html"), subPageGenerator.ToString());
+        string path = Path.Combine(subPageDirectory, $"{name}.html");
+        File.WriteAllText(path, doc);
 
         #endregion
     }
 
-    private static string Fetch(string url)
-    {
+    private static string Fetch(string url) {
         using HttpClient client = new();
         var response = client.GetAsync(url).Result;
         response.EnsureSuccessStatusCode();
@@ -319,75 +216,66 @@ class Program
         return content;
     }
 
-    private static JsonObject FetchJson(string url)
-    {
+    private static JsonObject FetchJson(string url) {
         string content = Fetch(url);
         var jsonObject = JsonNode.Parse(content).AsObject();
         return jsonObject;
     }
 
-    private static JsonObject FetchPokemon(int offset, int num)
-    {
+    private static JsonObject FetchPokemon(int offset, int num) {
         return FetchJson($"https://pokeapi.co/api/v2/pokemon?offset={offset}&limit={num}");
     }
 
     private static bool ArgsValid(string[] args, out string mainPagePath, out string subPagePath,
-        out string stylesheetPath)
-    {
+        out string stylesheetPath, out string subPageStylesheet) {
         mainPagePath = string.Empty;
         subPagePath = string.Empty;
         stylesheetPath = string.Empty;
+        subPageStylesheet = string.Empty;
 
         // Expected args: Main page path, Subpage directory path, Stylesheet path, Pokemon count
-        if (args.Length != 3)
-        {
-            Console.WriteLine("Invalid number of arguments.");
+        if (args.Length != 4) {
+            Console.WriteLine("Invalid number of arguments.\nHow to use: dotnet run <mainPagePath> <subPageDirectory> <stylesheetPath> (relative to mainPagePath) <subPageStylesheet> (relative to subPageDirectory)");
             return false;
         }
 
         mainPagePath = args[0];
         subPagePath = args[1];
         stylesheetPath = args[2];
+        subPageStylesheet = args[3];
         return true;
     }
 }
 
-public class HtmlBuilder()
-{
+public class HtmlBuilder() {
     private Stack<string> _tagStack = new();
     private System.Text.StringBuilder _htmlBuilder = new();
 
-    public void OpenDocument(string title, string? stylesheet = null)
-    {
+    public void OpenDocument(string title, string? stylesheet = null) {
         string stylesheetLink = stylesheet != null ? $"<link rel=\"stylesheet\" href=\"{stylesheet}\">" : string.Empty;
         _htmlBuilder.Append(
             $"<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>{title}</title>{stylesheetLink}</head><body>");
     }
 
-    public void CloseDocument()
-    {
+    public void CloseDocument() {
         _htmlBuilder.Append("</body></html>");
     }
 
-    public void OpenTag(string tag)
-    {
+    public void OpenTag(string tag) {
         _tagStack.Push(tag.Split(' ')[0]);
         _htmlBuilder.Append($"<{tag}>");
     }
 
-    public void InsertText(string text)
-    {
+    public void InsertText(string text) {
         _htmlBuilder.Append(text);
     }
 
-    public void CloseTag()
-    {
+    public void CloseTag() {
         var tag = _tagStack.Pop();
         _htmlBuilder.Append($"</{tag}>");
     }
 
-    public override string ToString()
-    {
+    public override string ToString() {
         return _htmlBuilder.ToString();
     }
 }
