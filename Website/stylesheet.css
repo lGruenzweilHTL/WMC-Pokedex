@@ -1,7 +1,59 @@
-h1 {
-    text-align: center;
+.landingPageTypes {
+    transition: 0.5s;
+    width: 5cm;
+    height: 2.5cm;
+    font-size: x-large;
+    color: white;
+    border-color: white;
+    border-width: 3px;
+    border-radius: 25px;
+    border-style: solid;
+    background-size: 200% auto;
 }
-a {
-    color: black;
-    margin-left: 15px;
+
+.landingPageTypes:hover {
+    background-position: right center;
+    background-position: 100%;
+    transition: 0.5s;
+}
+
+.landingPageTypes:active {
+    transition: 0.25s;
+    color: rgb(255, 255, 255);
+    background-color: rgb(111, 122, 245);
+    border-color: rgb(111, 122, 245);
+    opacity: 5;
+}
+.Button1 {
+    background-image: linear-gradient(to right, #6ed7fb 0%, rgb(255, 88, 88) 100%);
+
+}
+.landingPagePokedex {
+    transition: 0.5s;
+    width: 5cm;
+    height: 2.5cm;
+    font-size: x-large;
+    color: white;
+    border-color: white;
+    border-width: 3px;
+    border-radius: 25px;
+    border-style: solid;
+    background-size: 200% auto;
+}
+
+.landingPagePokedex:hover {
+    background-position: right center;
+    background-position: 100%;
+    transition: 0.5s;
+}
+
+.landingPagePokedex:active {
+    transition: 0.25s;
+    color: rgb(255, 255, 255);
+    background-color: rgb(111, 122, 245);
+    border-color: rgb(111, 122, 245);
+    opacity: 5;
+}
+.Button2 {
+    background-image: linear-gradient(to left, #6ed7fb 0%, rgb(255, 88, 88) 100%);
 }
