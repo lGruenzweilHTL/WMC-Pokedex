@@ -42,6 +42,7 @@ class Program {
         string image =
             "<img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" +
             index + ".png' alt=\"\"/>";
+        string floatingImage = $"<img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{index}.png' class=\"float-left\" alt=\"{name}\"/>";
         string type = string.Join('/', pokemon["types"]
             .AsArray()
             .Select(type => {
@@ -65,7 +66,7 @@ class Program {
 
         var locations = JsonObject.Parse(Fetch(pokemon["location_area_encounters"].ToString())).AsArray()
             .Select(location => location["location_area"]["name"].ToString());
-        string locationString = locations.Any() ? string.Join("", locations.Select(l => $"<tr><td>{l}</td></tr>")) : "None";
+        string locationString = locations.Any() ? string.Join("", locations.Select(l => $"<li>{l}</li>")) : "None";
 
         #endregion
 
@@ -108,17 +109,6 @@ class Program {
         mainPageGenerator.CloseTag();
         */
 
-        mainPageGenerator.OpenTag("td");
-        mainPageGenerator.OpenTag("ul class=\"locations\"");
-        foreach (var location in locations) {
-            mainPageGenerator.OpenTag("li");
-            mainPageGenerator.InsertText(location);
-            mainPageGenerator.CloseTag();
-        }
-
-        mainPageGenerator.CloseTag();
-        mainPageGenerator.CloseTag();
-
         mainPageGenerator.CloseTag();
 
         #endregion
@@ -128,17 +118,17 @@ class Program {
         // TODO: calculate weaknesses/resistances based on types
         string doc = $"""
                       <!DOCTYPE html>
-                              <html lang="en">
-                              <head>
-                                  <meta charset="UTF-8">
-                                  <meta name="viewport" content="width=device-width, initial-scale=1">
-                                  <title>{name}</title>
-                                  <link rel="stylesheet" href="{stylesheet}">
-                              </head>
-                              <body>
-                              {image}
+                      <html lang="en">
+                      <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1">
+                        <title>{name}</title>
+                        <link rel="stylesheet" href="{stylesheet.Replace('\\', '/')}">
+                      </head>
+                      <body>
+                      {floatingImage}
                               <p>TODO: write text manually</p>
-                              <table>
+                              <table class="resistance-table clearfix">
                               <thead>
                               <tr>
                               <th colspan="6">Weaknesses/Resistances</th>
@@ -192,19 +182,12 @@ class Program {
                               <div class="bar" style="width: {speed}px;">{speed}</div>
                           </div>
                       </div>
-                              <br>
-                              <table>
-                                  <thead>
-                                  <tr>
-                                      <th>Locations</th>
-                                  </tr>
-                                  </thead>
-                                  <tbody>
-                                     {locationString}
-                                  </tbody>
-                              </table>
-                              </body>
-                              </html>
+                      <div>
+                          <h2>Locations</h2>
+                          <ul class="location-list">
+                              {locationString}
+                          </ul>
+                          </div>
                       """;
 
         string path = Path.Combine(subPageDirectory, $"{name}.html");
