@@ -1,17 +1,89 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Header styles */
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+p {
+    margin-top: 70px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Table styles */
+table {
+    width: auto;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+table th {
+    background-color: #e9ecef;
+    color: #333;
+}
+
+table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+table tr:hover {
+    background-color: #e2e6ea;
+}
+
+/* Link styles */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Image styles */
+img {
+    width: 300px; /* Increased width */
+    height: auto;
+}
+
+img.float-left {
+    float: left;
+    margin-right: 10px;
+}
+
+/* Bar chart styles */
 .bar-chart {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    height: 200px;
-    width: 250px;
-    border: 1px solid #000;
+    height: auto;
+    width: 100%;
+    border: 1px solid #ddd;
     padding: 10px;
+    margin-bottom: 20px;
 }
+
 .bar-container {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
 }
+
 .bar {
     height: 20px;
     background-color: #007bff;
@@ -19,29 +91,27 @@
     color: #fff;
     margin-right: 10px;
 }
+
 .bar-label {
-    width: 120px;
+    width: 150px;
     text-align: right;
     margin-right: 10px;
 }
 
+/* Location list styles */
 .location-list {
     list-style-type: none;
     padding: 0;
 }
 
-img {
-    width: 200px;
-    height: auto;
+.location-list li {
+    background-color: #f8f9fa;
+    margin-bottom: 5px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    display: inline-block;
 }
-img.float-left {
-    float: left;
-    margin-right: 10px;
-}
+
 .clearfix {
     clear: both;
-}
-table.resistance-table {
-    border-collapse: separate;
-    border-spacing: 10px;
 }
