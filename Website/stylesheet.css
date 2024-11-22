@@ -7,7 +7,7 @@
     border-color: white;
     border-width: 3px;
     border-radius: 25px;
-    border-style: solid;
+    border-style: none;
     background-size: 200% auto;
 }
 
@@ -28,6 +28,8 @@
     background-image: linear-gradient(to right, #6ed7fb 0%, rgb(255, 88, 88) 100%);
 
 }
+
+
 .landingPagePokedex {
     transition: 0.5s;
     width: 5cm;
@@ -37,7 +39,7 @@
     border-color: white;
     border-width: 3px;
     border-radius: 25px;
-    border-style: solid;
+    border-style: none;
     background-size: 200% auto;
 }
 
@@ -57,10 +59,12 @@
 .Button2 {
     background-image: linear-gradient(to left, #6ed7fb 0%, rgb(255, 88, 88) 100%);
 }
+
+
 .pokeballButton1 {
-    border-radius: 50%;
-    background-color: white;
-    border: none;
+    border-style: none;
+    border-radius: 100%;
+    background-color: rgb(255, 255, 255);
     transition: rotate 1s;
 }
 .pokeballButton1:hover
@@ -70,4 +74,11 @@
 .pokeballImg
 {
     height: 100px;
+}
+
+body{
+    background-image: url();
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
