@@ -6,8 +6,8 @@
 ## Ideas
 
 **Make locations appear on map:**
-    - Insert Map and put red dots on locations/Routes
-    - Difficulty: 9/10
-    - Idea by: [Almir Hadzic](https://github.com/aHadzicHTL)
-    - Status: **Not approved** (Open for revisit)
-        - Reason: Too much work for small change. Could be revisited later
+- Insert Map and put red dots on locations/Routes
+- Difficulty: 9/10
+- Idea by: [Almir Hadzic](https://github.com/aHadzicHTL)
+- Status: **Not approved** (Open for revisit)
+    - Reason: Too much work for small change. Could be revisited later
