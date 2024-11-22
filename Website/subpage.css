@@ -2,10 +2,9 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    height: 400px;
-    width: 600px;
+    height: 200px;
+    width: 250px;
     border: 1px solid #000;
-    margin: 0 auto;
     padding: 10px;
 }
 .bar-container {
@@ -21,7 +20,28 @@
     margin-right: 10px;
 }
 .bar-label {
-    width: 100px;
+    width: 120px;
     text-align: right;
     margin-right: 10px;
+}
+
+.location-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+img {
+    width: 200px;
+    height: auto;
+}
+img.float-left {
+    float: left;
+    margin-right: 10px;
+}
+.clearfix {
+    clear: both;
+}
+table.resistance-table {
+    border-collapse: separate;
+    border-spacing: 10px;
 }
