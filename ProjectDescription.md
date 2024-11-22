@@ -3,6 +3,8 @@
 ## Team Members
 Leon Marazovic, Lukas Grünzweil, Almir Hadic, Matyas Darabos
 
+## What is Pokemon
+[Find out more about pokemon](Pokemon.md)
 
 ## Goals
 - Create an informative beginner-friendly website about pokemon
@@ -24,8 +26,8 @@ Leon Marazovic, Lukas Grünzweil, Almir Hadic, Matyas Darabos
     - [ ] Locations
     - [x] Types
     - [ ] Details for every Pokemon on Sub-Pages
-        - [ ] Stats
-        - [ ] Locations
+        - [x] Stats
+        - [x] Locations
         - [ ] Evolutions
         - [ ] Multi-Types
 - [x] Page on Types completed
