@@ -57,3 +57,17 @@
 .Button2 {
     background-image: linear-gradient(to left, #6ed7fb 0%, rgb(255, 88, 88) 100%);
 }
+.pokeballButton1 {
+    border-radius: 50%;
+    background-color: white;
+    border: none;
+    transition: rotate 1s;
+}
+.pokeballButton1:hover
+{
+    rotate: 360deg;
+}
+.pokeballImg
+{
+    height: 100px;
+}
