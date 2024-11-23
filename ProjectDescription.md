@@ -22,15 +22,15 @@ Leon Marazovic, Lukas Grünzweil, Almir Hadic, Matyas Darabos
 
 ## Milestones
 - [ ] Pokedex of Gen 1 completed
-    - [x] Stats
-    - [ ] Locations
     - [x] Types
     - [ ] Details for every Pokemon on Sub-Pages
         - [x] Stats
         - [x] Locations
         - [ ] Evolutions
         - [ ] Multi-Types
-- [x] Page on Types completed
+- [ ] Page on Types completed
     - [x] Weaknesses/Resistances/Immunities
     - [x] Type-specific moves
     - [x] Fighting Style
+    - [ ] High quality images
+    - [ ] Pokemon of that type
