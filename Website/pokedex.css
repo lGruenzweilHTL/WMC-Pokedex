@@ -28,10 +28,19 @@ body {
 h1 {
     text-align: center;
     color: white;
-    font-size: 50   px;
+    font-size: 50px;
 }
 p {
     text-align: center;
     color: white;
     font-size: 20px;
+}
+
+a, a:visited{
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }

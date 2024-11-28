@@ -24,10 +24,10 @@ Leon Marazovic, Lukas Grünzweil, Almir Hadic, Matyas Darabos
 - [ ] Pokedex of Gen 1 completed
     - [x] Types
     - [ ] Details for every Pokemon on Sub-Pages
-        - [x] Stats
-        - [x] Locations
-        - [ ] Evolutions
-        - [ ] Multi-Types
+        - [x] Stats (finished 5 Oct.)
+        - [ ] Locations (deadline 2 Dec.)
+        - [ ] Evolutions (deadline 10 Jan.)
+        - [x] Multi-Types (finished 20 Nov.)
 - [ ] Page on Types completed
     - [x] Weaknesses/Resistances/Immunities
     - [x] Type-specific moves
