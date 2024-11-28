@@ -1,11 +1,7 @@
-/* style.css */
-
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial;
     background: linear-gradient(135deg, #d3d3d3 50%, #303030 50%) fixed;
-    background-size: cover;
 }
-
 
 h1 {
     color: white;
