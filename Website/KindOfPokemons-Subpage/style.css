@@ -1,4 +1,39 @@
-h1
-{
-    margin-left: 30%;
+/* style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #d3d3d3 50%, #303030 50%) fixed;
+    background-size: cover;
+}
+
+
+h1 {
+    color: white;
+    font-size: 40px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+div {
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    outline: gray inset 2px;
+}
+
+h2 {
+    color: blueviolet;
+    margin-bottom: 10px;
+    border-bottom: 2px solid dimgray;
+    padding-bottom: 5px;
+}
+
+p {
+    line-height: 1.6;
+    color: gray;
 }
