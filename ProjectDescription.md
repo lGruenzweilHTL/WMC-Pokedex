@@ -11,6 +11,10 @@ Leon Marazovic, Lukas Grünzweil, Almir Hadic, Matyas Darabos
 - Explain the basics of the Pokemon franchise
 - Important information about all of the pokemon
 
+## Non-Goals
+- Provide information on every single Pokemon in the History of the Game/Anime.
+- Explain the different species of Pokemon
+
 ## Contents
 - Small Pokemon wiki
 - Pokedex of the first games "Pokemon Red", "Pokemon Blue", "Pokemon Green" and "Pokemon Yellow" also commonly referred to as **Generation 1**
