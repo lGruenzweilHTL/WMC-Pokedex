@@ -60,6 +60,35 @@
     background-image: linear-gradient(to left, #6ed7fb 0%, rgb(255, 88, 88) 100%);
 }
 
+.landingPageItems {
+    transition: 0.5s;
+    width: 5cm;
+    height: 2.5cm;
+    font-size: x-large;
+    color: white;
+    border-color: white;
+    border-width: 3px;
+    border-radius: 25px;
+    border-style: none;
+    background-size: 200% auto;
+}
+
+.landingPageItems:hover {
+    background-position: right center;
+    background-position: 100%;
+    transition: 0.5s;
+}
+
+.landingPageItems:active {
+    transition: 0.25s;
+    color: rgb(255, 255, 255);
+    background-color: rgb(111, 122, 245);
+    border-color: rgb(111, 122, 245);
+    opacity: 5;
+}
+.Button3 {
+    background-image: linear-gradient(to left, #8fbc8f 0%, rgb(255, 88, 88) 100%);
+}
 
 .pokeballButton1 {
     border-style: none;
@@ -76,9 +105,9 @@
     height: 100px;
 }
 
-body{
-    background-image: url();
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+body {
+    background: url(Images/Backgrounds/1.png) left top repeat-y,
+                url(Images/Backgrounds/1.png) right top repeat-y,
+                url(Images/Backgrounds/3.png) top;
+    background-size: 25%, 25%, 65%;
 }

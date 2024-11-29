@@ -1,0 +1,22 @@
+body{
+ background-color: #52f262;
+}
+
+img {
+    width: 50px;
+    height: 50px;
+}
+
+td {
+    border: 2px solid black;
+    text-align: center;
+}
+
+table {
+    border: 1px solid black;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    border-collapse: collapse;
+    background-color: rgb(163, 249, 220);
+}
