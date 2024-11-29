@@ -105,9 +105,9 @@
     height: 100px;
 }
 
-body{
-    background-image: url();
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+body {
+    background: url(Images/Backgrounds/1.png) left top repeat-y,
+                url(Images/Backgrounds/1.png) right top repeat-y,
+                url(Images/Backgrounds/3.png) top;
+    background-size: 25%, 25%, 65%;
 }
