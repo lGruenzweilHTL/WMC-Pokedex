@@ -6,12 +6,13 @@ Leon Marazovic, Lukas Grünzweil, Almir Hadic, Matyas Darabos
 ## What is Pokemon
 [Find out more about pokemon](Pokemon.md)
 
-## Goals
+## Goals | Non-Goals
+**Goals**:
 - Create an informative beginner-friendly website about pokemon
 - Explain the basics of the Pokemon franchise
 - Important information about all of the pokemon
 
-## Non-Goals
+**Non-Goals**:
 - Provide information on every single Pokemon in the History of the Game/Anime.
 - Explain the different species of Pokemon
 
