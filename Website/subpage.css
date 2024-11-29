@@ -2,18 +2,22 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f8f9fa;
+    background-image: url(Images/Backgrounds/background2hex.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
     margin: 0;
     padding: 20px;
+    color: #a3a3a3;
 }
 
 /* Header styles */
 h1 {
-    color: #333;
+    color: #a3a3a3;
     margin-bottom: 10px;
 }
 
 p {
-    color: #666;
+    color: a3a3a3;
     margin-bottom: 20px;
 }
 .description {
@@ -37,7 +41,7 @@ table th, table td {
 
 table th {
     background-color: #e9ecef;
-    color: #333;
+    color: a3a3a3;
 }
 
 table tr:nth-child(even) {
