@@ -30,7 +30,7 @@ Leon Marazovic, Lukas Grünzweil, Almir Hadic, Matyas Darabos
     - [x] Types
     - [ ] Details for every Pokemon on Sub-Pages
         - [x] Stats (finished 5 Oct.)
-        - [x] Locations/Maps (finished 2 Dec.)
+        - [ ] Locations/Maps (deadline 10 Dec.)
         - [ ] Evolutions (deadline 10 Jan.)
         - [x] Multi-Types (finished 20 Nov.)
 - [ ] Page on Types completed
