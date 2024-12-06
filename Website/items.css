@@ -1,5 +1,12 @@
 body{
  background-color: #52f262;
+ background: repeating-linear-gradient(
+  135deg,
+  #52f262,
+  #59d465 40px,
+  #52bd5d 40px,
+  #4f9d57 80px
+);
 }
 
 img {
@@ -20,3 +27,4 @@ table {
     border-collapse: collapse;
     background-color: rgb(163, 249, 220);
 }
+
