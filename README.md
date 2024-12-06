@@ -21,6 +21,5 @@ This project is licensed under the Apache-2.0 license. View the [LICENSE.md](LIC
 
 - Inspired by the original Pokémon games by Game Freak and Nintendo.
 - Data provided by the [PokéAPI](https://pokeapi.co/).
-- Using the API Wrapper [PokeApiNet](https://github.com/mtrdp642/PokeApiNet) for seamless integration with the PokéAPI.
 
 Enjoy exploring the world of Pokémon with WMC-Pokedex!

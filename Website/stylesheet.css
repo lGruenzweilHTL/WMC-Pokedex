@@ -9,6 +9,8 @@
     border-radius: 25px;
     border-style: none;
     background-size: 200% auto;
+    margin-top: 5%;
+    margin-left: 30%;
 }
 
 .landingPageTypes:hover {
@@ -95,6 +97,8 @@
     border-radius: 100%;
     background-color: rgb(255, 255, 255);
     transition: rotate 1s;
+    margin-top: 5%;
+    margin-left: 45%;
 }
 .pokeballButton1:hover
 {
@@ -105,9 +109,13 @@
     height: 100px;
 }
 
-body{
-    background-image: url();
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+body {
+    background: url(Images/Backgrounds/1.png) left top repeat-y,
+                url(Images/Backgrounds/1.png) right top repeat-y,
+                url(Images/Backgrounds/3.png) top;
+    background-size: 20%, 20%, 65%;
+}
+h1{
+    display: flex;
+    justify-content: center;
 }
