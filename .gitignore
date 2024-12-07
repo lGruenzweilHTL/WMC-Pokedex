@@ -1,6 +1,45 @@
-# JetBrains idea folder
+# User-specific files
 .idea/
+*.iml
 
-# C# build folder
+# Build output
+out/
+target/
 bin/
-obj/
+build/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Other files
+*.class
+*.jar
+*.war
+*.ear
+*.swp
+
+# User-specific files
+.vscode/
+
+# Build output
+dist/
+out/
+node_modules/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Other files
+*.class
+*.jar
+*.war
+*.ear
+*.swp
