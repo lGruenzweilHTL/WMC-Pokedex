@@ -2,9 +2,9 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f8f9fa;
-    background-image: url(Images/Backgrounds/background2hex.jpg);
+    background-image: url(Images/Backgrounds/subpage-background.png);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: auto;
     margin: 0;
     padding: 20px;
     color: #a3a3a3;
@@ -145,5 +145,4 @@ img.float-left {
     outline: dimgray solid 3px;
     background-color: rgba(112,123,180);
     box-shadow: 6px 10px 14px rgba(160,120,240);
-
 }
