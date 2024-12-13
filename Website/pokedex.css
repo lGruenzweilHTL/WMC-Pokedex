@@ -15,6 +15,11 @@ table {
     margin-right: 15%;
     border-collapse: collapse;
     background-color: #77CDFF;
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    outline: darkgrey inset 4px;
+    box-sizing: border-box;
+    
 }
 
 li {
@@ -22,17 +27,24 @@ li {
 }
 
 body {
-    background-color: #F95454;
+    background-color: #fbebeb;
+    background: repeating-linear-gradient(
+    135deg,
+    #fdf7f7,
+    #fdf7f7 40px,
+    #d6ebff 40px,
+    #d6ebff 80px
+)
 }
 
 h1 {
     text-align: center;
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 50px;
 }
 p {
     text-align: center;
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 20px;
 }
 
