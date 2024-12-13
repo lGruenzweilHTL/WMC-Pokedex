@@ -1,12 +1,15 @@
 body{
- background-color: #52f262;
- background: repeating-linear-gradient(
-  135deg,
-  #52f262,
-  #59d465 40px,
-  #52bd5d 40px,
-  #4f9d57 80px
-);
+    background-color: #cecece;
+    
+    background-image: radial-gradient(#515151 53px, transparent 0px);
+    background-repeat: repeat; /* or omit this declaration */
+    background-size: 100px 100px;
+    background-position: center;
+ 
+}
+
+h1 {
+    color: aliceblue;
 }
 
 img {
@@ -25,6 +28,12 @@ table {
     margin-left: 15%;
     margin-right: 15%;
     border-collapse: collapse;
-    background-color: rgb(163, 249, 220);
+    background-color: #f9f5a3;
+
+    
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    outline: darkgrey inset 4px;
+    box-sizing: border-box;
 }
 
