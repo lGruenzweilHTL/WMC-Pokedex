@@ -14,7 +14,7 @@ table {
     margin-left: 15%;
     margin-right: 15%;
     border-collapse: collapse;
-    background-color: #77CDFF;
+    background-color: #4a95c0;
 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     outline: darkgrey inset 4px;
@@ -49,10 +49,15 @@ p {
 }
 
 a, a:visited{
-    color: #007bff;
+    color: #1900ff;
     text-decoration: none;
 }
 
 a:hover {
     text-decoration: underline;
 }
+
+tr:nth-child(even) {
+    background-color: #77CDFF;
+  }
+  

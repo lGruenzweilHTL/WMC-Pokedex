@@ -20,6 +20,7 @@ img {
 td {
     border: 2px solid black;
     text-align: center;
+    color: #3f3b35;
 }
 
 table {
@@ -28,7 +29,7 @@ table {
     margin-left: 15%;
     margin-right: 15%;
     border-collapse: collapse;
-    background-color: #f9f5a3;
+    background-color: #c9c576;
 
     
 
@@ -37,3 +38,9 @@ table {
     box-sizing: border-box;
 }
 
+
+
+tr:nth-child(even) {
+    background-color: #f9f5a3;
+  }
+  
