@@ -39,6 +39,7 @@ ul {
     margin-left: 12.5%;
     transition: background-color 0.3s, box-shadow 0.3s;
 }
+
 ul:hover {
     background-color: #f9f9f9;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
@@ -58,10 +59,44 @@ strong {
     color: #605f5f;
 }
 
-#normal {
-    color: #aaa;
-    transition: scale 0.5s;
+.image-stack {
+    position: relative;
+    width: 200px; /* Passt die Breite der gesamten Bildstapel an */
+    height: 200px; /* Stellt sicher, dass Bilder den gleichen Container teilen */
+    margin: auto;
+    overflow: hidden; /* Verhindert Überlaufen der Bilder */
 }
+
+.image-stack img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Bilder passen sich der Breite des Containers an */
+    height: auto; /* Bewahrt das Seitenverhältnis */
+    max-width: 100%; /* Verhindert, dass Bilder zu groß werden */
+    max-height: 100%; /* Begrenzt die Höhe der Bilder */
+    object-fit: cover; /* Stellt sicher, dass das Bild den Bereich ausfüllt */
+}
+
+#popUpImages {
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.7s;
+}
+
+#popUpImages:hover {
+    opacity: 1;
+}
+
+img {
+    display: block;
+    margin: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    height: auto;
+}
+
 
 #fire {
     color: #e25822;
