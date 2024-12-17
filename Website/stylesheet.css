@@ -1,7 +1,12 @@
+.parent-container {
+    display: flex;
+    justify-content: center; 
+}
+
 .landingPageTypes {
     transition: 0.5s;
-    width: 5cm;
-    height: 2.5cm;
+    width: 6cm;
+    height: 3cm;
     font-size: x-large;
     color: white;
     border-color: white;
@@ -9,8 +14,8 @@
     border-radius: 25px;
     border-style: none;
     background-size: 200% auto;
-    margin-top: 5%;
-    margin-left: 30%;
+    margin-top: 15px;
+    margin-left: 0%;
 }
 
 .landingPageTypes:hover {
@@ -35,8 +40,8 @@
 
 .landingPagePokedex {
     transition: 0.5s;
-    width: 5cm;
-    height: 2.5cm;
+    width: 6cm;
+    height: 3cm;
     font-size: x-large;
     color: white;
     border-color: white;
@@ -44,6 +49,8 @@
     border-radius: 25px;
     border-style: none;
     background-size: 200% auto;
+    margin-top: 15px;
+    margin-left: 0%;
 }
 
 .landingPagePokedex:hover {
@@ -61,13 +68,13 @@
 }
 
 .Button2 {
-    background-image: linear-gradient(to left, #6ed7fb 0%, rgb(255, 88, 88) 100%);
+    background-image: linear-gradient(to left, #8fbc8f 0%, #ff5858 100%);
 }
 
 .landingPageItems {
     transition: 0.5s;
-    width: 5cm;
-    height: 2.5cm;
+    width: 6cm;
+    height: 3cm;
     font-size: x-large;
     color: white;
     border-color: white;
@@ -75,6 +82,8 @@
     border-radius: 25px;
     border-style: none;
     background-size: 200% auto;
+    margin-top: 15px;
+    margin-left: 0%;
 }
 
 .landingPageItems:hover {
@@ -92,7 +101,7 @@
 }
 
 .Button3 {
-    background-image: linear-gradient(to left, #8fbc8f 0%, rgb(255, 88, 88) 100%);
+    background-image: linear-gradient(to left, #6ed7fb 0%, #8fbc8f 100%);
 }
 
 .pokeballButton1 {
@@ -100,8 +109,7 @@
     border-radius: 100%;
     background-color: rgb(255, 255, 255);
     transition: rotate 1s;
-    margin-top: 5%;
-    margin-left: 45%;
+    margin-top: 20px;
 }
 
 .pokeballButton1:hover {
