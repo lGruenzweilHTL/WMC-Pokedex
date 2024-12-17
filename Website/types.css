@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: Verdana, sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
@@ -32,6 +32,31 @@ body {
     justify-content: center;
     justify-items: center;
     justify-self: center;
+}
+
+.header h1 {
+    font-size: 25px;
+    color: white;
+    background-image: linear-gradient(to right,
+            #ff3344 0%,
+            #db2a38 51%,
+            #ff3344 100%);
+    transition: 0.5s;
+    background-size: 200% auto;
+    height: 75px;
+    width: 220px;
+    border-radius: 2em;
+    cursor: pointer;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.header h1:hover {
+    background-position: right center;
+    cursor: default;
 }
 
 .header-image {
@@ -75,8 +100,7 @@ ul {
 ul:hover {
     background-color: #f9f9f9;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-    scale: 103%;
-    
+    scale: 102%;
 }
 
 ul li {
@@ -97,12 +121,9 @@ ul li:last-child {
 .image-stack {
     position: relative;
     width: 200px;
-    /* Passt die Breite der gesamten Bildstapel an */
     height: 200px;
-    /* Stellt sicher, dass Bilder den gleichen Container teilen */
     margin: auto;
     overflow: hidden;
-    /* Verhindert Überlaufen der Bilder */
 }
 
 .image-stack img {
