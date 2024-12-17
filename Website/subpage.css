@@ -16,6 +16,8 @@ body {
 h1 {
     color: #a3a3a3;
     margin-bottom: 10px;
+    text-align: center;
+    font-size: 80px;
 }
 
 p {
