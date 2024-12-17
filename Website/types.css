@@ -18,6 +18,11 @@ h2 {
     border-bottom: 2px solid #ccc;
     padding-bottom: 5px;
     text-align: center;
+    transition: scale 0.3s ease;
+}
+
+h2:hover{
+    scale: 110%;
 }
 
 img {
@@ -55,10 +60,6 @@ ul li:last-child {
     border-bottom: none;
 }
 
-strong {
-    color: #605f5f;
-}
-
 .image-stack {
     position: relative;
     width: 200px; /* Passt die Breite der gesamten Bildstapel an */
@@ -88,13 +89,21 @@ strong {
     opacity: 1;
 }
 
-img {
-    display: block;
-    margin: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 100%;
-    height: auto;
+@keyframes shaking 
+{
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+img:hover {
+    animation: shaking 0.5s ease;
+}
+
+#normal {
+    color:#757575;
 }
 
 #fire {
