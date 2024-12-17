@@ -26,6 +26,7 @@
     border-color: rgb(111, 122, 245);
     opacity: 5;
 }
+
 .Button1 {
     background-image: linear-gradient(to right, #6ed7fb 0%, rgb(255, 88, 88) 100%);
 
@@ -58,6 +59,7 @@
     border-color: rgb(111, 122, 245);
     opacity: 5;
 }
+
 .Button2 {
     background-image: linear-gradient(to left, #6ed7fb 0%, rgb(255, 88, 88) 100%);
 }
@@ -88,6 +90,7 @@
     border-color: rgb(111, 122, 245);
     opacity: 5;
 }
+
 .Button3 {
     background-image: linear-gradient(to left, #8fbc8f 0%, rgb(255, 88, 88) 100%);
 }
@@ -100,19 +103,20 @@
     margin-top: 5%;
     margin-left: 45%;
 }
-.pokeballButton1:hover
-{
+
+.pokeballButton1:hover {
     rotate: 360deg;
 }
-.pokeballImg
-{
+
+.pokeballImg {
     height: 100px;
 }
 
 body {
     background: url(Images/Backgrounds/mainBG.png);
 }
-h1{
+
+h1 {
     display: flex;
     justify-content: center;
 }

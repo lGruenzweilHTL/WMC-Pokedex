@@ -6,11 +6,33 @@ body {
     background-color: #f5f5f5;
 }
 
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
 .header {
-    display:inline-flex;
+    display: inline-flex;
     width: 100px;
 }
-.header-image{
+
+.header-image {
     margin-left: 30%;
 }
 
@@ -23,7 +45,7 @@ h2 {
     transition: scale 0.3s ease;
 }
 
-h2:hover{
+h2:hover {
     scale: 110%;
 }
 
@@ -57,6 +79,7 @@ ul li {
     padding: 5px 0;
     border-bottom: 1px solid #eaeaea;
 }
+
 ul li:hover {
     background-color: #f7f2f2;
     transform: translateX(1px);
@@ -68,21 +91,29 @@ ul li:last-child {
 
 .image-stack {
     position: relative;
-    width: 200px; /* Passt die Breite der gesamten Bildstapel an */
-    height: 200px; /* Stellt sicher, dass Bilder den gleichen Container teilen */
+    width: 200px;
+    /* Passt die Breite der gesamten Bildstapel an */
+    height: 200px;
+    /* Stellt sicher, dass Bilder den gleichen Container teilen */
     margin: auto;
-    overflow: hidden; /* Verhindert Überlaufen der Bilder */
+    overflow: hidden;
+    /* Verhindert Überlaufen der Bilder */
 }
 
 .image-stack img {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%; /* Bilder passen sich der Breite des Containers an */
-    height: auto; /* Bewahrt das Seitenverhältnis */
-    max-width: 100%; /* Verhindert, dass Bilder zu groß werden */
-    max-height: 100%; /* Begrenzt die Höhe der Bilder */
-    object-fit: cover; /* Stellt sicher, dass das Bild den Bereich ausfüllt */
+    width: 100%;
+    /* Bilder passen sich der Breite des Containers an */
+    height: auto;
+    /* Bewahrt das Seitenverhältnis */
+    max-width: 100%;
+    /* Verhindert, dass Bilder zu groß werden */
+    max-height: 100%;
+    /* Begrenzt die Höhe der Bilder */
+    object-fit: cover;
+    /* Stellt sicher, dass das Bild den Bereich ausfüllt */
 }
 
 #popUpImages {
@@ -95,13 +126,26 @@ ul li:last-child {
     opacity: 1;
 }
 
-@keyframes shaking 
-{
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    50% { transform: translateX(5px); }
-    75% { transform: translateX(-5px); }
-    100% { transform: translateX(0); }
+@keyframes shaking {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    75% {
+        transform: translateX(-5px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }
 
 img:hover {
@@ -109,7 +153,7 @@ img:hover {
 }
 
 #normal {
-    color:#757575;
+    color: #757575;
 }
 
 #fire {
