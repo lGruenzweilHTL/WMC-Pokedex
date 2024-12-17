@@ -37,5 +37,5 @@ Leon Marazovic, Lukas Grünzweil, Almir Hadic, Matyas Darabos
     - [x] Weaknesses/Resistances/Immunities
     - [x] Type-specific moves
     - [x] Fighting Style
-    - [ ] High quality images
-    - [ ] Pokemon of that type
+    - [x] High quality images
+    - [x] Pokemon of that type

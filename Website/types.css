@@ -28,12 +28,14 @@ body {
 }
 
 .header {
-    display: inline-flex;
-    width: 100px;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    justify-self: center;
 }
 
 .header-image {
-    margin-left: 30%;
+    margin-left: 20%;
 }
 
 h2 {
@@ -67,11 +69,14 @@ ul {
     max-width: 75%;
     margin-left: 12.5%;
     transition: background-color 0.3s, box-shadow 0.3s;
+    transition: scale 0.25s ease-in-out;
 }
 
 ul:hover {
     background-color: #f9f9f9;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    scale: 103%;
+    
 }
 
 ul li {
