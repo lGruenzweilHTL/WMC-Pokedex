@@ -19,6 +19,7 @@ body {
     justify-content: center;
     position: relative;
     border-radius: 10px;
+    font-family: Verdana, sans-serif;
 }
 
 .navigation-bar ul {
