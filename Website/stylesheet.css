@@ -1,46 +1,6 @@
-.navigation-bar {
-    background-color: #333;
-    width: 100%;
-    margin-top: 1%;
-    position: fixed;
-    top: 0;
-    padding: 10px 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    display: flex;
-    justify-content: center;
-    position: relative;
-    border-radius: 10px;
-    font-family: Verdana, sans-serif;
-}
-
-.navigation-bar ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-.navigation-bar ul li {
-    margin: 0 20px;
-}
-
-.navigation-bar ul li a {
-    text-decoration: none;
-    color: white;
-    font-size: 20px;
-    padding: 5px 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.navigation-bar ul li a:hover {
-    background-color: wheat;
-    color: black;
-}
-
 .parent-container {
     display: flex;
-    justify-content: center; 
+    justify-content: center;
 }
 
 .landingPageTypes {
@@ -144,6 +104,41 @@
     background-image: linear-gradient(to left, #6ed7fb 0%, #8fbc8f 100%);
 }
 
+
+
+.landingPageItems {
+    transition: 0.5s;
+    width: 6cm;
+    height: 3cm;
+    font-size: x-large;
+    color: white;
+    border-color: white;
+    border-width: 3px;
+    border-radius: 25px;
+    border-style: none;
+    background-size: 200% auto;
+    margin-top: 15px;
+    margin-left: 0%;
+}
+
+.landingPageItems:hover {
+    background-position: right center;
+    background-position: 100%;
+    transition: 0.5s;
+}
+
+.landingPageItems:active {
+    transition: 0.25s;
+    color: rgb(255, 255, 255);
+    background-color: rgb(111, 122, 245);
+    border-color: rgb(111, 122, 245);
+    opacity: 5;
+}
+
+.Button4 {
+    background-image: linear-gradient(to left, #e9e31c 0%, #8fbc8f 100%);
+}
+
 .pokeballButton1 {
     border-style: none;
     border-radius: 100%;
@@ -164,8 +159,18 @@ body {
 }
 
 h1 {
-    font-size: 60px;
-    display: flex;
-    justify-content: center;
-    
+    font-size: 3rem;
+    width: 50%;
+    color: #ffffff;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(90deg, #ffffff, #add8e6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 10px 20px;
+    border: 3px solid #ffffff;
+    border-radius: 15px;
+    text-transform: uppercase;
+    text-align: center;
+    margin:30px auto;
+    position: relative;
 }
