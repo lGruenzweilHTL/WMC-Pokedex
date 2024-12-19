@@ -15,7 +15,7 @@
     border-style: none;
     background-size: 200% auto;
     margin-top: 15px;
-    margin-left: 0%;
+    margin-right: 80vh;
 }
 
 .landingPageTypes:hover {
@@ -50,7 +50,9 @@
     border-style: none;
     background-size: 200% auto;
     margin-top: 15px;
-    margin-left: 0%;
+    margin-left: 80vh;
+    position: relative;
+    bottom: 120px;
 }
 
 .landingPagePokedex:hover {
@@ -83,7 +85,7 @@
     border-style: none;
     background-size: 200% auto;
     margin-top: 15px;
-    margin-left: 0%;
+    margin-right: 80vh;
 }
 
 .landingPageItems:hover {
@@ -106,7 +108,7 @@
 
 
 
-.landingPageItems {
+.landingPageKinds {
     transition: 0.5s;
     width: 6cm;
     height: 3cm;
@@ -118,16 +120,19 @@
     border-style: none;
     background-size: 200% auto;
     margin-top: 15px;
-    margin-left: 0%;
+    position: relative;
+    left: 40vh;
+    bottom: 17vh;
+
 }
 
-.landingPageItems:hover {
+.landingPageKinds:hover {
     background-position: right center;
     background-position: 100%;
     transition: 0.5s;
 }
 
-.landingPageItems:active {
+.landingPageKinds:active {
     transition: 0.25s;
     color: rgb(255, 255, 255);
     background-color: rgb(111, 122, 245);
@@ -155,7 +160,12 @@
 }
 
 body {
-    background: url(Images/Backgrounds/mainBG.png);
+    background: linear-gradient(rgba(30, 100, 200, 0.7), rgba(30, 100, 200, 0.4)),
+    url(Images/Backgrounds/mainBG.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
 }
 
 h1 {
