@@ -3,76 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>charmander</title>
+    <title>Charmander</title>
     <link rel="stylesheet" href="../subpage.css">
 </head>
 <body>
+<nav class="navigation-bar">
+    <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../pokedex.html">Pokedex</a></li>
+        <li><a href="../types.html">Types</a></li>
+        <li><a href="../KindOfPokemons-Subpage/kindOfPokemon.html">Kinds</a></li>
+    </ul>
+</nav>
 <h1>Charmander</h1>
-<img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png' class="float-left"
-     alt="charmander"/>
-<p class="description">Charmander is a lizard-like Pokémon with a flame on its tail. The flame is a vital indicator of
-    its health and emotions, flickering brightly when it’s happy and dimming when it’s weak. It has a curious and
-    adventurous nature, often wandering around to explore.</p>
-<p class="clearfix">Type: <a href="../types.html#fire">Fire</a></p>
-<p class="kind">Kind of Pokémon: <a href="../KindOfPokemons-Subpage/kindOfPokemon.html#starter">Starter</a></p>
-<table class="resistance-table clearfix">
-    <thead>
-    <tr>
-        <th colspan="6">Weaknesses</th>
-    </tr>
-    <tr>
-        <th>0x</th>
-        <th>1/4x</th>
-        <th>1/2x</th>
-        <th>1x</th>
-        <th>2x</th>
-        <th>4x</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td></td>
-        <td></td>
-        <td>fire, water, rock, dragon</td>
-        <td>normal, electric, fighting, poison, ground, flying, psychic, ghost, dark, fairy</td>
-        <td>grass, ice, bug, steel</td>
-        <td></td>
-    </tr>
-    </tbody>
-</table>
-<br>
-<div class="bar-chart">
-    <div class="bar-container">
-        <div class="bar-label">HP</div>
-        <div class="bar" style="width: 39px;">39</div>
+    <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png' class="float-left" alt="Charmander"/>
+    <p class="description">Charmander is a lizard-like Pokémon with a flame on its tail. The flame is a vital indicator of its health and emotions, flickering brightly when it’s happy and dimming when it’s weak. It has a curious and adventurous nature, often wandering around to explore.</p>
+    <p class="clearfix">Type: <a href="../types.html#fire">fire</a></p>
+    <p class="kind clearfix">Kind of Pokémon: <a href="../KindOfPokemons-Subpage/kindOfPokemon.html#starter">Starter</a></p>
+    <table class="resistance-table clearfix">
+        <thead>
+            <tr>
+                <th colspan="6">Weaknesses</th>
+            </tr>
+            <tr>
+                <th>0x</th>
+                <th>1/4x</th>
+                <th>1/2x</th>
+                <th>1x</th>
+                <th>2x</th>
+                <th>4x</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td></td><td></td><td>fire, grass, ice, bug, steel, fairy</td><td>normal, electric, fighting, poison, flying, psychic, ghost, dragon, dark</td><td>water, ground, rock</td><td></td></tr>
+        </tbody>
+    </table>
+    <br>
+    <div class="bar-chart">
+        <div class="bar-container">
+            <div class="bar-label">HP</div>
+            <div class="bar" style="width: 39px;">39</div>
+        </div>
+        <div class="bar-container">
+            <div class="bar-label">Attack</div>
+            <div class="bar" style="width: 52px;">52</div>
+        </div>
+        <div class="bar-container">
+            <div class="bar-label">Defense</div>
+            <div class="bar" style="width: 43px;">43</div>
+        </div>
+        <div class="bar-container">
+            <div class="bar-label">Special Attack</div>
+            <div class="bar" style="width: 60px;">60</div>
+        </div>
+        <div class="bar-container">
+            <div class="bar-label">Special Defense</div>
+            <div class="bar" style="width: 50px;">50</div>
+        </div>
+        <div class="bar-container">
+            <div class="bar-label">Speed</div>
+            <div class="bar" style="width: 65px;">65</div>
+        </div>
     </div>
-    <div class="bar-container">
-        <div class="bar-label">Attack</div>
-        <div class="bar" style="width: 52px;">52</div>
+    <div>
+        <h2>Locations</h2>
+            <div class="image-container"><img src="../Images/Locations/Regions/kanto.png" alt="kanto"/><img src="../Images/Locations/Locations/pallet-town.png" alt="pallet-town"/><img src="../Images/Locations/Locations/kanto-route-24.png" alt="kanto-route-24"/></div><ul class="location-list"></ul>
     </div>
-    <div class="bar-container">
-        <div class="bar-label">Defense</div>
-        <div class="bar" style="width: 43px;">43</div>
-    </div>
-    <div class="bar-container">
-        <div class="bar-label">Special Attack</div>
-        <div class="bar" style="width: 60px;">60</div>
-    </div>
-    <div class="bar-container">
-        <div class="bar-label">Special Defense</div>
-        <div class="bar" style="width: 50px;">50</div>
-    </div>
-    <div class="bar-container">
-        <div class="bar-label">Speed</div>
-        <div class="bar" style="width: 65px;">65</div>
-    </div>
-</div>
-<div>
-    <h2>Locations</h2>
-    <div class="image-container"><img src="../Images/Locations/Regions/kanto.png" alt="kanto"/><img
-            src="../Images/Locations/Locations/pallet-town.png" alt="pallet-town"/><img
-            src="../Images/Locations/Locations/kanto-route-24.png" alt="kanto-route-24"/></div>
-    <ul class="location-list"></ul>
-</div>
 </body>
 </html>
