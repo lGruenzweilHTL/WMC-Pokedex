@@ -8,7 +8,7 @@ body {
 }
 .active{
     text-decoration: none;
-    color: white;
+    color: black;
     font-size: 20px;
     padding: 5px 10px;
     border-radius: 5px;
@@ -17,6 +17,7 @@ body {
 }
 .active:hover {
     background-color: #333;
+    color: white;
 }
 
 .navPokeball{
@@ -42,7 +43,7 @@ body {
     background-color: #333;
     width: 100%;
     margin-top: 1%;
-    position: relative;
+    position: fixed;
     top: 0;
     padding: 10px 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
@@ -103,6 +104,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 25%;
 }
 
 
@@ -112,7 +114,8 @@ body {
 }
 
 .header-image {
-    margin-left: 20%;
+    margin-left: 15%;
+    margin-top: 25%;
 }
 
 h2 {
