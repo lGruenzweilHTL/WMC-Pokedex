@@ -53,18 +53,18 @@ body {
     font-family: Verdana, sans-serif;
 }
 
-.navigation-bar ul:not(.active):not(.navPokeball) {
+.navigation-bar ul:not(.active) {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
 }
 
-.navigation-bar ul li:not(.active):not(.navPokeball) {
+.navigation-bar ul li:not(.active) {
     margin: 0 20px;
 }
 
-.navigation-bar ul li a:not(.active):not(.navPokeball) {
+.navigation-bar ul li a:not(.active) {
     text-decoration: none;
     color: white;
     font-size: 20px;
@@ -73,7 +73,7 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
-.navigation-bar ul li a:hover:not(.active):not(.navPokeball) {
+.navigation-bar ul li a:hover:not(.active) {
     background-color: wheat;
     color: black;
 }
@@ -187,15 +187,10 @@ img:hover:not(.navPokeball) {
     top: 0;
     left: 0;
     width: 100%;
-    /* Bilder passen sich der Breite des Containers an */
     height: auto;
-    /* Bewahrt das Seitenverhältnis */
     max-width: 100%;
-    /* Verhindert, dass Bilder zu groß werden */
     max-height: 100%;
-    /* Begrenzt die Höhe der Bilder */
     object-fit: cover;
-    /* Stellt sicher, dass das Bild den Bereich ausfüllt */
 }
 
 .popUpImages {
@@ -229,8 +224,6 @@ img:hover:not(.navPokeball) {
         transform: translateX(0);
     }
 }
-
-
 
 .normal {
     color: #757575;
