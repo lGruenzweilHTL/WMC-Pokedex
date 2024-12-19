@@ -3,7 +3,8 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
+    background: linear-gradient(to right, #808080, #ffffff);
+    background-size: cover; 
 }
 
 .navigation-bar {
@@ -106,7 +107,7 @@ img {
     list-style: none;
     padding: 0;
     margin: 10px 20px;
-    background: #fff;
+    background: #f1f1f1;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 15px;
