@@ -4,36 +4,67 @@ body {
     margin: 0;
     padding: 0;
     background: linear-gradient(to right, #808080, #ffffff);
-    background-size: cover; 
+    background-size: cover
+}
+.active{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    background-color: wheat;
+}
+.active:hover {
+    background-color: #333;
 }
 
-.navigation-bar {
+.navPokeball{
+    position: absolute;
+    left: 5px;
+    top: -5%;
+    width: 40px;
+}
+.navPokeball:hover{
+    animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.navigation-bar:not(.active) {
     background-color: #333;
     width: 100%;
     margin-top: 1%;
-    position: fixed;
+    position: relative;
     top: 0;
     padding: 10px 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: center;
-    position: relative;
+    z-index: 2;
     border-radius: 10px;
     font-family: Verdana, sans-serif;
 }
 
-.navigation-bar ul {
+.navigation-bar ul:not(.active):not(.navPokeball) {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
 }
 
-.navigation-bar ul li {
+.navigation-bar ul li:not(.active):not(.navPokeball) {
     margin: 0 20px;
 }
 
-.navigation-bar ul li a {
+.navigation-bar ul li a:not(.active):not(.navPokeball) {
     text-decoration: none;
     color: white;
     font-size: 20px;
@@ -42,7 +73,7 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
-.navigation-bar ul li a:hover {
+.navigation-bar ul li a:hover:not(.active):not(.navPokeball) {
     background-color: wheat;
     color: black;
 }
@@ -97,13 +128,6 @@ h2:hover {
     scale: 110%;
 }
 
-img {
-    display: block;
-    margin: 10px auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
 .text-box {
     list-style: none;
     padding: 0;
@@ -137,6 +161,17 @@ img {
 
 .text-box li:last-child {
     border-bottom: none;
+}
+
+img {
+    display: block;
+    margin: 10px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+img:hover:not(.navPokeball) {
+    animation: shaking 0.5s ease;
 }
 
 .image-stack {
@@ -195,9 +230,7 @@ img {
     }
 }
 
-img:hover {
-    animation: shaking 0.5s ease;
-}
+
 
 .normal {
     color: #757575;
