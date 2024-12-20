@@ -15,7 +15,7 @@
     border-style: none;
     background-size: 200% auto;
     margin-top: 15px;
-    margin-right: 80vh;
+    margin-right: 50vh;
 }
 
 .landingPageTypes:hover {
@@ -49,8 +49,8 @@
     border-radius: 25px;
     border-style: none;
     background-size: 200% auto;
-    margin-top: 15px;
-    margin-left: 80vh;
+    margin-top: 130px;
+    margin-left: 50vh;
     position: relative;
     bottom: 120px;
 }
@@ -84,8 +84,9 @@
     border-radius: 25px;
     border-style: none;
     background-size: 200% auto;
-    margin-top: 15px;
-    margin-right: 80vh;
+    position: relative;
+    margin-top: -90px;
+    margin-right: 50vh;
 }
 
 .landingPageItems:hover {
@@ -120,9 +121,8 @@
     border-style: none;
     background-size: 200% auto;
     margin-top: 15px;
+    margin-left: 50vh;
     position: relative;
-    left: 40vh;
-    bottom: 17vh;
 
 }
 
