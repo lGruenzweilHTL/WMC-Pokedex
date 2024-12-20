@@ -32,7 +32,7 @@ table {
 
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    margin-bottom: 100px;
     border: 2px solid #444;
     box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
     border-radius: 8px;
@@ -182,9 +182,12 @@ h1 {
 }
 h2
 {
+    position: relative;
     color: #a3a3a3;
     margin-left: 30px;
     font-size: 60px;
+    bottom: 50vh;
+    left: 100vh;
 
 }
 .clearfix {
@@ -202,6 +205,8 @@ h2
     position: relative;
     width: 460px;
     height: 460px;
+    margin-left: 50%;
+    bottom: 50vh;
 }
 
 .image-container img {
