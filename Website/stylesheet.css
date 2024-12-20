@@ -172,7 +172,6 @@ h1 {
     font-size: 3rem;
     width: 50%;
     color: #ffffff;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
     background: linear-gradient(90deg, #ffffff, #add8e6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
