@@ -1,3 +1,5 @@
+/* Navbar */
+
 .navigation-bar:not(.active) {
     background-color: #333;
     width: 100%;
@@ -74,3 +76,73 @@
         transform: rotate(360deg);
     }
 }
+
+/* Title */
+
+/*
+TODO: Other design for h1
+And change the img
+Looks to much like Types-Page
+*/
+.header {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    justify-self: center;
+}
+
+.header h1 {
+    font-size: 25px;
+    color: white;
+    background-image: linear-gradient(to right,
+            #ff3344 0%,
+            #db2a38 51%,
+            #ff3344 100%);
+    transition: 0.5s;
+    background-size: 200% auto;
+    height: 75px;
+    width: 220px;
+    border-radius: 2em;
+    cursor: pointer;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25%;
+}
+
+.header h1:hover {
+    background-position: right center;
+    cursor: default;
+}
+
+.header-image {
+    margin-left: 15%;
+    margin-top: 25%;
+}
+
+/* h2 */
+h2{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+div{
+    margin-top: 80px;
+}
+.pokemonTitle {
+
+}
+
+.trainerTitle {
+
+}
+
+.energyTitle {
+
+}
+
+.specialTitle {
+
+}
+
