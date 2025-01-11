@@ -1,8 +1,7 @@
 body {
     font-family: Verdana, sans-serif;
     line-height: 1.6;
-    margin: 0;
-    padding: 0;
+    padding-top: 80px;
     background: linear-gradient(to right, #808080, #ffffff);
     background-size: cover
 }
@@ -31,18 +30,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 25%;
 }
-
+.header-image{
+    margin-left: 20%;
+    position: absolute;
+}
 
 .header h1:hover {
     background-position: right center;
     cursor: default;
-}
-
-.header-image {
-    margin-left: 15%;
-    margin-top: 25%;
 }
 
 h2 {
@@ -93,7 +89,7 @@ h2:hover {
     border-bottom: none;
 }
 
-img {
+img:not(.navPokeball):not(.header-image) {
     display: block;
     margin: 10px auto;
     border-radius: 8px;
@@ -112,7 +108,7 @@ img:hover:not(.navPokeball) {
     overflow: hidden;
 }
 
-.image-stack img {
+.image-stack img:not(.navPokeball) {
     position: absolute;
     top: 0;
     left: 0;
