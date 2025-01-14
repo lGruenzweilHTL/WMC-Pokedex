@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Pokemon Types</title>
-  <link rel="stylesheet" href="types.css">
+  <link rel="stylesheet" href="battle.css">
   <link rel="stylesheet" href="navbar.css">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -45,14 +45,18 @@
     </ul>
 </nav>
 
-  <!-- Images need to be added -->
+  <!-- Battle Java script needs to be added -->
 
   <div class="header">
     <h1>Mock battle</h1>
   </div>
 
   <h2>Battle beginns</h2>
-  <p class="text-box">
+  <div class="image-stack">
+    <img src="Images/Battle/Start.png" alt="Battle beginns Trainers image">
+    <img src="Images/Battle/Pokemons.png" alt="Battle beginns Pokemons image" class="popUpImages">
+  </div>
+    <p class="text-box">
       At the beginning of a Battle the first Pokemon of each Trainer gets sent out.
       The players can chosse between four actions that they want to do.
       They can either attack, change Pokemon, use items or run.
@@ -61,12 +65,20 @@
   </p>
 
   <h2>Running away</h2>
+  <div class="image-stack">
+    <img src="Images/Battle/Run.png" alt="Running away from trainer">
+    <img src="Images/Battle/RunWild.png" alt="Running away from wild Pokemon" class="popUpImages">
+  </div>
   <p class="text-box">
       While battleing a wild Pokemon, you can chose to run away.
       This can be really usefull when your Pokemon are already damaged from another battle or you simply don't want to battle against a wild Pokemon.
     </p>
 
   <h2>Changing Pokemons</h2>
+  <div class="image-stack">
+    <img src="Images/Battle/ChangePokemons.png" alt="Changeing Pokemons">
+    <img src="Images/Battle/ChangeFaint.png" alt="Changeing Pokemon after enemy faints" class="popUpImages">
+  </div>
   <p class="text-box">
       A trainer can have up to 6 Pokemons.
       If a Pokemon faints then the trainer whose Pokemon fainted has to chose a Pokemon to change to and if the trainer runs out of Pokemons then he loses.
@@ -75,6 +87,11 @@
     </p>
 
   <h2>Items</h2>
+  
+  <div class="image-stack">
+    <img src="Images/Battle/Items.png" alt="Healing Items">
+    <img src="Images/Battle/PokeBalls.png" alt="Poke balls" class="popUpImages">
+  </div>
   <p class="text-box">
       A Trainer can choose to use Items instead of attacking.
       Items can be used on every Pokemon on the team, not just the one that is currently fighting.
@@ -85,6 +102,10 @@
 
   
   <h2>Attacks</h2>
+  <div class="image-stack">
+    <img src="Images/Battle/Attack.png" alt="Attacking options">
+    <img src="Images/Battle/Thunder.png" alt="Using Thunder against wild Pokemon" class="popUpImages">
+  </div>
   <p class="text-box">
     There are two kinds of attacks: physical and special.
     A Pokemon can have up to 4 different attacks.

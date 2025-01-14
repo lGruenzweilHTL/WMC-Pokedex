@@ -1,0 +1,152 @@
+body {
+    font-family: Verdana, sans-serif;
+    line-height: 1.6;
+    padding-top: 80px;
+    background: linear-gradient(to right, #808080, #ffffff);
+    background-size: cover
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    justify-self: center;
+}
+
+.header h1 {
+    font-size: 25px;
+    color: white;
+    background-image: linear-gradient(to right,
+            #ff3344 0%,
+            #db2a38 51%,
+            #ff3344 100%);
+    transition: 0.5s;
+    background-size: 200% auto;
+    height: 75px;
+    width: 220px;
+    border-radius: 2em;
+    cursor: pointer;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header-image{
+    margin-left: 20%;
+    position: absolute;
+}
+
+.header h1:hover {
+    background-position: right center;
+    cursor: default;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-top: 30px;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 5px;
+    text-align: center;
+    transition: scale 0.3s ease;
+}
+
+h2:hover {
+    scale: 110%;
+}
+
+.text-box {
+    list-style: none;
+    padding: 0;
+    margin: 10px 20px;
+    background: #f1f1f1;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    max-width: 75%;
+    margin-left: 12.5%;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    transition: scale 0.25s ease-in-out;
+}
+
+.text-box:hover {
+    background-color: #f9f9f9;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    scale: 102%;
+}
+
+.text-box li {
+    margin-bottom: 10px;
+    padding: 5px 0;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.text-box li:hover {
+    background-color: #f7f2f2;
+    transform: translateX(1px);
+}
+
+.text-box li:last-child {
+    border-bottom: none;
+}
+
+img:not(.navPokeball):not(.header-image) {
+    display: block;
+    margin: 10px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+img:hover:not(.navPokeball) {
+    animation: shaking 0.5s ease;
+}
+
+.image-stack {
+    position: relative;
+    width: 400px;
+    height: 300px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.image-stack img:not(.navPokeball) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.popUpImages {
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.7s;
+}
+
+.popUpImages:hover {
+    opacity: 1;
+}
+
+@keyframes shaking {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    75% {
+        transform: translateX(-5px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
