@@ -31,7 +31,6 @@ div::before {
     border-radius: 5px;
     font-size: 14px;
 }
-
 .pokemonImg::before {
     content: "Pokemon Cards Examples";
 }
@@ -67,4 +66,4 @@ hr{
 .specialTitle {
     color: #db2a38;
     text-shadow: 1px 1px 2px #fff;
-}  
+}
