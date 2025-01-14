@@ -4,7 +4,7 @@ body {
     padding-top: 80px;
 }
 
-div {
+div{
     margin-top: 20px;
 
     border: 2px solid #db2a38;
@@ -32,11 +32,33 @@ div::before {
     font-size: 14px;
 }
 
-/* h2 */
+.pokemonImg::before {
+    content: "Pokemon Cards Examples";
+}
+
+.trainerImg::before {
+    content: "Trainer Cards Examples";
+}
+
+.energyImg::before {
+    content: "Energy Cards Examples";
+}
+
+.specialImg::before {
+    content: "Special Cards Examples";
+}
+
+
 h2 {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+}
+hr{
+    height: 5px;
+    background-color: black;
+    width: 90%;
+    opacity: 0.5;
 }
 
 .pokemonTitle,
