@@ -1,7 +1,7 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #1a1a1a;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to bottom, #1a1a1a, #2a2a2a);
     height: 100vh;
     overflow: hidden;
     color: #e0e0e0;
@@ -11,13 +11,52 @@ body {
 
 .header {
     text-align: center;
-    padding: 20px;
-    font-size: 24px;
-    background: linear-gradient(135deg, #2a2a2a, #3b3b3b);
-    color: #e0e0e0;
-    border-bottom: 4px solid #555;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 25px;
+    font-size: 36px;
+    font-weight: bold;
+    background: linear-gradient(135deg, #3b3b3b, #4a4a4a);
+    color:lightyellow;
+    border-bottom: 5px solid #666;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
+}
+
+.header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0));
+    opacity: 0.2;
+    pointer-events: none;
+    animation: slide 3s infinite;
+}
+
+.header span {
+    font-size: 46px;
+    color: #f8f8f8;
+    font-weight: 800;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+    display: inline-block;
+    padding: 5px 10px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
 }
 
 .container {
@@ -25,6 +64,8 @@ body {
     display: flex;
     flex-direction: row;
     width: 100%;
+    gap: 10px;
+    padding: 10px;
 }
 
 .section {
@@ -32,20 +73,28 @@ body {
     position: relative;
     cursor: pointer;
     overflow: hidden;
-    border: 3px solid #444;
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+    border: 4px solid #555;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.section:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+    transform: translateY(-5px);
 }
 
 .section img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s; /* Delay for image fade-out */
+    transition: opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s;
     display: block;
     position: absolute;
     top: 0;
     left: 0;
     opacity: 0.5;
+    border-radius: 8px;
 }
 
 .section .gif {
@@ -57,17 +106,18 @@ body {
     top: 0;
     left: 0;
     opacity: 0;
-    transition: opacity 0.5s ease 0.5s; /* Added delay for GIF fade-in */
+    transition: opacity 0.5s ease 0.5s;
+    border-radius: 8px;
 }
 
 .section:hover img {
     opacity: 0;
-    transform: scale(1.05); /* Slight zoom-out effect */
+    transform: scale(1.05);
 }
 
 .section:hover .gif {
     opacity: 1;
-    transform: scale(1.05); /* Slight zoom-in effect */
+    transform: scale(1.05);
 }
 
 .section .text {
@@ -75,11 +125,14 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 22px;
-    color: #e0e0e0;
+    font-size: 28px;
+    color: #ffffff;
     text-align: center;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    z-index: 1; /* Ensure text stays on top */
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+    z-index: 1;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
 }
 
 .section:hover .text {
