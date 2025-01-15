@@ -4,17 +4,17 @@ body {
     padding-top: 80px;
 }
 
-div{
+div {
     margin-top: 20px;
 
-    border: 2px solid #db2a38;
+    border: 3px solid #db2a38;
     border-radius: 10px;
     background-color: #ffffff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin: 20px auto;
     width: 80%;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.6;
     color: #343a40;
     position: relative;
@@ -31,19 +31,66 @@ div::before {
     border-radius: 5px;
     font-size: 14px;
 }
-.pokemonImg::before {
+
+
+.card {
+    position: relative;
+    width: 250px;
+    height: 350px;
+    perspective: 1000px;
+}
+
+.card img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    backface-visibility: hidden;
+    transition: transform 0.6s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card:before{
+    content:"1st Edition Charizard | 300.000€";
+    background-color: rgb(221, 129, 17);
+}
+
+.front {
+    z-index: 2;
+    transform: rotateY(0deg);
+}
+
+.back {
+    transform: rotateY(180deg);
+}
+
+.card:hover .front {
+    transform: rotateY(-180deg);
+}
+
+.card:hover .back {
+    transform: rotateY(0deg);
+}
+
+
+
+.header {
+    justify-self: center;
+}
+
+.pokemonImg:before {
     content: "Pokemon Cards Examples";
 }
 
-.trainerImg::before {
+.trainerImg:before {
     content: "Trainer Cards Examples";
 }
 
-.energyImg::before {
+.energyImg:before {
     content: "Energy Cards Examples";
 }
 
-.specialImg::before {
+.specialImg:before {
     content: "Special Cards Examples";
 }
 
@@ -53,7 +100,8 @@ h2 {
     justify-content: center;
     margin-top: 20px;
 }
-hr{
+
+hr {
     height: 5px;
     background-color: black;
     width: 90%;
