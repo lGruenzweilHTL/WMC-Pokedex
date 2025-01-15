@@ -1,185 +1,76 @@
-.parent-container {
-    display: flex;
-    justify-content: center;
-}
-
-.landingPageTypes {
-    transition: 0.5s;
-    width: 6cm;
-    height: 3cm;
-    font-size: x-large;
-    color: white;
-    border-color: white;
-    border-width: 3px;
-    border-radius: 25px;
-    border-style: none;
-    background-size: 200% auto;
-    margin-top: 15px;
-    margin-right: 50vh;
-}
-
-.landingPageTypes:hover {
-    background-position: right center;
-    background-position: 100%;
-    transition: 0.5s;
-}
-
-.landingPageTypes:active {
-    transition: 0.25s;
-    color: rgb(255, 255, 255);
-    background-color: rgb(111, 122, 245);
-    border-color: rgb(111, 122, 245);
-    opacity: 5;
-}
-
-.Button1 {
-    background-image: linear-gradient(to right, #6ed7fb 0%, rgb(255, 88, 88) 100%);
-
-}
-
-
-.landingPagePokedex {
-    transition: 0.5s;
-    width: 6cm;
-    height: 3cm;
-    font-size: x-large;
-    color: white;
-    border-color: white;
-    border-width: 3px;
-    border-radius: 25px;
-    border-style: none;
-    background-size: 200% auto;
-    margin-top: 130px;
-    margin-left: 50vh;
-    position: relative;
-    bottom: 120px;
-}
-
-.landingPagePokedex:hover {
-    background-position: right center;
-    background-position: 100%;
-    transition: 0.5s;
-}
-
-.landingPagePokedex:active {
-    transition: 0.25s;
-    color: rgb(255, 255, 255);
-    background-color: rgb(111, 122, 245);
-    border-color: rgb(111, 122, 245);
-    opacity: 5;
-}
-
-.Button2 {
-    background-image: linear-gradient(to left, #8fbc8f 0%, #ff5858 100%);
-}
-
-.landingPageItems {
-    transition: 0.5s;
-    width: 6cm;
-    height: 3cm;
-    font-size: x-large;
-    color: white;
-    border-color: white;
-    border-width: 3px;
-    border-radius: 25px;
-    border-style: none;
-    background-size: 200% auto;
-    position: relative;
-    margin-top: -90px;
-    margin-right: 50vh;
-}
-
-.landingPageItems:hover {
-    background-position: right center;
-    background-position: 100%;
-    transition: 0.5s;
-}
-
-.landingPageItems:active {
-    transition: 0.25s;
-    color: rgb(255, 255, 255);
-    background-color: rgb(111, 122, 245);
-    border-color: rgb(111, 122, 245);
-    opacity: 5;
-}
-
-.Button3 {
-    background-image: linear-gradient(to left, #6ed7fb 0%, #8fbc8f 100%);
-}
-
-
-
-.landingPageKinds {
-    transition: 0.5s;
-    width: 6cm;
-    height: 3cm;
-    font-size: x-large;
-    color: white;
-    border-color: white;
-    border-width: 3px;
-    border-radius: 25px;
-    border-style: none;
-    background-size: 200% auto;
-    margin-top: 15px;
-    margin-left: 50vh;
-    position: relative;
-
-}
-
-.landingPageKinds:hover {
-    background-position: right center;
-    background-position: 100%;
-    transition: 0.5s;
-}
-
-.landingPageKinds:active {
-    transition: 0.25s;
-    color: rgb(255, 255, 255);
-    background-color: rgb(111, 122, 245);
-    border-color: rgb(111, 122, 245);
-    opacity: 5;
-}
-
-.Button4 {
-    background-image: linear-gradient(to left, #e9e31c 0%, #8fbc8f 100%);
-}
-
-.pokeballButton1 {
-    border-style: none;
-    border-radius: 100%;
-    background-color: rgb(255, 255, 255);
-    transition: rotate 1s;
-}
-
-.pokeballButton1:hover {
-    rotate: 360deg;
-}
-
-.pokeballImg {
-    height: 50px;
-}
-
 body {
-    background: linear-gradient(rgba(30, 100, 200, 0.7), rgba(30, 100, 200, 0.4)),
-    url(Images/Backgrounds/mainBG.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #1a1a1a;
+    height: 100vh;
+    overflow: hidden;
+    color: #e0e0e0;
+    display: flex;
+    flex-direction: column;
 }
 
-h1 {
-    font-size: 3rem;
-    width: 50%;
-    color: #ffffff;
-    background: linear-gradient(90deg, #ffffff, #add8e6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    padding: 10px 20px;
-    border: 3px solid #ffffff;
-    border-radius: 15px;
-    text-transform: uppercase;
+.header {
     text-align: center;
-    margin:30px auto;
+    padding: 20px;
+    font-size: 24px;
+    background: linear-gradient(135deg, #2a2a2a, #3b3b3b);
+    color: #e0e0e0;
+    border-bottom: 4px solid #555;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0;
+}
+
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.section {
+    flex: 1;
     position: relative;
+    cursor: pointer;
+    background: rgba(50, 50, 50, 0.9);
+    transition: background 0.3s ease, transform 0.2s ease;
+    overflow: hidden;
+    border: 3px solid #444;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.section:hover {
+    background: rgba(20, 20, 20, 0.9);
+    transform: scale(1.02);
+    border-color: #666;
+}
+
+.section:hover .gif {
+    display: block;
+}
+
+.section .gif {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.4;
+}
+
+.section .text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 22px;
+    color: #e0e0e0;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.section:hover .text {
+    color: #ffffff;
+    text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.7);
 }
