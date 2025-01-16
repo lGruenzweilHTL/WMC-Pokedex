@@ -1,90 +1,110 @@
 body {
-    margin-left: 10%;
-    margin-right: 10%;
-    background-color: #2b2f33;
+    margin: 0 10%;
+    background-color: #121417;
     color: #e4e6eb;
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
 }
 
 p {
-    line-height: 2.5;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
 }
 
 table {
-    border-collapse: collapse;
-    width: 80%;
-    margin: 0 auto;
-    background-color: #404448;
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 90%;
+    margin: 20px auto;
+    background-color: #1e2227;
     color: #e4e6eb;
-    font-family: Arial, sans-serif;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    border-radius: 8px;
+    border-radius: 16px;
     overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 table thead th {
-    background-color: #1f2124;
+    background-color: #16191d;
     color: #ffffff;
-    padding: 15px;
+    padding: 16px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
+    font-size: 1rem;
+    font-weight: 600;
 }
 
 table tbody tr:nth-child(even) {
-    background-color: #323538;
+    background-color: #24292e;
 }
 
 table tbody tr:nth-child(odd) {
-    background-color: #404448;
+    background-color: #1e2227;
 }
 
 table th, table td {
     text-align: center;
-    padding: 12px 15px;
-    border: 1px solid #55585c;
+    padding: 14px 20px;
+    font-size: 1rem;
 }
 
 table tbody tr:hover {
-    background-color: #55585c;
+    background-color: #2d3338;
     color: #ffffff;
+    transition: background-color 0.3s ease-in-out;
 }
 
 #head {
     text-align: center;
-    background-color: #3a3d42;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #3a3f44, #1c1f24);
+    padding: 30px 20px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    margin-bottom: 30px;
+}
+
+#head h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 0.1em;
 }
 
 #cover {
     float: left;
     margin-right: 5%;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease-in-out;
+}
+
+#cover:hover {
+    transform: scale(1.05);
 }
 
 #overview {
     display: inline-block;
-    width: 40%;
+    width: 45%;
     vertical-align: top;
     margin-top: 20px;
-    background-color: #3a3d42;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #24292e, #1e2227);
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
 }
 
 ul {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
     margin: 0;
 }
 
 ul li {
     margin: 10px 0;
-    padding: 10px;
-    border-bottom: 1px solid #55585c;
+    padding: 12px;
+    border-bottom: 1px solid #343a40;
+    font-size: 1rem;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 ul li:last-child {
@@ -92,48 +112,55 @@ ul li:last-child {
 }
 
 ul li:hover {
-    background-color: #55585c;
+    background-color: #2d3338;
     color: #ffffff;
-    border-radius: 4px;
+    border-radius: 6px;
 }
 
 #villain {
-    margin-top: 62vh;
-    clear: both;
+    margin-top: 40px;
     display: flex;
-    gap: 10px;
-    background-color: #3a3d42;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    gap: 20px;
+    background: linear-gradient(135deg, #24292e, #1e2227);
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    align-items: center;
 }
 
 #villain img {
     max-width: 100%;
     height: auto;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease-in-out;
+}
+
+#villain img:hover {
+    transform: scale(1.05);
 }
 
 #villain p {
-    margin-left: 10%;
+    margin: 0;
+    flex: 1;
+    line-height: 1.8;
+    font-size: 1.1rem;
 }
 
 #description {
-    margin-top: 10vh;
-    background-color: #3a3d42;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    margin-top: 30px;
+    background: linear-gradient(135deg, #24292e, #1e2227);
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    font-size: 1.1rem;
 }
 
 #pokemons {
-    margin-top: 15vh;
-    clear: both;
-    justify-content: center;
+    margin-top: 40px;
+    background: linear-gradient(135deg, #24292e, #1e2227);
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
     text-align: center;
-    background-color: #3a3d42;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
