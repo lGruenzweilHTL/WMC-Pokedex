@@ -19,10 +19,44 @@ hr {
 
 
 .header {
-    justify-self: center;
+    background-color: #ffffff;
+    color: #db2a38;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    text-align: center;
+    padding: 15px 0;
+    letter-spacing: 1px;
+    border: 2px solid #db2a38;
+    border-radius: 8px;
+    width: 30%;
+    margin: 20px auto;
+    transition: all 0.3s ease;
 }
 
+.header::after {
+    content: "";
+    display: block;
+    width: 50%;
+    height: 1px;
+    background-color: #db2a38;
+    margin: 10px auto 0;
+    transition: all 0.3s ease;
+}
 
+.header:hover {
+    background-color: #db2a38;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}
+
+.header:hover::after {
+    background-color: #ffffff;
+    width: 60%;
+}
+  
+  
+  
 
 .mainDiv {
     margin-top: 20px;
