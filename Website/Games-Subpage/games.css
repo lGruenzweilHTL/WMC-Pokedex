@@ -1,27 +1,29 @@
-body
-{
+body {
     margin-left: 10%;
     margin-right: 10%;
-    background-color: #3c4045;
+    background-color: #2b2f33;
+    color: #e4e6eb;
+    font-family: Arial, sans-serif;
 }
-p
-{
+
+p {
     line-height: 2.5;
 }
+
 table {
     border-collapse: collapse;
     width: 80%;
     margin: 0 auto;
-    background-color: #f8f9fa;
-    color: #212529;
+    background-color: #404448;
+    color: #e4e6eb;
     font-family: Arial, sans-serif;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     border-radius: 8px;
     overflow: hidden;
 }
 
 table thead th {
-    background-color: #343a40;
+    background-color: #1f2124;
     color: #ffffff;
     padding: 15px;
     text-transform: uppercase;
@@ -29,60 +31,109 @@ table thead th {
 }
 
 table tbody tr:nth-child(even) {
-    background-color: #e9ecef;
+    background-color: #323538;
 }
 
 table tbody tr:nth-child(odd) {
-    background-color: #ffffff;
+    background-color: #404448;
 }
 
 table th, table td {
     text-align: center;
     padding: 12px 15px;
-    border: 1px solid #dee2e6;
+    border: 1px solid #55585c;
 }
 
 table tbody tr:hover {
-    background-color: #adb5bd;
+    background-color: #55585c;
     color: #ffffff;
 }
 
-#head
-{
+#head {
     text-align: center;
+    background-color: #3a3d42;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
-#cover
-{
-    float: left;
-    margin-right: 35%;
 
+#cover {
+    float: left;
+    margin-right: 5%;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
-#villain
-{
+
+#overview {
+    display: inline-block;
+    width: 40%;
+    vertical-align: top;
+    margin-top: 20px;
+    background-color: #3a3d42;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    margin: 10px 0;
+    padding: 10px;
+    border-bottom: 1px solid #55585c;
+}
+
+ul li:last-child {
+    border-bottom: none;
+}
+
+ul li:hover {
+    background-color: #55585c;
+    color: #ffffff;
+    border-radius: 4px;
+}
+
+#villain {
     margin-top: 62vh;
     clear: both;
     display: flex;
     gap: 10px;
+    background-color: #3a3d42;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
-#villain img
-{
+
+#villain img {
     max-width: 100%;
     height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
-#villain p
-{
 
+#villain p {
     margin-left: 10%;
 }
-#description
-{
+
+#description {
     margin-top: 10vh;
+    background-color: #3a3d42;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
-#pokemons
-{
+
+#pokemons {
     margin-top: 15vh;
     clear: both;
     justify-content: center;
     text-align: center;
+    background-color: #3a3d42;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
-
