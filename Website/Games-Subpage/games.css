@@ -1,6 +1,9 @@
 body {
     margin: 0 10%;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    background-color: #1e1e1e;
+    background-image:
+            radial-gradient(circle, rgba(255, 255, 255, 0.1) 2px, transparent 3px),
+            linear-gradient(45deg, rgba(255, 255, 255, 0.03) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.03) 50%, rgba(255, 255, 255, 0.03) 75%, transparent 75%, transparent);
     color: #e4e6eb;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     line-height: 1.6;
@@ -67,11 +70,11 @@ table tbody tr:hover {
 #head h1 {
     margin: 0;
     font-size: 3.5rem;
-    color: #88c0d0;
+    color: #222222;
     font-weight: 700;
     letter-spacing: 0.15em;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
-    background: -webkit-linear-gradient(#8fbcbb, #81a1c1);
+    background: -webkit-linear-gradient(lightgray, #1e1e1e);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
