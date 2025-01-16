@@ -20,27 +20,19 @@ img:not(.navPokeball) {
     height: 50px;
 }
 
-td {
-    border: 2px solid black;
-    text-align: center;
-    color: #3f3b35;
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 5% 100px;
 }
 
-table {
+.item {
+    margin: 10px;
+    padding: 10px;
     border: 1px solid black;
-    width: 70%;
-    margin-left: 15%;
-    margin-right: 15%;
-    border-collapse: collapse;
-    background-color: #c9c576;
-
-    
-
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    outline: darkgrey inset 4px;
-    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: #f8f8f8;
+    text-align: center;
+    width: 200px;
 }
-
-tr:nth-child(even) {
-    background-color: #f9f5a3;
-  }
