@@ -1,14 +1,15 @@
 body {
     margin: 0 10%;
-    background-color: #121417;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     color: #e4e6eb;
-    font-family: 'Inter', sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     line-height: 1.6;
 }
 
 p {
     line-height: 1.8;
     margin-bottom: 1.5rem;
+    font-size: 1.2rem;
 }
 
 table {
@@ -16,7 +17,7 @@ table {
     border-spacing: 0;
     width: 90%;
     margin: 20px auto;
-    background-color: #1e2227;
+    background-color: #23272e;
     color: #e4e6eb;
     border-radius: 16px;
     overflow: hidden;
@@ -24,50 +25,55 @@ table {
 }
 
 table thead th {
-    background-color: #16191d;
-    color: #ffffff;
+    background-color: #374151;
+    color: #ffca3a;
     padding: 16px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    font-size: 1rem;
+    font-size: 2.5rem;
     font-weight: 600;
 }
 
 table tbody tr:nth-child(even) {
-    background-color: #24292e;
+    background-color: #2f3640;
 }
 
 table tbody tr:nth-child(odd) {
-    background-color: #1e2227;
+    background-color: #23272e;
 }
 
 table th, table td {
     text-align: center;
     padding: 14px 20px;
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 table tbody tr:hover {
-    background-color: #2d3338;
-    color: #ffffff;
+    background-color: #3b3f47;
+    color: #ff6f61;
     transition: background-color 0.3s ease-in-out;
 }
 
 #head {
+    margin-top: 2%;
     text-align: center;
-    background: linear-gradient(135deg, #3a3f44, #1c1f24);
-    padding: 30px 20px;
-    border-radius: 16px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, #23272e, #3b4252);
+    padding: 30px 15px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
     margin-bottom: 30px;
 }
 
 #head h1 {
     margin: 0;
-    font-size: 2.5rem;
-    color: #ffffff;
+    font-size: 3.5rem;
+    color: #88c0d0;
     font-weight: 700;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+    background: -webkit-linear-gradient(#8fbcbb, #81a1c1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 #cover {
@@ -87,10 +93,11 @@ table tbody tr:hover {
     width: 45%;
     vertical-align: top;
     margin-top: 20px;
-    background: linear-gradient(135deg, #24292e, #1e2227);
+    background: linear-gradient(135deg, #343a40, #23272e);
     padding: 25px;
     border-radius: 16px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    font-size: 1.2rem;
 }
 
 ul {
@@ -102,9 +109,10 @@ ul {
 ul li {
     margin: 10px 0;
     padding: 12px;
-    border-bottom: 1px solid #343a40;
-    font-size: 1rem;
+    border-bottom: 1px solid #3e4c59;
+    font-size: 1.2rem;
     transition: background-color 0.3s, color 0.3s;
+    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
 }
 
 ul li:last-child {
@@ -112,8 +120,8 @@ ul li:last-child {
 }
 
 ul li:hover {
-    background-color: #2d3338;
-    color: #ffffff;
+    background-color: #495564;
+    color: #ffca3a;
     border-radius: 6px;
 }
 
@@ -121,7 +129,7 @@ ul li:hover {
     margin-top: 40px;
     display: flex;
     gap: 20px;
-    background: linear-gradient(135deg, #24292e, #1e2227);
+    background: linear-gradient(135deg, #343a40, #23272e);
     padding: 25px;
     border-radius: 16px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
@@ -144,23 +152,35 @@ ul li:hover {
     margin: 0;
     flex: 1;
     line-height: 1.8;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    color: #e4e6eb;
 }
 
 #description {
     margin-top: 30px;
-    background: linear-gradient(135deg, #24292e, #1e2227);
+    background: linear-gradient(135deg, #3b3f47, #2d3338);
     padding: 25px;
     border-radius: 16px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-    font-size: 1.1rem;
+    font-size: 1.2rem;
 }
 
 #pokemons {
     margin-top: 40px;
-    background: linear-gradient(135deg, #24292e, #1e2227);
+    background: linear-gradient(135deg, #3b3f47, #2d3338);
     padding: 25px;
     border-radius: 16px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
     text-align: center;
+}
+
+h2 {
+    margin-top: 60px;
+    text-align: center;
+    font-size: 45px;
+    color: #ff6f61;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
