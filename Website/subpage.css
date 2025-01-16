@@ -202,14 +202,15 @@ h2
 
 .stats {
     position: relative;
-    bottom: 10vh;
+    top: -50px;
 }
+
 .locations {
     position: relative;
+    top: -350px;
     width: 460px;
     height: 460px;
-    margin-left: 50%;
-    bottom: 40vh;
+    margin-left: 45%;
 }
 .locations h2 {
     position: relative;
