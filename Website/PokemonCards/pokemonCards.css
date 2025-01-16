@@ -108,7 +108,7 @@ hr {
 
 .description {
     position: absolute;
-    font-size: 14px;
+    font-size: 15px;
     color: #333;
     font-weight: bold;
     background-color: #f3d140;
@@ -117,15 +117,18 @@ hr {
     margin-top: 33%;
 }
 #desc1{
-    margin-right: 45%;
+    margin-right: 68%;
 }
 
 #desc2{
-    margin-left: 45%;
+    margin-left: 23%;
 }
 
-#descp3{
-    margin-right: auto;
+#desc3{
+    margin-right: 23%;
+}
+#desc4{
+    margin-left: 67%;
 }
 
 .front {
@@ -148,19 +151,19 @@ hr {
 
 
 .pokemonImg:before {
-    content: "Pokemon Cards Examples";
+    content: "Pokemon Cards";
 }
 
 .trainerImg:before {
-    content: "Trainer Cards Examples";
+    content: "Trainer Cards";
 }
 
 .energyImg:before {
-    content: "Energy Cards Examples";
+    content: "Energy Cards";
 }
 
 .specialImg:before {
-    content: "Special Cards Examples";
+    content: "Special Cards";
 }
 
 .pokemonTitle,
