@@ -1,4 +1,4 @@
-body{
+body {
     background-color: #cecece;
     line-height: 1.6;
     background-image: url("Images/Backgrounds/subpage-background.png");
@@ -8,8 +8,8 @@ body{
 h1 {
     margin-top: 5%;
     text-align: center;
-    font-size: 50px;
-    color: aliceblue;
+    font-size: 60px;
+    color: #fff5e5;
 }
 
 img:not(.navPokeball) {
@@ -20,7 +20,7 @@ img:not(.navPokeball) {
 #container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
     margin: 5% 100px;
 }
 
@@ -31,10 +31,37 @@ img:not(.navPokeball) {
 
 .item {
     margin: 10px;
-    padding: 10px;
-    border: 1px solid black;
+    padding: 20px;
+    border: 1px solid #ddd;
     border-radius: 10px;
-    background-color: #f8f8f8;
+    background-color: #fff;
     text-align: center;
-    width: 200px;
+    width: 220px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+
+    flex: 0 0 20%; /* Each item will take up 20% of the container width */
+    box-sizing: border-box;
+}
+
+.item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.item-image img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.item-description h2 {
+    font-size: 18px;
+    color: #333;
+    margin: 10px 0;
+}
+
+.item-description p {
+    font-size: 14px;
+    color: #666;
 }

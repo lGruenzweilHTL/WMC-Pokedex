@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', async function() {
     const container = document.getElementById('container');
-    const numItems = 300;
+    const numItems = 274; // Stop right before the plates
 
     try {
         const response = await fetch(`https://pokeapi.co/api/v2/item?limit=${numItems}`);
