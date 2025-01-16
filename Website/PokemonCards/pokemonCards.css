@@ -55,7 +55,7 @@ hr {
 
 
 
-.pokemonImg {
+.pokemonImg,.trainerImg,.energyImg,.specialImg {
     margin-top: 20px;
 
     border: 4px solid #db2a38;
@@ -76,7 +76,7 @@ hr {
     align-items: center;
 }
 
-.pokemonImg::before {
+.pokemonImg::before,.trainerImg:before,.energyImg::before,.specialImg::before {
     content: "Information";
     position: absolute;
     top: -15px;
