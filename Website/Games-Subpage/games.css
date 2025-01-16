@@ -73,8 +73,8 @@ table tbody tr:hover {
     color: #222222;
     font-weight: 700;
     letter-spacing: 0.15em;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
-    background: -webkit-linear-gradient(lightgray, #1e1e1e);
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+    background: -webkit-linear-gradient(silver, wheat);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
