@@ -4,23 +4,22 @@ img:not(.navPokeball) {
 }
 
 td {
-    border: 2px solid black;
+    border: 1px solid #ddd;
     text-align: center;
-    font-size: 30px;
+    font-size: 18px;
+    padding: 12px;
+    transition: background-color 0.3s ease;
 }
 
 table {
-    border: 1px solid black;
-    width: 70%;
-    margin-left: 15%;
-    margin-right: 15%;
+    border: none;
+    width: 80%;
+    margin: 20px auto;
     border-collapse: collapse;
-    background-color: #4a95c0;
-
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    outline: darkgrey inset 4px;
-    box-sizing: border-box;
-
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
 
 li {
@@ -28,28 +27,53 @@ li {
 }
 
 body {
+    font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    background-color: #fbebeb;
-    background: repeating-linear-gradient(135deg,
-            #fdf7f7,
-            #fdf7f7 40px,
-            #d6ebff 40px,
-            #d6ebff 80px)
+    background: linear-gradient(135deg, #fdf7f7, #d6ebff);
+    margin: 0;
+    padding: 0;
 }
 
 h1 {
-    margin-top: 5%;
+    margin-top: 20px;
     text-align: center;
-    color: rgb(0, 0, 0);
-    font-size: 50px;
+    color: #333;
+    font-size: 36px;
 }
 
 p {
     text-align: center;
-    color: rgb(0, 0, 0);
-    font-size: 20px;
+    color: #555;
+    font-size: 18px;
 }
 
 tr:nth-child(even) {
-    background-color: #77CDFF;
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+tr {
+    transition: background-color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    table {
+        width: 95%;
+    }
+
+    td {
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    p {
+        font-size: 16px;
+    }
 }
