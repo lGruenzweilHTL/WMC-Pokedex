@@ -7,38 +7,50 @@ document.addEventListener("DOMContentLoaded", async function() {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
     const data = await response.json();
 
+    console.log(data);
+
     // Create the pokemon element
     document.title = formatName(pokemonName);
 
-    document.createElement("h1").innerHTML = formatName(pokemonName);
+    const titleElement = document.createElement("h1");
+    titleElement.innerHTML = formatName(pokemonName);
+    document.body.appendChild(titleElement);
 
     const imageElement = document.createElement("img");
     imageElement.src = data.sprites.front_default;
     imageElement.classList.add("float-left");
+    document.body.appendChild(imageElement);
 
     const descriptionElement = document.createElement("p");
     descriptionElement.classList.add("description");
     descriptionElement.innerHTML = "No description found"; // TODO
+    document.body.appendChild(descriptionElement);
 
     const typeElement = document.createElement("p");
     typeElement.classList.add("clearfix");
-    typeElement.innerHTML = `Type: ${data.types.map(type => getTypeLink(type)).join(", ")}`;
+    typeElement.innerHTML = `Type: ${data.types.map(type => getTypeLink(type.type.name)).join(", ")}`;
+    document.body.appendChild(typeElement);
 
     const kindElement = document.createElement("p");
     kindElement.classList.add("clearfix");
     kindElement.classList.add("kind");
-    kindElement.innerHTML = `Kind: ${formatName(data.species.name)}`; // TODO
+    kindElement.innerHTML = `Kind: ${getKindLink("general")} (probably)`; // TODO
+    document.body.appendChild(kindElement);
 
-    buildWeaknessTable(data.types);
+    buildWeaknessTable(data.types.map(type => type.type.name));
 
-    document.createElement("br");
+    const brElement = document.createElement("br");
+    document.body.appendChild(brElement);
 
     buildStatsChart(data.stats);
-    buildLocationList();
+    //buildLocationList();
 });
 
 function getTypeLink(type) {
     return `<a href="../types.html#${formatName(type)}">${type}</a>`;
+}
+function getKindLink(kind) {
+    return `<a href="../KindOfPokemons-Subpage/kindOfPokemon.html#${formatName(kind)}">${kind}</a>`;
 }
 
 function buildWeaknessTable(types) {
@@ -82,6 +94,7 @@ function buildWeaknessTable(types) {
     resistanceTableBody.appendChild(row);
     resistanceTable.appendChild(resistanceTableHeader);
     resistanceTable.appendChild(resistanceTableBody);
+    document.body.appendChild(resistanceTable);
 }
 
 function buildStatsChart(stats) {
@@ -112,91 +125,9 @@ function buildStatsChart(stats) {
         chart.appendChild(container);
     }
     statsDiv.appendChild(chart);
+    document.body.appendChild(statsDiv);
 }
 
-function buildLocationList(encounters, fileDirectory, drawingPath, locationCache) {
-    let locationString = '';
-
-    if (encounters.length === 0 || Object.keys(locationCache).length === 0) return '<p>None</p>';
-
-    // Group by region
-    const groupedLocations = encounters
-        .filter(area => area.versions.some(version => versionFilter.includes(version)))
-        .map(area => {
-            const region = Object.entries(locationCache).find(([key, value]) => value.some(name => area.name.startsWith(name))) || [null, null];
-            const location = region[1]?.filter(name => area.name.startsWith(name)).reduce((a, b) => a.length > b.length ? a : b, '');
-            return { region: region[0], encounter: area.name, location };
-        })
-        .reduce((acc, { region, encounter, location }) => {
-            if (!acc[region]) acc[region] = [];
-            acc[region].push({ encounter, location });
-            return acc;
-        }, {});
-
-    if (Object.keys(groupedLocations).length === 0) return '<p>None</p>';
-
-    const relativePath = getRelativePath(fileDirectory, drawingPath);
-
-    const backupLocations = [];
-    for (const [region, locations] of Object.entries(groupedLocations)) {
-        // Add region name
-        let regionExists = false;
-        if (region) {
-            const regionPath = `${relativePath}/Regions/${region}.png`;
-            regionExists = fileExists(`${drawingPath}/Regions/${region}.png`);
-            if (regionExists) {
-                locationString += `<div class="image-container"><img src="${regionPath}" alt="${region}"/>`;
-            }
-        }
-
-        for (const { encounter, location } of locations) {
-            // Try to find area drawing
-            if (!regionExists) {
-                backupLocations.push(encounter);
-                continue;
-            }
-
-            const areaPath = `${drawingPath}/Areas/${encounter}.png`;
-            const areaExists = fileExists(areaPath);
-            if (areaExists) {
-                const path = `${relativePath}/Areas/${encounter}.png`;
-                locationString += `<img src="${path}" alt="${encounter}"/>`;
-                continue;
-            }
-
-            // Fallback: Try to find location drawing
-            const locationPath = `./Images/Locations/${location}.png`;
-            const locationExists = fileExists(locationPath);
-            if (locationExists) {
-                const path = `${relativePath}/Locations/${location}.png`;
-                locationString += `<img src="${path}" alt="${location}"/>`;
-                continue;
-            }
-
-            // Fallback: Add to list (<ul class="location-list">)
-            backupLocations.push(encounter);
-        }
-
-        if (regionExists) locationString += '</div>';
-    }
-
-    locationString += '<ul class="location-list">';
-    for (const backupLocation of backupLocations) {
-        locationString += `<li>${backupLocation}</li>`;
-    }
-    locationString += '</ul>';
-
-    return locationString;
-}
-
-function fileExists(path) {
-    // Implement this function to check if a file exists at the given path
-    // This is a placeholder implementation
-    return true;
-}
-
-function getRelativePath(fileDirectory, drawingPath) {
-    // Implement this function to get the relative path
-    // This is a placeholder implementation
-    return './relative/path';
+function formatName(name) {
+    return name.charAt(0).toUpperCase() + name.slice(1);
 }
