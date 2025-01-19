@@ -5,41 +5,6 @@ body {
     color: #f5f5f5;
 }
 
-.navigation-bar {
-    background-color: #1e1e1e;
-    display: flex;
-    align-items: center;
-    padding: 15px 30px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-}
-
-.navigation-bar ul {
-    list-style: none;
-    display: flex;
-    padding: 0;
-    margin: 0;
-}
-
-.navigation-bar ul li {
-    margin: 0 20px;
-}
-
-.navigation-bar ul li a {
-    text-decoration: none;
-    color: #f5f5f5;
-    font-weight: bold;
-    transition: color 0.3s;
-}
-
-.navigation-bar ul li a:hover {
-    color: #ffcb05;
-}
-
-.navigation-bar .navPokeball {
-    height: 50px;
-    margin-right: 20px;
-}
-
 h1 {
     font-size: 65px;
     text-align: center;
