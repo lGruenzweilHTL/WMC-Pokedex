@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     document.body.appendChild(brElement);
 
     buildStatsChart(data.stats);
-    //buildLocationList();
+    await buildLocationMap(data.location_area_encounters);
 });
 
 function getTypeLink(type) {
@@ -126,6 +126,28 @@ function buildStatsChart(stats) {
     }
     statsDiv.appendChild(chart);
     document.body.appendChild(statsDiv);
+}
+
+async function buildLocationMap(encounter_url) {
+    // Get encounter data
+    const response = await fetch(encounter_url);
+    const data = await response.json();
+    console.log(data);
+
+    const div = document.createElement("div");
+    div.classList.add("locations");
+
+    div.appendChild(document.createElement("h2")).innerHTML = "Locations";
+
+    const list = document.createElement("ul");
+    list.classList.add("location-list");
+    for (const location of data) {
+        const item = document.createElement("li");
+        item.innerHTML = location.location_area.name;
+        list.appendChild(item);
+    }
+    div.appendChild(list);
+    document.body.appendChild(div);
 }
 
 function formatName(name) {

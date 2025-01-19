@@ -158,14 +158,14 @@ img.float-left {
 
 .location-list {
     position: relative;
-    top: 350px;
     left: 20px;
+    top: -100px;
     list-style: none;
     padding: 0;
 }
 
 .location-list li {
-    background-color: #f8f9fa;
+    background-color: #232529;
     margin-bottom: 5px;
     padding: 5px;
     border: 1px solid #ddd;
