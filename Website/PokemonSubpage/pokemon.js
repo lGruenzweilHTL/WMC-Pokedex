@@ -21,9 +21,11 @@ document.addEventListener("DOMContentLoaded", async function() {
     imageElement.classList.add("float-left");
     document.body.appendChild(imageElement);
 
+    const descriptions = await (await fetch("descriptions.json")).json();
     const descriptionElement = document.createElement("p");
     descriptionElement.classList.add("description");
-    descriptionElement.innerHTML = "No description found"; // TODO
+    const description = descriptions[parseInt(data.id) - 1];
+    descriptionElement.innerHTML = description === undefined ? "No description found." : description;
     document.body.appendChild(descriptionElement);
 
     const typeElement = document.createElement("p");
@@ -31,10 +33,13 @@ document.addEventListener("DOMContentLoaded", async function() {
     typeElement.innerHTML = `Type: ${data.types.map(type => getTypeLink(type.type.name)).join(", ")}`;
     document.body.appendChild(typeElement);
 
+    const specialKinds = await (await fetch("special_kinds.json")).json();
     const kindElement = document.createElement("p");
     kindElement.classList.add("clearfix");
     kindElement.classList.add("kind");
-    kindElement.innerHTML = `Kind: ${getKindLink("general")} (probably)`; // TODO
+    const kind = specialKinds.find(p => p.pokemon === pokemonName);
+    const kindText = kind ? kind.kind : "general";
+    kindElement.innerHTML = `Kind: ${getKindLink(kindText)}`;
     document.body.appendChild(kindElement);
 
     buildWeaknessTable(data.types.map(type => type.type.name));
@@ -47,10 +52,11 @@ document.addEventListener("DOMContentLoaded", async function() {
 });
 
 function getTypeLink(type) {
-    return `<a href="../types.html#${formatName(type)}">${type}</a>`;
+    return `<a href="../types.html#${type}">${type}</a>`;
 }
 function getKindLink(kind) {
-    return `<a href="../KindOfPokemons-Subpage/kindOfPokemon.html#${formatName(kind)}">${kind}</a>`;
+    const kindName = kind === "pseudo" ? "Pseudo-Legendary" : kind;
+    return `<a href="../KindOfPokemons-Subpage/kindOfPokemon.html#${kind}">${formatName(kindName)}</a>`;
 }
 
 function buildWeaknessTable(types) {

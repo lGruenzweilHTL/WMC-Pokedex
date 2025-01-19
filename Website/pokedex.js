@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         const row = document.createElement("tr");
         row.appendChild(document.createElement("td")).innerHTML = `#${idx.toString().padStart(3, "0")}`;
         row.appendChild(document.createElement("td")).innerHTML = `<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${idx}.png" alt="${pokemon.name}">`;
-        row.appendChild(document.createElement("td")).innerHTML = `<a href="Sub/pokemon.html?pokemon=${pokemon.name}">${formatName(pokemon.name)}</a>`;
+        row.appendChild(document.createElement("td")).innerHTML = `<a href="PokemonSubpage/pokemon.html?pokemon=${pokemon.name}">${formatName(pokemon.name)}</a>`;
         pokemonTable.appendChild(row);
     });
 
