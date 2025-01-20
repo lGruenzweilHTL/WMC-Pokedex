@@ -15,7 +15,7 @@ The website is available under https://lgruenzweilhtl.github.io/WMC-Pokedex/.
 
 ## License
 
-This project is licensed under the Apache-2.0 license. View the [LICENSE.md](LICENSE.md) file for more details.
+This project is licensed under the Apache-2.0 license. View the [LICENSE](LICENSE) file for more details.
 
 ## Acknowledgements
 
