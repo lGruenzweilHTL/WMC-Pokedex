@@ -1,20 +1,22 @@
 document.addEventListener('DOMContentLoaded', async function() {
     const container = document.getElementById('container');
-    const numItems = 274; // Stop right before the plates
+    const numCategories = 30;
 
-    try {
-        const response = await fetch(`https://pokeapi.co/api/v2/item?limit=${numItems}`);
-        const data = await response.json();
+    const response = await fetch('https://pokeapi.co/api/v2/item-category?limit=' + numCategories);
+    const data = await response.json();
 
-        const categories = {};
+    for (const cat of data.results) {
+        const catResponse = await fetch(cat.url);
+        const catData = await catResponse.json();
 
-        for (const item of data.results) {
-            const itemData = await (await fetch(item.url)).json();
-            const category = itemData.category.name;
+        const categoryElement = document.createElement('h1');
+        categoryElement.innerHTML = getEnglishName(catData);
+        container.appendChild(categoryElement);
+        container.appendChild(document.createElement('br'));
 
-            if (!categories[category]) {
-                categories[category] = [];
-            }
+        for (const item of catData.items) {
+            const itemResponse = await fetch(item.url);
+            const itemData = await itemResponse.json();
 
             const description = await getDescriptions(itemData);
             const itemElement = document.createElement('div');
@@ -27,29 +29,28 @@ document.addEventListener('DOMContentLoaded', async function() {
                     <h2>${formatName(item.name)}</h2>
                     <p>${description}</p>
                 </div>`;
-            categories[category].push(itemElement);
-        }
 
-        for (const [category, items] of Object.entries(categories)) {
-            const categoryElement = document.createElement('h1');
-            categoryElement.innerHTML = formatName(category);
-            container.appendChild(categoryElement);
-            container.appendChild(document.createElement('br'));
-
-            items.forEach(itemElement => {
-                container.appendChild(itemElement);
-            });
-        }
-    } catch (error) {
-        console.error('Error fetching items:', error);
+            container.appendChild(itemElement);
     }
+}
 });
+
+function getEnglishName(categoryData) {
+    return categoryData.names.find(name => name.language.name === 'en').name;
+}
 
 function formatName(name) {
     return name.charAt(0).toUpperCase() + name.slice(1);
 }
 
 async function getDescriptions(data) {
-    const length = data.effect_entries[0].effect.length;
-    return length > 200 ? data.effect_entries[0].short_effect : data.effect_entries[0].effect;
+    const entry = data.effect_entries.find(entry => entry.language.name === 'en');
+
+    // If no english entry is found, return a default message
+    if (!entry) {
+        return 'No description available';
+    }
+
+    const description = entry.effect;
+    return description.length > 200 ? entry.short_effect : description;
 }
