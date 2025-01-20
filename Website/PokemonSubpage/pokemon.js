@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     typeElement.innerHTML = `Type: ${data.types.map(type => getTypeLink(type.type.name)).join(", ")}`;
     document.body.appendChild(typeElement);
 
-    const specialKinds = await (await fetch("special_kinds.json")).json();
+    const specialKinds = await (await fetch("special-kinds.json")).json();
     const kindElement = document.createElement("p");
     kindElement.classList.add("clearfix");
     kindElement.classList.add("kind");
