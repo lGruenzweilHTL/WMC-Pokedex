@@ -1,0 +1,38 @@
+[
+  {
+    "pokemon": "bulbasaur",
+    "kind": "starter"
+  },
+  {
+    "pokemon": "charmander",
+    "kind": "starter"
+  },
+  {
+    "pokemon": "squirtle",
+    "kind": "starter"
+  },
+  {
+    "pokemon": "articuno",
+    "kind": "legendary"
+  },
+  {
+    "pokemon": "zapdos",
+    "kind": "legendary"
+  },
+  {
+    "pokemon": "moltes",
+    "kind": "legendary"
+  },
+  {
+    "pokemon": "dragonite",
+    "kind": "pseudo"
+  },
+  {
+    "pokemon": "mewtwo",
+    "kind": "legendary"
+  },
+  {
+    "pokemon": "mew",
+    "kind": "mythical"
+  }
+]
