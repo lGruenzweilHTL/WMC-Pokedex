@@ -151,63 +151,63 @@ img:hover:not(.navPokeball) {
     }
 }
 
-.normal {
+#normal {
     color: #757575;
 }
 
-.fire {
+#fire {
     color: #e25822;
 }
 
-.water {
+#water {
     color: #3399ff;
 }
 
-.grass {
+#grass {
     color: #77dd77;
 }
 
-.electric {
+#electric {
     color: #f4c542;
 }
 
-.ice {
+#ice {
     color: #74d4e0;
 }
 
-.fighting {
+#fighting {
     color: #b84a42;
 }
 
-.poison {
+#poison {
     color: #a33fa0;
 }
 
-.ground {
+#ground {
     color: #dbba7c;
 }
 
-.flying {
+#flying {
     color: #a890f0;
 }
 
-.psychic {
+#psychic {
     color: #f85888;
 }
 
-.bug {
+#bug {
     color: #a8b820;
 }
 
-.rock {
+#rock {
     color: #b8a038;
 }
 
-.ghost {
+#ghost {
     color: #705898;
 }
 
-.dragon {
+#dragon {
     color: #7038f8;
 }
 
@@ -215,10 +215,10 @@ img:hover:not(.navPokeball) {
     color: #705848;
 }
 
-.steel {
+#steel {
     color: #b8b8d0;
 }
 
-.fairy {
+#fairy {
     color: #f0b6bc;
 }

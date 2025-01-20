@@ -1,9 +1,9 @@
 .navigation-bar:not(.active) {
+    margin-top: 1%;
     background-color: #333;
     width: 100%;
-    margin-top: 1%;
     position: fixed;
-    top: 0;
+    top: -80px;
     padding: 10px 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     display: flex;
@@ -11,6 +11,7 @@
     z-index: 2;
     border-radius: 10px;
     font-family: Verdana, sans-serif;
+    transition: top 0.3s ease-in-out;
 }
 
 .navigation-bar ul:not(.active) {
@@ -38,21 +39,6 @@
     color: black;
 }
 
-.active {
-    text-decoration: underline;
-    color: black;
-    font-size: 20px;
-    padding: 5px 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
-    background-color: wheat;
-}
-
-.active:hover {
-    background-color: #333;
-    color: white;
-}
-
 .navPokeball {
     position: absolute;
     left: 5px;
@@ -68,8 +54,22 @@
     from {
         transform: rotate(0deg);
     }
-
     to {
         transform: rotate(360deg);
     }
+}
+
+.active {
+    text-decoration: underline;
+    color: black;
+    font-size: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    background-color: wheat;
+}
+
+.active:hover {
+    background-color: #333;
+    color: white;
 }

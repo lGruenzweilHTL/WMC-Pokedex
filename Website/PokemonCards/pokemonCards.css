@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(45deg, #e3e2e2, #c6c6c0); /* Blasses Mint bis Cremefarben */
+    background: linear-gradient(45deg, #e3e2e2, #c6c6c0);
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
@@ -9,12 +9,6 @@ body {
     background-attachment: fixed;
 }
     
-
-
-
-
-
-
 
 h2 {
     display: flex;
@@ -98,6 +92,27 @@ hr {
     font-size: 14px;
 }
 
+.cardContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 280px;
+    margin: 20px;
+}
+
+.cardContainer .description {
+    font-size: 15px;
+    color: #333;
+    font-weight: bold;
+    background-color: #f4ce44;
+    border-radius: 5px;
+    padding: 5px 10px;
+    text-align: center;
+    margin-top: 10px;
+    width: 100%;
+}
+
+
 
 
 
@@ -152,30 +167,7 @@ hr {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.description {
-    position: absolute;
-    font-size: 15px;
-    color: #333;
-    font-weight: bold;
-    background-color: #f3d140;
-    border-radius: 5px;
-    z-index: 1;   
-    margin-top: 33%;
-}
-#desc1{
-    margin-right: 68%;
-}
 
-#desc2{
-    margin-left: 23%;
-}
-
-#desc3{
-    margin-right: 23%;
-}
-#desc4{
-    margin-left: 67%;
-}
 
 .front {
     transform: rotateY(0deg);
@@ -194,10 +186,8 @@ hr {
 }
 
 
-
-
 .pokemonImg:before {
-    content: "Pokemon Cards";
+    content: "Most Expensive Pokemon Cards";
 }
 
 .trainerImg:before {

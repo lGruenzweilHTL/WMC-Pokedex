@@ -6,28 +6,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
     <link rel="stylesheet" href="Website/stylesheet.css">
+    <link rel="stylesheet" href="navbarMainPage.css">
 </head>
 
 <body>
 
-<div class="header">Welcome to Pokesite</div>
-<div class="container">
-    <div class="section" onclick="window.location.href='Website/pokedex.html'">
-        <div class="text">Pokedex</div>
-        <img src="Website/Images/Backgrounds/pickachu_info.jpg" alt="Pikachu Background">
-        <img class="gif" src="Website/Images/Backgrounds/gif_info.gif" alt="Info GIF">
+    <div class="header" onmouseover="showNavbar()" onmouseout="checkNavbarHover()">
+        Welcome to Pokesite
     </div>
-    <div class="section" onclick="window.location.href='Website/mockbattle.html'">
-        <div class="text">Battle</div>
-        <img src="Website/Images/Backgrounds/pokeball_battle.jpg" alt="Pokeball Background">
-        <img class="gif" src="Website/Images/Backgrounds/gif_battle.gif" alt="Battle GIF">
+    <div class="container">
+        <div class="section" onclick="window.location.href='Website/pokedex.html'">
+            <div class="text">Pokedex</div>
+            <img src="Website/Images/Backgrounds/pickachu_info.jpg" alt="Pikachu Background">
+            <img class="gif" src="Website/Images/Backgrounds/gif_info.gif" alt="Info GIF">
+        </div>
+        <div class="section" onclick="window.location.href='Website/mockbattle.html'">
+            <div class="text">Battle</div>
+            <img src="Website/Images/Backgrounds/pokeball_battle.jpg" alt="Pokeball Background">
+            <img class="gif" src="Website/Images/Backgrounds/gif_battle.gif" alt="Battle GIF">
+        </div>
+        <div class="section" onclick="window.location.href='Website/TypeCalc/type_calculator.html'">
+            <div class="text">Calculator</div>
+            <img src="Website/Images/Backgrounds/types_calculator.png" alt="Types Background">
+            <img class="gif" src="Website/Images/Backgrounds/gif_calculator.gif" alt="Calculator GIF">
+        </div>
     </div>
-    <div class="section" onclick="window.location.href='Website/TypeCalc/type_calculator.html'">
-        <div class="text">Calculator</div>
-        <img src="Website/Images/Backgrounds/types_calculator.png" alt="Types Background">
-        <img class="gif" src="Website/Images/Backgrounds/gif_calculator.gif" alt="Calculator GIF">
-    </div>
-</div>
+
+    <!-- Add your navigation bar HTML here -->
+    <nav class="navigation-bar" id="navbar" onmouseover="keepNavbarVisible()" onmouseout="checkNavbarHover()">
+        <ul>
+            <img src="Website/Images/pokeball.png" class="navPokeball">
+            <strong><li><a href="../index.html" class="active">Home</a></li></strong>
+            <strong><li><a href="Website/pokedex.html">Pokedex</a></li></strong>
+            <strong><li><a href="Website/types.html">Types</a></li></strong>
+            <strong><li><a href="Website/items.html">Items</a></li></strong>
+            <strong><li><a href="Website/KindOfPokemons-Subpage/kindOfPokemon.html">Kinds</a></li></strong>
+            <strong><li><a href="Website/PokemonCards/pokemonCards.html">Cards</a></li></strong>
+            <strong><li><a href="Website/games.html">Games</a></li></strong>
+            <strong><li><a href="Website/mockbattle.html">Battle</a></li></strong>
+            <strong><li><a href="Website/anime.html">TV series</a></li></strong>
+        </ul>
+    </nav>
+
+    <script>
+        function showNavbar() {
+            document.getElementById('navbar').style.top = '0';
+        }
+
+        function keepNavbarVisible() {
+            document.getElementById('navbar').style.top = '0';
+        }
+
+        function checkNavbarHover() {
+            if (!document.querySelector('.navigation-bar:hover') && !document.querySelector('.header:hover')) {
+                document.getElementById('navbar').style.top = '-80px';
+            }
+        }
+    </script>
 
 </body>
+
 </html>
