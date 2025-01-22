@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", async function() {
+document.addEventListener("DOMContentLoaded", async function () {
     const urlParams = new URLSearchParams(window.location.search);
     const locationType = urlParams.get('type'); // location-area, location or region
     const location = urlParams.get('name');
@@ -72,7 +72,9 @@ async function getLocationAreaData(area, location) {
 
             for (const encounterDetail of version.encounter_details) {
                 const encounterText = document.createElement('p');
-                encounterText.innerText = `Method: ${encounterDetail.method.name}, Chance: ${encounterDetail.chance}%`;
+                const levelString = encounterDetail.min_level === encounterDetail.max_level ? "Level: " + encounterDetail.min_level : `Levels: ${encounterDetail.min_level}-${encounterDetail.max_level}`;
+                const conditionString = encounterDetail.condition_values.length > 0 ? `, Conditions: ${encounterDetail.condition_values.map(condition => condition.name).join(', ')}` : '';
+                encounterText.innerText = `Method: ${encounterDetail.method.name}, Chance: ${encounterDetail.chance}%, ${levelString}${conditionString}`;
                 card.appendChild(encounterText);
             }
         }
@@ -145,6 +147,7 @@ async function fetchAreaEnglishName(name) {
     const data = await response.json();
     return findEnglishName(data);
 }
+
 async function fetchVersionEnglishName(name) {
     const response = await fetch(`https://pokeapi.co/api/v2/version/${name}`);
     const data = await response.json();
