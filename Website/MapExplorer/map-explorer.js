@@ -213,8 +213,8 @@ const kantoData = {
             coords: [595, 270, 650, 324]
         },
         {
-            name: "Vermillion City",
-            url: "vermillion-city",
+            name: "Vermilion City",
+            url: "vermilion-city",
             coords: [595, 488, 650, 540]
         },
         {
@@ -228,8 +228,8 @@ const kantoData = {
             coords: [437, 270, 490, 324]
         },
         {
-            name: "Fuschia City",
-            url: "fuschia-city",
+            name: "Fuchsia City",
+            url: "fuchsia-city",
             coords: [490, 705, 543, 757]
         },
         {
