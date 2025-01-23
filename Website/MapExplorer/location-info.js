@@ -169,5 +169,8 @@ async function fetchVersionEnglishName(name) {
 }
 
 function findEnglishName(data) {
+    if (data.names.length === 0) {
+        return data.name;
+    }
     return data.names.find(name => name.language.name === 'en').name;
 }
