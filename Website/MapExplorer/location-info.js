@@ -51,35 +51,43 @@ async function getLocationAreaData(area, location) {
         const li = document.createElement('li');
         li.classList.add('list-group-item');
 
-        const text = document.createElement('a');
-        text.classList.add('btn', 'btn-primary');
-        text.setAttribute('data-toggle', 'collapse');
-        text.href = `#collapse-${encounter.pokemon.name}`;
-        text.innerText = encounter.pokemon.name;
-        li.appendChild(text);
-
-        const collapse = document.createElement('div');
-        collapse.classList.add('collapse', 'mt-3');
-        collapse.id = `collapse-${encounter.pokemon.name}`;
         const card = document.createElement('div');
-        card.classList.add('card', 'card-body');
+        card.classList.add('mb-2', 'container', 'flex-row', 'd-flex');
+
+        const pokemonCard = document.createElement('div');
+            pokemonCard.classList.add('card', 'card-body', 'col-md-4', 'col-sm-12');
+        const link = document.createElement('a');
+        link.href = `../PokemonSubpage/pokemon.html?pokemon=${encounter.pokemon.name}`;
+        link.innerText = encounter.pokemon.name;
+        link.classList.add('card-title', 'btn', 'btn-primary');
+        pokemonCard.appendChild(link);
+
+        const image = document.createElement('img');
+        const pokemonId = encounter.pokemon.url.split('/')[6];
+        image.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonId}.png`;
+        image.alt = encounter.pokemon.name;
+        pokemonCard.appendChild(image);
+        card.appendChild(pokemonCard);
+
+        const encounterCard = document.createElement('div');
+        encounterCard.classList.add('card', 'card-body', 'col-md-8', 'col-sm-12');
 
         for (const version of encounter.version_details) {
             const versionName = await fetchVersionEnglishName(version.version.name);
             const versionHeader = document.createElement('h4');
             versionHeader.innerText = versionName;
-            card.appendChild(versionHeader);
+            encounterCard.appendChild(versionHeader);
 
             for (const encounterDetail of version.encounter_details) {
                 const encounterText = document.createElement('p');
                 const levelString = encounterDetail.min_level === encounterDetail.max_level ? "Level: " + encounterDetail.min_level : `Levels: ${encounterDetail.min_level}-${encounterDetail.max_level}`;
                 const conditionString = encounterDetail.condition_values.length > 0 ? `, Conditions: ${encounterDetail.condition_values.map(condition => condition.name).join(', ')}` : '';
                 encounterText.innerText = `Method: ${encounterDetail.method.name}, Chance: ${encounterDetail.chance}%, ${levelString}${conditionString}`;
-                card.appendChild(encounterText);
+                encounterCard.appendChild(encounterText);
             }
         }
-        collapse.appendChild(card);
-        li.appendChild(collapse);
+        card.appendChild(encounterCard);
+        li.appendChild(card);
 
         encounters.appendChild(li);
     }

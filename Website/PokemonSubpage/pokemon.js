@@ -56,7 +56,7 @@ function getTypeLink(type) {
 }
 function getKindLink(kind) {
     const kindName = kind === "pseudo" ? "Pseudo-Legendary" : kind;
-    return `<a href="../KindOfPokemons-Subpage/kindOfPokemon.html#${kind}">${formatName(kindName)}</a>`;
+    return `<a href="../KindOfPokemonSubpage/kinds-of-pokemon.html#${kind}">${formatName(kindName)}</a>`;
 }
 
 function buildWeaknessTable(types) {
