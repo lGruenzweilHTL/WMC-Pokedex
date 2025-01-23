@@ -74,12 +74,18 @@ async function getLocationAreaData(area, location) {
 
         for (const version of encounter.version_details) {
             const versionName = await fetchVersionEnglishName(version.version.name);
-            const versionHeader = document.createElement('h4');
+            const versionHeader = document.createElement('a');
             versionHeader.innerText = versionName;
+            versionHeader.classList.add('mb-2', 'btn', 'btn-link');
+            versionHeader.setAttribute('data-toggle', 'collapse');
+            versionHeader.href = `#collapse-${version.version.name}-${pokemonId}`;
             encounterCard.appendChild(versionHeader);
 
             for (const encounterDetail of version.encounter_details) {
                 const encounterText = document.createElement('p');
+                encounterText.classList.add('collapse', 'mb-0');
+                encounterText.id = `collapse-${version.version.name}-${pokemonId}`;
+
                 const levelString = encounterDetail.min_level === encounterDetail.max_level ? "Level: " + encounterDetail.min_level : `Levels: ${encounterDetail.min_level}-${encounterDetail.max_level}`;
                 const conditionString = encounterDetail.condition_values.length > 0 ? `, Conditions: ${encounterDetail.condition_values.map(condition => condition.name).join(', ')}` : '';
                 encounterText.innerText = `Method: ${encounterDetail.method.name}, Chance: ${encounterDetail.chance}%, ${levelString}${conditionString}`;
