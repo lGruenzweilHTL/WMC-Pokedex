@@ -126,7 +126,51 @@ let opponentTeam = [
 let playerActivePokemon = playerTeam[0]; // Player starts with Charizard
 let opponentActivePokemon = opponentTeam[1]; // Opponent starts with Gengar
 
-document.addEventListener("DOMContentLoaded", turn);
+// Containers
+let playerActionSelect;
+let playerMoveSelect;
+let playerPokemonSelect;
+let selectGroup;
+
+function initContainers() {
+    playerActionSelect = document.getElementById("action-select");
+    playerMoveSelect = document.getElementById("move-select");
+    playerPokemonSelect = document.getElementById("pokemon-select");
+    selectGroup = [playerActionSelect, playerMoveSelect, playerPokemonSelect];
+}
+
+function showPlayerActionSelect() {
+    hideAll();
+    playerActionSelect.style.display = "block";
+}
+function hidePlayerActionSelect() {
+    playerActionSelect.style.display = "none";
+    showPlayerActionSelect();
+}
+function showPlayerMoveSelect() {
+    hideAll();
+    playerMoveSelect.style.display = "block";
+}
+function hidePlayerMoveSelect() {
+    playerMoveSelect.style.display = "none";
+    showPlayerActionSelect();
+}
+function showPlayerPokemonSelect() {
+    hideAll();
+    playerPokemonSelect.style.display = "block";
+}
+function hidePlayerPokemonSelect() {
+    playerPokemonSelect.style.display = "none";
+    showPlayerActionSelect();
+}
+function hideAll() {
+    selectGroup.forEach(select => select.style.display = "none");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    initContainers();
+    turn();
+});
 
 function turn() {
     if (checkGameOver()) {
@@ -134,19 +178,18 @@ function turn() {
     }
     handlePokemonFainted();
 
-    const buttons = document.getElementById("action-select");
     if (playerTurn) {
         // Player's turn
         console.log("Player's turn");
 
         // Enable player buttons
-        buttons.style.display = "block";
+        showPlayerActionSelect();
     } else {
         // Opponent's turn
         console.log("Opponent's turn");
 
         // Disable player buttons
-        buttons.style.display = "none";
+        hidePlayerActionSelect();
 
         // Opponent attacks
         opponentAttack();
@@ -182,8 +225,7 @@ function switchOpponentPokemon() {
 
 function attack() {
     // Select attack
-    const moveSelect = document.getElementById("move-select");
-    moveSelect.style.display = "block";
+    showPlayerMoveSelect();
 
     // Display moves
     const buttons = document.getElementsByClassName("move-button");
@@ -198,8 +240,7 @@ function selectMove(idx) {
     const moveName = playerActivePokemon.pokemon.moves[idx];
 
     // Hide move select
-    const moveSelect = document.getElementById("move-select");
-    moveSelect.style.display = "none";
+    hidePlayerMoveSelect();
 
     // Calculate damage
     const damage = calculateAttack(playerActivePokemon.pokemon, moveName, opponentActivePokemon.pokemon);
@@ -227,8 +268,7 @@ function run() {
 
 function changePokemon() {
     // Display Pokemon select
-    const pokemonSelect = document.getElementById("pokemon-select");
-    pokemonSelect.style.display = "block";
+    showPlayerPokemonSelect();
 
     // Find all Pokemon that are not fainted
     const pokemonList = playerTeam.filter(pokemon => pokemon.hp > 0 && pokemon !== playerActivePokemon);
@@ -275,8 +315,7 @@ function showPokemonList(pokemonList) {
 }
 function selectPokemon(pokemon) {
     // Hide Pokemon select
-    const pokemonSelect = document.getElementById("pokemon-select");
-    pokemonSelect.style.display = "none";
+    hidePlayerPokemonSelect();
 
     playerActivePokemon = pokemon
     console.log(`Player switched to ${playerActivePokemon.pokemon.display_name}`);
