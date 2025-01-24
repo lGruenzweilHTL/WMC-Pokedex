@@ -2,25 +2,26 @@ body {
     font-family: Verdana, sans-serif;
     line-height: 1.6;
     padding-top: 80px;
-    background: linear-gradient(to right, #808080, #ffffff);
-    background-size: cover
+    background: linear-gradient(to bottom right, #ffe5b4 25%, #ffccd5 75%);
+    background-size: cover;
+    margin: 0;
+    color: #333;
 }
 
 .header {
     display: flex;
     justify-content: center;
-    justify-items: center;
-    justify-self: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .header h1 {
     font-size: 25px;
     color: white;
-    background-image: linear-gradient(to right,
-            #ff3344 0%,
-            #db2a38 51%,
-            #ff3344 100%);
-    transition: 0.5s;
+    background-image: linear-gradient(to right, #ff3344 0%, #db2a38 51%, #ff3344 100%);
+    transition: background-position 0.5s ease;
     background-size: 200% auto;
     height: 75px;
     width: 220px;
@@ -30,15 +31,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.header-image{
-    margin-left: 20%;
-    position: absolute;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .header h1:hover {
     background-position: right center;
-    cursor: default;
+}
+
+.header-image {
+    margin-left: 20%;
+    position: absolute;
 }
 
 h2 {
@@ -47,47 +49,47 @@ h2 {
     border-bottom: 2px solid #ccc;
     padding-bottom: 5px;
     text-align: center;
-    transition: scale 0.3s ease;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
 h2:hover {
-    scale: 110%;
+    transform: scale(1.1);
+    color: #db2a38;
 }
 
 .text-box {
     list-style: none;
-    padding: 0;
-    margin: 10px 20px;
-    background: #f1f1f1;
+    padding: 15px;
+    margin: 20px auto;
+    background: #f8f8f8;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 15px;
     max-width: 75%;
-    margin-left: 12.5%;
-    transition: background-color 0.3s, box-shadow 0.3s;
-    transition: scale 0.25s ease-in-out;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.25s ease-in-out;
 }
 
 .text-box:hover {
-    background-color: #f9f9f9;
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-    scale: 102%;
+    background-color: #ffffff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: scale(1.02);
 }
 
 .text-box li {
     margin-bottom: 10px;
     padding: 5px 0;
     border-bottom: 1px solid #eaeaea;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .text-box li:hover {
-    background-color: #f7f2f2;
-    transform: translateX(1px);
+    background-color: #f4f4f4;
+    transform: translateX(3px);
 }
 
 .text-box li:last-child {
     border-bottom: none;
 }
+
 
 img:not(.navPokeball):not(.header-image) {
     display: block;
