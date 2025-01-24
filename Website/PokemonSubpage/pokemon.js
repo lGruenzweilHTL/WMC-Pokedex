@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     const imageElement = document.createElement("img");
     imageElement.src = data.sprites.front_default;
+    imageElement.alt = formatName(pokemonName);
     imageElement.classList.add("float-left");
     document.body.appendChild(imageElement);
 
@@ -56,7 +57,7 @@ function getTypeLink(type) {
 }
 function getKindLink(kind) {
     const kindName = kind === "pseudo" ? "Pseudo-Legendary" : kind;
-    return `<a href="../KindOfPokemons-Subpage/kindOfPokemon.html#${kind}">${formatName(kindName)}</a>`;
+    return `<a href="../KindOfPokemonSubpage/kinds-of-pokemon.html#${kind}">${formatName(kindName)}</a>`;
 }
 
 function buildWeaknessTable(types) {
@@ -149,7 +150,9 @@ async function buildLocationMap(encounter_url) {
     list.classList.add("location-list");
     for (const location of data) {
         const item = document.createElement("li");
-        item.innerHTML = location.location_area.name;
+        item.innerHTML = `<a class="location-link"
+            href="../MapExplorer/location-info.html?type=location-area&name=${location.location_area.name}">
+            ${location.location_area.name}</a>`;
         list.appendChild(item);
     }
     div.appendChild(list);
