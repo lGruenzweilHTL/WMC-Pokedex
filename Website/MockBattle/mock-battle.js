@@ -123,6 +123,7 @@ function turn() {
     if (playerTurn) {
         // Player's turn
         console.log("Player's turn");
+        console.table(playerActivePokemon);
 
         // Enable player buttons
         buttons.style.display = "block";
@@ -192,12 +193,14 @@ function opponentAttack() {
     console.log("Opponent attacks");
 
     // Select attack
+    const attackIdx = Math.floor(Math.random() * opponentActivePokemon.pokemon.moves.length);
+    const attack = opponentActivePokemon.pokemon.moves[attackIdx];
 
     // Calculate damage
+    const damage = calculateAttack(opponentActivePokemon.pokemon, attack, playerActivePokemon.pokemon);
 
     // Apply damage
-
-    // Check if player is dead
+    playerActivePokemon.hp -= damage;
 
     // Switch turns
     playerTurn = !playerTurn;
