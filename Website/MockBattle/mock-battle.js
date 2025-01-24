@@ -226,7 +226,60 @@ function run() {
 }
 
 function changePokemon() {
-    // TODO
+    // Display Pokemon select
+    const pokemonSelect = document.getElementById("pokemon-select");
+    pokemonSelect.style.display = "block";
+
+    // Find all Pokemon that are not fainted
+    const pokemonList = playerTeam.filter(pokemon => pokemon.hp > 0 && pokemon !== playerActivePokemon);
+    clearPokemonList();
+    showPokemonList(pokemonList);
+
+    // Rest of the logic is in selectPokemon()
+}
+function clearPokemonList() {
+    const container = document.getElementById("pokemon-container");
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+}
+function showPokemonList(pokemonList) {
+    // Separate into groups of two
+    const pokemonGroups = [];
+    for (let i = 0; i < pokemonList.length; i += 2) {
+        pokemonGroups.push(pokemonList.slice(i, i + 2));
+    }
+
+    // Display Pokemon
+    const container = document.getElementById("pokemon-container");
+
+    pokemonGroups.forEach(group => {
+        const row = document.createElement("div");
+        row.className = "row";
+        group.forEach(pokemon => {
+            // <div class="col-6">
+            //                 <div class="focusable card p-3 pokemon-button" tabindex="0" onclick="selectPokemon(0)"></div>
+            //             </div>
+            const col = document.createElement("div");
+            col.className = "col-6";
+            const card = document.createElement("div");
+            card.className = "focusable card p-3 pokemon-button";
+            card.tabIndex = 0;
+            card.onclick = () => selectPokemon(pokemon);
+            card.innerText = pokemon.pokemon.display_name;
+            col.appendChild(card);
+            row.appendChild(col);
+        });
+        container.appendChild(row);
+    });
+}
+function selectPokemon(pokemon) {
+    // Hide Pokemon select
+    const pokemonSelect = document.getElementById("pokemon-select");
+    pokemonSelect.style.display = "none";
+
+    playerActivePokemon = pokemon
+    console.log(`Player switched to ${playerActivePokemon.pokemon.display_name}`);
 
     // Switch turns
     playerTurn = !playerTurn;

@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <title>Mock Battle</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     <script src="../TypeCalc/calculator-methods.js"></script>
     <script src="mock-battle.js"></script>
+    <script src="navigation.js"></script>
     <style>
         .focusable {
             cursor: pointer;
         }
+
         .focusable:focus {
             outline: 2px solid blue;
         }
@@ -56,40 +59,17 @@
         </div>
     </div>
 </div>
-
-<script>
-    document.addEventListener('keydown', function (event) {
-        const focusableElements = document.querySelectorAll('.focusable');
-        let currentIndex = Array.prototype.indexOf.call(focusableElements, document.activeElement);
-
-        switch (event.key) {
-            case 'ArrowUp':
-                if (currentIndex > 1) {
-                    focusableElements[currentIndex - 2].focus();
-                }
-                break;
-            case 'ArrowDown':
-                if (currentIndex < focusableElements.length - 2) {
-                    focusableElements[currentIndex + 2].focus();
-                }
-                break;
-            case 'ArrowLeft':
-                if (currentIndex > 0) {
-                    focusableElements[currentIndex - 1].focus();
-                }
-                break;
-            case 'ArrowRight':
-                if (currentIndex < focusableElements.length - 1) {
-                    focusableElements[currentIndex + 1].focus();
-                }
-                break;
-            case 'Enter':
-                if (currentIndex !== -1) {
-                    focusableElements[currentIndex].click();
-                }
-                break;
-        }
-    });
-</script>
+<div class="card" id="pokemon-select" style="display: none">
+    <div class="container mt-4" id="pokemon-container">
+        <div class="row">
+            <div class="col-6">
+                <div class="focusable card p-3 pokemon-button" tabindex="0" onclick="selectPokemon(0)"></div>
+            </div>
+            <div class="col-6">
+                <div class="focusable card p-3 pokemon-button" tabindex="0" onclick="selectPokemon(1)"></div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
