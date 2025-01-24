@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interactive Map</title>
+    <style>
+        .info-box {
+            position: absolute;
+            display: none;
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        area:hover {
+            cursor: pointer;
+        }
+    </style>
+    <script src="map-explorer.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const areas = document.querySelectorAll('area');
+            const infoBox = document.getElementById('info-box');
+
+            areas.forEach(area => {
+                const coords = area.getAttribute('coords').split(',').map(Number);
+
+                area.addEventListener('mouseover', function (event) {
+                    infoBox.textContent = event.target.getAttribute('data-info');
+                    infoBox.style.display = 'block';
+                    infoBox.style.left = `${event.pageX + 10}px`;
+                    infoBox.style.top = `${event.pageY + 10}px`;
+
+                    area.addEventListener('mouseout', function () {
+                        infoBox.style.display = 'none';
+                    });
+
+                    area.addEventListener('click', function (event) {
+                        document.location = area.href;
+                    });
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="info-box" class="info-box"></div>
+</body>
+</html>
