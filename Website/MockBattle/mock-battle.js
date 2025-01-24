@@ -143,26 +143,32 @@ function showPlayerActionSelect() {
     hideAll();
     playerActionSelect.style.display = "block";
 }
+
 function hidePlayerActionSelect() {
     playerActionSelect.style.display = "none";
     showPlayerActionSelect();
 }
+
 function showPlayerMoveSelect() {
     hideAll();
     playerMoveSelect.style.display = "block";
 }
+
 function hidePlayerMoveSelect() {
     playerMoveSelect.style.display = "none";
     showPlayerActionSelect();
 }
+
 function showPlayerPokemonSelect() {
     hideAll();
     playerPokemonSelect.style.display = "block";
 }
+
 function hidePlayerPokemonSelect() {
     playerPokemonSelect.style.display = "none";
     showPlayerActionSelect();
 }
+
 function hideAll() {
     selectGroup.forEach(select => select.style.display = "none");
 }
@@ -172,13 +178,23 @@ document.addEventListener("DOMContentLoaded", () => {
     turn();
 });
 
+// this variable should only be used when switching pokémon after a faint, not for regular switching
+let playerSwitching = false;
+
 function turn() {
     if (checkGameOver()) {
+        hideAll();
         return;
     }
     handlePokemonFainted();
 
     if (playerTurn) {
+        // Is player busy switching Pokémon after a faint?
+        if (playerSwitching) {
+            // Wait until player has selected a Pokémon
+            return;
+        }
+
         // Player's turn
         console.log("Player's turn");
 
@@ -210,6 +226,7 @@ function checkGameOver() {
 function handlePokemonFainted() {
     if (playerActivePokemon.hp <= 0) {
         console.log("Player's active Pokemon fainted");
+        playerSwitching = true;
         changePokemon(); // Prompt player to switch Pokémon
     }
     if (opponentActivePokemon.hp <= 0) {
@@ -217,6 +234,7 @@ function handlePokemonFainted() {
         switchOpponentPokemon();
     }
 }
+
 function switchOpponentPokemon() {
     // Simple for now because opponent only has 2 Pokemon
     opponentActivePokemon = opponentActivePokemon === opponentTeam[0] ? opponentTeam[1] : opponentTeam[0];
@@ -277,12 +295,14 @@ function changePokemon() {
 
     // Rest of the logic is in selectPokemon()
 }
+
 function clearPokemonList() {
     const container = document.getElementById("pokemon-container");
     while (container.firstChild) {
         container.removeChild(container.firstChild);
     }
 }
+
 function showPokemonList(pokemonList) {
     // Separate into groups of two
     const pokemonGroups = [];
@@ -310,6 +330,7 @@ function showPokemonList(pokemonList) {
         container.appendChild(row);
     });
 }
+
 function selectPokemon(pokemon) {
     // Hide Pokemon select
     hidePlayerPokemonSelect();
@@ -318,7 +339,11 @@ function selectPokemon(pokemon) {
     console.log(`Player switched to ${playerActivePokemon.pokemon.display_name}`);
 
     // Switch turns
-    playerTurn = !playerTurn;
+    // Handle switching after faint
+    if (!playerSwitching) {
+        playerTurn = !playerTurn;
+    }
+    playerSwitching = false;
     turn();
 }
 
@@ -350,7 +375,7 @@ function calculateAttack(pokemon, moveName, target) {
 
     const level = pokemon.level;
     const attack = move.special ? pokemon.stats.spAttack : pokemon.stats.attack;
-    const defense = move.special ? target.stats.spDefense : target.stats.defense
+    const defense = move.special ? target.stats.spDefense : target.stats.defense;
     const power = move.power;
     const type1 = typeEffectiveness(move.type, target.types[0]);
     const type2 = target.types.length > 1 ? typeEffectiveness(move.type, target.types[1]) : 1;
@@ -391,7 +416,7 @@ Type1 is the type effectiveness of the used move against the target's type that 
 Type2 is the type effectiveness of the used move against the target's type that comes second in the type matchup table. This can be 0.5 (not very effective), 1 (normally effective), 2 (super effective). If the target only has one type, Type2 is 1. If this would result in 0 damage, the calculation ends here and the move is stated to have missed, even if it would've hit.
 random is realized as a multiplication by a random uniformly distributed integer between 217 and 255 (inclusive), followed by an integer division by 255. If the calculated damage thus far is 1, random is always 1.
  */
-function calculateDamage(level, critical, power, a, d, stab, type1, type2){
+function calculateDamage(level, critical, power, a, d, stab, type1, type2) {
     const calc1 = (2 * level * critical / 5) + 2
     const calc2 = calc1 * power * a / d
     const calc3 = calc2 / 50 + 2
