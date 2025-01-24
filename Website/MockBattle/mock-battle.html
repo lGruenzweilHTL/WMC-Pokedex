@@ -8,67 +8,79 @@
     <script src="../TypeCalc/calculator-methods.js"></script>
     <script src="mock-battle.js"></script>
     <script src="navigation.js"></script>
-    <style>
-        .focusable {
-            cursor: pointer;
-        }
-
-        .focusable:focus {
-            outline: 2px solid blue;
-        }
-    </style>
+    <link rel="stylesheet" href="mock-battle.css">
 </head>
 <body>
-<div class="card" id="action-select">
-    <div class="container mt-4">
-        <div class="row">
-            <div class="col-6">
-                <div class="focusable card p-3" tabindex="0" onclick="attack()">Fight</div>
+<div class="fixed-bottom mb-4 d-flex justify-content-center">
+    <div class="card col-md-6 text-center p-4" id="message-display">
+        The battle begins!
+    </div>
+    <div class="card col-md-4" id="action-select">
+        <div class="container mt-4 mb-4">
+            <div class="row">
+                <div class="col-6">
+                    <div class="focusable card p-3" tabindex="0" onclick="attack()">Fight</div>
+                </div>
+                <div class="col-6">
+                    <div class="focusable card p-3" tabindex="0" onclick="bag()">Bag</div>
+                </div>
             </div>
-            <div class="col-6">
-                <div class="focusable card p-3" tabindex="0" onclick="bag()">Bag</div>
+            <div class="row mt-2">
+                <div class="col-6">
+                    <div class="focusable card p-3" tabindex="0" onclick="changePokemon()">Pokémon</div>
+                </div>
+                <div class="col-6">
+                    <div class="focusable card p-3" tabindex="0" onclick="run()">Run</div>
+                </div>
             </div>
         </div>
-        <div class="row mt-2">
-            <div class="col-6">
-                <div class="focusable card p-3" tabindex="0" onclick="changePokemon()">Pokémon</div>
+    </div>
+    <div class="card col-md-4" id="move-select" style="display: none">
+        <div class="container mt-4 mb-4">
+            <div class="row">
+                <div class="col-6">
+                    <div class="focusable card p-3 move-button" tabindex="0" onclick="selectMove(0)"></div>
+                </div>
+                <div class="col-6">
+                    <div class="focusable card p-3 move-button" tabindex="0" onclick="selectMove(1)"></div>
+                </div>
             </div>
-            <div class="col-6">
-                <div class="focusable card p-3" tabindex="0" onclick="run()">Run</div>
+            <div class="row mt-2">
+                <div class="col-6">
+                    <div class="focusable card p-3 move-button" tabindex="0" onclick="selectMove(2)"></div>
+                </div>
+                <div class="col-6">
+                    <div class="focusable card p-3 move-button" tabindex="0" onclick="selectMove(3)"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card col-md-4" id="pokemon-select" style="display: none">
+        <div class="container mt-4 mb-4" id="pokemon-container">
+            <div class="row">
+                <div class="col-6">
+                    <div class="focusable card p-3 pokemon-button" tabindex="0" onclick="selectPokemon(0)"></div>
+                </div>
+                <div class="col-6">
+                    <div class="focusable card p-3 pokemon-button" tabindex="0" onclick="selectPokemon(1)"></div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<div class="card" id="move-select" style="display: none">
-    <div class="container mt-4">
-        <div class="row">
-            <div class="col-6">
-                <div class="focusable card p-3 move-button" tabindex="0" onclick="selectMove(0)"></div>
-            </div>
-            <div class="col-6">
-                <div class="focusable card p-3 move-button" tabindex="0" onclick="selectMove(1)"></div>
-            </div>
-        </div>
-        <div class="row mt-2">
-            <div class="col-6">
-                <div class="focusable card p-3 move-button" tabindex="0" onclick="selectMove(2)"></div>
-            </div>
-            <div class="col-6">
-                <div class="focusable card p-3 move-button" tabindex="0" onclick="selectMove(3)"></div>
-            </div>
-        </div>
+
+<div class="pokemon-field" id="player-pokemon-field">
+    <img src="../Images/Battle/battle-platform.png" alt="">
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" alt="" id="player-pokemon">
+    <div class="hp-bar">
+        <div class="hp-bar-fill" id="player-hp-bar-fill"></div>
     </div>
 </div>
-<div class="card" id="pokemon-select" style="display: none">
-    <div class="container mt-4" id="pokemon-container">
-        <div class="row">
-            <div class="col-6">
-                <div class="focusable card p-3 pokemon-button" tabindex="0" onclick="selectPokemon(0)"></div>
-            </div>
-            <div class="col-6">
-                <div class="focusable card p-3 pokemon-button" tabindex="0" onclick="selectPokemon(1)"></div>
-            </div>
-        </div>
+<div class="pokemon-field" id="opponent-pokemon-field">
+    <img src="../Images/Battle/battle-platform.png" alt="">
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png" alt="" id="opponent-pokemon">
+    <div class="hp-bar">
+        <div class="hp-bar-fill" id="opponent-hp-bar-fill"></div>
     </div>
 </div>
 </body>

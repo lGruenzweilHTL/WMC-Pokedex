@@ -1,5 +1,6 @@
 const charizard = {
     "level": 50,
+    "id": 6,
     "display_name": "Charizard",
     "stats": {
         "hp": 78,
@@ -22,6 +23,7 @@ const charizard = {
 };
 const gengar = {
     "level": 50,
+    "id": 94,
     "display_name": "Gengar",
     "stats": {
         "hp": 60,
@@ -174,6 +176,9 @@ function hideAll() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    changePlayerPokemonImage(playerActivePokemon.pokemon.id);
+    changeOpponentPokemonImage(opponentActivePokemon.pokemon.id);
+
     initContainers();
     turn();
 });
@@ -214,10 +219,10 @@ function turn() {
 
 function checkGameOver() {
     if (playerTeam.every(pokemon => pokemon.hp <= 0)) {
-        console.log("Player lost");
+        pushMessage("You lost!");
         return true;
     } else if (opponentTeam.every(pokemon => pokemon.hp <= 0)) {
-        console.log("Player won");
+        pushMessage("You won!");
         return true;
     }
     return false;
@@ -225,12 +230,12 @@ function checkGameOver() {
 
 function handlePokemonFainted() {
     if (playerActivePokemon.hp <= 0) {
-        console.log("Player's active Pokemon fainted");
+        pushMessage(`${playerActivePokemon.pokemon.display_name} fainted`);
         playerSwitching = true;
         changePokemon(); // Prompt player to switch Pokémon
     }
     if (opponentActivePokemon.hp <= 0) {
-        console.log("Opponent's active Pokemon fainted");
+        pushMessage(`${opponentActivePokemon.pokemon.display_name} fainted`);
         switchOpponentPokemon();
     }
 }
@@ -238,7 +243,8 @@ function handlePokemonFainted() {
 function switchOpponentPokemon() {
     // Simple for now because opponent only has 2 Pokemon
     opponentActivePokemon = opponentActivePokemon === opponentTeam[0] ? opponentTeam[1] : opponentTeam[0];
-    console.log(`Opponent switched to ${opponentActivePokemon.pokemon.display_name}`);
+    pushMessage(`Opponent switched to ${opponentActivePokemon.pokemon.display_name}`);
+    changeOpponentPokemonImage(opponentActivePokemon.pokemon.id);
 }
 
 function attack() {
@@ -264,8 +270,7 @@ function selectMove(idx) {
     const damage = calculateAttack(playerActivePokemon.pokemon, moveName, opponentActivePokemon.pokemon);
 
     // Apply damage
-    opponentActivePokemon.hp -= damage;
-    console.log(`Opponent took ${damage} damage and has ${opponentActivePokemon.hp} HP left`);
+    damageOpponent(damage);
 
     // Switch turns
     playerTurn = !playerTurn;
@@ -336,7 +341,9 @@ function selectPokemon(pokemon) {
     hidePlayerPokemonSelect();
 
     playerActivePokemon = pokemon
-    console.log(`Player switched to ${playerActivePokemon.pokemon.display_name}`);
+    pushMessage(`You switched to ${playerActivePokemon.pokemon.display_name}`);
+    changePlayerPokemonImage(playerActivePokemon.pokemon.id);
+    refreshHpBars();
 
     // Switch turns
     // Handle switching after faint
@@ -356,14 +363,13 @@ function opponentAttack() {
     // Select attack
     const attackIdx = Math.floor(Math.random() * opponentActivePokemon.pokemon.moves.length);
     const attack = opponentActivePokemon.pokemon.moves[attackIdx];
-    console.log(`Opponent used ${attack}`);
+    pushMessage(`Opponent used ${moves[attack].display_name}`);
 
     // Calculate damage
     const damage = calculateAttack(opponentActivePokemon.pokemon, attack, playerActivePokemon.pokemon);
 
     // Apply damage
-    playerActivePokemon.hp -= damage;
-    console.log(`Player took ${damage} damage and has ${playerActivePokemon.hp} HP left`);
+    damagePlayer(damage);
 
     // Switch turns
     playerTurn = !playerTurn;
@@ -372,6 +378,13 @@ function opponentAttack() {
 
 function calculateAttack(pokemon, moveName, target) {
     const move = moves[moveName];
+
+    // Check if it hits
+    const random = Math.floor(Math.random() * 100);
+    if (random > move.accuracy) {
+        pushMessage(`${pokemon.display_name}'s ${move.display_name} missed!`);
+        return 0;
+    }
 
     const level = pokemon.level;
     const attack = move.special ? pokemon.stats.spAttack : pokemon.stats.attack;
@@ -382,7 +395,29 @@ function calculateAttack(pokemon, moveName, target) {
     const stab = pokemon.types.includes(move.type) ? 1.5 : 1;
     const critical = isCritical(pokemon.stats.speed) ? 2 : 1;
 
+    pushMessage(`${pokemon.display_name} used ${move.display_name}!`);
+
     return calculateDamage(level, critical, power, attack, defense, stab, type1, type2);
+}
+
+function damagePlayer(damage) {
+    playerActivePokemon.hp -= damage;
+    console.log(`Player took ${damage} damage and has ${playerActivePokemon.hp} HP left`);
+    refreshHpBars();
+}
+function damageOpponent(damage) {
+    opponentActivePokemon.hp -= damage;
+    console.log(`Opponent took ${damage} damage and has ${opponentActivePokemon.hp} HP left`);
+    refreshHpBars();
+}
+function refreshHpBars() {
+    const playerMaxHp = calculateHp(playerActivePokemon.pokemon);
+    const playerHpBar = document.getElementById("player-hp-bar-fill");
+    playerHpBar.style.width = `${playerActivePokemon.hp / playerMaxHp * 100}%`;
+
+    const opponentMaxHp = calculateHp(opponentActivePokemon.pokemon);
+    const opponentHpBar = document.getElementById("opponent-hp-bar-fill");
+    opponentHpBar.style.width = `${opponentActivePokemon.hp / opponentMaxHp * 100}%`;
 }
 
 /*
@@ -424,4 +459,16 @@ function calculateDamage(level, critical, power, a, d, stab, type1, type2) {
     const calc4 = calc3 * stab * type1 * type2 * random;
 
     return Math.floor(calc4);
+}
+
+function pushMessage(message) {
+    document.getElementById("message-display").innerText = message;
+}
+function changePlayerPokemonImage(idx) {
+    const img = document.getElementById("player-pokemon");
+    img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${idx}.png`;
+}
+function changeOpponentPokemonImage(idx) {
+    const img = document.getElementById("opponent-pokemon");
+    img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${idx}.png`;
 }

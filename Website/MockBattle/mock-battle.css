@@ -1,0 +1,53 @@
+.focusable {
+    cursor: pointer;
+}
+
+.focusable:focus {
+    outline: 2px solid blue;
+}
+
+img#player-pokemon, img#opponent-pokemon {
+    transform-origin: bottom center;
+}
+
+#player-pokemon-field {
+    position: fixed;
+    bottom: 30vh;
+    left: 600px;
+    transform: translateX(-50%);
+}
+img#player-pokemon {
+    position: relative;
+    right: 170px;
+    bottom: 50px;
+    width: 150px;
+    height: auto;
+}
+
+#opponent-pokemon-field {
+    position: fixed;
+    top: 15vh;
+    right: 600px;
+    transform: translateX(50%);
+}
+img#opponent-pokemon {
+    position: relative;
+    right: 170px;
+    bottom: 50px;
+    width: 150px;
+    height: auto;
+}
+.hp-bar {
+    width: 100px;
+    height: 10px;
+    background-color: red;
+    border: 1px solid black;
+
+    position: relative;
+    bottom: 40px;
+    left: 50px;
+}
+.hp-bar-fill {
+    background-color: green;
+    height: 100%;
+}
