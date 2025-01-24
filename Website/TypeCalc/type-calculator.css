@@ -1,0 +1,134 @@
+body {
+    font-family: Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #f0f8ff, #ffffff);
+    color: #333;
+}
+
+.navigation-bar {
+    background-color: #ffcb05;
+    padding: 10px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.navigation-bar img.navPokeball {
+    width: 40px;
+    height: 40px;
+}
+
+.navigation-bar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.navigation-bar li {
+    margin: 0 10px;
+}
+
+.navigation-bar a {
+    text-decoration: none;
+    color: #2a75bb;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.navigation-bar a:hover {
+    color: #d62828;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.type_selector {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.type_selector h1 {
+    font-size: 2.5rem;
+    color: #2a75bb;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.type_selector h3 {
+    font-size: 1.5rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.type_selector .form-group {
+    margin-bottom: 15px;
+}
+
+.type-select {
+    width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-primary {
+    background-color: #2a75bb;
+    border: none;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #1c5e9e;
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background-color: #ddd;
+    border: none;
+    color: #555;
+}
+
+.btn-secondary:hover {
+    background-color: #bbb;
+    transform: scale(1.05);
+}
+
+.table {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.table th, .table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.table th {
+    background: #f4f4f4;
+    color: #555;
+    font-weight: bold;
+}
+
+.table td {
+    color: #333;
+}
