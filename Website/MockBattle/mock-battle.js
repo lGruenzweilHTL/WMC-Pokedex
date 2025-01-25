@@ -217,9 +217,9 @@ function turn() {
         hideAll();
         return;
     }
-    handlePokemonFainted();
     handleStatusEffects();
     decrementStatusEffects();
+    handlePokemonFainted();
 
     if (playerTurn) {
         // Is player busy switching Pokémon after a faint?
