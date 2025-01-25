@@ -209,9 +209,6 @@ document.addEventListener("DOMContentLoaded", () => {
     turn();
 });
 
-let playerSwitching = false; // this variable should only be used when switching pokémon after a faint, not for regular switching
-let playerFlinched = false; // This is quite a hacky way to handle flinching, but it fixes the bug, so I'm happy
-
 function turn() {
     if (checkGameOver()) {
         hideAll();
@@ -219,15 +216,12 @@ function turn() {
     }
     handleStatusEffects();
     decrementStatusEffects();
-    handlePokemonFainted();
+    if (handlePokemonFainted()) {
+        changePokemon(); // Prompt player to switch Pokémon
+        return;
+    }
 
     if (playerTurn) {
-        // Is player busy switching Pokémon after a faint?
-        if (playerSwitching) {
-            // Wait until player has selected a Pokémon
-            return;
-        }
-
         // Player's turn
         console.log("Player's turn");
 
@@ -257,23 +251,23 @@ function checkGameOver() {
 }
 
 function handlePokemonFainted() {
+    let playerFainted = false;
     if (playerActivePokemon.hp <= 0) {
         pushMessage(`${playerActivePokemon.pokemon.display_name} fainted\nSelect a new Pokémon`);
-        playerSwitching = true;
-        changePokemon(); // Prompt player to switch Pokémon
+        playerFainted = true;
     }
     if (opponentActivePokemon.hp <= 0) {
         pushMessage(`${opponentActivePokemon.pokemon.display_name} fainted`);
         switchOpponentPokemon();
     }
-
+    return playerFainted;
 }
 
 function handleStatusEffects() {
-    playerFlinched = false;
     playerActivePokemon.status.forEach(status => {
         handleEffect(playerActivePokemon, status);
     });
+
     opponentActivePokemon.status.forEach(status => {
         handleEffect(opponentActivePokemon, status);
     });
@@ -299,7 +293,6 @@ function handleEffect(pokemon, effect) {
             pushMessage(`${pokemon.pokemon.display_name} flinched!`);
             console.log("Flinch effect");
             playerTurn = !playerTurn; // Skip turn
-            playerFlinched = true;
             break;
         case "faint":
             // https://bulbapedia.bulbagarden.net/wiki/Destiny_Bond_(move)
@@ -312,12 +305,8 @@ function handleEffect(pokemon, effect) {
 }
 
 function decrementStatusEffects() {
-    if (!playerTurn && !playerFlinched) {
-        // Only decrement status effects every whole turn
-        // Since the player starts, we only need to decrement the counters when it's the player's turn
-        return;
-    }
-
+    // We decrement every action, because that is less buggy
+    // That is also why we multiply the duration by 2, so the times still match up
     playerActivePokemon.status.forEach(status => {
         status.duration -= 1;
     });
@@ -434,11 +423,7 @@ function selectPokemon(pokemon) {
     updatePlayerDisplay();
 
     // Switch turns
-    // Handle switching after faint
-    if (!playerSwitching) {
-        playerTurn = !playerTurn;
-    }
-    playerSwitching = false;
+    playerTurn = !playerTurn;
     turn();
 }
 
@@ -564,21 +549,21 @@ function applyStatusEffect(user, move, target) {
         case "burn":
             target.status.push({
                 "effect": "burn",
-                "duration": move.effect_duration
+                "duration": move.effect_duration * 2
             });
             pushMessage(`${target.pokemon.display_name} was burned!`);
             break;
         case "flinch":
             target.status.push({
                 "effect": "flinch",
-                "duration": move.effect_duration
+                "duration": move.effect_duration * 2
             });
             // Flinch is applied when the affected Pokémon is about to use a move, that's why we don't need to push a message here
             break;
         case "poison":
             target.status.push({
                 "effect": "poison",
-                "duration": move.effect_duration
+                "duration": move.effect_duration * 2
             });
             pushMessage(`${target.pokemon.display_name} was poisoned!`);
             break;
@@ -589,11 +574,13 @@ function applyStatusEffect(user, move, target) {
         case "faint":
             target.status.push({
                 "effect": "faint",
-                "duration": move.effect_duration,
+                "duration": move.effect_duration * 2,
                 "target": user
             });
             pushMessage(`A bond of fate has been established with ${target.pokemon.display_name}!`);
             break;
+        default:
+            console.error("Unknown effect: " + move.effect);
     }
 }
 
@@ -617,6 +604,7 @@ function updatePlayerDisplay() {
     document.getElementById("player-pokemon-level").innerText = `Level ${playerActivePokemon.pokemon.level}`;
     changePlayerPokemonImage(playerActivePokemon.pokemon.id);
 }
+
 function updateOpponentDisplay() {
     updateHpBars();
     document.getElementById("opponent-pokemon-name").innerText = opponentActivePokemon.pokemon.display_name;
@@ -628,6 +616,7 @@ function updateHpBars() {
     updatePlayerHpBar();
     updateOpponentHpBar();
 }
+
 function updatePlayerHpBar() {
     const playerMaxHp = calculateHp(playerActivePokemon.pokemon);
     const playerHpBar = document.getElementById("player-hp-bar-fill");
@@ -635,6 +624,7 @@ function updatePlayerHpBar() {
 
     document.getElementById("player-pokemon-hp-text").innerText = `${playerActivePokemon.hp} / ${playerMaxHp}`;
 }
+
 function updateOpponentHpBar() {
     const opponentMaxHp = calculateHp(opponentActivePokemon.pokemon);
     const opponentHpBar = document.getElementById("opponent-hp-bar-fill");
