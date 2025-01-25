@@ -51,56 +51,78 @@ const moves = {
         "special": true,
         "power": 90,
         "accuracy": 100,
-        "display_name": "Flamethrower"
+        "display_name": "Flamethrower",
+        "effect": "burn",
+        "effect_chance": 10,
+        "effect_duration": 2
     },
     "dragon-claw": {
         "type": "dragon",
         "special": false,
         "power": 80,
         "accuracy": 100,
-        "display_name": "Dragon Claw"
+        "display_name": "Dragon Claw",
+        "effect": null
     },
     "air-slash": {
         "type": "flying",
         "special": false,
         "power": 75,
         "accuracy": 95,
-        "display_name": "Air Slash"
+        "display_name": "Air Slash",
+        "effect": "flinch",
+        "effect_chance": 30,
+        "effect_duration": 1
     },
     "fire-blast": {
         "type": "fire",
         "special": true,
         "power": 110,
         "accuracy": 85,
-        "display_name": "Fire Blast"
+        "display_name": "Fire Blast",
+        "effect": "burn",
+        "effect_chance": 10,
+        "effect_duration": 2
     },
     "shadow-ball": {
         "type": "ghost",
         "special": true,
         "power": 80,
         "accuracy": 100,
-        "display_name": "Shadow Ball"
+        "display_name": "Shadow Ball",
+        "effect": "lower-sp-defense",
+        "effect_chance": 20,
+        "effect_duration": 0 // Instant effect
     },
     "dark-pulse": {
         "type": "dark",
         "special": true,
         "power": 80,
         "accuracy": 100,
-        "display_name": "Dark Pulse"
+        "display_name": "Dark Pulse",
+        "effect": "flinch",
+        "effect_chance": 20,
+        "effect_duration": 1
     },
     "sludge-bomb": {
         "type": "poison",
         "special": true,
         "power": 90,
         "accuracy": 100,
-        "display_name": "Sludge Bomb"
+        "display_name": "Sludge Bomb",
+        "effect": "poison",
+        "effect_chance": 30,
+        "effect_duration": 2
     },
     "destiny-bond": {
         "type": "ghost",
         "special": false,
         "power": 0,
         "accuracy": 100,
-        "display_name": "Destiny Bond"
+        "display_name": "Destiny Bond",
+        "effect": "faint", // Faints both Pokémon if user faints as direct result of an attack
+        "effect_chance": 100,
+        "effect_duration": 1
     }
 };
 
@@ -108,21 +130,25 @@ let playerTurn = true;
 let playerTeam = [
     {
         "pokemon": charizard,
-        "hp": calculateHp(charizard)
+        "hp": calculateHp(charizard),
+        "status": []
     },
     {
         "pokemon": gengar,
-        "hp": calculateHp(gengar)
+        "hp": calculateHp(gengar),
+        "status": []
     }
 ];
 let opponentTeam = [
     {
         "pokemon": charizard,
-        "hp": calculateHp(charizard)
+        "hp": calculateHp(charizard),
+        "status": []
     },
     {
         "pokemon": gengar,
-        "hp": calculateHp(gengar)
+        "hp": calculateHp(gengar),
+        "status": []
     }
 ];
 let playerActivePokemon = playerTeam[0]; // Player starts with Charizard
@@ -183,8 +209,8 @@ document.addEventListener("DOMContentLoaded", () => {
     turn();
 });
 
-// this variable should only be used when switching pokémon after a faint, not for regular switching
-let playerSwitching = false;
+let playerSwitching = false; // this variable should only be used when switching pokémon after a faint, not for regular switching
+let playerFlinched = false; // This is quite a hacky way to handle flinching, but it fixes the bug, so I'm happy
 
 function turn() {
     if (checkGameOver()) {
@@ -192,6 +218,8 @@ function turn() {
         return;
     }
     handlePokemonFainted();
+    handleStatusEffects();
+    decrementStatusEffects();
 
     if (playerTurn) {
         // Is player busy switching Pokémon after a faint?
@@ -230,7 +258,7 @@ function checkGameOver() {
 
 function handlePokemonFainted() {
     if (playerActivePokemon.hp <= 0) {
-        pushMessage(`${playerActivePokemon.pokemon.display_name} fainted`);
+        pushMessage(`${playerActivePokemon.pokemon.display_name} fainted\nSelect a new Pokémon`);
         playerSwitching = true;
         changePokemon(); // Prompt player to switch Pokémon
     }
@@ -238,6 +266,67 @@ function handlePokemonFainted() {
         pushMessage(`${opponentActivePokemon.pokemon.display_name} fainted`);
         switchOpponentPokemon();
     }
+
+}
+
+function handleStatusEffects() {
+    playerFlinched = false;
+    playerActivePokemon.status.forEach(status => {
+        handleEffect(playerActivePokemon, status);
+    });
+    opponentActivePokemon.status.forEach(status => {
+        handleEffect(opponentActivePokemon, status);
+    });
+}
+
+function handleEffect(pokemon, effect) {
+    const maxHp = calculateHp(pokemon.pokemon); // A lot of effects are based on max HP
+    switch (effect.effect) {
+        case "burn":
+            // https://the-episodes-and-movie-yveltal-and-more.fandom.com/wiki/Burn_(Pokémon_Status_Condition)
+            pushMessage(`${pokemon.pokemon.display_name} was hurt by burn!`);
+            pokemon.hp -= Math.floor(maxHp / 16);
+            refreshHpBars();
+            break;
+        case "poison":
+            // https://bulbapedia.bulbagarden.net/wiki/Poison_(status_condition)#Generation_I
+            pushMessage(`${pokemon.pokemon.display_name} was hurt by poison!`);
+            pokemon.hp -= Math.floor(maxHp / 8);
+            refreshHpBars();
+            break;
+        case "flinch":
+            // https://bulbapedia.bulbagarden.net/wiki/Flinch
+            pushMessage(`${pokemon.pokemon.display_name} flinched!`);
+            console.log("Flinch effect");
+            playerTurn = !playerTurn; // Skip turn
+            playerFlinched = true;
+            break;
+        case "faint":
+            // https://bulbapedia.bulbagarden.net/wiki/Destiny_Bond_(move)
+            if (effect.target.hp <= 0) {
+                pushMessage(`${effect.target.pokemon.display_name} fainted due to Destiny Bond!`);
+                pokemon.hp = 0;
+            }
+            break;
+    }
+}
+
+function decrementStatusEffects() {
+    if (!playerTurn && !playerFlinched) {
+        // Only decrement status effects every whole turn
+        // Since the player starts, we only need to decrement the counters when it's the player's turn
+        return;
+    }
+
+    playerActivePokemon.status.forEach(status => {
+        status.duration -= 1;
+    });
+    playerActivePokemon.status = playerActivePokemon.status.filter(status => status.duration > 0);
+
+    opponentActivePokemon.status.forEach(status => {
+        status.duration -= 1;
+    });
+    opponentActivePokemon.status = opponentActivePokemon.status.filter(status => status.duration > 0);
 }
 
 function switchOpponentPokemon() {
@@ -245,6 +334,7 @@ function switchOpponentPokemon() {
     opponentActivePokemon = opponentActivePokemon === opponentTeam[0] ? opponentTeam[1] : opponentTeam[0];
     pushMessage(`Opponent switched to ${opponentActivePokemon.pokemon.display_name}`);
     changeOpponentPokemonImage(opponentActivePokemon.pokemon.id);
+    refreshHpBars();
 }
 
 function attack() {
@@ -267,7 +357,7 @@ function selectMove(idx) {
     hidePlayerMoveSelect();
 
     // Calculate damage
-    const damage = calculateAttack(playerActivePokemon.pokemon, moveName, opponentActivePokemon.pokemon);
+    const damage = calculateAttack(playerActivePokemon, moveName, opponentActivePokemon);
 
     // Apply damage
     damageOpponent(damage);
@@ -360,23 +450,29 @@ function calculateHp(pokemon) {
 }
 
 function opponentAttack() {
-    // Select attack
-    const attackIdx = Math.floor(Math.random() * opponentActivePokemon.pokemon.moves.length);
-    const attack = opponentActivePokemon.pokemon.moves[attackIdx];
-    pushMessage(`Opponent used ${moves[attack].display_name}`);
+    // Wait a bit before attacking
+    setTimeout(() => {
+        // Select attack
+        const attackIdx = Math.floor(Math.random() * opponentActivePokemon.pokemon.moves.length);
+        const attack = opponentActivePokemon.pokemon.moves[attackIdx];
+        console.log(`Opponent used ${moves[attack].display_name}`);
+        pushMessage(`Opponent used ${moves[attack].display_name}`);
 
-    // Calculate damage
-    const damage = calculateAttack(opponentActivePokemon.pokemon, attack, playerActivePokemon.pokemon);
+        // Calculate damage
+        const damage = calculateAttack(opponentActivePokemon, attack, playerActivePokemon);
 
-    // Apply damage
-    damagePlayer(damage);
+        // Apply damage
+        damagePlayer(damage);
 
-    // Switch turns
-    playerTurn = !playerTurn;
-    turn();
+        // Switch turns
+        playerTurn = !playerTurn;
+        turn();
+    }, 1000);
 }
 
-function calculateAttack(pokemon, moveName, target) {
+function calculateAttack(user, moveName, target) {
+    const pokemon = user.pokemon;
+    const targetPokemon = target.pokemon;
     const move = moves[moveName];
 
     // Check if it hits
@@ -388,15 +484,16 @@ function calculateAttack(pokemon, moveName, target) {
 
     const level = pokemon.level;
     const attack = move.special ? pokemon.stats.spAttack : pokemon.stats.attack;
-    const defense = move.special ? target.stats.spDefense : target.stats.defense;
+    const defense = move.special ? targetPokemon.stats.spDefense : targetPokemon.stats.defense;
     const power = move.power;
-    const type1 = typeEffectiveness(move.type, target.types[0]);
-    const type2 = target.types.length > 1 ? typeEffectiveness(move.type, target.types[1]) : 1;
+    const type1 = typeEffectiveness(move.type, targetPokemon.types[0]);
+    const type2 = targetPokemon.types.length > 1 ? typeEffectiveness(move.type, targetPokemon.types[1]) : 1;
     const stab = pokemon.types.includes(move.type) ? 1.5 : 1;
     const critical = isCritical(pokemon.stats.speed) ? 2 : 1;
 
     pushMessage(`${pokemon.display_name} used ${move.display_name}!`);
 
+    applyStatusEffect(user, move, target);
     return calculateDamage(level, critical, power, attack, defense, stab, type1, type2);
 }
 
@@ -405,19 +502,21 @@ function damagePlayer(damage) {
     console.log(`Player took ${damage} damage and has ${playerActivePokemon.hp} HP left`);
     refreshHpBars();
 }
+
 function damageOpponent(damage) {
     opponentActivePokemon.hp -= damage;
     console.log(`Opponent took ${damage} damage and has ${opponentActivePokemon.hp} HP left`);
     refreshHpBars();
 }
+
 function refreshHpBars() {
     const playerMaxHp = calculateHp(playerActivePokemon.pokemon);
     const playerHpBar = document.getElementById("player-hp-bar-fill");
-    playerHpBar.style.width = `${playerActivePokemon.hp / playerMaxHp * 100}%`;
+    playerHpBar.style.width = `${Math.max(playerActivePokemon.hp, 0) / playerMaxHp * 100}%`;
 
     const opponentMaxHp = calculateHp(opponentActivePokemon.pokemon);
     const opponentHpBar = document.getElementById("opponent-hp-bar-fill");
-    opponentHpBar.style.width = `${opponentActivePokemon.hp / opponentMaxHp * 100}%`;
+    opponentHpBar.style.width = `${Math.max(opponentActivePokemon.hp, 0) / opponentMaxHp * 100}%`;
 }
 
 /*
@@ -461,13 +560,64 @@ function calculateDamage(level, critical, power, a, d, stab, type1, type2) {
     return Math.floor(calc4);
 }
 
+function applyStatusEffect(user, move, target) {
+    if (move.effect === null) {
+        return;
+    }
+
+    const random = Math.floor(Math.random() * 100);
+    if (random > move.effect_chance) {
+        return;
+    }
+
+    console.log(`${user.pokemon.display_name}'s ${move.display_name} applied ${move.effect} to ${target.pokemon.display_name}`);
+
+    switch (move.effect) {
+        case "burn":
+            target.status.push({
+                "effect": "burn",
+                "duration": move.effect_duration
+            });
+            pushMessage(`${target.pokemon.display_name} was burned!`);
+            break;
+        case "flinch":
+            target.status.push({
+                "effect": "flinch",
+                "duration": move.effect_duration
+            });
+            // Flinch is applied when the affected Pokémon is about to use a move, that's why we don't need to push a message here
+            break;
+        case "poison":
+            target.status.push({
+                "effect": "poison",
+                "duration": move.effect_duration
+            });
+            pushMessage(`${target.pokemon.display_name} was poisoned!`);
+            break;
+        case "lower-sp-defense":
+            target.pokemon.stats.spDefense -= 1;
+            pushMessage(`${target.pokemon.display_name}'s Special Defense was lowered!`);
+            break;
+        case "faint":
+            target.status.push({
+                "effect": "faint",
+                "duration": move.effect_duration,
+                "target": user
+            });
+            pushMessage(`A bond of fate has been established with ${target.pokemon.display_name}!`);
+            break;
+    }
+}
+
 function pushMessage(message) {
     document.getElementById("message-display").innerText = message;
 }
+
 function changePlayerPokemonImage(idx) {
     const img = document.getElementById("player-pokemon");
     img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${idx}.png`;
 }
+
 function changeOpponentPokemonImage(idx) {
     const img = document.getElementById("opponent-pokemon");
     img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${idx}.png`;
