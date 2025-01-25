@@ -70,17 +70,45 @@
 </div>
 
 <div class="pokemon-field" id="player-pokemon-field">
-    <img src="../Images/Battle/battle-platform.png" alt="">
+    <img src="../Images/Battle/battle-platform.png" alt="" id="player-pokemon-platform">
     <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" alt="" id="player-pokemon">
-    <div class="hp-bar">
-        <div class="hp-bar-fill" id="player-hp-bar-fill"></div>
+    <div class="container mt-4" id="player-pokemon-card">
+        <div class="custom-card">
+            <div class="d-flex justify-content-between align-items-center">
+                <span class="text-left" id="player-pokemon-name">Pikachu</span>
+                <span class="text-right" id="player-pokemon-level">Lv10</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt-2">
+                <span class="mr-2 mt-2">HP</span>
+                <div class="hp-bar">
+                    <div class="hp-bar-fill" id="player-hp-bar-fill"></div>
+                </div>
+            </div>
+            <div class="mt-2 text-right">
+                <span id="player-pokemon-hp-text">10/20</span>
+            </div>
+        </div>
     </div>
 </div>
 <div class="pokemon-field" id="opponent-pokemon-field">
-    <img src="../Images/Battle/battle-platform.png" alt="">
+    <img src="../Images/Battle/battle-platform.png" alt="" id="opponent-pokemon-platform">
     <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png" alt="" id="opponent-pokemon">
-    <div class="hp-bar">
-        <div class="hp-bar-fill" id="opponent-hp-bar-fill"></div>
+    <div class="container mt-4" id="opponent-pokemon-card">
+        <div class="custom-card">
+            <div class="d-flex justify-content-between align-items-center">
+                <span class="text-left" id="opponent-pokemon-name">Pikachu</span>
+                <span class="text-right" id="opponent-pokemon-level">Lv10</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt-2">
+                <span class="mr-2 mt-2">HP</span>
+                <div class="hp-bar">
+                    <div class="hp-bar-fill" id="opponent-hp-bar-fill"></div>
+                </div>
+            </div>
+            <div class="mt-2 text-right">
+                <span id="opponent-pokemon-hp-text">10/20</span>
+            </div>
+        </div>
     </div>
 </div>
 </body>

@@ -202,8 +202,8 @@ function hideAll() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    changePlayerPokemonImage(playerActivePokemon.pokemon.id);
-    changeOpponentPokemonImage(opponentActivePokemon.pokemon.id);
+    updatePlayerDisplay();
+    updateOpponentDisplay();
 
     initContainers();
     turn();
@@ -286,13 +286,13 @@ function handleEffect(pokemon, effect) {
             // https://the-episodes-and-movie-yveltal-and-more.fandom.com/wiki/Burn_(Pokémon_Status_Condition)
             pushMessage(`${pokemon.pokemon.display_name} was hurt by burn!`);
             pokemon.hp -= Math.floor(maxHp / 16);
-            refreshHpBars();
+            updateHpBars();
             break;
         case "poison":
             // https://bulbapedia.bulbagarden.net/wiki/Poison_(status_condition)#Generation_I
             pushMessage(`${pokemon.pokemon.display_name} was hurt by poison!`);
             pokemon.hp -= Math.floor(maxHp / 8);
-            refreshHpBars();
+            updateHpBars();
             break;
         case "flinch":
             // https://bulbapedia.bulbagarden.net/wiki/Flinch
@@ -333,8 +333,7 @@ function switchOpponentPokemon() {
     // Simple for now because opponent only has 2 Pokemon
     opponentActivePokemon = opponentActivePokemon === opponentTeam[0] ? opponentTeam[1] : opponentTeam[0];
     pushMessage(`Opponent switched to ${opponentActivePokemon.pokemon.display_name}`);
-    changeOpponentPokemonImage(opponentActivePokemon.pokemon.id);
-    refreshHpBars();
+    updateOpponentDisplay();
 }
 
 function attack() {
@@ -432,8 +431,7 @@ function selectPokemon(pokemon) {
 
     playerActivePokemon = pokemon
     pushMessage(`You switched to ${playerActivePokemon.pokemon.display_name}`);
-    changePlayerPokemonImage(playerActivePokemon.pokemon.id);
-    refreshHpBars();
+    updatePlayerDisplay();
 
     // Switch turns
     // Handle switching after faint
@@ -500,23 +498,13 @@ function calculateAttack(user, moveName, target) {
 function damagePlayer(damage) {
     playerActivePokemon.hp -= damage;
     console.log(`Player took ${damage} damage and has ${playerActivePokemon.hp} HP left`);
-    refreshHpBars();
+    updateHpBars();
 }
 
 function damageOpponent(damage) {
     opponentActivePokemon.hp -= damage;
     console.log(`Opponent took ${damage} damage and has ${opponentActivePokemon.hp} HP left`);
-    refreshHpBars();
-}
-
-function refreshHpBars() {
-    const playerMaxHp = calculateHp(playerActivePokemon.pokemon);
-    const playerHpBar = document.getElementById("player-hp-bar-fill");
-    playerHpBar.style.width = `${Math.max(playerActivePokemon.hp, 0) / playerMaxHp * 100}%`;
-
-    const opponentMaxHp = calculateHp(opponentActivePokemon.pokemon);
-    const opponentHpBar = document.getElementById("opponent-hp-bar-fill");
-    opponentHpBar.style.width = `${Math.max(opponentActivePokemon.hp, 0) / opponentMaxHp * 100}%`;
+    updateHpBars();
 }
 
 /*
@@ -621,4 +609,36 @@ function changePlayerPokemonImage(idx) {
 function changeOpponentPokemonImage(idx) {
     const img = document.getElementById("opponent-pokemon");
     img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${idx}.png`;
+}
+
+function updatePlayerDisplay() {
+    updateHpBars();
+    document.getElementById("player-pokemon-name").innerText = playerActivePokemon.pokemon.display_name;
+    document.getElementById("player-pokemon-level").innerText = `Level ${playerActivePokemon.pokemon.level}`;
+    changePlayerPokemonImage(playerActivePokemon.pokemon.id);
+}
+function updateOpponentDisplay() {
+    updateHpBars();
+    document.getElementById("opponent-pokemon-name").innerText = opponentActivePokemon.pokemon.display_name;
+    document.getElementById("opponent-pokemon-level").innerText = `Level ${opponentActivePokemon.pokemon.level}`;
+    changeOpponentPokemonImage(opponentActivePokemon.pokemon.id);
+}
+
+function updateHpBars() {
+    updatePlayerHpBar();
+    updateOpponentHpBar();
+}
+function updatePlayerHpBar() {
+    const playerMaxHp = calculateHp(playerActivePokemon.pokemon);
+    const playerHpBar = document.getElementById("player-hp-bar-fill");
+    playerHpBar.style.width = `${Math.max(playerActivePokemon.hp, 0) / playerMaxHp * 100}%`;
+
+    document.getElementById("player-pokemon-hp-text").innerText = `${playerActivePokemon.hp} / ${playerMaxHp}`;
+}
+function updateOpponentHpBar() {
+    const opponentMaxHp = calculateHp(opponentActivePokemon.pokemon);
+    const opponentHpBar = document.getElementById("opponent-hp-bar-fill");
+    opponentHpBar.style.width = `${Math.max(opponentActivePokemon.hp, 0) / opponentMaxHp * 100}%`;
+
+    document.getElementById("opponent-pokemon-hp-text").innerText = `${opponentActivePokemon.hp} / ${opponentMaxHp}`;
 }

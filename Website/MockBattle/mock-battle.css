@@ -12,42 +12,84 @@ img#player-pokemon, img#opponent-pokemon {
 
 #player-pokemon-field {
     position: fixed;
-    bottom: 30vh;
-    left: 600px;
+    bottom: 11vh;
+    left: 550px;
     transform: translateX(-50%);
+}
+img#player-pokemon-platform {
+    position: fixed;
+    bottom: -167px;
+    left: -167px;
+    width: 700px;
+    height: auto;
 }
 img#player-pokemon {
     position: relative;
-    right: 170px;
-    bottom: 50px;
-    width: 150px;
+    right: 9px;
+    bottom: 47px;
+    width: 400px;
     height: auto;
+    transform: scaleX(-1);
+}
+#player-pokemon-card {
+    position: fixed;
+    bottom: 168px;
+    left: 590px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
 }
 
 #opponent-pokemon-field {
     position: fixed;
-    top: 15vh;
-    right: 600px;
+    top: 28vh;
+    right: 304px;
     transform: translateX(50%);
 }
-img#opponent-pokemon {
-    position: relative;
-    right: 170px;
-    bottom: 50px;
-    width: 150px;
+img#opponent-pokemon-platform {
+    position: fixed;
+    bottom: -360px;
+    left: -469px;
+    width: 700px;
     height: auto;
 }
-.hp-bar {
-    width: 100px;
-    height: 10px;
-    background-color: red;
-    border: 1px solid black;
-
-    position: relative;
-    bottom: 40px;
-    left: 50px;
+img#opponent-pokemon {
+    position: fixed;
+    right: -94px;
+    bottom: -145px;
+    width: 400px;
+    height: auto;
 }
+#opponent-pokemon-card {
+    position: fixed;
+    bottom: -33px;
+    left: -849px;
+    width: 350px;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.custom-card {
+    background-color: #fffff2;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 10px;
+    width: 350px;
+}
+
+.hp-bar {
+    background-color: #ccc;
+    border-radius: 5px;
+    height: 20px;
+    width: 100%;
+    margin-top: 10px;
+}
+
 .hp-bar-fill {
-    background-color: green;
+    background-color: #4caf50; /* Green */
     height: 100%;
+    width: 50%; /* Example HP percentage */
+    border-radius: 5px;
 }
