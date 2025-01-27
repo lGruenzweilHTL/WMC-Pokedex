@@ -271,6 +271,34 @@ function handleStatusEffects() {
     opponentActivePokemon.status.forEach(status => {
         handleEffect(opponentActivePokemon, status);
     });
+
+    displayStatusEffects();
+}
+
+function displayStatusEffects() {
+    const playerContainer = document.getElementById("player-status-container");
+    const opponentContainer = document.getElementById("opponent-status-container");
+
+    clearStatusEffect(playerContainer);
+    clearStatusEffect(opponentContainer);
+
+    playerActivePokemon.status.forEach(status => {
+        const effect = document.createElement("span");
+        effect.innerText = status.effect;
+        effect.classList.add('status', 'status-' + status.effect);
+        playerContainer.appendChild(effect);
+    });
+    opponentActivePokemon.status.forEach(status => {
+        const effect = document.createElement("span");
+        effect.innerText = status.effect;
+        effect.classList.add('status', 'status-' + status.effect);
+        opponentContainer.appendChild(effect);
+    })
+}
+function clearStatusEffect(container) {
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
 }
 
 function handleEffect(pokemon, effect) {

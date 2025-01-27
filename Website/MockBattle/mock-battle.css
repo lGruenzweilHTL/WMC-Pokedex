@@ -93,3 +93,33 @@ img#opponent-pokemon {
     width: 50%; /* Example HP percentage */
     border-radius: 5px;
 }
+
+.status {
+    border: black 1px solid;
+    border-radius: 10px;
+    padding: 2px 7px;
+}
+.status-burn {
+    background-color: red;
+}
+.status-poison {
+    background-color: purple;
+}
+.status-paralysis {
+    background-color: yellow;
+}
+.status-sleep {
+    background-color: blue;
+}
+.status-frozen {
+    background-color: lightblue;
+}
+.status-confusion {
+    background-color: orange;
+}
+
+/* Used for conditional fainting e. g. with destiny bond */
+.status-faint {
+    background-color: black;
+    color: white;
+}

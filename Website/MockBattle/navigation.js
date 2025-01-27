@@ -28,5 +28,9 @@ document.addEventListener('keydown', function (event) {
                 focusableElements[currentIndex].click();
             }
             break;
+        default:
+            // Focus on the first element
+            focusableElements[0].focus();
+            break;
     }
 });
