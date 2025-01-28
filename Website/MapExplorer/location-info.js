@@ -55,7 +55,7 @@ async function getLocationAreaData(area, location) {
         card.classList.add('mb-2', 'container', 'flex-row', 'd-flex');
 
         const pokemonCard = document.createElement('div');
-            pokemonCard.classList.add('card', 'card-body', 'col-md-4', 'col-sm-12');
+        pokemonCard.classList.add('card', 'card-body', 'col-md-4', 'col-sm-12');
         const link = document.createElement('a');
         link.href = `../PokemonSubpage/pokemon.html?pokemon=${encounter.pokemon.name}`;
         link.innerText = encounter.pokemon.name;
@@ -73,7 +73,7 @@ async function getLocationAreaData(area, location) {
         encounterCard.classList.add('card', 'card-body', 'col-md-8', 'col-sm-12');
 
         for (const version of encounter.version_details) {
-            const versionName = await fetchVersionEnglishName(version.version.name);
+            const versionName = formatVersionName(version.version.name);
             const versionHeader = document.createElement('a');
             versionHeader.innerText = versionName;
             versionHeader.classList.add('mb-2', 'btn', 'btn-link');
@@ -162,15 +162,24 @@ async function fetchAreaEnglishName(name) {
     return findEnglishName(data);
 }
 
-async function fetchVersionEnglishName(name) {
-    const response = await fetch(`https://pokeapi.co/api/v2/version/${name}`);
-    const data = await response.json();
-    return findEnglishName(data);
-}
-
 function findEnglishName(data) {
     if (data.names.length === 0) {
         return data.name;
     }
     return data.names.find(name => name.language.name === 'en').name;
+}
+
+function formatVersionName(name) {
+    const specialNames = {
+        'firered': 'FireRed',
+        'leafgreen': 'LeafGreen',
+        'heartgold': 'HeartGold',
+        'soulsilver': 'SoulSilver',
+        'letsgo-pikachu': 'Let\'s Go, Pikachu!',
+        'letsgo-eevee': 'Let\'s Go, Eevee!'
+    }
+    if (specialNames[name]) {
+        return specialNames[name];
+    }
+    return name.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 }
