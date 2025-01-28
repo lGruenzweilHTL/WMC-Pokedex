@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", async function() {
+document.addEventListener("DOMContentLoaded", async function () {
     const numberOfPokemon = 151;
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${numberOfPokemon}`);
     const data = await response.json();
@@ -10,6 +10,11 @@ document.addEventListener("DOMContentLoaded", async function() {
     }));
 
     const tableContainer = document.getElementById("tableContainer");
+
+    // Hilfsfunktion: Name formatieren
+    function formatName(name) {
+        return name.charAt(0).toUpperCase() + name.slice(1);
+    }
 
     // Funktion: Tabelle generieren
     function generateTable(filteredData) {
@@ -35,7 +40,8 @@ document.addEventListener("DOMContentLoaded", async function() {
     window.filterPokemon = function () {
         const searchTerm = document.getElementById("searchBar").value.toLowerCase();
         const filteredData = pokemonData.filter(pokemon =>
-            pokemon.name.toLowerCase().includes(searchTerm)
+            pokemon.name.toLowerCase().includes(searchTerm) || // Name enthält den Suchbegriff
+            `#${pokemon.id.toString().padStart(3, "0")}`.includes(searchTerm) // Nummer enthält den Suchbegriff
         );
         generateTable(filteredData);
     };
@@ -43,8 +49,5 @@ document.addEventListener("DOMContentLoaded", async function() {
     // Beim Laden der Seite: Alle Pokémon anzeigen
     generateTable(pokemonData);
 
-    // Hilfsfunktion: Name formatieren
-    function formatName(name) {
-        return name.charAt(0).toUpperCase() + name.slice(1);
-    }
+    
 });
