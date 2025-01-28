@@ -22,6 +22,7 @@
     TODO:
     - Implement status effects
     - Implement bag
+    - Handle fainted pokemon
  */
 
 class Pokemon {
@@ -62,10 +63,11 @@ class Effect {
     }
 }
 class GameAction {
-    constructor(action, move, pokemon) {
+    constructor(action, move, pokemon, target) {
         this.action = action;
         this.move = move;
         this.pokemon = pokemon;
+        this.target = target;
     }
 
     goesBefore(otherAction) {
@@ -88,10 +90,6 @@ class GameAction {
         }
 
         return this.pokemon.stats.speed > otherAction.pokemon.stats.speed;
-    }
-
-    toString() {
-        return `${this.action} ${this.move?.name} ${this.pokemon?.name}`;
     }
 }
 
@@ -138,7 +136,7 @@ async function gameLoop() {
     while (!isGameOver()) {
         // Let player select an action
         const playerAction = await waitForPlayerAction();
-        console.log("Received player action: " + playerAction);
+        console.log(`Received "${playerAction.action}" action from player${playerAction.move ? ". Move: " + playerAction.move.name : ""}`);
 
         // Opponent selects move automatically (at random)
         const opponentAction = selectOpponentMove();
@@ -166,7 +164,7 @@ function calculateTurnOrder(playerAction, opponentAction) {
 
 function selectOpponentMove() {
     const idx = Math.floor(Math.random() * 4);
-    return new GameAction("attack", opponentActivePokemon.moves[idx], opponentActivePokemon);
+    return new GameAction("attack", opponentActivePokemon.moves[idx], opponentActivePokemon, playerActivePokemon);
 }
 
 async function waitForPlayerAction() {
@@ -223,16 +221,16 @@ function attackClicked() {
 }
 function moveSelected(idx) {
     hidePlayerMoveSelect();
-    return new GameAction("attack", playerActivePokemon.moves[idx], playerActivePokemon);
+    return new GameAction("attack", playerActivePokemon.moves[idx], playerActivePokemon, opponentActivePokemon);
 }
 
 function runClicked() {
     hidePlayerActionSelect();
-    return new GameAction("run", null, null);
+    return new GameAction("run", null, null, null);
 }
 
 function bagClicked() {
-    // TODO
+    return new GameAction("bag", null, null, null);
 }
 
 // Called by button
@@ -251,7 +249,7 @@ function pokemonClicked() {
 }
 function pokemonSelected(idx) {
     hidePlayerPokemonSelect();
-    return new GameAction("pokemon", null, playerTeam[idx]);
+    return new GameAction("pokemon", null, playerTeam[idx], null);
 }
 
 function executeActions() {
@@ -272,7 +270,7 @@ function executeAction(action) {
             updatePlayerDisplay();
             break;
         case "attack":
-            handlePlayerAttack(action);
+            handleAttack(action);
             break;
         default:
             console.error("Invalid action: " + action.action);
@@ -280,12 +278,12 @@ function executeAction(action) {
     }
 }
 
-function handlePlayerAttack(action) {
+function handleAttack(action) {
     const move = action.move;
-    const damage = calculateAttack(playerActivePokemon, move, opponentActivePokemon);
-    damageOpponent(damage);
+    const damage = calculateAttack(action.pokemon, move, action.target);
+    action.target.hp -= damage;
 
-    updateOpponentDisplay();
+    updateDisplay();
 }
 
 function calculateAttack(user, move, target) {
