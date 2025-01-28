@@ -7,7 +7,7 @@
     <title>Pokedex</title>
     <link rel="stylesheet" href="pokedex.css">
     <link rel="stylesheet" href="navbar.css">
-    <script src="pokedex.js"></script>
+    <script src="pokedex.js" defer></script>
 </head>
 
 <body>
@@ -25,6 +25,20 @@
         <li><strong><a href="anime.html">TV series</a></strong></li>
     </ul>
 </nav>
-    <h1 style="text-align: center; margin-top: 5%;">Pokedex</h1>
+
+<h1 style="text-align: center; margin-top: 5%;">Pokedex</h1>
+
+<div style="text-align: center; margin: 20px;">
+    <input 
+        type="text" 
+        id="searchBar" 
+        placeholder="Search Pokémon by name..." 
+        onkeyup="filterPokemon()" 
+        style="padding: 10px; width: 50%; font-size: 16px;"
+    />
+</div>
+
+<div id="tableContainer"></div>
+
 </body>
 </html>
