@@ -18,14 +18,19 @@
     Order of actions: run, pokemon, bag, attack
 
     Requires code from scripts: damage.js, containers.js, ui.js, calculator-methods.js
+
+    TODO:
+    - Implement status effects
+    - Implement bag
  */
 
 class Pokemon {
     constructor(string) {
         const data = pokemon[string];
+        this.id = data.id;
         this.name = data.display_name;
         this.level = data.level;
-        this.base_stats = data.stats;
+        this.stats = data.stats;
         this.types = data.types;
         this.hp = calculateHp(data);
         this.moves = data.moves.map(move => new Move(move));
@@ -84,6 +89,10 @@ class GameAction {
 
         return this.pokemon.stats.speed > otherAction.pokemon.stats.speed;
     }
+
+    toString() {
+        return `${this.action} ${this.move?.name} ${this.pokemon?.name}`;
+    }
 }
 
 let turnOrder = [];
@@ -104,6 +113,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     initTeams();
 
     console.log("Game initialized successfully");
+
+    updateDisplay();
 
     await gameLoop();
 });
@@ -127,6 +138,7 @@ async function gameLoop() {
     while (!isGameOver()) {
         // Let player select an action
         const playerAction = await waitForPlayerAction();
+        console.log("Received player action: " + playerAction);
 
         // Opponent selects move automatically (at random)
         const opponentAction = selectOpponentMove();
@@ -143,7 +155,7 @@ async function gameLoop() {
 }
 
 function isGameOver() {
-    return playerTeam.length > 0 && opponentTeam.length > 0;
+    return playerTeam.length === 0 || opponentTeam.length === 0;
 }
 
 function calculateTurnOrder(playerAction, opponentAction) {
@@ -206,7 +218,7 @@ function attackClicked() {
     // Populate move buttons with the player's moves
     const buttons = document.getElementsByClassName("move-button");
     Array.from(buttons).forEach((button, idx) => {
-        button.innerText = moves[playerActivePokemon.pokemon.moves[idx]].display_name;
+        button.innerText = playerActivePokemon.moves[idx].name;
     });
 }
 function moveSelected(idx) {
@@ -234,7 +246,7 @@ function pokemonClicked() {
     // Populate pokemon buttons with the player's pokemon
     const buttons = document.getElementsByClassName("pokemon-button");
     Array.from(buttons).forEach((button, idx) => {
-        button.innerText = playerTeam[idx].display_name;
+        button.innerText = playerTeam[idx].name;
     });
 }
 function pokemonSelected(idx) {
@@ -277,25 +289,22 @@ function handlePlayerAttack(action) {
 }
 
 function calculateAttack(user, move, target) {
-    const pokemon = user.pokemon;
-    const targetPokemon = target.pokemon;
-
     // Check if it hits
     const random = Math.floor(Math.random() * 100);
     if (random > move.accuracy) {
-        console.log(`${pokemon.display_name}'s ${move.display_name} missed!`);
+        console.log(`${user.name}'s ${move.name} missed!`);
         return 0;
     }
 
-    const level = pokemon.level;
-    const attack = move.special ? pokemon.stats.spAttack : pokemon.stats.attack;
-    const defense = move.special ? targetPokemon.stats.spDefense : targetPokemon.stats.defense;
+    const level = user.level;
+    const attack = move.special ? user.stats.spAttack : user.stats.attack;
+    const defense = move.special ? target.stats.spDefense : target.stats.defense;
     const power = move.power;
-    const type1 = typeEffectiveness(move.type, targetPokemon.types[0]);
-    const type2 = targetPokemon.types.length > 1 ? typeEffectiveness(move.type, targetPokemon.types[1]) : 1;
-    const stab = pokemon.types.includes(move.type) ? 1.5 : 1;
-    const critical = isCritical(pokemon.stats.speed) ? 2 : 1;
+    const type1 = typeEffectiveness(move.type, target.types[0]);
+    const type2 = target.types.length > 1 ? typeEffectiveness(move.type, target.types[1]) : 1;
+    const stab = user.types.includes(move.type) ? 1.5 : 1;
+    const critical = isCritical(user.stats.speed) ? 2 : 1;
 
-    console.log(`${pokemon.display_name} used ${move.display_name}!`);
+    console.log(`${user.name} used ${move.name}!`);
     return calculateDamage(level, critical, power, attack, defense, stab, type1, type2);
 }
