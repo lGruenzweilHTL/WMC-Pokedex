@@ -5,6 +5,7 @@ body {
     color: #f5f5f5;
 }
 
+
 h1 {
     font-size: 65px;
     text-align: center;
@@ -112,4 +113,9 @@ h3 {
     color: #f5f5f5;
     margin-bottom: 15px;
     font-size: 1.5em;
+}
+
+.navigation-bar
+{
+    height: 3%;
 }

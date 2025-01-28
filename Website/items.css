@@ -5,6 +5,7 @@ body {
     background-repeat: repeat;
 }
 
+
 h1 {
     margin-top: 5%;
     text-align: center;
@@ -64,4 +65,10 @@ img:not(.navPokeball) {
 .item-description p {
     font-size: 14px;
     color: #666;
+}
+
+
+.navigation-bar
+{
+    margin: -8px;
 }
