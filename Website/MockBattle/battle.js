@@ -137,7 +137,7 @@ async function gameLoop() {
         // Execute moves 1 by 1
             // Handle status effects (apply, then decrement)
             // Calculate damage
-            // Apply status effects
+            // Apply new status effects
         executeActions();
     }
 }
@@ -162,30 +162,39 @@ async function waitForPlayerAction() {
 
     return new Promise((resolve) => {
         function handleAction(action) {
+            // Remove all event listeners
+            runButton.removeEventListener("click", runHandler);
+            bagButton.removeEventListener("click", bagHandler);
+            Array.from(pokemonButtons).forEach((button, idx) => {
+                button.removeEventListener("click", pokemonHandlers[idx]);
+            });
+            Array.from(moveButtons).forEach((button, idx) => {
+                button.removeEventListener("click", moveHandlers[idx]);
+            });
+
             resolve(action);
         }
 
-        document.getElementById("run-button").addEventListener("click", () => {
-            handleAction(runClicked());
-        }, { once: true });
+        const runButton = document.getElementById("run-button");
+        const runHandler = () => handleAction(runClicked());
+        runButton.addEventListener("click", runHandler, { once: true });
 
-        // TODO: Implement bag
-        document.getElementById("bag-button").addEventListener("click", () => {
-            handleAction(bagClicked());
-        }, { once: true });
+        const bagButton = document.getElementById("bag-button");
+        const bagHandler = () => handleAction(bagClicked());
+        bagButton.addEventListener("click", bagHandler, { once: true });
 
         const pokemonButtons = document.getElementsByClassName("pokemon-button");
-        Array.from(pokemonButtons).forEach((button, idx) => {
-            button.addEventListener("click", () => {
-                handleAction(pokemonSelected(idx));
-            }, { once: true });
+        const pokemonHandlers = Array.from(pokemonButtons).map((button, idx) => {
+            const handler = () => handleAction(pokemonSelected(idx));
+            button.addEventListener("click", handler, { once: true });
+            return handler;
         });
 
         const moveButtons = document.getElementsByClassName("move-button");
-        Array.from(moveButtons).forEach((button, idx) => {
-            button.addEventListener("click", () => {
-                handleAction(moveSelected(idx));
-            }, { once: true });
+        const moveHandlers = Array.from(moveButtons).map((button, idx) => {
+            const handler = () => handleAction(moveSelected(idx));
+            button.addEventListener("click", handler, { once: true });
+            return handler;
         });
     });
 }
