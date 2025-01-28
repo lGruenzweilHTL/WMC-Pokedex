@@ -87,8 +87,6 @@ class GameAction {
 }
 
 let turnOrder = [];
-let playerChosenMove;
-let opponentChosenMove;
 
 const playerPokemon = ["charizard", "gengar"];
 const opponentPokemon = ["gengar", "charizard"];
@@ -162,13 +160,77 @@ function selectOpponentMove() {
 async function waitForPlayerAction() {
     showPlayerActionSelect();
 
-    // Wait for action button to be clicked
+    return new Promise((resolve) => {
+        function handleAction(action) {
+            resolve(action);
+        }
 
-    // Continue based on the selected action
+        document.getElementById("run-button").addEventListener("click", () => {
+            handleAction(runClicked());
+        }, { once: true });
 
+        // TODO: Implement bag
+        document.getElementById("bag-button").addEventListener("click", () => {
+            handleAction(bagClicked());
+        }, { once: true });
 
-    // TEMP
+        const pokemonButtons = document.getElementsByClassName("pokemon-button");
+        Array.from(pokemonButtons).forEach((button, idx) => {
+            button.addEventListener("click", () => {
+                handleAction(pokemonSelected(idx));
+            }, { once: true });
+        });
+
+        const moveButtons = document.getElementsByClassName("move-button");
+        Array.from(moveButtons).forEach((button, idx) => {
+            button.addEventListener("click", () => {
+                handleAction(moveSelected(idx));
+            }, { once: true });
+        });
+    });
+}
+
+// Called by button
+function attackClicked() {
+    showPlayerMoveSelect();
+
+    // Populate move buttons with the player's moves
+    const buttons = document.getElementsByClassName("move-button");
+    Array.from(buttons).forEach((button, idx) => {
+        button.innerText = moves[playerActivePokemon.pokemon.moves[idx]].display_name;
+    });
+}
+function moveSelected(idx) {
+    hidePlayerMoveSelect();
+    return new GameAction("attack", playerActivePokemon.moves[idx], playerActivePokemon);
+}
+
+function runClicked() {
+    hidePlayerActionSelect();
     return new GameAction("run", null, null);
+}
+
+function bagClicked() {
+    // TODO
+}
+
+// Called by button
+function pokemonClicked() {
+    if (playerTeam.length <= 1) {
+        return; // Can't switch pokemon if there's only 1 left
+    }
+
+    showPlayerPokemonSelect();
+
+    // Populate pokemon buttons with the player's pokemon
+    const buttons = document.getElementsByClassName("pokemon-button");
+    Array.from(buttons).forEach((button, idx) => {
+        button.innerText = playerTeam[idx].display_name;
+    });
+}
+function pokemonSelected(idx) {
+    hidePlayerPokemonSelect();
+    return new GameAction("pokemon", null, playerTeam[idx]);
 }
 
 function executeActions() {
@@ -185,13 +247,46 @@ function executeAction(action) {
             // TODO
             break;
         case "pokemon":
-            // TODO
+            playerActivePokemon = action.pokemon;
+            updatePlayerDisplay();
             break;
         case "attack":
-            // TODO
+            handlePlayerAttack(action);
             break;
         default:
             console.error("Invalid action: " + action.action);
             break;
     }
+}
+
+function handlePlayerAttack(action) {
+    const move = action.move;
+    const damage = calculateAttack(playerActivePokemon, move, opponentActivePokemon);
+    damageOpponent(damage);
+
+    updateOpponentDisplay();
+}
+
+function calculateAttack(user, move, target) {
+    const pokemon = user.pokemon;
+    const targetPokemon = target.pokemon;
+
+    // Check if it hits
+    const random = Math.floor(Math.random() * 100);
+    if (random > move.accuracy) {
+        console.log(`${pokemon.display_name}'s ${move.display_name} missed!`);
+        return 0;
+    }
+
+    const level = pokemon.level;
+    const attack = move.special ? pokemon.stats.spAttack : pokemon.stats.attack;
+    const defense = move.special ? targetPokemon.stats.spDefense : targetPokemon.stats.defense;
+    const power = move.power;
+    const type1 = typeEffectiveness(move.type, targetPokemon.types[0]);
+    const type2 = targetPokemon.types.length > 1 ? typeEffectiveness(move.type, targetPokemon.types[1]) : 1;
+    const stab = pokemon.types.includes(move.type) ? 1.5 : 1;
+    const critical = isCritical(pokemon.stats.speed) ? 2 : 1;
+
+    console.log(`${pokemon.display_name} used ${move.display_name}!`);
+    return calculateDamage(level, critical, power, attack, defense, stab, type1, type2);
 }
