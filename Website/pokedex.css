@@ -1,25 +1,39 @@
-img:not(.navPokeball) {
-    width: 100px;
-    height: 100px;
+#searchBar {
+    border: 3px solid #b8b8b8;
+    border-radius: 8px;
+    margin-bottom: 20px;
 }
 
-td {
-    border: 1px solid #ddd;
-    text-align: center;
-    font-size: 18px;
+#tableContainer table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+#tableContainer table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#tableContainer table tr:hover {
+    background-color: #f1f1f1;
+}
+
+#tableContainer table td {
     padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+    font-size: 20px;
     transition: background-color 0.3s ease;
 }
 
-table {
-    border: none;
-    width: 80%;
-    margin: 20px auto;
-    border-collapse: collapse;
-    background-color: #ffffff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+
+
+img:not(.navPokeball) {
+    width: 100px;
+    height: 100px;
 }
 
 li {

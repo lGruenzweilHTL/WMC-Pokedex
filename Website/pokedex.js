@@ -11,11 +11,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const tableContainer = document.getElementById("tableContainer");
 
-    // Hilfsfunktion: Name formatieren
-    function formatName(name) {
-        return name.charAt(0).toUpperCase() + name.slice(1);
-    }
-
     // Funktion: Tabelle generieren
     function generateTable(filteredData) {
         tableContainer.innerHTML = ""; // Vorherigen Inhalt entfernen
@@ -48,6 +43,11 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // Beim Laden der Seite: Alle Pokémon anzeigen
     generateTable(pokemonData);
+
+    // Hilfsfunktion: Name formatieren
+    function formatName(name) {
+        return name.charAt(0).toUpperCase() + name.slice(1);
+    }
 
     
 });
