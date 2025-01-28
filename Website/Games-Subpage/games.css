@@ -8,6 +8,10 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     line-height: 1.6;
 }
+.navigation-bar
+{
+    margin: 0 -10%;
+}
 
 p {
     line-height: 1.8;
@@ -109,7 +113,7 @@ ul {
     margin: 0;
 }
 
-ul li {
+ul:not(.exclusive) li {
     margin: 10px 0;
     padding: 12px;
     border-bottom: 1px solid #3e4c59;
