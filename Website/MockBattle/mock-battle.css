@@ -1,0 +1,125 @@
+.focusable {
+    cursor: pointer;
+}
+
+.focusable:focus {
+    outline: 2px solid blue;
+}
+
+img#player-pokemon, img#opponent-pokemon {
+    transform-origin: bottom center;
+}
+
+#player-pokemon-field {
+    position: fixed;
+    bottom: 11vh;
+    left: 550px;
+    transform: translateX(-50%);
+}
+img#player-pokemon-platform {
+    position: fixed;
+    bottom: -167px;
+    left: -167px;
+    width: 700px;
+    height: auto;
+}
+img#player-pokemon {
+    position: relative;
+    right: 9px;
+    bottom: 47px;
+    width: 400px;
+    height: auto;
+    transform: scaleX(-1);
+}
+#player-pokemon-card {
+    position: fixed;
+    bottom: 168px;
+    left: 590px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+#opponent-pokemon-field {
+    position: fixed;
+    top: 28vh;
+    right: 304px;
+    transform: translateX(50%);
+}
+img#opponent-pokemon-platform {
+    position: fixed;
+    bottom: -360px;
+    left: -469px;
+    width: 700px;
+    height: auto;
+}
+img#opponent-pokemon {
+    position: fixed;
+    right: -94px;
+    bottom: -145px;
+    width: 400px;
+    height: auto;
+}
+#opponent-pokemon-card {
+    position: fixed;
+    bottom: -33px;
+    left: -849px;
+    width: 350px;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.custom-card {
+    background-color: #fffff2;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 10px;
+    width: 350px;
+}
+
+.hp-bar {
+    background-color: #ccc;
+    border-radius: 5px;
+    height: 20px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.hp-bar-fill {
+    background-color: #4caf50; /* Green */
+    height: 100%;
+    width: 50%; /* Example HP percentage */
+    border-radius: 5px;
+}
+
+.status {
+    border: black 1px solid;
+    border-radius: 10px;
+    padding: 2px 7px;
+}
+.status-burn {
+    background-color: red;
+}
+.status-poison {
+    background-color: purple;
+}
+.status-paralysis {
+    background-color: yellow;
+}
+.status-sleep {
+    background-color: blue;
+}
+.status-frozen {
+    background-color: lightblue;
+}
+.status-confusion {
+    background-color: orange;
+}
+
+/* Used for conditional fainting e. g. with destiny bond */
+.status-faint {
+    background-color: black;
+    color: white;
+}

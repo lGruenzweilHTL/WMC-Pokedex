@@ -1,0 +1,110 @@
+{
+  "flamethrower": {
+    "type": "fire",
+    "special": true,
+    "priority": false,
+    "status": false,
+    "power": 90,
+    "accuracy": 100,
+    "display_name": "Flamethrower",
+    "effect": {
+        "name": "burn",
+        "chance": 10,
+        "duration": 2
+    }
+  },
+  "dragon-claw": {
+    "type": "dragon",
+    "special": false,
+    "priority": false,
+    "status": false,
+    "power": 80,
+    "accuracy": 100,
+    "display_name": "Dragon Claw",
+    "effect": null
+  },
+  "air-slash": {
+    "type": "flying",
+    "special": false,
+    "priority": false,
+    "status": false,
+    "power": 75,
+    "accuracy": 95,
+    "display_name": "Air Slash",
+    "effect": {
+      "name": "flinch",
+      "chance": 30,
+      "duration": 1
+    }
+  },
+  "fire-blast": {
+    "type": "fire",
+    "special": true,
+    "priority": false,
+    "status": false,
+    "power": 110,
+    "accuracy": 85,
+    "display_name": "Fire Blast",
+    "effect": {
+      "name": "burn",
+      "chance": 10,
+      "duration": 2
+    }
+  },
+  "shadow-ball": {
+    "type": "ghost",
+    "special": true,
+    "priority": false,
+    "status": false,
+    "power": 80,
+    "accuracy": 100,
+    "display_name": "Shadow Ball",
+    "effect": {
+      "name": "lower-sp-defense",
+      "chance": 20,
+      "duration": 0
+    }
+  },
+  "dark-pulse": {
+    "type": "dark",
+    "special": true,
+    "priority": false,
+    "status": false,
+    "power": 80,
+    "accuracy": 100,
+    "display_name": "Dark Pulse",
+    "effect": {
+      "name": "flinch",
+      "chance": 20,
+      "duration": 1
+    }
+  },
+  "sludge-bomb": {
+    "type": "poison",
+    "special": true,
+    "priority": false,
+    "status": false,
+    "power": 90,
+    "accuracy": 100,
+    "display_name": "Sludge Bomb",
+    "effect": {
+      "name": "poison",
+      "chance": 30,
+      "duration": 2
+    }
+  },
+  "destiny-bond": {
+    "type": "ghost",
+    "special": false,
+    "priority": false,
+    "status": true,
+    "power": null,
+    "accuracy": 100,
+    "display_name": "Destiny Bond",
+    "effect": {
+      "name": "faint",
+      "chance": 100,
+      "duration": 1
+    }
+  }
+}

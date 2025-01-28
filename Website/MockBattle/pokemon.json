@@ -1,0 +1,48 @@
+{
+  "charizard": {
+    "level": 50,
+    "id": 6,
+    "display_name": "Charizard",
+    "stats": {
+      "hp": 78,
+      "attack": 84,
+      "defense": 78,
+      "spAttack": 109,
+      "spDefense": 85,
+      "speed": 100
+    },
+    "moves": [
+      "flamethrower",
+      "air-slash",
+      "dragon-claw",
+      "fire-blast"
+    ],
+    "types": [
+      "fire",
+      "flying"
+    ]
+  },
+  "gengar": {
+    "level": 50,
+    "id": 94,
+    "display_name": "Gengar",
+    "stats": {
+      "hp": 60,
+      "attack": 65,
+      "defense": 60,
+      "spAttack": 130,
+      "spDefense": 75,
+      "speed": 110
+    },
+    "moves": [
+      "shadow-ball",
+      "dark-pulse",
+      "sludge-bomb",
+      "destiny-bond"
+    ],
+    "types": [
+      "ghost",
+      "poison"
+    ]
+  }
+}
