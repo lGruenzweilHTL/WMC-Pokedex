@@ -150,6 +150,7 @@ async function gameLoop() {
         // Handle status effects (apply, then decrement)
         await executeActions();
     }
+    hideAll();
 }
 
 function isGameOver() {
@@ -250,7 +251,7 @@ function pokemonClicked() {
 }
 
 function filterPlayerPokemon() {
-    return playerTeam.filter(pokemon => pokemon !== playerActivePokemon && pokemon.hp > 0);
+    return playerTeam.filter(pokemon => pokemon !== playerActivePokemon);
 }
 
 function showPokemonList(pokemonList) {
@@ -286,8 +287,63 @@ async function executeActions() {
 
         // Handle status effects
         await handleStatusEffects(action.pokemon);
+
+        // Check if any Pokémon has fainted
+        // Do that after handling status and conditional effects to prevent possible edge cases (like fainting from destiny bond)
+        if (playerActivePokemon.hp <= 0) {
+            await pushMessage(`${playerActivePokemon.name} has fainted!`);
+            playerTeam = playerTeam.filter(pokemon => pokemon.hp > 0);
+            if (playerTeam.length > 0) {
+                await pushMessage("Choose a new Pokémon!");
+                playerActivePokemon = await waitForPlayerPokemonSelection();
+            } else {
+                await pushMessage("You have no more Pokémon left!");
+                await pushMessage("You lost!");
+                break;
+            }
+        }
+
+        if (opponentActivePokemon.hp <= 0) {
+            await pushMessage(`${opponentActivePokemon.name} has fainted!`);
+            opponentTeam = opponentTeam.filter(pokemon => pokemon.hp > 0);
+            if (opponentTeam.length > 0) {
+                opponentActivePokemon = selectRandomOpponentPokemon();
+                await pushMessage(`Opponent sent out ${opponentActivePokemon.name}!`);
+            } else {
+                await pushMessage("Opponent has no more Pokémon left!");
+                await pushMessage("You won!");
+                break;
+            }
+        }
+
         updateDisplay();
     }
+}
+
+async function waitForPlayerPokemonSelection() {
+    showPlayerPokemonSelect();
+    const selectedPokemon = await new Promise((resolve) => {
+        const pokemonButtons = document.getElementsByClassName("pokemon-button");
+        pokemonButtons[0].focus();
+        Array.from(pokemonButtons).forEach((button, idx) => {
+            if (!playerTeam[idx]) {
+                button.style.display = "none";
+                return;
+            }
+
+            button.innerText = playerTeam[idx].name;
+            button.addEventListener("click", () => {
+                resolve(playerTeam[idx]);
+            }, { once: true });
+        });
+    });
+    hidePlayerPokemonSelect();
+    return selectedPokemon;
+}
+
+function selectRandomOpponentPokemon() {
+    const randomIndex = Math.floor(Math.random() * opponentTeam.length);
+    return opponentTeam[randomIndex];
 }
 
 async function executeAction(action) {
@@ -298,7 +354,7 @@ async function executeAction(action) {
             break;
         case "bag":
             await pushMessage("You reached into your bag!");
-            // TODO
+            await pushMessage("But it was empty!"); // TODO
             break;
         case "pokemon":
             switch (action.target) {
