@@ -34,11 +34,13 @@ class Pokemon {
         this.stats = data.stats;
         this.types = data.types;
         this.hp = calculateHp(data);
+        this.maxHp = this.hp;
         this.moves = data.moves.map(move => new Move(move));
         this.statusEffects = []; // Status effect (like burn, poison) are applied every turn of that pokemon
         this.conditionalEffects = []; // Conditional effects (like faint from destiny bond) are triggered by events
     }
 }
+
 class Move {
     constructor(string) {
         const data = moves[string];
@@ -52,6 +54,7 @@ class Move {
         this.effect = new Effect(data.effect);
     }
 }
+
 class Effect {
     constructor(json) {
         if (json === null) {
@@ -60,8 +63,10 @@ class Effect {
         this.name = json.name;
         this.duration = json.duration;
         this.chance = json.chance;
+        this.options = null;
     }
 }
+
 class GameAction {
     constructor(action, move, pokemon, target) {
         this.action = action;
@@ -124,6 +129,7 @@ async function initJson() {
     response = await fetch("moves.json");
     moves = await response.json();
 }
+
 function initTeams() {
     playerTeam = playerPokemon.map(pokemon => new Pokemon(pokemon));
     opponentTeam = opponentPokemon.map(pokemon => new Pokemon(pokemon));
@@ -145,9 +151,7 @@ async function gameLoop() {
         calculateTurnOrder(playerAction, opponentAction);
 
         // Execute moves 1 by 1
-            // Handle status effects (apply, then decrement)
-            // Calculate damage
-            // Apply new status effects
+        // Handle status effects (apply, then decrement)
         executeActions();
     }
 }
@@ -187,23 +191,23 @@ async function waitForPlayerAction() {
 
         const runButton = document.getElementById("run-button");
         const runHandler = () => handleAction(runClicked());
-        runButton.addEventListener("click", runHandler, { once: true });
+        runButton.addEventListener("click", runHandler, {once: true});
 
         const bagButton = document.getElementById("bag-button");
         const bagHandler = () => handleAction(bagClicked());
-        bagButton.addEventListener("click", bagHandler, { once: true });
+        bagButton.addEventListener("click", bagHandler, {once: true});
 
         const pokemonButtons = document.getElementsByClassName("pokemon-button");
         const pokemonHandlers = Array.from(pokemonButtons).map((button, idx) => {
             const handler = () => handleAction(pokemonSelected(idx));
-            button.addEventListener("click", handler, { once: true });
+            button.addEventListener("click", handler, {once: true});
             return handler;
         });
 
         const moveButtons = document.getElementsByClassName("move-button");
         const moveHandlers = Array.from(moveButtons).map((button, idx) => {
             const handler = () => handleAction(moveSelected(idx));
-            button.addEventListener("click", handler, { once: true });
+            button.addEventListener("click", handler, {once: true});
             return handler;
         });
     });
@@ -219,6 +223,7 @@ function attackClicked() {
         button.innerText = playerActivePokemon.moves[idx].name;
     });
 }
+
 function moveSelected(idx) {
     hidePlayerMoveSelect();
     return new GameAction("attack", playerActivePokemon.moves[idx], playerActivePokemon, opponentActivePokemon);
@@ -226,11 +231,11 @@ function moveSelected(idx) {
 
 function runClicked() {
     hidePlayerActionSelect();
-    return new GameAction("run", null, null, null);
+    return new GameAction("run", null, playerActivePokemon, null);
 }
 
 function bagClicked() {
-    return new GameAction("bag", null, null, null);
+    return new GameAction("bag", null, playerActivePokemon, null);
 }
 
 // Called by button
@@ -247,16 +252,27 @@ function pokemonClicked() {
         button.innerText = playerTeam[idx].name;
     });
 }
+
 function pokemonSelected(idx) {
     hidePlayerPokemonSelect();
+    // TODO: add abstraction to handle switching pokemon
     return new GameAction("pokemon", null, playerTeam[idx], null);
 }
 
 function executeActions() {
     for (const action of turnOrder) {
+        // Handle conditional effects
+        handleStatusEffects(action.pokemon);
+
+        // Execute action
         executeAction(action);
+
+        // Handle status effects
+        handleStatusEffects(action.pokemon);
+        updateDisplay();
     }
 }
+
 function executeAction(action) {
     switch (action.action) {
         case "run":
@@ -266,8 +282,8 @@ function executeAction(action) {
             // TODO
             break;
         case "pokemon":
+            // TODO: fix (update gameAction class with enough abstraction to handle switching pokemon)
             playerActivePokemon = action.pokemon;
-            updatePlayerDisplay();
             break;
         case "attack":
             handleAttack(action);
@@ -282,6 +298,13 @@ function handleAttack(action) {
     const move = action.move;
     const damage = calculateAttack(action.pokemon, move, action.target);
     action.target.hp -= damage;
+
+    if (move.effect.name === "faint") {
+        move.effect.options = {
+            target: action.target
+        }
+    }
+    applyStatusEffect(action.target, move.effect);
 
     updateDisplay();
 }
@@ -305,4 +328,67 @@ function calculateAttack(user, move, target) {
 
     console.log(`${user.name} used ${move.name}!`);
     return calculateDamage(level, critical, power, attack, defense, stab, type1, type2);
+}
+
+function applyStatusEffect(pokemon, effect) {
+    if (effect === null) {
+        return;
+    }
+    if (effect.name === "faint" || effect.name === "flinch") {
+        // faint and flinch are not status effects
+        pokemon.conditionalEffects.push(effect);
+    } else pokemon.statusEffects.push(effect);
+}
+
+function handleStatusEffects(pokemon) {
+    for (const effect of pokemon.statusEffects) {
+        // Calculate effects
+        calculateStatusEffect(pokemon, effect);
+
+        // Decrement counters
+        effect.duration--;
+    }
+
+    // Remove expired effects
+    pokemon.statusEffects = pokemon.statusEffects.filter(effect => effect.duration > 0);
+}
+
+function calculateStatusEffect(pokemon, effect) {
+    switch (effect.name) {
+        case "burn":
+            // TODO: push message to UI
+            pokemon.hp -= Math.floor(pokemon.maxHp / 16);
+            break;
+        case "poison":
+            // TODO: push message to UI
+            pokemon.hp -= Math.floor(pokemon.maxHp / 8);
+            break;
+        default:
+            console.error("Unknown status effect: " + effect.name);
+            break;
+    }
+}
+
+function handleConditionalEffects(pokemon) {
+    for (const effect of pokemon.conditionalEffects) {
+        handleConditionalEffect(pokemon, effect);
+        effect.duration--;
+    }
+
+    pokemon.conditionalEffects = pokemon.conditionalEffects.filter(effect => effect.duration > 0);
+}
+
+function handleConditionalEffect(pokemon, effect) {
+    switch (effect) {
+        case "faint":
+            // Check if target has fainted
+            if (effect.options.target.hp <= 0) {
+                // TODO: push message to UI
+                pokemon.hp = 0;
+            }
+            break;
+        case "flinch":
+            // Flinch is checked before the pokemon's turn
+            break;
+    }
 }

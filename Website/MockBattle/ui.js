@@ -8,6 +8,7 @@ function updatePlayerDisplay() {
     document.getElementById("player-pokemon-name").innerText = playerActivePokemon.name;
     document.getElementById("player-pokemon-level").innerText = `Level ${playerActivePokemon.level}`;
     changePlayerPokemonImage(playerActivePokemon.id);
+    displayPlayerStatusEffects();
 }
 
 function updateOpponentDisplay() {
@@ -15,6 +16,7 @@ function updateOpponentDisplay() {
     document.getElementById("opponent-pokemon-name").innerText = opponentActivePokemon.name;
     document.getElementById("opponent-pokemon-level").innerText = `Level ${opponentActivePokemon.level}`;
     changeOpponentPokemonImage(opponentActivePokemon.id);
+    displayOpponentStatusEffects();
 }
 
 function updatePlayerHpBar() {
@@ -41,4 +43,33 @@ function changePlayerPokemonImage(idx) {
 function changeOpponentPokemonImage(idx) {
     const img = document.getElementById("opponent-pokemon");
     img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${idx}.png`;
+}
+
+function clearStatusEffect(container) {
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+}
+
+function displayPlayerStatusEffects() {
+    const container = document.getElementById("player-status-container");
+    clearStatusEffect(container);
+
+    playerActivePokemon.statusEffects.forEach(status => {
+        const effect = document.createElement("span");
+        effect.innerText = status.name;
+        effect.classList.add('status', 'status-' + status.name);
+        container.appendChild(effect);
+    });
+}
+function displayOpponentStatusEffects() {
+    const container = document.getElementById("opponent-status-container");
+    clearStatusEffect(container);
+
+    opponentActivePokemon.statusEffects.forEach(status => {
+        const effect = document.createElement("span");
+        effect.innerText = status.name;
+        effect.classList.add('status', 'status-' + status.name);
+        container.appendChild(effect);
+    });
 }
