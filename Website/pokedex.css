@@ -46,6 +46,11 @@ body {
     background: linear-gradient(135deg, #fdf7f7, #d6ebff);
     margin: 0;
     padding: 0;
+
+    
+}
+body::-webkit-scrollbar {
+    display:none;
 }
 
 h1 {
