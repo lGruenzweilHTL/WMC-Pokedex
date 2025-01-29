@@ -23,14 +23,16 @@ document.addEventListener('keydown', function (event) {
                 focusableElements[currentIndex + 1].focus();
             }
             break;
-        case 'Enter':
+        case ' ':
             if (currentIndex !== -1) {
                 focusableElements[currentIndex].click();
             }
             break;
         default:
-            // Focus on the first element
-            focusableElements[0].focus();
             break;
     }
 });
+
+function focusFirstElement() {
+    document.querySelector('.focusable').focus();
+}

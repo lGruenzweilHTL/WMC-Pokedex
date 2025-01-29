@@ -24,7 +24,7 @@ function updatePlayerHpBar() {
     const playerHpBar = document.getElementById("player-hp-bar-fill");
     playerHpBar.style.width = `${Math.max(playerActivePokemon.hp, 0) / playerMaxHp * 100}%`;
 
-    document.getElementById("player-pokemon-hp-text").innerText = `${playerActivePokemon.hp} / ${playerMaxHp}`;
+    document.getElementById("player-pokemon-hp-text").innerText = `${Math.max(0, playerActivePokemon.hp)} / ${playerMaxHp}`;
 }
 
 function updateOpponentHpBar() {
@@ -32,7 +32,7 @@ function updateOpponentHpBar() {
     const opponentHpBar = document.getElementById("opponent-hp-bar-fill");
     opponentHpBar.style.width = `${Math.max(opponentActivePokemon.hp, 0) / opponentMaxHp * 100}%`;
 
-    document.getElementById("opponent-pokemon-hp-text").innerText = `${opponentActivePokemon.hp} / ${opponentMaxHp}`;
+    document.getElementById("opponent-pokemon-hp-text").innerText = `${Math.max(0, opponentActivePokemon.hp)} / ${opponentMaxHp}`;
 }
 
 function changePlayerPokemonImage(idx) {
