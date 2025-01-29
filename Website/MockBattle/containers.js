@@ -43,5 +43,8 @@ function hidePlayerPokemonSelect() {
 }
 
 function hideAll() {
-    selectGroup.forEach(select => select.style.display = "none");
+    // A little inefficient, but it's needed for the message box to work
+    const elementsToHide = selectGroup.filter(select => select.style.display === "block");
+    elementsToHide.forEach(select => select.style.display = "none");
+    return elementsToHide;
 }

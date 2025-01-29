@@ -115,9 +115,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     await initJson();
     initTeams();
 
-    console.log("Game initialized successfully");
-
     updateDisplay();
+
+    await pushMessage("The battle begins!");
 
     await gameLoop();
 });
@@ -152,7 +152,7 @@ async function gameLoop() {
 
         // Execute moves 1 by 1
         // Handle status effects (apply, then decrement)
-        executeActions();
+        await executeActions();
     }
 }
 
@@ -167,7 +167,7 @@ function calculateTurnOrder(playerAction, opponentAction) {
 }
 
 function selectOpponentMove() {
-    const idx = Math.floor(Math.random() * 4);
+    const idx = 3;
     return new GameAction("attack", opponentActivePokemon.moves[idx], opponentActivePokemon, playerActivePokemon);
 }
 
@@ -259,34 +259,37 @@ function pokemonSelected(idx) {
     return new GameAction("pokemon", null, playerTeam[idx], null);
 }
 
-function executeActions() {
+async function executeActions() {
     for (const action of turnOrder) {
         // Handle conditional effects
-        handleStatusEffects(action.pokemon);
+        await handleConditionalEffects(action.pokemon);
 
         // Execute action
-        executeAction(action);
+        await executeAction(action);
 
         // Handle status effects
-        handleStatusEffects(action.pokemon);
+        await handleStatusEffects(action.pokemon);
         updateDisplay();
     }
 }
 
-function executeAction(action) {
+async function executeAction(action) {
     switch (action.action) {
         case "run":
+            await pushMessage("You ran away!");
             document.location.href = "../mockbattle.html";
             break;
         case "bag":
+            await pushMessage("You reached into your bag!");
             // TODO
             break;
         case "pokemon":
+            await pushMessage("Not implemented yet!");
             // TODO: fix (update gameAction class with enough abstraction to handle switching pokemon)
             playerActivePokemon = action.pokemon;
             break;
         case "attack":
-            handleAttack(action);
+            await handleAttack(action);
             break;
         default:
             console.error("Invalid action: " + action.action);
@@ -294,9 +297,9 @@ function executeAction(action) {
     }
 }
 
-function handleAttack(action) {
+async function handleAttack(action) {
     const move = action.move;
-    const damage = calculateAttack(action.pokemon, move, action.target);
+    const damage = await calculateAttack(action.pokemon, move, action.target);
     action.target.hp -= damage;
 
     if (move.effect.name === "faint") {
@@ -304,16 +307,17 @@ function handleAttack(action) {
             target: action.target
         }
     }
-    applyStatusEffect(action.target, move.effect);
 
     updateDisplay();
+    await pushMessage(`${action.pokemon.name} used ${action.move.name}!`);
+    await applyStatusEffect(action.target, move.effect);
 }
 
-function calculateAttack(user, move, target) {
+async function calculateAttack(user, move, target) {
     // Check if it hits
     const random = Math.floor(Math.random() * 100);
     if (random > move.accuracy) {
-        console.log(`${user.name}'s ${move.name} missed!`);
+        await pushMessage(`${user.name}'s ${move.name} missed!`);
         return 0;
     }
 
@@ -330,20 +334,30 @@ function calculateAttack(user, move, target) {
     return calculateDamage(level, critical, power, attack, defense, stab, type1, type2);
 }
 
-function applyStatusEffect(pokemon, effect) {
+async function applyStatusEffect(pokemon, effect) {
     if (effect === null) {
         return;
     }
     if (effect.name === "faint" || effect.name === "flinch") {
         // faint and flinch are not status effects
         pokemon.conditionalEffects.push(effect);
-    } else pokemon.statusEffects.push(effect);
+    }
+    else if (effect.duration === 0) {
+        // Apply immediately
+        await calculateStatusEffect(pokemon, effect);
+    }
+    else {
+        pokemon.statusEffects.push(effect);
+        await pushMessage(`${pokemon.name} was affected by ${effect.name}!`);
+    }
+
+    updateDisplay();
 }
 
-function handleStatusEffects(pokemon) {
+async function handleStatusEffects(pokemon) {
     for (const effect of pokemon.statusEffects) {
         // Calculate effects
-        calculateStatusEffect(pokemon, effect);
+        await calculateStatusEffect(pokemon, effect);
 
         // Decrement counters
         effect.duration--;
@@ -353,15 +367,19 @@ function handleStatusEffects(pokemon) {
     pokemon.statusEffects = pokemon.statusEffects.filter(effect => effect.duration > 0);
 }
 
-function calculateStatusEffect(pokemon, effect) {
+async function calculateStatusEffect(pokemon, effect) {
     switch (effect.name) {
         case "burn":
-            // TODO: push message to UI
+            await pushMessage(`${pokemon.name} was burned!`);
             pokemon.hp -= Math.floor(pokemon.maxHp / 16);
             break;
         case "poison":
-            // TODO: push message to UI
+            await pushMessage(`${pokemon.name} was hurt by poison!`);
             pokemon.hp -= Math.floor(pokemon.maxHp / 8);
+            break;
+        case "lower-sp-defense":
+            await pushMessage(`${pokemon.name}'s special defense was lowered!`);
+            pokemon.stats.spDefense -= 1;
             break;
         default:
             console.error("Unknown status effect: " + effect.name);
@@ -369,21 +387,21 @@ function calculateStatusEffect(pokemon, effect) {
     }
 }
 
-function handleConditionalEffects(pokemon) {
+async function handleConditionalEffects(pokemon) {
     for (const effect of pokemon.conditionalEffects) {
-        handleConditionalEffect(pokemon, effect);
+        await handleConditionalEffect(pokemon, effect);
         effect.duration--;
     }
 
     pokemon.conditionalEffects = pokemon.conditionalEffects.filter(effect => effect.duration > 0);
 }
 
-function handleConditionalEffect(pokemon, effect) {
+async function handleConditionalEffect(pokemon, effect) {
     switch (effect) {
         case "faint":
             // Check if target has fainted
             if (effect.options.target.hp <= 0) {
-                // TODO: push message to UI
+                await pushMessage(`${effect.options.target.name} has fainted!`);
                 pokemon.hp = 0;
             }
             break;
