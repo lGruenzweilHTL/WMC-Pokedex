@@ -20,7 +20,6 @@
     Requires code from scripts: damage.js, containers.js, ui.js, calculator-methods.js
 
     TODO:
-    - Implement status effects
     - Implement bag
     - Handle fainted pokemon
  */
@@ -164,7 +163,7 @@ function calculateTurnOrder(playerAction, opponentAction) {
 }
 
 function selectOpponentMove() {
-    const idx = /*TODO: Math.floor(Math.random() * 4)*/3;
+    const idx = Math.floor(Math.random() * 4);
     return new GameAction("attack", opponentActivePokemon.moves[idx], opponentActivePokemon, playerActivePokemon);
 }
 
@@ -256,7 +255,7 @@ function pokemonClicked() {
 
 function pokemonSelected(idx) {
     hidePlayerPokemonSelect();
-    return new GameAction("pokemon", null, playerTeam[idx], playerActivePokemon);
+    return new GameAction("pokemon", null, playerTeam[idx], "player");
 }
 
 async function executeActions() {
@@ -285,8 +284,17 @@ async function executeAction(action) {
             // TODO
             break;
         case "pokemon":
-            //await pushMessage("Not implemented yet!");
-            action.target = action.pokemon; // Probably doesn't work
+            switch (action.target) {
+                case "player":
+                    playerActivePokemon = action.pokemon;
+                    break;
+                case "opponent":
+                    opponentActivePokemon = action.pokemon;
+                    break;
+                default:
+                    console.error("Invalid switch target: " + action.target);
+                    break;
+            }
             break;
         case "attack":
             await handleAttack(action);
