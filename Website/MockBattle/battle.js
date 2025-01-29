@@ -167,7 +167,7 @@ function calculateTurnOrder(playerAction, opponentAction) {
 }
 
 function selectOpponentMove() {
-    const idx = 3;
+    const idx = Math.floor(Math.random() * 4);
     return new GameAction("attack", opponentActivePokemon.moves[idx], opponentActivePokemon, playerActivePokemon);
 }
 
