@@ -1,0 +1,52 @@
+.title{
+    margin-top: 5%;
+}
+body {
+    background: linear-gradient(120deg, #7e9195, #222222);
+    background-size: cover;
+}
+
+h1 {
+    color: white;
+    font-size: 40px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    outline: white inset 2px;
+    max-width: 800px;
+    margin: 30px auto;
+}
+
+div {
+
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    outline: darkgrey inset 2px;
+    max-width: 800px;
+    box-sizing: border-box;
+}
+
+h2 {
+    color: rgb(0, 255, 204);
+    margin-bottom: 10px;
+    border-bottom: 2px solid darkgrey;
+    padding-bottom: 5px;
+}
+p {
+    line-height: 1.8;
+    color: whitesmoke;
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+tr {
+    color: whitesmoke;
+}
