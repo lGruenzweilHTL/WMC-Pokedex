@@ -20,7 +20,6 @@
     Requires code from scripts: damage.js, containers.js, ui.js, calculator-methods.js
 
     TODO:
-    - Highlight moves with type
     - Description of moves
     - Description of items
     - Back button
@@ -260,6 +259,7 @@ function attackClicked() {
     Array.from(buttons).forEach((button, idx) => {
         button.innerText = playerActivePokemon.moves[idx].name;
     });
+    highlightMoveButtons(playerActivePokemon.moves, buttons);
     buttons[0].focus();
 }
 
@@ -305,6 +305,15 @@ function filterPlayerPokemon() {
     return playerTeam.filter(pokemon => pokemon !== playerActivePokemon);
 }
 
+function highlightMoveButtons(moves, buttons) {
+    for (let i = 0; i < moves.length; i++) {
+        const highlightClass = buttons[i].classList.entries().filter(entry => entry[0].startsWith("move-"))[0];
+        if (highlightClass) {
+            buttons[i].classList.remove(highlightClass[0]);
+        }
+        buttons[i].classList.add(`move-${moves[i].type}`);
+    }
+}
 function populateButtonList(list, buttonClass) {
     // Easy for now, because we only have 2 pokemon
 
