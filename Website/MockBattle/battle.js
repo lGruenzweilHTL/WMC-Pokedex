@@ -23,7 +23,6 @@
     - Description of moves
     - Description of items
     - Log move effectiveness
-    - Implement correct stat reduction (0.67, 0.5, ...)
     - Implement evasion and accuracy modifiers
     - Add background music (maybe also button to mute)
     - Add background
@@ -74,6 +73,12 @@ class Pokemon {
         const clamped = Math.max(-6, Math.min(6, this.statModifiers[statName]));
         const multiplier = multipliers[clamped];
         return this.stats[statName] * multiplier;
+    }
+    getAccuracyModifier() {
+        return this.getModifiedStat("accuracy");
+    }
+    getEvasionModifier() {
+        return this.getModifiedStat("evasion");
     }
 }
 
@@ -488,9 +493,13 @@ async function handleAttack(action) {
 }
 
 async function calculateAttack(user, move, target) {
-    // Check if it hits
+    // Take the accuracy and evasion modifiers into account when calculating the hit chance
     const random = Math.floor(Math.random() * 100);
-    if (random > move.accuracy) {
+    const accuracyModifier = user.getAccuracyModifier();
+    const evasionModifier = target.getEvasionModifier();
+    const hitChance = move.accuracy * accuracyModifier / evasionModifier;
+
+    if (random > hitChance) {
         await pushMessage(`${user.name}'s ${move.name} missed!`);
         return 0;
     }
