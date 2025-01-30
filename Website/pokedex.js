@@ -11,13 +11,14 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const tableContainer = document.getElementById("tableContainer");
 
-    // Funktion: Tabelle generieren
-    function generateTable(filteredData) {
-        tableContainer.innerHTML = ""; // Vorherigen Inhalt entfernen
+    // Method: Generate Table
+    function generateTable(filteredData) 
+    {
+        tableContainer.innerHTML = ""; // Delete the prior contents of table
 
-        const pokemonTable = document.createElement("table");
+        const pokemonTable = document.createElement("table"); 
 
-        // Tabelle mit Daten füllen
+        // Fill Table with Data
         filteredData.forEach((pokemon) => {
             const row = document.createElement("tr");
             row.innerHTML = `
@@ -31,23 +32,32 @@ document.addEventListener("DOMContentLoaded", async function () {
         tableContainer.appendChild(pokemonTable);
     }
 
-    // Funktion: Filtern basierend auf Suchbegriff
-    window.filterPokemon = function () {
-        const searchTerm = document.getElementById("searchBar").value.toLowerCase();
-        const filteredData = pokemonData.filter(pokemon =>
-            pokemon.name.toLowerCase().includes(searchTerm) || // Name enthält den Suchbegriff
-            `#${pokemon.id.toString().padStart(3, "0")}`.includes(searchTerm) // Nummer enthält den Suchbegriff
+    // Method: Filter based on input of search bar 
+    window.filterPokemon = function () 
+    {
+        const searchTerm = document.getElementById("searchBar").value.toLowerCase(); // Gets data of search bar
+
+        const filteredData = pokemonData.filter(pokemon => 
+            pokemon.name.toLowerCase().includes(searchTerm) ||                       // search data contains name
+            `#${pokemon.id.toString().padStart(3, "0")}`.includes(searchTerm)        // search data contains number
         );
-        generateTable(filteredData);
+        generateTable(filteredData); //generate table with filtered data
     };
 
-    // Beim Laden der Seite: Alle Pokémon anzeigen
+    // Method: Display a random pokemon when the 'random' button is pressed
+    window.getRandomPokemon = function () 
+    {
+        const randomIndex = Math.floor(Math.random() * pokemonData.length);
+        const randomPokemon = [pokemonData[randomIndex]];
+        generateTable(randomPokemon);
+    };
+
+    // When loading the page display every pokemon
     generateTable(pokemonData);
 
-    // Hilfsfunktion: Name formatieren
-    function formatName(name) {
+    function formatName(name) 
+    {
         return name.charAt(0).toUpperCase() + name.slice(1);
     }
 
-    
 });

@@ -1,4 +1,6 @@
-# Pokemon Spiele
+# Ideas to add
+
+## Pokemon Spiele
 
 Erste Generation (1996–1999):
 
@@ -49,7 +51,7 @@ Neunte Generation (2022–heute):
 Pokémon Karmesin und Purpur (2022)
 Pokémon-Legenden: Z-A (angekündigt für 2025)
 
-# Pokemon Serien / Filme
+## Pokemon Serien / Filme
 
 Anime-Serien:
 
@@ -120,3 +122,18 @@ Pokémon – Der Film: Du bist dran! (2017)
 Pokémon – Der Film: Die Macht in uns (2018)
 Pokémon – Der Film: Mewtu schlägt zurück – Evolution (2019)
 Pokémon – Der Film: Geheimnisse des Dschungels (2020)
+
+
+# New Ideas
+
+## Random Pokémon Generator
+Click a button, and it shows a random Pokémon with name, image, and type.
+Could be used for choosing random teams
+Could also be used in Pokedex
+
+## Who's That Pokémon? Quiz
+Shows a silhouette of a Pokémon, and users guess its name.
+Can reveal the real image after guessing
+
+## Pokemon GO
+Also add Pokemon GO to the Games

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Interactive Map</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         .info-box {
             position: absolute;
@@ -23,28 +24,54 @@
             const areas = document.querySelectorAll('area');
             const infoBox = document.getElementById('info-box');
 
-            areas.forEach(area => {
-                const coords = area.getAttribute('coords').split(',').map(Number);
+            const card = document.getElementById('info-card');
+            const preview = document.getElementById('preview-image');
+            const oldPreview = document.getElementById('old_preview');
+            const locationName = document.getElementById('location-name');
+            const locationDescription = document.getElementById('location-description');
 
+            areas.forEach(area => {
                 area.addEventListener('mouseover', function (event) {
-                    infoBox.textContent = event.target.getAttribute('data-info');
+                    infoBox.textContent = event.target.getAttribute('data-name');
                     infoBox.style.display = 'block';
                     infoBox.style.left = `${event.pageX + 10}px`;
                     infoBox.style.top = `${event.pageY + 10}px`;
 
-                    area.addEventListener('mouseout', function () {
-                        infoBox.style.display = 'none';
-                    });
+                    card.style.display = 'block';
+                    preview.src = event.target.getAttribute('data-preview');
+                    oldPreview.src = event.target.getAttribute('data-old-img');
+                    locationName.textContent = event.target.getAttribute('data-name');
+                    locationDescription.textContent = event.target.getAttribute('data-description');
+                });
 
-                    area.addEventListener('click', function (event) {
-                        document.location = area.href;
-                    });
+                area.addEventListener('mouseout', function () {
+                    infoBox.style.display = 'none';
+                    card.style.display = 'none';
+                });
+
+                area.addEventListener('click', function (event) {
+                    document.location = area.href;
                 });
             });
         });
     </script>
 </head>
 <body>
+<div class="d-flex align-items-start">
+    <img id="region-image" class="flex-item col-md-6 col-sm-12" src="" usemap="#image-map" alt="Map">
+    <div class="card flex-item col-md-6 col-sm-12 mt-5">
+        <h1>Interactive Map</h1>
+        <p>Click on a region to view more information.</p>
+        <p>Hover over a region to see a preview.</p>
+
+        <div class="card mt-2 mb-3 p-3" id="info-card" style="display: none">
+            <h2 id="location-name">Location Information</h2>
+            <p id="location-description">Location description</p>
+            <img id="preview-image" alt="Location preview" src="">
+            <img id="old_preview" alt="Location preview" src="">
+        </div>
+    </div>
+</div>
 <div id="info-box" class="info-box"></div>
 </body>
 </html>
