@@ -94,6 +94,7 @@ img#opponent-pokemon {
     border-radius: 5px;
 }
 
+/* Status effects */
 .status {
     border: black 1px solid;
     border-radius: 10px;
@@ -117,9 +118,60 @@ img#opponent-pokemon {
 .status-confusion {
     background-color: orange;
 }
-
-/* Used for conditional fainting e. g. with destiny bond */
-.status-faint {
+.status-faint { /* Used for conditional fainting e. g. with destiny bond */
     background-color: black;
     color: white;
+}
+
+/* Move highlights */
+.move-fire {
+    background-color: #ff7f50; /* Light red */
+}
+.move-water {
+    background-color: #99ccff; /* Light blue */
+}
+.move-electric {
+    background-color: #ffff99; /* Light yellow */
+}
+.move-grass {
+    background-color: #99ff99; /* Light green */
+}
+.move-ice {
+    background-color: #ccf2ff; /* Very light blue */
+}
+.move-fighting {
+    background-color: #ffcc99; /* Light orange */
+}
+.move-poison {
+    background-color: #cc99ff; /* Light purple */
+}
+.move-ground {
+    background-color: #d2b48c; /* Tan */
+}
+.move-flying {
+    background-color: #87ceeb; /* Sky blue */
+}
+.move-psychic {
+    background-color: #ffb6c1; /* Light pink */
+}
+.move-bug {
+    background-color: #b6ff99; /* Light lime */
+}
+.move-rock {
+    background-color: #d3d3d3; /* Light gray */
+}
+.move-ghost {
+    background-color: #dda0dd; /* Plum */
+}
+.move-dragon {
+    background-color: #ff9999; /* Coral */
+}
+.move-dark {
+    background-color: #a9a9a9; /* Dark gray */
+}
+.move-steel {
+    background-color: #c0c0c0; /* Silver */
+}
+.move-fairy {
+    background-color: #ffccff; /* Light pink */
 }

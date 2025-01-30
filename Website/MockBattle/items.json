@@ -1,0 +1,32 @@
+{
+  "healing_potions": {
+    "potion": {
+      "name": "Potion",
+      "type": "healing",
+      "healing_amount": 20,
+      "description": "A spray-type medicine for treating wounds. It restores the HP of one Pokémon by 20 points.",
+      "quantity": 3
+    },
+    "super-potion": {
+      "name": "Super Potion",
+      "type": "healing",
+      "healing_amount": 50,
+      "description": "A spray-type medicine for treating wounds. It restores the HP of one Pokémon by 50 points.",
+      "quantity": 2
+    },
+    "hyper-potion": {
+      "name": "Hyper Potion",
+      "type": "healing",
+      "healing_amount": 120,
+      "description": "A spray-type medicine for treating wounds. It restores the HP of one Pokémon by 120 points.",
+      "quantity": 1
+    },
+    "max-potion": {
+      "name": "Max Potion",
+      "type": "healing",
+      "healing_amount": "full",
+      "description": "A spray-type medicine for treating wounds. It completely restores the HP of one Pokémon.",
+      "quantity": 1
+    }
+  }
+}

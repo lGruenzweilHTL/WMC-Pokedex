@@ -1,6 +1,7 @@
 let playerActionSelect;
 let playerMoveSelect;
 let playerPokemonSelect;
+let playerItemSelect;
 let selectGroup;
 
 document.addEventListener("DOMContentLoaded", initContainers);
@@ -9,16 +10,17 @@ function initContainers() {
     playerActionSelect = document.getElementById("action-select");
     playerMoveSelect = document.getElementById("move-select");
     playerPokemonSelect = document.getElementById("pokemon-select");
-    selectGroup = [playerActionSelect, playerMoveSelect, playerPokemonSelect];
+    playerItemSelect = document.getElementById("item-select");
+    selectGroup = [playerActionSelect, playerMoveSelect, playerPokemonSelect, playerItemSelect];
 }
 
 function showPlayerActionSelect() {
     hideAll();
     playerActionSelect.style.display = "block";
+    focusFirstElement();
 }
 
 function hidePlayerActionSelect() {
-    playerActionSelect.style.display = "none";
     showPlayerActionSelect();
 }
 
@@ -28,7 +30,6 @@ function showPlayerMoveSelect() {
 }
 
 function hidePlayerMoveSelect() {
-    playerMoveSelect.style.display = "none";
     showPlayerActionSelect();
 }
 
@@ -38,10 +39,21 @@ function showPlayerPokemonSelect() {
 }
 
 function hidePlayerPokemonSelect() {
-    playerPokemonSelect.style.display = "none";
+    showPlayerActionSelect();
+}
+
+function showPlayerItemSelect() {
+    hideAll();
+    playerItemSelect.style.display = "block";
+}
+
+function hidePlayerItemSelect() {
     showPlayerActionSelect();
 }
 
 function hideAll() {
-    selectGroup.forEach(select => select.style.display = "none");
+    // A little inefficient, but it's needed for the message box to work
+    const elementsToHide = selectGroup.filter(select => select.style.display === "block");
+    elementsToHide.forEach(select => select.style.display = "none");
+    return elementsToHide;
 }
