@@ -22,8 +22,6 @@
     TODO:
     - Description of moves
     - Description of items
-    - Log move effectiveness
-    - Implement evasion and accuracy modifiers
     - Add background music (maybe also button to mute)
     - Add background
  */
@@ -478,8 +476,7 @@ async function executeAction(action) {
 async function handleAttack(action) {
     const move = action.move;
     const target = action.target === "opponent" ? opponentActivePokemon : playerActivePokemon;
-    const damage = await calculateAttack(action.pokemon, move, target);
-    target.hp -= damage;
+    await attack(action.pokemon, move, target);
 
     if (move.effect !== null && move.effect.name === "faint") {
         move.effect.options = {
@@ -487,12 +484,10 @@ async function handleAttack(action) {
         }
     }
 
-    updateDisplay();
-    await pushMessage(`${action.pokemon.name} used ${action.move.name}!`);
     await applyStatusEffect(target, move.effect);
 }
 
-async function calculateAttack(user, move, target) {
+async function attack(user, move, target) {
     // Take the accuracy and evasion modifiers into account when calculating the hit chance
     const random = Math.floor(Math.random() * 100);
     const accuracyModifier = user.getAccuracyModifier();
@@ -519,8 +514,23 @@ async function calculateAttack(user, move, target) {
     const stab = user.types.includes(move.type) ? 1.5 : 1;
     const critical = isCritical(user.stats.speed) ? 2 : 1; // calculated with base speed
 
-    console.log(`${user.name} used ${move.name}!`);
-    return calculateDamage(level, critical, power, attack, defense, stab, type1, type2);
+    target.hp -= calculateDamage(level, critical, power, attack, defense, stab, type1, type2);
+    updateDisplay();
+    await pushMessage(`${user.name} used ${move.name}!`);
+    const effectivenessMessage = getEffectivenessMessage(type1, type2);
+    if (effectivenessMessage) {
+        await pushMessage(effectivenessMessage);
+    }
+}
+function getEffectivenessMessage(type1, type2) {
+    const effectiveness = type1 * type2;
+    if (effectiveness > 1) {
+        return "It's super effective!";
+    } else if (effectiveness < 1) {
+        return "It's not very effective...";
+    } else {
+        return "";
+    }
 }
 
 async function applyStatusEffect(pokemon, effect) {
