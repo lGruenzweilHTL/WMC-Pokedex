@@ -17,6 +17,7 @@ function initContainers() {
 function showPlayerActionSelect() {
     hideAll();
     playerActionSelect.style.display = "block";
+    focusFirstElement();
 }
 
 function hidePlayerActionSelect() {

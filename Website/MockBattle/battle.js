@@ -22,7 +22,6 @@
     TODO:
     - Description of moves
     - Description of items
-    - Back button
     - Log move effectiveness
     - Implement correct stat reduction (0.67, 0.5, ...)
     - Implement evasion and accuracy modifiers
@@ -223,6 +222,12 @@ async function waitForPlayerAction() {
             resolve(action);
         }
 
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                showPlayerActionSelect();
+            }
+        });
+
         const runButton = document.getElementById("run-button");
         const runHandler = () => handleAction(runClicked());
         runButton.addEventListener("click", runHandler, {once: true});
@@ -409,7 +414,6 @@ function selectRandomOpponentPokemon() {
 async function executeAction(action) {
     switch (action.action) {
         case "run":
-            await pushMessage("You ran away!");
             document.location.href = "../mockbattle.html";
             break;
         case "bag":
