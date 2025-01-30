@@ -1,6 +1,7 @@
 let playerActionSelect;
 let playerMoveSelect;
 let playerPokemonSelect;
+let playerItemSelect;
 let selectGroup;
 
 document.addEventListener("DOMContentLoaded", initContainers);
@@ -9,7 +10,8 @@ function initContainers() {
     playerActionSelect = document.getElementById("action-select");
     playerMoveSelect = document.getElementById("move-select");
     playerPokemonSelect = document.getElementById("pokemon-select");
-    selectGroup = [playerActionSelect, playerMoveSelect, playerPokemonSelect];
+    playerItemSelect = document.getElementById("item-select");
+    selectGroup = [playerActionSelect, playerMoveSelect, playerPokemonSelect, playerItemSelect];
 }
 
 function showPlayerActionSelect() {
@@ -18,7 +20,6 @@ function showPlayerActionSelect() {
 }
 
 function hidePlayerActionSelect() {
-    playerActionSelect.style.display = "none";
     showPlayerActionSelect();
 }
 
@@ -28,7 +29,6 @@ function showPlayerMoveSelect() {
 }
 
 function hidePlayerMoveSelect() {
-    playerMoveSelect.style.display = "none";
     showPlayerActionSelect();
 }
 
@@ -38,7 +38,15 @@ function showPlayerPokemonSelect() {
 }
 
 function hidePlayerPokemonSelect() {
-    playerPokemonSelect.style.display = "none";
+    showPlayerActionSelect();
+}
+
+function showPlayerItemSelect() {
+    hideAll();
+    playerItemSelect.style.display = "block";
+}
+
+function hidePlayerItemSelect() {
     showPlayerActionSelect();
 }
 

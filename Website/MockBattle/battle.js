@@ -18,10 +18,6 @@
     Order of actions: run, pokemon, bag, attack
 
     Requires code from scripts: damage.js, containers.js, ui.js, calculator-methods.js
-
-    TODO:
-    - Implement bag
-    - Handle fainted pokemon
  */
 
 class Pokemon {
@@ -63,6 +59,17 @@ class Effect {
     }
 }
 
+class Item {
+    constructor(type, name) {
+        const data = items[type][name];
+        this.name = data.name;
+        this.healing_amount = data.healing_amount;
+        this.description = data.description;
+        this.quantity = data.quantity;
+        this.type = data.type;
+    }
+}
+
 class GameAction {
     constructor(action, move, pokemon, target) {
         this.action = action;
@@ -98,14 +105,17 @@ let turnOrder = [];
 
 const playerPokemon = ["charizard", "gengar"];
 const opponentPokemon = ["gengar", "charizard"];
+const playerItemNames = ["potion", "super-potion", "hyper-potion", "max-potion"];
 
 let playerTeam;
 let opponentTeam;
 let playerActivePokemon;
 let opponentActivePokemon;
+let playerItems;
 
 let pokemon = [];
 let moves = [];
+let items = [];
 
 document.addEventListener("DOMContentLoaded", async () => {
     await initJson();
@@ -124,6 +134,9 @@ async function initJson() {
 
     response = await fetch("moves.json");
     moves = await response.json();
+
+    response = await fetch("items.json");
+    items = await response.json();
 }
 
 function initTeams() {
@@ -132,6 +145,8 @@ function initTeams() {
 
     playerActivePokemon = playerTeam[0];
     opponentActivePokemon = opponentTeam[0];
+
+    playerItems = playerItemNames.map(item => new Item("healing_potions", item));
 }
 
 async function gameLoop() {
@@ -176,7 +191,9 @@ async function waitForPlayerAction() {
         function handleAction(action) {
             // Remove all event listeners
             runButton.removeEventListener("click", runHandler);
-            bagButton.removeEventListener("click", bagHandler);
+            Array.from(itemButtons).forEach((button, idx) => {
+                button.removeEventListener("click", itemHandlers[idx]);
+            });
             Array.from(pokemonButtons).forEach((button, idx) => {
                 button.removeEventListener("click", pokemonHandlers[idx]);
             });
@@ -191,9 +208,12 @@ async function waitForPlayerAction() {
         const runHandler = () => handleAction(runClicked());
         runButton.addEventListener("click", runHandler, {once: true});
 
-        const bagButton = document.getElementById("bag-button");
-        const bagHandler = () => handleAction(bagClicked());
-        bagButton.addEventListener("click", bagHandler, {once: true});
+        const itemButtons = document.getElementsByClassName("item-button");
+        const itemHandlers = Array.from(itemButtons).map((button, idx) => {
+            const handler = () => handleAction(itemSelected(idx));
+            button.addEventListener("click", handler, {once: true});
+            return handler;
+        });
 
         const pokemonButtons = document.getElementsByClassName("pokemon-button");
         const pokemonHandlers = Array.from(pokemonButtons).map((button, idx) => {
@@ -233,8 +253,19 @@ function runClicked() {
     return new GameAction("run", null, playerActivePokemon, null);
 }
 
+// Called by button
 function bagClicked() {
-    return new GameAction("bag", null, playerActivePokemon, null);
+    if (playerItems.length === 0) {
+        return; // Can't use items if there are none
+    }
+
+    showPlayerItemSelect();
+    populateButtonList(playerItems, "item-button");
+}
+
+function itemSelected(idx) {
+    hidePlayerItemSelect();
+    return new GameAction("bag", null, playerActivePokemon, playerItems[idx]);
 }
 
 // Called by button
@@ -247,26 +278,26 @@ function pokemonClicked() {
 
     // Populate pokemon buttons with the player's pokemon
     const pokemonToShow = filterPlayerPokemon();
-    showPokemonList(pokemonToShow);
+    populateButtonList(pokemonToShow, "pokemon-button");
 }
 
 function filterPlayerPokemon() {
     return playerTeam.filter(pokemon => pokemon !== playerActivePokemon);
 }
 
-function showPokemonList(pokemonList) {
+function populateButtonList(list, buttonClass) {
     // Easy for now, because we only have 2 pokemon
 
-    const buttons = document.getElementsByClassName("pokemon-button");
-    for (let i = 0; i < pokemonList.length; i++) {
+    const buttons = document.getElementsByClassName(buttonClass);
+    for (let i = 0; i < list.length; i++) {
         buttons[i].style.display = "block";
-        buttons[i].innerText = pokemonList[i].name;
+        buttons[i].innerText = list[i].name;
     }
 
     buttons[0].focus();
 
     // Hide all unused buttons
-    for (let i = pokemonList.length; i < buttons.length; i++) {
+    for (let i = list.length; i < buttons.length; i++) {
         buttons[i].style.display = "none";
     }
 }
@@ -334,7 +365,7 @@ async function waitForPlayerPokemonSelection() {
             button.innerText = playerTeam[idx].name;
             button.addEventListener("click", () => {
                 resolve(playerTeam[idx]);
-            }, { once: true });
+            }, {once: true});
         });
     });
     hidePlayerPokemonSelect();
@@ -354,7 +385,11 @@ async function executeAction(action) {
             break;
         case "bag":
             await pushMessage("You reached into your bag!");
-            await pushMessage("But it was empty!"); // TODO
+            if (playerItems.length === 0) {
+                await pushMessage("But it was empty!");
+            } else {
+                await useItem(action.target, action.pokemon);
+            }
             break;
         case "pokemon":
             switch (action.target) {
@@ -505,5 +540,22 @@ async function handleConditionalEffect(pokemon, effect) {
         case "flinch":
             // Flinch is checked before the pokemon's turn
             break;
+    }
+}
+
+async function useItem(item, pokemon) {
+    if (item.type !== "healing") {
+        console.error("Unknown item type: " + item.type);
+        return;
+    }
+
+    if (item.healing_amount === "full") {
+        pokemon.hp = pokemon.maxHp;
+        updatePlayerHpBar();
+        await pushMessage(`${pokemon.name} was healed to full health!`);
+    } else {
+        pokemon.hp = Math.min(pokemon.hp + item.healing_amount, pokemon.maxHp);
+        updatePlayerHpBar()
+        await pushMessage(`${pokemon.name} was healed by ${item.healing_amount}!`);
     }
 }
