@@ -234,7 +234,7 @@ const kantoData = {
         },
         {
             name: "Victory Road",
-            url: "victory-road",
+            url: "kanto-victory-road-1",
             coords: [71, 230, 97, 256]
         },
         {

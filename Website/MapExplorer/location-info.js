@@ -38,7 +38,7 @@ async function getLocationAreaData(area, location) {
 
     const info = document.createElement('p');
     info.classList.add('card-text');
-    info.innerText = "Location area in " + locationName;
+    info.innerHTML = `Location area in <a href="location-info.html?type=location&name=${data.location.name}">${locationName}</a>`;
     body.appendChild(info);
 
     const encounterHeader = document.createElement('h2');
@@ -124,7 +124,7 @@ async function getLocationData(location, region) {
 
     const info = document.createElement('p');
     info.classList.add('card-text');
-    info.innerText = "Location in " + regionName;
+    info.innerHTML = `Location in <a href="map-explorer.html?region=${data.region.name}">${regionName}</a>`;
     body.appendChild(info);
 
     const areaHeader = document.createElement('h2');
