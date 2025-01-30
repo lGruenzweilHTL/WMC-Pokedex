@@ -18,6 +18,17 @@
     Order of actions: run, pokemon, bag, attack
 
     Requires code from scripts: damage.js, containers.js, ui.js, calculator-methods.js
+
+    TODO:
+    - Highlight moves with type
+    - Description of moves
+    - Description of items
+    - Back button
+    - Log move effectiveness
+    - Implement correct stat reduction (0.67, 0.5, ...)
+    - Implement evasion and accuracy modifiers
+    - Add background music (maybe also button to mute)
+    - Add background
  */
 
 class Pokemon {
@@ -33,6 +44,15 @@ class Pokemon {
         this.moves = data.moves.map(move => new Move(move));
         this.statusEffects = []; // Status effect (like burn, poison) are applied every turn of that pokemon
         this.conditionalEffects = []; // Conditional effects (like faint from destiny bond) are triggered by events
+        this.statModifiers = {
+            attack: 0,
+            defense: 0,
+            spAttack: 0,
+            spDefense: 0,
+            speed: 0,
+            accuracy: 0,
+            evasion: 0,
+        }
     }
 }
 
