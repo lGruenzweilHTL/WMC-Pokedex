@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.8;
     padding-top: 70px;
-    background: linear-gradient(to left, #b3d9ff, #ffffff);
+    background: linear-gradient(45deg, #3e4c59, #2c2c2c);
     background-size: cover;
     margin: 0;
     color: #222;
@@ -42,12 +42,14 @@ body {
 }
 
 h2 {
-    font-size: 2rem;
+    color: silver;
+    font-size: 40px;
     margin-top: 40px;
     border-bottom: 3px solid #aaa;
     padding-bottom: 8px;
     text-align: center;
     transition: transform 0.3s ease, color 0.3s ease;
+    font-family: "Times New Roman", Times, serif;
 }
 
 h2:hover {
