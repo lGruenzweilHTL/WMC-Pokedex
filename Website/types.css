@@ -2,7 +2,8 @@ body {
     font-family: Verdana, sans-serif;
     line-height: 1.6;
     padding-top: 80px;
-    background: linear-gradient(to right, #808080, #ffffff);
+    background-image: url('Images/Backgrounds/3.png');
+    background-repeat: repeat;
     background-size: cover
 }
 
