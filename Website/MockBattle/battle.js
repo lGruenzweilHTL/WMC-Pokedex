@@ -52,6 +52,29 @@ class Pokemon {
             evasion: 0,
         }
     }
+
+    getModifiedStat(statName) {
+        const multipliers = {
+            "-6": 0.25,
+            "-5": 0.285,
+            "-4": 0.33,
+            "-3": 0.4,
+            "-2": 0.5,
+            "-1": 0.67,
+            "0": 1,
+            "1": 1.5,
+            "2": 2,
+            "3": 2.5,
+            "4": 3,
+            "5": 3.5,
+            "6": 4
+        }
+
+        // Make sure the stat modifier is within the bounds of -6 and 6
+        const clamped = Math.max(-6, Math.min(6, this.statModifiers[statName]));
+        const multiplier = multipliers[clamped];
+        return this.stats[statName] * multiplier;
+    }
 }
 
 class Move {
@@ -115,7 +138,7 @@ class GameAction {
             return this.move.priority === true;
         }
 
-        return this.pokemon.stats.speed > otherAction.pokemon.stats.speed;
+        return this.pokemon.getModifiedStat("speed") > otherAction.pokemon.getModifiedStat("speed");
     }
 }
 
@@ -479,13 +502,13 @@ async function calculateAttack(user, move, target) {
     }
 
     const level = user.level;
-    const attack = move.special ? user.stats.spAttack : user.stats.attack;
-    const defense = move.special ? target.stats.spDefense : target.stats.defense;
+    const attack = move.special ? user.getModifiedStat("spAttack") : user.getModifiedStat("attack");
+    const defense = move.special ? target.getModifiedStat("spDefense") : target.getModifiedStat("defense");
     const power = move.power;
     const type1 = typeEffectiveness(move.type, target.types[0]);
     const type2 = target.types.length > 1 ? typeEffectiveness(move.type, target.types[1]) : 1;
     const stab = user.types.includes(move.type) ? 1.5 : 1;
-    const critical = isCritical(user.stats.speed) ? 2 : 1;
+    const critical = isCritical(user.stats.speed) ? 2 : 1; // calculated with base speed
 
     console.log(`${user.name} used ${move.name}!`);
     return calculateDamage(level, critical, power, attack, defense, stab, type1, type2);
@@ -542,7 +565,7 @@ async function calculateStatusEffect(pokemon, effect) {
             break;
         case "lower-sp-defense":
             await pushMessage(`${pokemon.name}'s special defense was lowered!`);
-            pokemon.stats.spDefense -= 1;
+            pokemon.statModifiers.spDefense--;
             break;
         default:
             console.error("Unknown status effect: " + effect.name);
