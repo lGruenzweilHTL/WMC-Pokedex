@@ -63,8 +63,6 @@ hr {
   
 
 .mainDiv {
-    margin-top: 20px;
-
     border: 4px solid #db2a38;
     border-radius: 10px;
     background-color: #ffffff;
@@ -115,8 +113,6 @@ hr {
 
 
 .pokemonImg,.trainerImg,.energyImg,.specialImg {
-    margin-top: 20px;
-
     border: 4px solid #db2a38;
     border-radius: 10px;
     background-color: #ffffff;
