@@ -2,9 +2,9 @@ body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
     background: linear-gradient(135deg, #3b3b3b, #4a4a4a);
-    /*background: linear-gradient(to bottom, #1a1a1a, #2a2a2a);*/
-    height: 100vh;
-    overflow: hidden;
+    /* statt height: 100vh; overflow: hidden; */
+    min-height: 100vh;       /* damit der Inhalt wenigstens Bildschirmhöhe hat */
+    overflow-y: auto;        /* scrollbar, falls Inhalt höher als der Viewport */
     color: #e0e0e0;
     display: flex;
     flex-direction: column;
@@ -62,15 +62,17 @@ body {
 }
 
 .container {
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 450px;  /* <--- jede Zeile 250px hoch */
     gap: 10px;
     padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .section {
+
     flex: 1;
     position: relative;
     cursor: pointer;
