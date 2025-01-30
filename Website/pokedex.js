@@ -60,4 +60,12 @@ document.addEventListener("DOMContentLoaded", async function () {
         return name.charAt(0).toUpperCase() + name.slice(1);
     }
 
+    // Method: Show all pokemon
+    window.showAllPokemon = function () 
+    {
+        generateTable(pokemonData); // Generate table with all Pokémon
+    };
+
+
+
 });

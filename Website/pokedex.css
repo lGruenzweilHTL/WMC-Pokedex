@@ -32,7 +32,7 @@
 }
 
 
-#randomPokemonButton {
+.headerButtonStyle {
     border: 3px solid #b8b8b8;
     border-radius: 8px;
     margin-bottom: 20px;
@@ -46,14 +46,14 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-#randomPokemonButton:hover {
+.headerButtonStyle:hover {
     background-color: #f0f0f0;
     border-color: #007BFF;
     color: #007BFF;
     box-shadow: 0 8px 12px rgba(0, 123, 255, 0.2);
 }
 
-#randomPokemonButton:active {
+.headerButtonStyle:active {
     background-color: #007BFF;
     color: white;
     transform: translateY(2px); /* Press down effect */

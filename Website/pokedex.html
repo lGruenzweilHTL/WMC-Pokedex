@@ -30,7 +30,7 @@
 <h1 style="text-align: center; margin-top: 5%;">Pokedex</h1>
 
 <div style="text-align: center; margin: 20px;">
-    <button id="randomPokemonButton" onclick="getRandomPokemon()" style="padding: 10px 30px; font-size: 16px; margin-bottom: 20px; margin-right: 15px;">
+    <button id="randomPokemonButton" class="headerButtonStyle"onclick="getRandomPokemon()" style="padding: 10px 30px; font-size: 16px; margin-bottom: 20px; margin-right: 15px;">
         Get Random Pokémon
     </button>
     <input 
@@ -40,6 +40,14 @@
         onkeyup="filterPokemon()" 
         style="padding: 10px; width: 40%; font-size: 16px;"
     />
+    <button 
+    id="showAllButton" 
+    class="headerButtonStyle"
+    onclick="showAllPokemon()" 
+    style="padding: 10px 30px; font-size: 16px; margin-bottom: 20px; margin-left: 15px;">
+    Back to the Pokedex
+    </button>
+
 </div>
 
 <div id="tableContainer">
