@@ -2,6 +2,44 @@
     border: 3px solid #b8b8b8;
     border-radius: 8px;
     margin-bottom: 20px;
+    font-weight: bold;
+}
+#searchBar:hover {
+    border: 3px solid #b8b8b8;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    padding: 10px 20px;
+    cursor: text;
+}
+
+#randomPokemonButton {
+    border: 3px solid #b8b8b8;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    color: #777777;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#randomPokemonButton:hover {
+    background-color: #f0f0f0;
+    border-color: #007BFF;
+    color: #007BFF;
+    box-shadow: 0 8px 12px rgba(0, 123, 255, 0.2);
+}
+
+#randomPokemonButton:active {
+    background-color: #007BFF;
+    color: white;
+    transform: translateY(2px); /* Press down effect */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    border-color: #007BFF;
 }
 
 #tableContainer table {

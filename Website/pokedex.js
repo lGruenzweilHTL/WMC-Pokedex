@@ -44,7 +44,13 @@ document.addEventListener("DOMContentLoaded", async function () {
         generateTable(filteredData); //generate table with filtered data
     };
 
-    
+    // Method: Display a random pokemon when the 'random' button is pressed
+    window.getRandomPokemon = function () 
+    {
+        const randomIndex = Math.floor(Math.random() * pokemonData.length);
+        const randomPokemon = [pokemonData[randomIndex]];
+        generateTable(randomPokemon);
+    };
 
     // When loading the page display every pokemon
     generateTable(pokemonData);
