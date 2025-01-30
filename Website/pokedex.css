@@ -3,15 +3,34 @@
     border-radius: 8px;
     margin-bottom: 20px;
     font-weight: bold;
+    transition: all 0.2s ease;
 }
+
+#searchBar::placeholder {
+    color: #777777;
+}
+
 #searchBar:hover {
-    border: 3px solid #b8b8b8;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    background-color: #fff;
-    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border-color: #007BFF;
+    box-shadow: 0 8px 12px rgba(0, 123, 255, 0.2);
     cursor: text;
 }
+
+#searchBar:hover::placeholder {
+    color: #007BFF;
+}
+
+#searchBar:focus {
+    border-color: #007BFF;
+    outline: none;
+    color: #007BFF;
+}
+
+#searchBar:focus::placeholder {
+    color: #007BFF;
+}
+
 
 #randomPokemonButton {
     border: 3px solid #b8b8b8;
@@ -84,8 +103,6 @@ body {
     background: linear-gradient(135deg, #fdf7f7, #d6ebff);
     margin: 0;
     padding: 0;
-
-
 }
 
 body::-webkit-scrollbar {
