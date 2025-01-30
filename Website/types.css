@@ -58,13 +58,12 @@ h2:hover {
 .text-box {
     list-style: none;
     padding: 0;
-    margin: 10px 20px;
     background: #f1f1f1;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 15px;
     max-width: 75%;
-    margin-left: 12.5%;
+    margin: 10px 20px 10px 12.5%;
     transition: background-color 0.3s, box-shadow 0.3s;
     transition: scale 0.25s ease-in-out;
 }
