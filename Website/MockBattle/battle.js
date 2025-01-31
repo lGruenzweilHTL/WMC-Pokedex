@@ -72,9 +72,11 @@ class Pokemon {
         const multiplier = multipliers[clamped];
         return this.stats[statName] * multiplier;
     }
+
     getAccuracyModifier() {
         return this.getModifiedStat("accuracy");
     }
+
     getEvasionModifier() {
         return this.getModifiedStat("evasion");
     }
@@ -345,6 +347,7 @@ function highlightMoveButtons(moves, buttons) {
         buttons[i].classList.add(`move-${moves[i].type}`);
     }
 }
+
 function populateButtonList(list, buttonClass) {
     // Easy for now, because we only have 2 pokemon
 
@@ -389,8 +392,6 @@ async function executeActions() {
                 playerActivePokemon = await waitForPlayerPokemonSelection();
             } else {
                 await pushMessage("You have no more Pokémon left!");
-                await pushMessage("You lost!");
-                break;
             }
         }
 
@@ -402,9 +403,25 @@ async function executeActions() {
                 await pushMessage(`Opponent sent out ${opponentActivePokemon.name}!`);
             } else {
                 await pushMessage("Opponent has no more Pokémon left!");
-                await pushMessage("You won!");
-                break;
             }
+        }
+
+        // Check for a tie
+        if (playerTeam.length === 0 && opponentTeam.length === 0) {
+            await pushMessage("Both teams have no more Pokémon left!");
+            await pushMessage("It's a tie!");
+            break;
+        }
+
+        // Check if the game is over
+        if (playerTeam.length === 0) {
+            await pushMessage("You lost!");
+            break;
+        }
+
+        if (opponentTeam.length === 0) {
+            await pushMessage("You won!");
+            break;
         }
 
         updateDisplay();
@@ -438,6 +455,10 @@ function selectRandomOpponentPokemon() {
 }
 
 async function executeAction(action) {
+    if (action.pokemon.hp <= 0) {
+        return; // Pokémon can't do anything if it has fainted; fixes edge case where a fainted Pokémon could still attack
+    }
+
     switch (action.action) {
         case "run":
             document.location.href = "../mockbattle.html";
@@ -505,23 +526,32 @@ async function attack(user, move, target) {
         return 0;
     }
 
-    const level = user.level;
-    const attack = move.special ? user.getModifiedStat("spAttack") : user.getModifiedStat("attack");
-    const defense = move.special ? target.getModifiedStat("spDefense") : target.getModifiedStat("defense");
-    const power = move.power;
-    const type1 = typeEffectiveness(move.type, target.types[0]);
-    const type2 = target.types.length > 1 ? typeEffectiveness(move.type, target.types[1]) : 1;
-    const stab = user.types.includes(move.type) ? 1.5 : 1;
-    const critical = isCritical(user.stats.speed) ? 2 : 1; // calculated with base speed
+    // Status moves don't deal damage
+    let type1 = 1, type2 = 1;
+    if (!move.status) {
+        const level = user.level;
+        const attack = move.special ? user.getModifiedStat("spAttack") : user.getModifiedStat("attack");
+        const defense = move.special ? target.getModifiedStat("spDefense") : target.getModifiedStat("defense");
+        const power = move.power;
+        type1 = typeEffectiveness(move.type, target.types[0]);
+        type2 = target.types.length > 1 ? typeEffectiveness(move.type, target.types[1]) : 1;
+        const stab = user.types.includes(move.type) ? 1.5 : 1;
+        const critical = isCritical(user.stats.speed) ? 2 : 1; // calculated with base speed
 
-    target.hp -= calculateDamage(level, critical, power, attack, defense, stab, type1, type2);
-    updateDisplay();
+        target.hp -= calculateDamage(level, critical, power, attack, defense, stab, type1, type2);
+        updateDisplay();
+    }
+
     await pushMessage(`${user.name} used ${move.name}!`);
-    const effectivenessMessage = getEffectivenessMessage(type1, type2);
-    if (effectivenessMessage) {
-        await pushMessage(effectivenessMessage);
+
+    if (!move.status) {
+        const effectivenessMessage = getEffectivenessMessage(type1, type2);
+        if (effectivenessMessage) {
+            await pushMessage(effectivenessMessage);
+        }
     }
 }
+
 function getEffectivenessMessage(type1, type2) {
     const effectiveness = type1 * type2;
     if (effectiveness > 1) {
