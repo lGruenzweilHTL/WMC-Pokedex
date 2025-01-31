@@ -175,3 +175,50 @@ img#opponent-pokemon {
 .move-fairy {
     background-color: #ffccff; /* Light pink */
 }
+
+.team-container {
+    margin-left: 4%;
+    position: absolute;
+    width: 20%;
+    text-align: center;
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8); 
+}
+
+.player-team {
+    width: 17%;
+    left: -3%;
+    bottom: 35%;
+}
+
+.enemy-team {
+    width: 17%;
+    margin-right: 50px;
+    right: -2%;
+    top: 2%;
+}
+
+.team-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.team-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.team img {
+    height: 60px;
+    width: auto;
+}
