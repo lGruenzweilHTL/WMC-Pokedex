@@ -1,3 +1,7 @@
+body::-webkit-scrollbar {
+    display: none;
+}
+
 .navigation-bar:not(.active) {
     margin-top: 1%;
     background-color: #333;
