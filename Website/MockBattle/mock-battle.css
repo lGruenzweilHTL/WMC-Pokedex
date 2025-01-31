@@ -50,13 +50,13 @@ img#player-pokemon {
 img#opponent-pokemon-platform {
     position: fixed;
     bottom: -360px;
-    left: -469px;
+    left: -530px;
     width: 700px;
     height: auto;
 }
 img#opponent-pokemon {
     position: fixed;
-    right: -94px;
+    right: 5px;
     bottom: -145px;
     width: 400px;
     height: auto;
