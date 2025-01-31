@@ -1,24 +1,25 @@
 document.addEventListener("DOMContentLoaded", async function() {
     // Get url params
     const urlParams = new URLSearchParams(window.location.search);
-    const pokemonName = urlParams.get("pokemon");
+    const id = urlParams.get("pokemon");
 
     // Get the pokemon data
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
     const data = await response.json();
 
     console.log(data);
 
     // Create the pokemon element
-    document.title = formatName(pokemonName);
+    const name = findEnglishName(data);
+    document.title = name;
 
     const titleElement = document.createElement("h1");
-    titleElement.innerHTML = formatName(pokemonName);
+    titleElement.innerHTML = name;
     document.body.appendChild(titleElement);
 
     const imageElement = document.createElement("img");
     imageElement.src = data.sprites.front_default;
-    imageElement.alt = formatName(pokemonName);
+    imageElement.alt = name;
     imageElement.classList.add("float-left");
     document.body.appendChild(imageElement);
 
@@ -38,7 +39,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     const kindElement = document.createElement("p");
     kindElement.classList.add("clearfix");
     kindElement.classList.add("kind");
-    const kind = specialKinds.find(p => p.pokemon === pokemonName);
+    const kind = specialKinds.find(p => p.pokemon === id);
     const kindText = kind ? kind.kind : "general";
     kindElement.innerHTML = `Kind: ${getKindLink(kindText)}`;
     document.body.appendChild(kindElement);
@@ -159,6 +160,9 @@ async function buildLocationMap(encounter_url) {
     document.body.appendChild(div);
 }
 
+function findEnglishName(data) {
+    return data.names.find(name => name.language.name === "en").name;
+}
 function formatName(name) {
     return name.charAt(0).toUpperCase() + name.slice(1);
 }
