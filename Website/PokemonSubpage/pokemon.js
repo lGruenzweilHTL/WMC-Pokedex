@@ -3,6 +3,16 @@ document.addEventListener("DOMContentLoaded", async function() {
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get("pokemon");
 
+    if (id === null) {
+        window.location.href = "pokemon.html?pokemon=1";
+    }
+    if (id === "1") {
+        document.getElementById("prev-button").onclick = () => window.location.href = "pokemon.html?pokemon=898";
+    }
+    if (id === "898") {
+        document.getElementById("next-button").onclick = () => window.location.href = "pokemon.html?pokemon=1";
+    }
+
     // Get the pokemon data
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
     const data = await response.json();
@@ -161,8 +171,24 @@ async function buildLocationMap(encounter_url) {
 }
 
 function findEnglishName(data) {
-    return data.names.find(name => name.language.name === "en").name;
+    const names = data.names;
+    if (!names) {
+        return formatName(data.name);
+    }
+    const englishName = names.find(name => name.language.name === "en");
+    return englishName ? englishName.name : formatName(data.name);
 }
 function formatName(name) {
     return name.charAt(0).toUpperCase() + name.slice(1);
+}
+
+function navigateToNext() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = parseInt(urlParams.get("pokemon")) + 1;
+    window.location.href = `pokemon.html?pokemon=${id}`;
+}
+function navigateToPrevious() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = parseInt(urlParams.get("pokemon")) - 1;
+    window.location.href = `pokemon.html?pokemon=${id}`;
 }
