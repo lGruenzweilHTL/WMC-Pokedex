@@ -1,31 +1,3 @@
-/*
-    Game loop:
-
-    1. Both players select a move
-    2. The turn order is determined based on the chosen moves and the speed of the pokemon
-    3. The moves are executed in order
-        3.1. Damage is calculated and applied
-        3.2. Status effects are applied
-        3.3. Status effect counters are decremented
-        3.4. The game checks if a pokemon has fainted
-    4. The game checks if the battle is over
-
-
-    Usually, status effects are applied at the end of the affected pokemon's turn
-    Status effects that need to meet a condition to do something are checked at the beginning of the affected pokemon's turn
-    Status effects with a duration of 0 are immediately applied and are not added to the status effects list
-
-    Order of actions: run, pokemon, bag, attack
-
-    Requires code from scripts: damage.js, containers.js, ui.js, calculator-methods.js
-
-    TODO:
-    - Description of moves
-    - Description of items
-    - Add background music (maybe also button to mute)
-    - Add background
- */
-
 class Pokemon {
     constructor(string) {
         const data = pokemon[string];
