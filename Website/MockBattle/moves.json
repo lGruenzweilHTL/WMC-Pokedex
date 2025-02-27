@@ -506,38 +506,38 @@
       "chance": 10,
       "duration": 2,
       "target": "opponent"
-    },
-    "stealth-rock": {
-      "type": "rock",
-      "special": false,
-      "priority": false,
-      "status": true,
-      "power": null,
-      "accuracy": null,
-      "display_name": "Stealth Rock",
-      "description": "A rock-type status move that sets up entry hazards. This is a status move.",
-      "effect": {
-        "name": "entry-hazard",
-        "chance": 100,
-        "duration": 0,
-        "target": "opponent"
-      }
-    },
-    "toxic": {
-      "type": "poison",
-      "special": false,
-      "priority": false,
-      "status": true,
-      "power": null,
-      "accuracy": 90,
-      "display_name": "Toxic",
-        "description": "A poison-type move with 90% accuracy. It badly poisons the opponent. This is a status move.",
-      "effect": {
-        "name": "poison",
-        "chance": 100,
-        "duration": 2,
-        "target": "opponent"
-      }
+    }
+  },
+  "stealth-rock": {
+    "type": "rock",
+    "special": false,
+    "priority": false,
+    "status": true,
+    "power": null,
+    "accuracy": null,
+    "display_name": "Stealth Rock",
+    "description": "A rock-type status move that sets up entry hazards. This is a status move.",
+    "effect": {
+      "name": "entry-hazard",
+      "chance": 100,
+      "duration": 0,
+      "target": "opponent"
+    }
+  },
+  "toxic": {
+    "type": "poison",
+    "special": false,
+    "priority": false,
+    "status": true,
+    "power": null,
+    "accuracy": 90,
+    "display_name": "Toxic",
+    "description": "A poison-type move with 90% accuracy. It badly poisons the opponent. This is a status move.",
+    "effect": {
+      "name": "poison",
+      "chance": 100,
+      "duration": 2,
+      "target": "opponent"
     }
   }
 }
