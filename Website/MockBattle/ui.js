@@ -9,6 +9,7 @@ function updatePlayerDisplay() {
     document.getElementById("player-pokemon-level").innerText = `Level ${playerActivePokemon.level}`;
     changePlayerPokemonImage(playerActivePokemon.id);
     displayPlayerStatusEffects();
+    updatePlayerTeamDisplay();
 }
 
 function updateOpponentDisplay() {
@@ -17,6 +18,7 @@ function updateOpponentDisplay() {
     document.getElementById("opponent-pokemon-level").innerText = `Level ${opponentActivePokemon.level}`;
     changeOpponentPokemonImage(opponentActivePokemon.id);
     displayOpponentStatusEffects();
+    updateOpponentTeamDisplay();
 }
 
 function updatePlayerHpBar() {
@@ -71,5 +73,36 @@ function displayOpponentStatusEffects() {
         effect.innerText = status.name;
         effect.classList.add('status', 'status-' + status.name);
         container.appendChild(effect);
+    });
+}
+
+function updatePlayerTeamDisplay() {
+    const container = document.getElementById("player-team-container");
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+
+    playerTeam.forEach(pokemon => {
+        const img = document.createElement("img");
+        img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`;
+        img.alt = pokemon.display_name;
+        img.title = pokemon.display_name;
+
+        container.appendChild(img);
+    });
+}
+function updateOpponentTeamDisplay() {
+    const container = document.getElementById("opponent-team-container");
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+
+    opponentTeam.forEach(pokemon => {
+        const img = document.createElement("img");
+        img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`;
+        img.alt = pokemon.display_name;
+        img.title = pokemon.display_name;
+
+        container.appendChild(img);
     });
 }

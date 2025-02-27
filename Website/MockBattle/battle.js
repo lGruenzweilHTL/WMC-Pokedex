@@ -323,10 +323,11 @@ function highlightMoveButtons(moves, buttons) {
 }
 
 function populateButtonList(list, buttonClass) {
-    // Easy for now, because we only have 2 pokemon
+    // Easy for now, because we only have 2 pokemon (not anymore)
+    // TODO
 
     const buttons = document.getElementsByClassName(buttonClass);
-    for (let i = 0; i < list.length; i++) {
+    for (let i = 0; i < list.length && i < buttons.length; i++) {
         buttons[i].style.display = "block";
         buttons[i].innerText = list[i].name;
     }
