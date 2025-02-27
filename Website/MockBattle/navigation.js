@@ -31,6 +31,16 @@ document.addEventListener('keydown', function (event) {
         default:
             break;
     }
+
+    // Update tooltip
+    const activeElement = document.activeElement;
+    const title = activeElement?.getAttribute('data-title');
+    const description = activeElement?.getAttribute('data-description');
+    if (title && description) {
+        showTooltip(title, description);
+    } else {
+        hideTooltip();
+    }
 });
 
 function focusFirstElement() {

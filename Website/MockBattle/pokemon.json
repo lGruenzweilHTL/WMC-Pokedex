@@ -3,6 +3,7 @@
     "level": 50,
     "id": 6,
     "display_name": "Charizard",
+    "description": "A powerful Fire/Flying type Pokémon known for its fiery breath.",
     "stats": {
       "hp": 78,
       "attack": 84,
@@ -26,6 +27,7 @@
     "level": 50,
     "id": 94,
     "display_name": "Gengar",
+    "description": "A Ghost/Poison type Pokémon that is both mischievous and powerful.",
     "stats": {
       "hp": 60,
       "attack": 65,
@@ -49,6 +51,7 @@
     "level": 50,
     "id": 149,
     "display_name": "Dragonite",
+    "description": "A Dragon/Flying type Pokémon known for its strength and kindness.",
     "stats": {
       "hp": 91,
       "attack": 134,
@@ -72,6 +75,7 @@
     "level": 50,
     "id": 9,
     "display_name": "Blastoise",
+    "description": "A Water type Pokémon with powerful water cannons on its shell.",
     "stats": {
       "hp": 79,
       "attack": 83,
@@ -94,6 +98,7 @@
     "level": 50,
     "id": 3,
     "display_name": "Venusaur",
+    "description": "A Grass/Poison type Pokémon with a large flower on its back.",
     "stats": {
       "hp": 80,
       "attack": 82,
@@ -117,6 +122,7 @@
     "level": 50,
     "id": 11,
     "display_name": "Metapod",
+    "description": "A Bug type Pokémon that is known for its hard shell.",
     "stats": {
       "hp": 50,
       "attack": 20,
@@ -139,6 +145,7 @@
     "level": 50,
     "id": 68,
     "display_name": "Machamp",
+    "description": "A Fighting type Pokémon with four powerful arms.",
     "stats": {
       "hp": 90,
       "attack": 130,
@@ -161,6 +168,7 @@
     "level": 50,
     "id": 103,
     "display_name": "Exeggutor",
+    "description": "A Grass/Psychic type Pokémon with multiple heads.",
     "stats": {
       "hp": 95,
       "attack": 95,
@@ -184,6 +192,7 @@
     "level": 50,
     "id": 100,
     "display_name": "Voltorb",
+    "description": "An Electric type Pokémon that resembles a Poké Ball.",
     "stats": {
       "hp": 40,
       "attack": 30,
@@ -206,6 +215,7 @@
     "level": 50,
     "id": 18,
     "display_name": "Pidgeot",
+    "description": "A Normal/Flying type Pokémon known for its speed and grace.",
     "stats": {
       "hp": 83,
       "attack": 80,
@@ -229,6 +239,7 @@
     "level": 50,
     "id": 130,
     "display_name": "Gyarados",
+    "description": "A Water/Flying type Pokémon known for its fierce temper.",
     "stats": {
       "hp": 95,
       "attack": 125,
@@ -252,6 +263,7 @@
     "level": 50,
     "id": 95,
     "display_name": "Onix",
+    "description": "A Rock/Ground type Pokémon with a body made of boulders.",
     "stats": {
       "hp": 35,
       "attack": 45,

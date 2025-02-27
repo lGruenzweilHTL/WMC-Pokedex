@@ -7,6 +7,7 @@
     "power": 90,
     "accuracy": 100,
     "display_name": "Flamethrower",
+    "description": "A powerful fire-type move with 90 power and 100% accuracy. It has a 10% chance to burn the opponent. This is a special move.",
     "effect": {
       "name": "burn",
       "chance": 10,
@@ -22,6 +23,7 @@
     "power": 80,
     "accuracy": 100,
     "display_name": "Dragon Claw",
+    "description": "A dragon-type move with 80 power and 100% accuracy. This is a physical move with no additional effects.",
     "effect": null
   },
   "air-slash": {
@@ -32,6 +34,7 @@
     "power": 75,
     "accuracy": 95,
     "display_name": "Air Slash",
+    "description": "A flying-type move with 75 power and 95% accuracy. It has a 30% chance to make the opponent flinch. This is a physical move.",
     "effect": {
       "name": "flinch",
       "chance": 30,
@@ -47,6 +50,7 @@
     "power": 110,
     "accuracy": 85,
     "display_name": "Fire Blast",
+    "description": "A very powerful fire-type move with 110 power and 85% accuracy. It has a 10% chance to burn the opponent. This is a special move.",
     "effect": {
       "name": "burn",
       "chance": 10,
@@ -62,6 +66,7 @@
     "power": 80,
     "accuracy": 100,
     "display_name": "Shadow Ball",
+    "description": "A ghost-type move with 80 power and 100% accuracy. It has a 20% chance to lower the opponent's special defense. This is a special move.",
     "effect": {
       "name": "lower-sp-defense",
       "chance": 20,
@@ -77,6 +82,7 @@
     "power": 80,
     "accuracy": 100,
     "display_name": "Dark Pulse",
+    "description": "A dark-type move with 80 power and 100% accuracy. It has a 20% chance to make the opponent flinch. This is a special move.",
     "effect": {
       "name": "flinch",
       "chance": 20,
@@ -92,6 +98,7 @@
     "power": 90,
     "accuracy": 100,
     "display_name": "Sludge Bomb",
+    "description": "A poison-type move with 90 power and 100% accuracy. It has a 30% chance to poison the opponent. This is a special move.",
     "effect": {
       "name": "poison",
       "chance": 30,
@@ -107,6 +114,7 @@
     "power": null,
     "accuracy": 100,
     "display_name": "Destiny Bond",
+    "description": "A ghost-type status move with 100% accuracy. If the user faints, the opponent also faints. This is a status move.",
     "effect": {
       "name": "faint",
       "chance": 100,
@@ -122,6 +130,7 @@
     "power": null,
     "accuracy": null,
     "display_name": "Dragon Dance",
+    "description": "A dragon-type status move that raises the user's attack and speed. This is a status move.",
     "effect": {
       "name": "raise-attack-speed",
       "chance": 100,
@@ -137,6 +146,7 @@
     "power": 120,
     "accuracy": 100,
     "display_name": "Outrage",
+    "description": "A very powerful dragon-type move with 120 power and 100% accuracy. It causes the user to become confused after use. This is a physical move.",
     "effect": {
       "name": "confusion",
       "chance": 100,
@@ -152,6 +162,7 @@
     "power": 100,
     "accuracy": 100,
     "display_name": "Earthquake",
+    "description": "A ground-type move with 100 power and 100% accuracy. This is a physical move with no additional effects.",
     "effect": null
   },
   "fire-punch": {
@@ -162,6 +173,7 @@
     "power": 75,
     "accuracy": 100,
     "display_name": "Fire Punch",
+    "description": "A fire-type move with 75 power and 100% accuracy. It has a 10% chance to burn the opponent. This is a physical move.",
     "effect": {
       "name": "burn",
       "chance": 10,
@@ -177,6 +189,7 @@
     "power": 110,
     "accuracy": 80,
     "display_name": "Hydro Pump",
+    "description": "A very powerful water-type move with 110 power and 80% accuracy. This is a special move with no additional effects.",
     "effect": null
   },
   "ice-beam": {
@@ -187,6 +200,7 @@
     "power": 90,
     "accuracy": 100,
     "display_name": "Ice Beam",
+    "description": "An ice-type move with 90 power and 100% accuracy. It has a 10% chance to freeze the opponent. This is a special move.",
     "effect": {
       "name": "freeze",
       "chance": 10,
@@ -202,6 +216,7 @@
     "power": 120,
     "accuracy": 70,
     "display_name": "Focus Blast",
+    "description": "A very powerful fighting-type move with 120 power and 70% accuracy. It has a 10% chance to lower the opponent's special defense. This is a special move.",
     "effect": {
       "name": "lower-sp-defense",
       "chance": 10,
@@ -217,6 +232,7 @@
     "power": 120,
     "accuracy": 100,
     "display_name": "Solar Beam",
+    "description": "A very powerful grass-type move with 120 power and 100% accuracy. This is a special move with no additional effects.",
     "effect": null
   },
   "synthesis": {
@@ -227,6 +243,7 @@
     "power": null,
     "accuracy": null,
     "display_name": "Synthesis",
+    "description": "A grass-type status move that heals the user. This is a status move.",
     "effect": {
       "name": "heal",
       "chance": 100,
@@ -242,6 +259,7 @@
     "power": null,
     "accuracy": null,
     "display_name": "Harden",
+    "description": "A normal-type status move that raises the user's defense. This is a status move.",
     "effect": {
       "name": "raise-defense",
       "chance": 100,
@@ -257,6 +275,7 @@
     "power": 100,
     "accuracy": 80,
     "display_name": "Cross Chop",
+    "description": "A fighting-type move with 100 power and 80% accuracy. This is a physical move with no additional effects.",
     "effect": null
   },
   "stone-edge": {
@@ -267,6 +286,7 @@
     "power": 100,
     "accuracy": 80,
     "display_name": "Stone Edge",
+    "description": "A rock-type move with 100 power and 80% accuracy. This is a physical move with no additional effects.",
     "effect": null
   },
   "ice-punch": {
@@ -277,6 +297,7 @@
     "power": 75,
     "accuracy": 100,
     "display_name": "Ice Punch",
+    "description": "An ice-type move with 75 power and 100% accuracy. It has a 10% chance to freeze the opponent. This is a physical move.",
     "effect": {
       "name": "freeze",
       "chance": 10,
@@ -292,6 +313,7 @@
     "power": 90,
     "accuracy": 100,
     "display_name": "Psychic",
+    "description": "A psychic-type move with 90 power and 100% accuracy. It has a 10% chance to lower the opponent's special defense. This is a special move.",
     "effect": {
       "name": "lower-sp-defense",
       "chance": 10,
@@ -307,6 +329,7 @@
     "power": 75,
     "accuracy": 100,
     "display_name": "Giga Drain",
+    "description": "A grass-type move with 75 power and 100% accuracy. It heals the user for a portion of the damage dealt. This is a special move.",
     "effect": {
       "name": "heal",
       "chance": 100,
@@ -322,6 +345,7 @@
     "power": null,
     "accuracy": 75,
     "display_name": "Sleep Powder",
+    "description": "A grass-type status move with 75% accuracy. It puts the opponent to sleep. This is a status move.",
     "effect": {
       "name": "sleep",
       "chance": 100,
@@ -337,6 +361,7 @@
     "power": 90,
     "accuracy": 100,
     "display_name": "Thunderbolt",
+    "description": "An electric-type move with 90 power and 100% accuracy. It has a 10% chance to paralyze the opponent. This is a special move.",
     "effect": {
       "name": "paralyze",
       "chance": 10,
@@ -352,6 +377,7 @@
     "power": null,
     "accuracy": 90,
     "display_name": "Thunder Wave",
+    "description": "An electric-type status move with 90% accuracy. It paralyzes the opponent. This is a status move.",
     "effect": {
       "name": "paralyze",
       "chance": 100,
@@ -367,8 +393,9 @@
     "power": 250,
     "accuracy": 100,
     "display_name": "Explosion",
+    "description": "A very powerful normal-type move with 250 power and 100% accuracy. The user faints after using this move. This is a physical move.",
     "effect": {
-      "name": "death",
+      "name": "faint",
       "chance": 100,
       "duration": 0,
       "target": "self"
@@ -382,6 +409,7 @@
     "power": 50,
     "accuracy": 90,
     "display_name": "Charge Beam",
+    "description": "An electric-type move with 50 power and 90% accuracy. It has a 70% chance to raise the user's special attack. This is a special move.",
     "effect": {
       "name": "raise-sp-attack",
       "chance": 70,
@@ -397,6 +425,7 @@
     "power": 120,
     "accuracy": 100,
     "display_name": "Brave Bird",
+    "description": "A very powerful flying-type move with 120 power and 100% accuracy. It causes recoil damage to the user. This is a physical move.",
     "effect": {
       "name": "recoil",
       "chance": 100,
@@ -412,6 +441,7 @@
     "power": 102,
     "accuracy": 100,
     "display_name": "Return",
+    "description": "A normal-type move with 102 power and 100% accuracy. This is a physical move with no additional effects.",
     "effect": null
   },
   "roost": {
@@ -422,6 +452,7 @@
     "power": null,
     "accuracy": null,
     "display_name": "Roost",
+    "description": "A flying-type status move that heals the user. This is a status move.",
     "effect": {
       "name": "heal",
       "chance": 100,
@@ -437,6 +468,7 @@
     "power": 95,
     "accuracy": 90,
     "display_name": "Heat Wave",
+    "description": "A fire-type move with 95 power and 90% accuracy. It has a 10% chance to burn the opponent. This is a special move.",
     "effect": {
       "name": "burn",
       "chance": 10,
@@ -452,6 +484,7 @@
     "power": 80,
     "accuracy": 100,
     "display_name": "Waterfall",
+    "description": "A water-type move with 80 power and 100% accuracy. It has a 20% chance to make the opponent flinch. This is a physical move.",
     "effect": {
       "name": "flinch",
       "chance": 20,
@@ -467,6 +500,7 @@
     "power": 65,
     "accuracy": 95,
     "display_name": "Ice Fang",
+    "description": "An ice-type move with 65 power and 95% accuracy. It has a 10% chance to freeze the opponent. This is a physical move.",
     "effect": {
       "name": "freeze",
       "chance": 10,
@@ -482,6 +516,7 @@
     "power": null,
     "accuracy": null,
     "display_name": "Stealth Rock",
+    "description": "A rock-type status move that sets up entry hazards. This is a status move.",
     "effect": {
       "name": "entry-hazard",
       "chance": 100,
@@ -497,6 +532,7 @@
     "power": null,
     "accuracy": 90,
     "display_name": "Toxic",
+    "description": "A poison-type move with 90% accuracy. It badly poisons the opponent. This is a status move.",
     "effect": {
       "name": "poison",
       "chance": 100,
