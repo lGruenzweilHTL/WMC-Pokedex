@@ -73,6 +73,7 @@ class Effect {
         this.name = json.name;
         this.duration = json.duration;
         this.chance = json.chance;
+        this.target = json.target;
         this.options = null;
     }
 }
@@ -480,7 +481,8 @@ async function handleAttack(action) {
         }
     }
 
-    await applyStatusEffect(target, move.effect);
+    const effectTarget = move.effect.target === "self" ? action.pokemon : target;
+    await applyStatusEffect(effectTarget, move.effect);
 }
 
 async function attack(user, move, target) {
@@ -590,6 +592,23 @@ async function calculateStatusEffect(pokemon, effect) {
         case "lower-sp-defense":
             await pushMessage(`${pokemon.name}'s special defense was lowered!`);
             pokemon.statModifiers.spDefense--;
+            break;
+        case "raise-attack-speed":
+            await pushMessage(`${pokemon.name}'s attack and speed were raised!`);
+            pokemon.statModifiers.attack++;
+            pokemon.statModifiers.speed++;
+            break;
+        case "raise-sp-attack":
+            await pushMessage(`${pokemon.name}'s special attack was raised!`);
+            pokemon.statModifiers.spAttack++;
+            break;
+        case "raise-defense":
+            await pushMessage(`${pokemon.name}'s defense was raised!`);
+            pokemon.statModifiers.defense++;
+            break;
+        case "death":
+            await pushMessage(`${pokemon.name} fainted due to explosion!`);
+            pokemon.hp = 0;
             break;
         default:
             console.error("Unknown status effect: " + effect.name);

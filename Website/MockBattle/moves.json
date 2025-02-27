@@ -10,7 +10,8 @@
     "effect": {
       "name": "burn",
       "chance": 10,
-      "duration": 2
+      "duration": 2,
+      "target": "opponent"
     }
   },
   "dragon-claw": {
@@ -34,7 +35,8 @@
     "effect": {
       "name": "flinch",
       "chance": 30,
-      "duration": 1
+      "duration": 1,
+      "target": "opponent"
     }
   },
   "fire-blast": {
@@ -48,7 +50,8 @@
     "effect": {
       "name": "burn",
       "chance": 10,
-      "duration": 2
+      "duration": 2,
+      "target": "opponent"
     }
   },
   "shadow-ball": {
@@ -62,7 +65,8 @@
     "effect": {
       "name": "lower-sp-defense",
       "chance": 20,
-      "duration": 0
+      "duration": 0,
+      "target": "opponent"
     }
   },
   "dark-pulse": {
@@ -76,7 +80,8 @@
     "effect": {
       "name": "flinch",
       "chance": 20,
-      "duration": 1
+      "duration": 1,
+      "target": "opponent"
     }
   },
   "sludge-bomb": {
@@ -90,7 +95,8 @@
     "effect": {
       "name": "poison",
       "chance": 30,
-      "duration": 2
+      "duration": 2,
+      "target": "opponent"
     }
   },
   "destiny-bond": {
@@ -104,7 +110,8 @@
     "effect": {
       "name": "faint",
       "chance": 100,
-      "duration": 1
+      "duration": 1,
+      "target": "opponent"
     }
   },
   "dragon-dance": {
@@ -118,7 +125,8 @@
     "effect": {
       "name": "raise-attack-speed",
       "chance": 100,
-      "duration": 0
+      "duration": 0,
+      "target": "self"
     }
   },
   "outrage": {
@@ -132,7 +140,8 @@
     "effect": {
       "name": "confusion",
       "chance": 100,
-      "duration": 2
+      "duration": 2,
+      "target": "self"
     }
   },
   "earthquake": {
@@ -156,7 +165,8 @@
     "effect": {
       "name": "burn",
       "chance": 10,
-      "duration": 2
+      "duration": 2,
+      "target": "opponent"
     }
   },
   "hydro-pump": {
@@ -180,7 +190,8 @@
     "effect": {
       "name": "freeze",
       "chance": 10,
-      "duration": 2
+      "duration": 2,
+      "target": "opponent"
     }
   },
   "focus-blast": {
@@ -194,7 +205,8 @@
     "effect": {
       "name": "lower-sp-defense",
       "chance": 10,
-      "duration": 0
+      "duration": 0,
+      "target": "opponent"
     }
   },
   "solar-beam": {
@@ -218,7 +230,8 @@
     "effect": {
       "name": "heal",
       "chance": 100,
-      "duration": 0
+      "duration": 0,
+      "target": "self"
     }
   },
   "harden": {
@@ -232,7 +245,8 @@
     "effect": {
       "name": "raise-defense",
       "chance": 100,
-      "duration": 0
+      "duration": 0,
+      "target": "self"
     }
   },
   "cross-chop": {
@@ -266,7 +280,8 @@
     "effect": {
       "name": "freeze",
       "chance": 10,
-      "duration": 2
+      "duration": 2,
+      "target": "opponent"
     }
   },
   "psychic": {
@@ -280,7 +295,8 @@
     "effect": {
       "name": "lower-sp-defense",
       "chance": 10,
-      "duration": 0
+      "duration": 0,
+      "target": "opponent"
     }
   },
   "giga-drain": {
@@ -294,7 +310,8 @@
     "effect": {
       "name": "heal",
       "chance": 100,
-      "duration": 0
+      "duration": 0,
+      "target": "self"
     }
   },
   "sleep-powder": {
@@ -308,7 +325,8 @@
     "effect": {
       "name": "sleep",
       "chance": 100,
-      "duration": 2
+      "duration": 2,
+      "target": "opponent"
     }
   },
   "thunderbolt": {
@@ -322,7 +340,8 @@
     "effect": {
       "name": "paralyze",
       "chance": 10,
-      "duration": 2
+      "duration": 2,
+      "target": "opponent"
     }
   },
   "thunder-wave": {
@@ -336,7 +355,8 @@
     "effect": {
       "name": "paralyze",
       "chance": 100,
-      "duration": 2
+      "duration": 2,
+      "target": "opponent"
     }
   },
   "explosion": {
@@ -348,9 +368,10 @@
     "accuracy": 100,
     "display_name": "Explosion",
     "effect": {
-      "name": "faint",
+      "name": "death",
       "chance": 100,
-      "duration": 0
+      "duration": 0,
+      "target": "self"
     }
   },
   "charge-beam": {
@@ -364,7 +385,8 @@
     "effect": {
       "name": "raise-sp-attack",
       "chance": 70,
-      "duration": 0
+      "duration": 0,
+      "target": "self"
     }
   },
   "brave-bird": {
@@ -378,7 +400,8 @@
     "effect": {
       "name": "recoil",
       "chance": 100,
-      "duration": 0
+      "duration": 0,
+      "target": "self"
     }
   },
   "return": {
@@ -402,7 +425,8 @@
     "effect": {
       "name": "heal",
       "chance": 100,
-      "duration": 0
+      "duration": 0,
+      "target": "self"
     }
   },
   "heat-wave": {
@@ -416,7 +440,8 @@
     "effect": {
       "name": "burn",
       "chance": 10,
-      "duration": 2
+      "duration": 2,
+      "target": "opponent"
     }
   },
   "waterfall": {
@@ -430,7 +455,8 @@
     "effect": {
       "name": "flinch",
       "chance": 20,
-      "duration": 1
+      "duration": 1,
+      "target": "opponent"
     }
   },
   "ice-fang": {
@@ -444,7 +470,8 @@
     "effect": {
       "name": "freeze",
       "chance": 10,
-      "duration": 2
+      "duration": 2,
+      "target": "opponent"
     }
   },
   "stealth-rock": {
@@ -458,7 +485,8 @@
     "effect": {
       "name": "entry-hazard",
       "chance": 100,
-      "duration": 0
+      "duration": 0,
+      "target": "opponent"
     }
   },
   "toxic": {
@@ -472,7 +500,8 @@
     "effect": {
       "name": "poison",
       "chance": 100,
-      "duration": 2
+      "duration": 2,
+      "target": "opponent"
     }
   }
 }
