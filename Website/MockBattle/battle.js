@@ -3,6 +3,7 @@ class Pokemon {
         const data = pokemon[string];
         this.id = data.id;
         this.name = data.display_name;
+        this.description = data.description;
         this.level = data.level;
         this.stats = data.stats;
         this.types = data.types;
@@ -58,6 +59,7 @@ class Move {
     constructor(string) {
         const data = moves[string];
         this.name = data.display_name;
+        this.description = data.description;
         this.type = data.type;
         this.special = data.special;
         this.priority = data.priority;
@@ -227,6 +229,7 @@ async function waitForPlayerAction() {
 
         document.addEventListener("keydown", (event) => {
             if (event.key === "Escape") {
+                hideTooltip();
                 showPlayerActionSelect();
             }
         });
@@ -268,6 +271,7 @@ function attackClicked() {
         button.innerText = playerActivePokemon.moves[idx].name;
     });
     highlightMoveButtons(playerActivePokemon.moves, buttons);
+    updateMoveTooltipData(playerActivePokemon.moves, buttons);
     buttons[0].focus();
 }
 
@@ -322,15 +326,22 @@ function highlightMoveButtons(moves, buttons) {
         buttons[i].classList.add(`move-${moves[i].type}`);
     }
 }
+function updateMoveTooltipData(moves, buttons) {
+    for (let i = 0; i < moves.length; i++) {
+        buttons[i].setAttribute("data-title", moves[i].name);
+        buttons[i].setAttribute("data-description", moves[i].description);
+    }
+}
 
 function populateButtonList(list, buttonClass) {
-    // Easy for now, because we only have 2 pokemon (not anymore)
-    // TODO
-
     const buttons = document.getElementsByClassName(buttonClass);
     for (let i = 0; i < list.length && i < buttons.length; i++) {
         buttons[i].style.display = "block";
         buttons[i].innerText = list[i].name;
+
+        // Tooltip data
+        buttons[i].setAttribute("data-title", list[i].name);
+        buttons[i].setAttribute("data-description", list[i].description);
     }
 
     buttons[0].focus();
