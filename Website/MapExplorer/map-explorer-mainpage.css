@@ -1,0 +1,14 @@
+body {
+    background: url('../Images/pokemon-background.gif') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.btn:hover {
+    transition: 0.3s;
+}
+
+.pokemon-of-the-day {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 15px;
+}
