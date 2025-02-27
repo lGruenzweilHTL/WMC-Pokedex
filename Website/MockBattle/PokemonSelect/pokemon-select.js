@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const selectionBody = document.querySelector(".pokemon-selection-body");
     const confirmButton = document.getElementById("confirm-selection");
     const selectedPokemon = [];
+    let pokemonNames = [];
 
     fetch("../pokemon.json")
         .then(response => response.json())
@@ -9,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(error => console.error("Error loading Pokémon data:", error));
 
     function populatePokemonSelection(pokemonData) {
-        const pokemonNames = Object.keys(pokemonData);
+        pokemonNames = Object.keys(pokemonData);
         pokemonNames.forEach(name => {
             const pokemon = pokemonData[name];
             const pokemonOption = createPokemonOption(pokemon, name);
@@ -46,9 +47,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const urlParams = new URLSearchParams();
         selectedPokemon.forEach(name => urlParams.append('player', name));
 
-        // TEMP
-        urlParams.append('opponent', 'charizard');
-        urlParams.append('opponent', 'gengar');
+        const opponentPokemon = pokemonNames.filter(name => !selectedPokemon.includes(name));
+        opponentPokemon.forEach(name => urlParams.append('opponent', name));
 
         window.location.href = `../mock-battle.html?${urlParams.toString()}`;
     });
