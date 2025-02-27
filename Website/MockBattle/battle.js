@@ -475,7 +475,11 @@ async function handleAttack(action) {
     const target = action.target === "opponent" ? opponentActivePokemon : playerActivePokemon;
     await attack(action.pokemon, move, target);
 
-    if (move.effect !== null && move.effect.name === "faint") {
+    if (move.effect === null) {
+        return;
+    }
+
+    if (move.effect.name === "faint") {
         move.effect.options = {
             target: action.pokemon
         }
