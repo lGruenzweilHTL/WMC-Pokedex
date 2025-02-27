@@ -22,7 +22,7 @@ body {
     transition: background-position 0.4s ease;
     background-size: 200% auto;
     height: 120px;
-    width: 240px;
+    width: 280px;
     border-radius: 50px;
     cursor: pointer;
     padding: 15px 25px;
