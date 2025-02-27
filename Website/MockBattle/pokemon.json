@@ -44,5 +44,21 @@
       "ghost",
       "poison"
     ]
+  },
+  "temp1": {
+    "id": 1,
+    "display_name": "Temp1"
+  },
+  "temp2": {
+    "id": 2,
+    "display_name": "Temp2"
+  },
+  "temp3": {
+    "id": 3,
+    "display_name": "Temp3"
+  },
+  "temp4": {
+    "id": 4,
+    "display_name": "Temp4"
   }
 }

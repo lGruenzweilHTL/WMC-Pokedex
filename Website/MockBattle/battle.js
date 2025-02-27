@@ -121,8 +121,6 @@ class GameAction {
 
 let turnOrder = [];
 
-const playerPokemon = ["charizard", "gengar"];
-const opponentPokemon = ["gengar", "charizard"];
 const playerItemNames = ["potion", "super-potion", "hyper-potion", "max-potion"];
 
 let playerTeam;
@@ -158,6 +156,10 @@ async function initJson() {
 }
 
 function initTeams() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const playerPokemon = urlParams.getAll("player");
+    const opponentPokemon = urlParams.getAll("opponent");
+
     playerTeam = playerPokemon.map(pokemon => new Pokemon(pokemon));
     opponentTeam = opponentPokemon.map(pokemon => new Pokemon(pokemon));
 
