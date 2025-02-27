@@ -12,3 +12,31 @@ body {
     padding: 20px;
     border-radius: 15px;
 }
+
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.video-background iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 56.25vw; /* 100vw * (9/16) für korrektes 16:9-Seitenverhältnis */
+    
+    max-width: 177.78vh; /* 100vh * (16/9), falls die Höhe das Video begrenzen soll */
+    max-height: 100vh; /* Damit es nie höher als der Bildschirm wird */
+
+    transform: translate(-50%, -50%);
+    pointer-events: none; /* Keine Interaktion mit dem Video */
+}
+
+
+
+
