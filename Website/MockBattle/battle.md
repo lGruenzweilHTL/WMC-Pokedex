@@ -42,12 +42,13 @@
 - [ ] [Weak Armor](https://pokeapi.co/api/v2/ability/133/)
 
 ## Features to add:
-- [ ] Implement pokemon abilities and items
+- [x] More pokemon
+- [ ] Info about pokemon when hovering over them (in the switch menu)
 - [ ] Description of moves when hovering over them
 - [ ] Description of items when hovering over them
-- [ ] Info about pokemon when hovering over them (in the switch menu)
-- [ ] Add background music (maybe also button to mute)
 - [ ] Add background
+- [ ] Implement pokemon abilities and items
+- [ ] Add background music (maybe also button to mute)
 - [ ] Add animations for moves
 
 ## Moves with effects to implement:
@@ -58,25 +59,25 @@
 - [x] Dark Pulse (flinch)
 - [x] Sludge Bomb (poison)
 - [x] Destiny Bond (faint)
-- [] Dragon Dance (raise-attack-speed)
-- [] Outrage (confusion)
+- [ ] Dragon Dance (raise-attack-speed)
+- [ ] Outrage (confusion)
 - [x] Fire Punch (burn)
-- [] Ice Beam (freeze)
+- [ ] Ice Beam (freeze)
 - [x] Focus Blast (lower-sp-defense)
-- [] Synthesis (heal)
-- [] Harden (raise-defense)
-- [] Ice Punch (freeze)
-- [] Psychic (lower-sp-defense)
-- [] Giga Drain (heal)
-- [] Sleep Powder (sleep)
-- [] Thunderbolt (paralyze)
-- [] Thunder Wave (paralyze)
-- [] Explosion (faint)
-- [] Charge Beam (raise-sp-attack)
-- [] Brave Bird (recoil)
-- [] Roost (heal)
-- [] Heat Wave (burn)
-- [] Waterfall (flinch)
-- [] Ice Fang (freeze)
-- [] Stealth Rock (entry-hazard)
-- [] Toxic (poison)
+- [ ] Synthesis (heal)
+- [ ] Harden (raise-defense)
+- [ ] Ice Punch (freeze)
+- [ ] Psychic (lower-sp-defense)
+- [ ] Giga Drain (heal)
+- [ ] Sleep Powder (sleep)
+- [ ] Thunderbolt (paralyze)
+- [ ] Thunder Wave (paralyze)
+- [ ] Explosion (faint)
+- [ ] Charge Beam (raise-sp-attack)
+- [ ] Brave Bird (recoil)
+- [ ] Roost (heal)
+- [ ] Heat Wave (burn)
+- [ ] Waterfall (flinch)
+- [ ] Ice Fang (freeze)
+- [ ] Stealth Rock (entry-hazard)
+- [ ] Toxic (poison)
