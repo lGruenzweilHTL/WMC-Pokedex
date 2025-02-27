@@ -8,9 +8,9 @@
     "accuracy": 100,
     "display_name": "Flamethrower",
     "effect": {
-        "name": "burn",
-        "chance": 10,
-        "duration": 2
+      "name": "burn",
+      "chance": 10,
+      "duration": 2
     }
   },
   "dragon-claw": {
@@ -105,6 +105,374 @@
       "name": "faint",
       "chance": 100,
       "duration": 1
+    }
+  },
+  "dragon-dance": {
+    "type": "dragon",
+    "special": false,
+    "priority": false,
+    "status": true,
+    "power": null,
+    "accuracy": null,
+    "display_name": "Dragon Dance",
+    "effect": {
+      "name": "raise-attack-speed",
+      "chance": 100,
+      "duration": 0
+    }
+  },
+  "outrage": {
+    "type": "dragon",
+    "special": false,
+    "priority": false,
+    "status": false,
+    "power": 120,
+    "accuracy": 100,
+    "display_name": "Outrage",
+    "effect": {
+      "name": "confusion",
+      "chance": 100,
+      "duration": 2
+    }
+  },
+  "earthquake": {
+    "type": "ground",
+    "special": false,
+    "priority": false,
+    "status": false,
+    "power": 100,
+    "accuracy": 100,
+    "display_name": "Earthquake",
+    "effect": null
+  },
+  "fire-punch": {
+    "type": "fire",
+    "special": false,
+    "priority": false,
+    "status": false,
+    "power": 75,
+    "accuracy": 100,
+    "display_name": "Fire Punch",
+    "effect": {
+      "name": "burn",
+      "chance": 10,
+      "duration": 2
+    }
+  },
+  "hydro-pump": {
+    "type": "water",
+    "special": true,
+    "priority": false,
+    "status": false,
+    "power": 110,
+    "accuracy": 80,
+    "display_name": "Hydro Pump",
+    "effect": null
+  },
+  "ice-beam": {
+    "type": "ice",
+    "special": true,
+    "priority": false,
+    "status": false,
+    "power": 90,
+    "accuracy": 100,
+    "display_name": "Ice Beam",
+    "effect": {
+      "name": "freeze",
+      "chance": 10,
+      "duration": 2
+    }
+  },
+  "focus-blast": {
+    "type": "fighting",
+    "special": true,
+    "priority": false,
+    "status": false,
+    "power": 120,
+    "accuracy": 70,
+    "display_name": "Focus Blast",
+    "effect": {
+      "name": "lower-sp-defense",
+      "chance": 10,
+      "duration": 0
+    }
+  },
+  "solar-beam": {
+    "type": "grass",
+    "special": true,
+    "priority": false,
+    "status": false,
+    "power": 120,
+    "accuracy": 100,
+    "display_name": "Solar Beam",
+    "effect": null
+  },
+  "synthesis": {
+    "type": "grass",
+    "special": false,
+    "priority": false,
+    "status": true,
+    "power": null,
+    "accuracy": null,
+    "display_name": "Synthesis",
+    "effect": {
+      "name": "heal",
+      "chance": 100,
+      "duration": 0
+    }
+  },
+  "harden": {
+    "type": "normal",
+    "special": false,
+    "priority": false,
+    "status": true,
+    "power": null,
+    "accuracy": null,
+    "display_name": "Harden",
+    "effect": {
+      "name": "raise-defense",
+      "chance": 100,
+      "duration": 0
+    }
+  },
+  "cross-chop": {
+    "type": "fighting",
+    "special": false,
+    "priority": false,
+    "status": false,
+    "power": 100,
+    "accuracy": 80,
+    "display_name": "Cross Chop",
+    "effect": null
+  },
+  "stone-edge": {
+    "type": "rock",
+    "special": false,
+    "priority": false,
+    "status": false,
+    "power": 100,
+    "accuracy": 80,
+    "display_name": "Stone Edge",
+    "effect": null
+  },
+  "ice-punch": {
+    "type": "ice",
+    "special": false,
+    "priority": false,
+    "status": false,
+    "power": 75,
+    "accuracy": 100,
+    "display_name": "Ice Punch",
+    "effect": {
+      "name": "freeze",
+      "chance": 10,
+      "duration": 2
+    }
+  },
+  "psychic": {
+    "type": "psychic",
+    "special": true,
+    "priority": false,
+    "status": false,
+    "power": 90,
+    "accuracy": 100,
+    "display_name": "Psychic",
+    "effect": {
+      "name": "lower-sp-defense",
+      "chance": 10,
+      "duration": 0
+    }
+  },
+  "giga-drain": {
+    "type": "grass",
+    "special": true,
+    "priority": false,
+    "status": false,
+    "power": 75,
+    "accuracy": 100,
+    "display_name": "Giga Drain",
+    "effect": {
+      "name": "heal",
+      "chance": 100,
+      "duration": 0
+    }
+  },
+  "sleep-powder": {
+    "type": "grass",
+    "special": false,
+    "priority": false,
+    "status": true,
+    "power": null,
+    "accuracy": 75,
+    "display_name": "Sleep Powder",
+    "effect": {
+      "name": "sleep",
+      "chance": 100,
+      "duration": 2
+    }
+  },
+  "thunderbolt": {
+    "type": "electric",
+    "special": true,
+    "priority": false,
+    "status": false,
+    "power": 90,
+    "accuracy": 100,
+    "display_name": "Thunderbolt",
+    "effect": {
+      "name": "paralyze",
+      "chance": 10,
+      "duration": 2
+    }
+  },
+  "thunder-wave": {
+    "type": "electric",
+    "special": false,
+    "priority": false,
+    "status": true,
+    "power": null,
+    "accuracy": 90,
+    "display_name": "Thunder Wave",
+    "effect": {
+      "name": "paralyze",
+      "chance": 100,
+      "duration": 2
+    }
+  },
+  "explosion": {
+    "type": "normal",
+    "special": false,
+    "priority": false,
+    "status": false,
+    "power": 250,
+    "accuracy": 100,
+    "display_name": "Explosion",
+    "effect": {
+      "name": "faint",
+      "chance": 100,
+      "duration": 0
+    }
+  },
+  "charge-beam": {
+    "type": "electric",
+    "special": true,
+    "priority": false,
+    "status": false,
+    "power": 50,
+    "accuracy": 90,
+    "display_name": "Charge Beam",
+    "effect": {
+      "name": "raise-sp-attack",
+      "chance": 70,
+      "duration": 0
+    }
+  },
+  "brave-bird": {
+    "type": "flying",
+    "special": false,
+    "priority": false,
+    "status": false,
+    "power": 120,
+    "accuracy": 100,
+    "display_name": "Brave Bird",
+    "effect": {
+      "name": "recoil",
+      "chance": 100,
+      "duration": 0
+    }
+  },
+  "return": {
+    "type": "normal",
+    "special": false,
+    "priority": false,
+    "status": false,
+    "power": 102,
+    "accuracy": 100,
+    "display_name": "Return",
+    "effect": null
+  },
+  "roost": {
+    "type": "flying",
+    "special": false,
+    "priority": false,
+    "status": true,
+    "power": null,
+    "accuracy": null,
+    "display_name": "Roost",
+    "effect": {
+      "name": "heal",
+      "chance": 100,
+      "duration": 0
+    }
+  },
+  "heat-wave": {
+    "type": "fire",
+    "special": true,
+    "priority": false,
+    "status": false,
+    "power": 95,
+    "accuracy": 90,
+    "display_name": "Heat Wave",
+    "effect": {
+      "name": "burn",
+      "chance": 10,
+      "duration": 2
+    }
+  },
+  "waterfall": {
+    "type": "water",
+    "special": false,
+    "priority": false,
+    "status": false,
+    "power": 80,
+    "accuracy": 100,
+    "display_name": "Waterfall",
+    "effect": {
+      "name": "flinch",
+      "chance": 20,
+      "duration": 1
+    }
+  },
+  "ice-fang": {
+    "type": "ice",
+    "special": false,
+    "priority": false,
+    "status": false,
+    "power": 65,
+    "accuracy": 95,
+    "display_name": "Ice Fang",
+    "effect": {
+      "name": "freeze",
+      "chance": 10,
+      "duration": 2
+    }
+  },
+  "stealth-rock": {
+    "type": "rock",
+    "special": false,
+    "priority": false,
+    "status": true,
+    "power": null,
+    "accuracy": null,
+    "display_name": "Stealth Rock",
+    "effect": {
+      "name": "entry-hazard",
+      "chance": 100,
+      "duration": 0
+    }
+  },
+  "toxic": {
+    "type": "poison",
+    "special": false,
+    "priority": false,
+    "status": true,
+    "power": null,
+    "accuracy": 90,
+    "display_name": "Toxic",
+    "effect": {
+      "name": "poison",
+      "chance": 100,
+      "duration": 2
     }
   }
 }

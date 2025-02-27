@@ -3,16 +3,16 @@
 ## Pokemon to add:
 - [x] Charizard
 - [x] Gengar
-- [ ] Dragonite
-- [ ] Blastoise
-- [ ] Venusaur
-- [ ] Metapod
-- [ ] Machamp
-- [ ] Exeggutor
-- [ ] Voltorb
-- [ ] Pidgeot
-- [ ] Gyaraodos
-- [ ] Onix
+- [x] Dragonite
+- [x] Blastoise
+- [x] Venusaur
+- [x] Metapod
+- [x] Machamp
+- [x] Exeggutor
+- [x] Voltorb
+- [x] Pidgeot
+- [x] Gyaraodos
+- [x] Onix
 
 ## Abilities to add:
 - [ ] [Blaze](https://pokeapi.co/api/v2/ability/66/)
@@ -49,3 +49,34 @@
 - [ ] Add background music (maybe also button to mute)
 - [ ] Add background
 - [ ] Add animations for moves
+
+## Moves with effects to implement:
+- [x] Flamethrower (burn)
+- [x] Air Slash (flinch)
+- [x] Fire Blast (burn)
+- [x] Shadow Ball (lower-sp-defense)
+- [x] Dark Pulse (flinch)
+- [x] Sludge Bomb (poison)
+- [x] Destiny Bond (faint)
+- [] Dragon Dance (raise-attack-speed)
+- [] Outrage (confusion)
+- [x] Fire Punch (burn)
+- [] Ice Beam (freeze)
+- [x] Focus Blast (lower-sp-defense)
+- [] Synthesis (heal)
+- [] Harden (raise-defense)
+- [] Ice Punch (freeze)
+- [] Psychic (lower-sp-defense)
+- [] Giga Drain (heal)
+- [] Sleep Powder (sleep)
+- [] Thunderbolt (paralyze)
+- [] Thunder Wave (paralyze)
+- [] Explosion (faint)
+- [] Charge Beam (raise-sp-attack)
+- [] Brave Bird (recoil)
+- [] Roost (heal)
+- [] Heat Wave (burn)
+- [] Waterfall (flinch)
+- [] Ice Fang (freeze)
+- [] Stealth Rock (entry-hazard)
+- [] Toxic (poison)

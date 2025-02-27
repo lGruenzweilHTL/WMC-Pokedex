@@ -314,9 +314,9 @@ function filterPlayerPokemon() {
 
 function highlightMoveButtons(moves, buttons) {
     for (let i = 0; i < moves.length; i++) {
-        const highlightClass = buttons[i].classList.entries().filter(entry => entry[0].startsWith("move-"))[0];
-        if (highlightClass) {
-            buttons[i].classList.remove(highlightClass[0]);
+        const moveClasses = Array.from(buttons[i].classList).filter(entry => entry.startsWith("move-") && !entry.startsWith("move-button"));
+        if (moveClasses && moveClasses.length > 0) {
+            buttons[i].classList.remove(moveClasses[0]);
         }
         buttons[i].classList.add(`move-${moves[i].type}`);
     }

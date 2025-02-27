@@ -45,20 +45,230 @@
       "poison"
     ]
   },
-  "temp1": {
-    "id": 1,
-    "display_name": "Temp1"
+  "dragonite": {
+    "level": 50,
+    "id": 149,
+    "display_name": "Dragonite",
+    "stats": {
+      "hp": 91,
+      "attack": 134,
+      "defense": 95,
+      "spAttack": 100,
+      "spDefense": 100,
+      "speed": 80
+    },
+    "moves": [
+      "dragon-dance",
+      "outrage",
+      "earthquake",
+      "fire-punch"
+    ],
+    "types": [
+      "dragon",
+      "flying"
+    ]
   },
-  "temp2": {
-    "id": 2,
-    "display_name": "Temp2"
+  "blastoise": {
+    "level": 50,
+    "id": 9,
+    "display_name": "Blastoise",
+    "stats": {
+      "hp": 79,
+      "attack": 83,
+      "defense": 100,
+      "spAttack": 85,
+      "spDefense": 105,
+      "speed": 78
+    },
+    "moves": [
+      "hydro-pump",
+      "ice-beam",
+      "dark-pulse",
+      "focus-blast"
+    ],
+    "types": [
+      "water"
+    ]
   },
-  "temp3": {
+  "venusaur": {
+    "level": 50,
     "id": 3,
-    "display_name": "Temp3"
+    "display_name": "Venusaur",
+    "stats": {
+      "hp": 80,
+      "attack": 82,
+      "defense": 83,
+      "spAttack": 100,
+      "spDefense": 100,
+      "speed": 80
+    },
+    "moves": [
+      "solar-beam",
+      "sludge-bomb",
+      "earthquake",
+      "synthesis"
+    ],
+    "types": [
+      "grass",
+      "poison"
+    ]
   },
-  "temp4": {
-    "id": 4,
-    "display_name": "Temp4"
+  "metapod": {
+    "level": 50,
+    "id": 11,
+    "display_name": "Metapod",
+    "stats": {
+      "hp": 50,
+      "attack": 20,
+      "defense": 55,
+      "spAttack": 25,
+      "spDefense": 25,
+      "speed": 30
+    },
+    "moves": [
+      "harden",
+      "harden",
+      "harden",
+      "harden"
+    ],
+    "types": [
+      "bug"
+    ]
+  },
+  "machamp": {
+    "level": 50,
+    "id": 68,
+    "display_name": "Machamp",
+    "stats": {
+      "hp": 90,
+      "attack": 130,
+      "defense": 80,
+      "spAttack": 65,
+      "spDefense": 85,
+      "speed": 55
+    },
+    "moves": [
+      "cross-chop",
+      "earthquake",
+      "stone-edge",
+      "ice-punch"
+    ],
+    "types": [
+      "fighting"
+    ]
+  },
+  "exeggutor": {
+    "level": 50,
+    "id": 103,
+    "display_name": "Exeggutor",
+    "stats": {
+      "hp": 95,
+      "attack": 95,
+      "defense": 85,
+      "spAttack": 125,
+      "spDefense": 65,
+      "speed": 55
+    },
+    "moves": [
+      "solar-beam",
+      "psychic",
+      "giga-drain",
+      "sleep-powder"
+    ],
+    "types": [
+      "grass",
+      "psychic"
+    ]
+  },
+  "voltorb": {
+    "level": 50,
+    "id": 100,
+    "display_name": "Voltorb",
+    "stats": {
+      "hp": 40,
+      "attack": 30,
+      "defense": 50,
+      "spAttack": 55,
+      "spDefense": 55,
+      "speed": 100
+    },
+    "moves": [
+      "thunderbolt",
+      "thunder-wave",
+      "explosion",
+      "charge-beam"
+    ],
+    "types": [
+      "electric"
+    ]
+  },
+  "pidgeot": {
+    "level": 50,
+    "id": 18,
+    "display_name": "Pidgeot",
+    "stats": {
+      "hp": 83,
+      "attack": 80,
+      "defense": 75,
+      "spAttack": 70,
+      "spDefense": 70,
+      "speed": 101
+    },
+    "moves": [
+      "brave-bird",
+      "return",
+      "roost",
+      "heat-wave"
+    ],
+    "types": [
+      "normal",
+      "flying"
+    ]
+  },
+  "gyarados": {
+    "level": 50,
+    "id": 130,
+    "display_name": "Gyarados",
+    "stats": {
+      "hp": 95,
+      "attack": 125,
+      "defense": 79,
+      "spAttack": 60,
+      "spDefense": 100,
+      "speed": 81
+    },
+    "moves": [
+      "waterfall",
+      "earthquake",
+      "ice-fang",
+      "stone-edge"
+    ],
+    "types": [
+      "water",
+      "flying"
+    ]
+  },
+  "onix": {
+    "level": 50,
+    "id": 95,
+    "display_name": "Onix",
+    "stats": {
+      "hp": 35,
+      "attack": 45,
+      "defense": 160,
+      "spAttack": 30,
+      "spDefense": 45,
+      "speed": 70
+    },
+    "moves": [
+      "earthquake",
+      "stone-edge",
+      "stealth-rock",
+      "toxic"
+    ],
+    "types": [
+      "rock",
+      "ground"
+    ]
   }
 }
