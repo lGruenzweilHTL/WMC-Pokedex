@@ -1,0 +1,51 @@
+@startuml
+left to right direction
+
+actor User
+
+package "Mock Battle" {
+    package "Select Pokémon" {
+        usecase "Select Team" as SelectTeam
+        usecase "Start Battle" as Battle
+    }
+    usecase Attack
+    usecase "Use Item" as UseItem
+    usecase "Switch Pokémon" as SwitchPokemon
+    usecase Run
+}
+
+package "View Sites" {
+    package Pokédex {
+        usecase "View Pokémon" as ViewPokemon
+        usecase "Search Pokémon" as SearchPokemon
+    }
+
+    usecase "View Items" as ViewItems
+    usecase "Use Type Calculator" as TypeCalc
+    usecase "View Pokémon Types" as ViewTypes
+    usecase "View Kinds of Pokémon" as ViewKinds
+    usecase "TV Series" as TVSeries
+    usecase "View Pokémon Cards" as ViewCards
+    usecase "View Pokémon Games" as ViewGames
+}
+
+User -> SelectTeam
+
+SelectTeam <|- Battle
+
+Battle <|-- Attack
+Battle <|-- UseItem
+Battle <|-- SwitchPokemon
+Battle <|-- Run
+
+User --> ViewPokemon
+User --> SearchPokemon
+User --> ViewItems
+User --> TypeCalc
+User --> ViewTypes
+User --> ViewKinds
+User --> TVSeries
+User --> ViewCards
+User --> ViewGames
+
+@enduml
