@@ -31,13 +31,26 @@
     </ul>
 </nav>
 
-  <!-- Battle Java script needs to be added -->
-
   <div class="header">
     <h1>Pokemon Anime / Tv show</h1>
   </div>
 
-  <h2>Pokemon the Series (Anime)</h2>
+  <div class="header-menu">
+    <label for="headerSelect">Jump to Section:</label>
+    <select id="headerSelect" onchange="scrollToSection()">
+      <option value="">Select a section...</option>
+      <option value="section1">Pokemon the Series (Anime)</option>
+      <option value="section2">First Episode</option>
+      <option value="section3">Season One: Pokémon: Indigo League</option>
+      <option value="section4">Season Two: Pokémon: Adventures in the Orange Islands</option>
+      <option value="section5">Season Three: Pokémon: The Johto Journeys</option>
+      <option value="section6">Season Four: Pokémon: Johto League Champions</option>
+      <option value="section7">Season Five: Pokémon: Master Quest</option>
+    </select>
+  </div>
+  
+
+  <h2 id="section1">Pokemon the Series (Anime)</h2>
   <div class="image-stack">
     <img src="Images/Anime/pokemon_the_series.webp" alt="Pokemon the series image">
   </div>
@@ -49,7 +62,7 @@
       The main charackter is a 10 year old kid called Ash Ketchum and his partner Pokemon <a href="SubPages/pikachu.html">Pikachu</a> on a journey to become the "Pokemon champion".
   </p>
 
-  <h2>First episode</h2>
+  <h2 id="section2">First episode</h2>
   <div class="image-stack">
     <img src="Images/Anime/pilot.png" alt="image from pilot">
   </div>
@@ -63,7 +76,7 @@
       While trying to catch a <a href="SubPages/pidgey.html">Pidgey</a>, Ash accidentally angers a <a href="SubPages/spearow.html">Spearow</a>, leading to an attack by a whole flock. Pikachu defends Ash with a powerful Thunder attack, earning its trust. Injured but bonded, Ash carries Pikachu to Viridian City, spotting a mysterious golden bird along the way.
   </p>
 
-    <h2>Season One: Pokémon: Indigo League</h2>
+    <h2 id="section3">Season One: Pokémon: Indigo League</h2>
     <div class="image-stack">
       <img src="Images/Anime/Pokemonseason1DVDBoxSet.jpg" alt="coverart of first season">
       <img src="Images/Anime/season-1.jpg" alt="coverart of first season" class="popUpImages">
@@ -85,7 +98,7 @@
       After the major succsess of the Pokemon anime, a special edition of the first generation released called "Pokemon Yellow" where just like in the series, the starter Pokemon is a Pikachu.
     </p>
 
-    <h2>Season Two: Pokémon: Indigo League</h2>
+    <h2 id="section4">Season Two: Pokémon: Indigo League</h2>
     <div class="image-stack">
       <img src="Images/Anime/Pokemonseason2DVDBoxSet.jpg" alt="coverart of second season">
       <img src="Images/Anime/season2cover.png" alt="coverart of second season" class="popUpImages">
@@ -103,7 +116,7 @@
       Meanwhile, Team Rocket continues their relentless pursuit of Ash’s Pikachu, devising elaborate schemes to capture it. Their comic misadventures remain a persistent source of trouble and humor throughout the season. The journey through the Orange Islands serves as an opportunity for Ash to grow as a trainer and strengthen his bond with Pikachu and his other Pokémon.
     </p>
 
-    <h2>Season Three: Pokémon: Indigo League</h2>
+    <h2 id="section5">Season Three: Pokémon: Indigo League</h2>
     <div class="image-stack">
       <img src="Images/Anime/Pokemonseason3DVDvol1.jpg" alt="coverart of third season">
       <img src="Images/Anime/Season3cover.jpg" alt="coverart of third season" class="popUpImages">
@@ -119,7 +132,7 @@
       The Johto region brings a sense of discovery and growth as Ash bonds with his Pokémon, catches new ones, and works toward his dream of becoming a Pokémon Master. The season emphasizes themes of friendship, perseverance, and the excitement of exploring uncharted territory in the Pokémon world.  
     </p>
 
-    <h2>Season Four: Pokémon: Johto League Champions</h2>
+    <h2 id="section6">Season Four: Pokémon: Johto League Champions</h2>
     <div class="image-stack">
       <img src="Images/Anime/Pokemonseason4DVDvol1.jpg" alt="coverart of fourth season">
       <img src="Images/Anime/Season4cover.jpg" alt="coverart of fourth season" class="popUpImages">
@@ -135,7 +148,7 @@
       Throughout the season, Ash and his friends explore the rich culture and landscapes of Johto, making new friends and rivals along the way. Johto League Champions captures the spirit of adventure, growth, and camaraderie as Ash continues to chase his dream of becoming a Pokémon Master.  
     </p>
 
-    <h2>Season Five: Pokémon: Master Quest</h2>
+    <h2 id="section7">Season Five: Pokémon: Master Quest</h2>
     <div class="image-stack">
       <img src="Images/Anime/Pokemonseason5DVDBoxSet.jpg" alt="coverart of fifth season">
       <img src="Images/Anime/Season5cover.jpg" alt="coverart of fifth season" class="popUpImages">
@@ -150,5 +163,16 @@
       Meanwhile, Team Rocket—Jessie, James, and Meowth—continue their comical yet persistent schemes to capture Pikachu and other rare Pokémon, providing a mix of humor and obstacles for Ash and his friends.
       Pokémon: Master Quest highlights themes of perseverance, friendship, and the thrill of competition, while showcasing the culmination of Ash's Johto journey. As he bids farewell to old friends and prepares for new adventures, this season marks a turning point in his quest to become a Pokémon Master.
     </p>
+
+    <script>
+      function scrollToSection() {
+        const selectedSection = document.getElementById('headerSelect').value;
+        if (selectedSection) {
+          document.getElementById(selectedSection).scrollIntoView({ 
+            behavior: 'smooth' 
+          });
+        }
+      }
+      </script>
 </body>
 </html>
