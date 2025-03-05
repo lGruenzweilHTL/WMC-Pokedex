@@ -4,9 +4,10 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     document.title = `Explore ${region}`;
 
-    // TEMP
-    if (region !== 'kanto') {
-        const h = document.createElement('h1')
+    const validRegions = ["kanto", "johto"];
+
+    if (!validRegions.includes(region)) {
+        const h = document.createElement('h1');
         h.innerText = "Region not found";
         document.body.appendChild(h);
         return;
@@ -19,7 +20,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const map = document.createElement('map');
     map.name = 'image-map';
 
-    kantoData.cities.forEach(city => {
+    locations[region.toLowerCase()].forEach(city => {
         const area = document.createElement('area');
         area.shape = 'rect';
         area.coords = city.coords.join(',');
@@ -31,24 +32,25 @@ document.addEventListener("DOMContentLoaded", async function () {
         area.setAttribute("data-description", city.description);
         map.appendChild(area);
     });
-    kantoData.routes.forEach(route => {
-        const area = document.createElement('area');
-        area.shape = 'rect';
-        area.coords = route.coords.join(',');
-        area.href = `location-info.html?type=location&name=${route.url}`;
-        area.alt = route.name;
-        area.setAttribute("data-name", route.name);
-        area.setAttribute("data-preview", route.image);
-        area.setAttribute("data-old-img", route.old_image);
-        area.setAttribute("data-description", route.description);
-        map.appendChild(area);
-    });
 
     document.body.appendChild(map);
 });
 
-const kantoData = {
-    routes: [
+/*
+    {
+        name: "",
+        url: "",
+        coords: [],
+        image: "",
+        old_image: "",
+        description: ""
+    },
+ */
+
+const locations = {
+
+
+    "kanto": [
         {
             name: "Route 1",
             url: "kanto-route-1",
@@ -248,9 +250,7 @@ const kantoData = {
             image: "../Images/Locations/Kanto/Routes/25.jpeg",
             old_image: "../Images/Locations/Kanto/Old/Routes/25.jpeg",
             description: "A route that leads to Bill's house."
-        }
-    ],
-    cities: [
+        },
         {
             name: "Indigo Plateau",
             url: "indigo-plateau",
@@ -379,5 +379,410 @@ const kantoData = {
             old_image: "../Images/Locations/Kanto/Old/seafoam.png",
             description: "A pair of islands known for their icy caverns."
         }
+    ],
+    "johto": [
+        {
+            name: "",
+            url: "blackthorn-city",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "burned-tower",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "cherrygrove-city",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "cianwood-city",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "dark-cave",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "dragons-den",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "ecruteak-city",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "ice-path",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "ilex-forest",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "lage-of-rage",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "mt-mortar",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "mt-silver",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "national-park",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "new-bark-town",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "olivine-city",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "johto-route-29",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "johto-route-30",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "johto-route-31",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "johto-route-32",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "johto-route-33",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "johto-route-34",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "johto-route-35",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "johto-route-36",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+
+        {
+            name: "",
+            url: "johto-route-37",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+
+        {
+            name: "",
+            url: "johto-route-38",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+
+        {
+            name: "",
+            url: "johto-route-39",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "johto-sea-route-40",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "johto-sea-route-41",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "johto-route-42",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "johto-route-43",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "johto-route-44",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "johto-route-45",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "johto-route-46",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "johto-route-47",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "johto-route-48",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "ruins-of-alph",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "slowpoke-well",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "sprout-tower",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "bell-tower",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "tohjo-falls",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "union-cave",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "violet-city",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "whirl-islands",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "azalea-town",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "goldenrod-city",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "mahogany-town",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "johto-lighthouse",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "team-rocket-hq",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "goldenrod-tunnel",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        },
+        {
+            name: "",
+            url: "radio-tower",
+            coords: [],
+            image: "",
+            old_image: "",
+            description: ""
+        }
     ]
-}
+};
