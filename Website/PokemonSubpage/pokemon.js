@@ -17,8 +17,6 @@ document.addEventListener("DOMContentLoaded", async function() {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
     const data = await response.json();
 
-    console.log(data);
-
     // Create the pokemon element
     const name = findEnglishName(data);
     document.title = name;
@@ -33,10 +31,10 @@ document.addEventListener("DOMContentLoaded", async function() {
     imageElement.classList.add("float-left");
     document.body.appendChild(imageElement);
 
-    const descriptions = await (await fetch("descriptions.json")).json();
+    const descriptions = await fetchDescriptions();
     const descriptionElement = document.createElement("p");
     descriptionElement.classList.add("description");
-    const description = descriptions[parseInt(data.id) - 1];
+    const description = descriptions["gen1"][parseInt(data.id) - 1];
     descriptionElement.innerHTML = description === undefined ? "No description found." : description;
     document.body.appendChild(descriptionElement);
 
@@ -150,7 +148,6 @@ async function buildLocationMap(encounter_url) {
     // Get encounter data
     const response = await fetch(encounter_url);
     const data = await response.json();
-    console.log(data);
 
     const div = document.createElement("div");
     div.classList.add("locations");

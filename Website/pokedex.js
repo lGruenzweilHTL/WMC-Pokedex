@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             row.innerHTML = `
                 <td>#${pokemon.id.toString().padStart(3, "0")}</td>
                 <td><img src="${pokemon.image}" alt="${pokemon.name}"></td>
-                <td><a href="PokemonSubpage/pokemon.html?pokemon=${pokemon.name}">${formatName(pokemon.name)}</a></td>
+                <td><a href="PokemonSubpage/pokemon.html?pokemon=${pokemon.id}">${formatName(pokemon.name)}</a></td>
             `;
             pokemonTable.appendChild(row);
         });

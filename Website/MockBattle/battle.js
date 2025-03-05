@@ -58,7 +58,7 @@ class Pokemon {
 class Move {
     constructor(string) {
         const data = moves[string];
-        this.name = data.display_name;
+        this.name = data["display_name"];
         this.description = data.description;
         this.type = data.type;
         this.special = data.special;
@@ -148,14 +148,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 async function initJson() {
-    let response = await fetch("pokemon.json");
-    pokemon = await response.json();
-
-    response = await fetch("moves.json");
-    moves = await response.json();
-
-    response = await fetch("items.json");
-    items = await response.json();
+    pokemon = await fetchBattlePokemon();
+    moves = await fetchMoves();
+    items = await fetchItems();
 }
 
 function initTeams() {
@@ -546,13 +541,7 @@ async function attack(user, move, target) {
 
 function getEffectivenessMessage(type1, type2) {
     const effectiveness = type1 * type2;
-    if (effectiveness > 1) {
-        return "It's super effective!";
-    } else if (effectiveness < 1) {
-        return "It's not very effective...";
-    } else {
-        return "";
-    }
+    return effectiveness > 1 ? "It's super effective!" : effectiveness < 1 ? "It's not very effective..." : "";
 }
 
 async function applyStatusEffect(pokemon, effect) {
