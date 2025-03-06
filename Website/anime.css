@@ -21,16 +21,47 @@ html {
 
 
 .header-menu {
-    padding: 10px;
-    background-color: #f1f1f1;
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 10px;
-
-    width: 80%;
-    margin: 0 auto;
+    font-size: 18px;
+    padding: 15px;
+    background-color: #333333;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 60%;
+    margin: 20px auto;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    transition: all 0.3s ease;
+}
+
+.header-menu label {
+    font-size: 18px;
+    font-weight: 500;
+    color: #ecf0f1;
+    margin-top: 10px;
+    margin-right: 15px;
+}
+
+#headerSelect {
+    padding: 15px 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background-color: #444444; 
+    color: #ecf0f1;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
+}
+
+#headerSelect:hover {
+    background-color: #555555;
+}
+
+#headerSelect:focus {
+    outline: none;
+    box-shadow: 0 0 5px #4caf50;
 }
 
 
