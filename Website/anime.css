@@ -33,6 +33,14 @@ html {
     align-items: center;
 }
 
+
+#scrollToTop.show {
+    display: block;
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+
 .header h1 {
     font-size: 28px;
     color: white;
