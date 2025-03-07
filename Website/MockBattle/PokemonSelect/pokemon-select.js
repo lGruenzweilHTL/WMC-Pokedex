@@ -4,8 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const selectedPokemon = [];
     let pokemonNames = [];
 
-    fetch("../pokemon.json")
-        .then(response => response.json())
+    fetchBattlePokemon()
         .then(pokemonData => populatePokemonSelection(pokemonData))
         .catch(error => console.error("Error loading Pokémon data:", error));
 
@@ -22,8 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const pokemonOption = document.createElement("div");
         pokemonOption.classList.add("pokemon-option");
         pokemonOption.innerHTML = `
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png" alt="${pokemon.display_name}">
-            <p>${pokemon.display_name}</p>
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png" alt="${pokemon["display_name"]}">
+            <p>${pokemon["display_name"]}</p>
         `;
         pokemonOption.addEventListener("click", () => togglePokemonSelection(pokemon, pokemonOption, name));
         return pokemonOption;
