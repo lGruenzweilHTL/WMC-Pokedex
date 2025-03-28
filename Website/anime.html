@@ -24,6 +24,21 @@
 
 <body>
 
+  <button id="scrollToTop" onclick="scrollToTop()">
+    ↑
+  </button>
+
+  <script>
+    function scrollToSection() {
+      const selectedSection = document.getElementById('headerSelect').value;
+      if (selectedSection) {
+        document.getElementById(selectedSection).scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
+    }
+  </script>
+
   <nav class="navigation-bar">
     <img src="Images/pokeball.png" class="navPokeball" alt="Pokéball">
     <ul>
@@ -58,9 +73,7 @@
     </select>
   </div>
 
-  <button id="scrollToTop" onclick="scrollToTop()">
-    ↑
-  </button>
+  
   
 
 
@@ -238,16 +251,60 @@
     season marks a turning point in his quest to become a Pokémon Master.
   </p>
 
-  <script>
-    function scrollToSection() {
-      const selectedSection = document.getElementById('headerSelect').value;
-      if (selectedSection) {
-        document.getElementById(selectedSection).scrollIntoView({
-          behavior: 'smooth'
-        });
-      }
-    }
-  </script>
+  <h2 id="section8">Season Six: Pokémon: Advanced</h2>
+  <div class="image-stack">
+    <img src="Images/Anime/Pokemonseason6DVDBoxSet.jpg" alt="coverart of sixth season">
+    <img src="Images/Anime/Season6cover.jpg" alt="coverart of sixth season" class="popUpImages">
+  </div>
+  <p class="text-box">
+    Pokémon: Advanced is the sixth season of the Pokémon animated television series and the first season of the Advanced Generation series. This season originally aired in Japan from November 21, 2002, to August 28, 2003, and in the United States from March 15, 2003, to March 27, 2004. It introduces the Hoenn region and Pokémon from the third generation.
+    <br><br>
+    After parting ways with Misty and Brock, Ash travels to Hoenn with his loyal Pikachu to compete in the Hoenn League. Along the way, he meets new friends May, a Pokémon Coordinator aspiring to compete in Pokémon Contests, and her younger brother, Max. Brock eventually rejoins the group, completing Ash's new travel companions.
+    <br><br>
+    Ash faces new gym leaders, encounters Team Aqua and Team Magma, and adapts to the new mechanics of Pokémon battles introduced in the Hoenn region. May begins her journey as a Coordinator, learning about Pokémon Contests and striving to win Ribbons for the Grand Festival. As always, Team Rocket follows closely behind, attempting to steal Pikachu.
+  </p>
+
+  <h2 id="section9">Season Seven: Pokémon: Advanced Challenge</h2>
+  <div class="image-stack">
+    <img src="Images/Anime/Pokemonseason7DVDBoxSet.jpg" alt="coverart of seventh season">
+    <img src="Images/Anime/Season7cover.jpg" alt="coverart of seventh season" class="popUpImages">
+  </div>
+  <p class="text-box">
+    Pokémon: Advanced Challenge is the seventh season of the Pokémon animated television series, continuing Ash and his friends' journey in the Hoenn region. This season aired in Japan from September 4, 2003, to September 2, 2004, and in the United States from September 11, 2004, to September 10, 2005.
+    <br><br>
+    Ash continues collecting gym badges to qualify for the Hoenn League, while May advances in her goal to become a Top Coordinator. Along the way, the group encounters legendary Pokémon, new friends, and dangerous threats from Team Aqua and Team Magma. The season also expands on Ash's rivalries, including a new challenge from a skilled trainer, Drew.
+    <br><br>
+    Team Rocket remains a persistent nuisance, and Ash’s Pokémon undergo significant training and evolutions. The season highlights the development of Pokémon Contests as May grows as a Coordinator, paralleling Ash’s journey as a trainer.
+  </p>
+
+  <h2 id="section10">Season Eight: Pokémon: Advanced Battle</h2>
+  <div class="image-stack">
+    <img src="Images/Anime/Pokemonseason8DVDBoxSet.jpg" alt="coverart of eighth season">
+    <img src="Images/Anime/Season8cover.jpg" alt="coverart of eighth season" class="popUpImages">
+  </div>
+  <p class="text-box">
+    Pokémon: Advanced Battle is the eighth season of the Pokémon animated series and the final season set in the Hoenn region. This season originally aired in Japan from September 9, 2004, to September 29, 2005, and in the United States from September 17, 2005, to July 8, 2006.
+    <br><br>
+    Ash faces the last Hoenn gym battles and earns entry into the Hoenn League Tournament. Meanwhile, May continues to compete in Pokémon Contests, earning the last of her ribbons to qualify for the Grand Festival. Both characters face intense battles that push them to their limits.
+    <br><br>
+    This season also sees the resolution of conflicts involving Team Aqua and Team Magma, a climactic battle against powerful Pokémon, and the beginning of new adventures. With Hoenn’s challenges behind them, Ash and May prepare for the next stage in their Pokémon journey.
+  </p>
+
+  <h2 id="section11">Season Nine: Pokémon: Battle Frontier</h2>
+  <div class="image-stack">
+    <img src="Images/Anime/Pokemonseason9DVDBoxSet.jpg" alt="coverart of ninth season">
+    <img src="Images/Anime/Season9cover.jpg" alt="coverart of ninth season" class="popUpImages">
+  </div>
+  <p class="text-box">
+    Pokémon: Battle Frontier is the ninth season of the Pokémon animated television series and concludes the Advanced Generation series. This season originally aired in Japan from October 6, 2005, to September 14, 2006, and in the United States from September 9, 2006, to March 3, 2007.
+    <br><br>
+    After competing in the Hoenn League, Ash takes on the Battle Frontier challenge, a series of elite battles against powerful Frontier Brains. These battles push him to develop new strategies and prove his skills as a Pokémon trainer.
+    <br><br>
+    Meanwhile, May competes in the Kanto Grand Festival, continuing her pursuit to become a Top Coordinator. The season marks the end of an era for Ash, as he bids farewell to May, Max, and Brock before setting off on his next adventure.
+  </p>
+
+
+  
 </body>
 
 </html>
