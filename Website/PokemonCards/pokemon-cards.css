@@ -149,8 +149,7 @@ hr {
     width: 250px;
     height: 350px;
     perspective: 1000px;
-
-    transition: transform 0.2s ease-out;
+    transition: transform 0.4s ease-out;
     transform-style: preserve-3d;
     will-change: transform;
 }
@@ -165,24 +164,6 @@ hr {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-
-/*
-.front {
-    transform: rotateY(0deg);
-}
-
-.back {
-    transform: rotateY(180deg);
-}
-
-.card:hover .front, .card1:hover .front {
-    transform: rotateY(-180deg);
-}
-
-.card:hover .back, .card1:hover .back {
-    transform: rotateY(0deg);
-}
-*/
 
 .pokemonImg:before {
     content: "Most Expensive Pokemon Cards";
