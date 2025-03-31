@@ -162,7 +162,7 @@ hr {
 }
 
 
-
+/*
 .front {
     transform: rotateY(0deg);
 }
@@ -178,7 +178,7 @@ hr {
 .card:hover .back, .card1:hover .back {
     transform: rotateY(0deg);
 }
-
+*/
 
 .pokemonImg:before {
     content: "Most Expensive Pokemon Cards";
