@@ -149,6 +149,10 @@ hr {
     width: 250px;
     height: 350px;
     perspective: 1000px;
+
+    transition: transform 0.2s ease-out;
+    transform-style: preserve-3d;
+    will-change: transform;
 }
 
 .card1 img{
