@@ -6,20 +6,7 @@ Commit 2:
 
 
 Commit 3:
-function checkIndexOfCard(mouseX, mouseY) {
-        for (let i = 0; i < cardPositions.length; i++) {
-            let card = cardPositions[i];
-            if (
-                mouseX >= card.cardXStart &&
-                mouseX <= card.cardXEnd &&
-                mouseY >= card.cardYStart &&
-                mouseY <= card.cardYEnd
-            ) {
-                return card.cardIndex;
-            }
-        }
-        return null;
-    }
+
 
 
 Commit: 4
