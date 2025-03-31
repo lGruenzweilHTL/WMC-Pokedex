@@ -1,5 +1,6 @@
 window.addEventListener("load", () => {
     const cardPositions = [];
+    const holoCards = [0, 1, 2, 3, 10, 11, 12, 13, 14, 15]
     const cards = document.querySelectorAll(".card1");
 
     cards.forEach((card, index) => {
@@ -22,6 +23,7 @@ window.addEventListener("load", () => {
 
             let hoveredIndex = checkIndexOfCard(mouseX, mouseY);
             if (hoveredIndex !== null) {
+                console.log(hoveredIndex);
                 calculateRotation(mouseX, mouseY, hoveredIndex);
             }
         });
@@ -47,6 +49,13 @@ window.addEventListener("load", () => {
     }
 
     function calculateRotation(mouseX, mouseY, hoveredIndex) {
+        let curCardIsHolo = false;
+        holoCards.forEach(holoCard => {
+            if(holoCard === hoveredIndex)
+            {
+                curCardIsHolo = true;
+            }
+        });
         const card = cards[hoveredIndex];
         const cardData = cardPositions[hoveredIndex];
 
@@ -68,9 +77,7 @@ window.addEventListener("load", () => {
 
         // Apply transformation
         card.style.transform = `perspective(1000px) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+        console.log(curCardIsHolo);
     }
-
-    
-
     
 });
