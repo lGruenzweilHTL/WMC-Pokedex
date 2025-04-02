@@ -73,8 +73,8 @@ html {
     background-image: linear-gradient(to right, #4caf50 0%, #087f23 51%, #4caf50 100%);
     transition: background-position 0.4s ease;
     background-size: 200% auto;
-    height: 120px;
-    width: 280px;
+    height: 100px;
+    width: 270px;
     border-radius: 50px;
     cursor: pointer;
     padding: 15px 25px;
