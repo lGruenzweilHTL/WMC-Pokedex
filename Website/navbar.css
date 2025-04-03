@@ -73,3 +73,25 @@
         transform: rotate(360deg);
     }
 }
+
+
+@media (max-width: 768px) {
+    .navigation-bar ul {
+        display: none;
+        flex-direction: column;
+        width: 70%;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+.navigation-bar.hide {
+    visibility: hidden;
+}
+.navigation-bar.hide .pokeball-icon {
+    visibility: visible;
+}
+#toggle-navbar {
+    display: none;
+}
