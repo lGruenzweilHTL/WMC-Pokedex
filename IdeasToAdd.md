@@ -137,5 +137,3 @@ Can reveal the real image after guessing
 
 ## Pokemon GO
 Also add Pokemon GO to the Games
-
-## Test what????
