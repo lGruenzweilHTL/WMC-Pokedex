@@ -81,3 +81,11 @@ window.addEventListener("load", () => {
     }
     
 });
+
+function toggleMenu() {
+    const nav = document.querySelector('.navigation-bar');
+    nav.classList.toggle('active');
+}
+
+document.querySelector('.navPokeball').addEventListener('click', toggleMenu);
+
