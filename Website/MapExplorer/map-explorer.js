@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", async function () {
             image.alt = "Map of " + region;
         } else {
             console.error('Image not found');
-            return;
         }
     });
 
@@ -444,7 +443,7 @@ const locations = {
             url: "blackthorn-city",
             coords: [78.92, 25.55, 84.28, 32.07],
             image: "../Images/Locations/Johto/blackthorn.jpeg",
-            map_image: "",
+            map_image: "../Images/Locations/Johto/Maps/blackthorn.jpeg",
             description: "A city known for its Dragon-type Pokémon gym."
         },
         {
@@ -452,7 +451,7 @@ const locations = {
             url: "burned-tower",
             coords: [42.44, 27.12, 44.02, 30.51],
             image: "../Images/Locations/Johto/burned-tower.jpeg",
-            map_image: "",
+            map_image: "../Images/Locations/Johto/Maps/burned-tower.jpeg",
             description: "A tower that was destroyed by a mysterious fire."
         },
         {
@@ -460,7 +459,7 @@ const locations = {
             url: "cherrygrove-city",
             coords: [65.84, 69.88, 70.79, 76.14],
             image: "../Images/Locations/Johto/cherrygrove.jpeg",
-            map_image: "",
+            map_image: "../Images/Locations/Johto/Maps/cherrygrove.jpeg",
             description: "A small city by the sea."
         },
         {
@@ -468,7 +467,7 @@ const locations = {
             url: "cianwood-city",
             coords: [10.71, 65.71, 15.67, 71.96],
             image: "../Images/Locations/Johto/cianwood.jpeg",
-            map_image: "",
+            map_image: "../Images/Locations/Johto/Maps/cianwood.jpeg",
             description: "A city located on a secluded island."
         },
         {
@@ -476,7 +475,7 @@ const locations = {
             url: "dark-cave",
             coords: [66.23, 35.98, 79.72, 56.32],
             image: "../Images/Locations/Johto/dark-cave.jpeg",
-            map_image: "",
+            map_image: "../Images/Locations/Johto/Maps/dark-cave.jpeg",
             description: "A pitch-black cave that requires Flash to navigate."
         },
         {
@@ -484,7 +483,7 @@ const locations = {
             url: "ecruteak-city",
             coords: [44.02, 25.81, 49.18, 32.33],
             image: "../Images/Locations/Johto/ecruteak.jpeg",
-            map_image: "",
+            map_image: "../Images/Locations/Johto/Maps/ecruteak.jpeg",
             description: "A historical city with two ancient towers."
         },
         {
@@ -492,7 +491,7 @@ const locations = {
             url: "ice-path",
             coords: [73.17, 25.55, 77.93, 32.33],
             image: "../Images/Locations/Johto/ice-path.jpeg",
-            map_image: "",
+            map_image: "../Images/Locations/Johto/Maps/ice-path.jpeg",
             description: "A frozen cave that connects Mahogany Town to Blackthorn City."
         },
         {
@@ -500,15 +499,15 @@ const locations = {
             url: "ilex-forest",
             coords: [36.09, 87.09, 41.44, 93.34],
             image: "../Images/Locations/Johto/ilex-forest.jpeg",
-            map_image: "",
+            map_image: "../Images/Locations/Johto/Maps/ilex-forest.jpeg",
             description: "A dense forest that is home to many Bug-type Pokémon."
         },
         {
             name: "Lake of Rage",
             url: "lake-of-rage",
             coords: [60.08, 4.69, 65.44, 10.43],
-            image: "../Images/Locations/Johto/lake-of-rage.jpeg",
-            map_image: "",
+            image: "../Images/Locations/Johto/lake-of-rage.png",
+            map_image: "../Images/Locations/Johto/Maps/lake-of-rage.jpeg",
             description: "A lake where a red Gyarados can be found."
         },
         {
@@ -516,7 +515,7 @@ const locations = {
             url: "mt-mortar",
             coords: [52.55, 26.07, 57.11, 32.33],
             image: "../Images/Locations/Johto/mt-mortar.jpeg",
-            map_image: "",
+            map_image: "../Images/Locations/Johto/Maps/mt-mortar.jpeg",
             description: "A large mountain with many hidden areas."
         },
         {
@@ -524,7 +523,7 @@ const locations = {
             url: "mt-silver",
             coords: [92.01, 49.02, 97.17, 55.28],
             image: "../Images/Locations/Johto/mt-silver.jpeg",
-            map_image: "",
+            map_image: "../Images/Locations/Johto/Maps/mt-silver.jpeg",
             description: "A dangerous mountain that is home to powerful Pokémon."
         },
         {
@@ -532,7 +531,7 @@ const locations = {
             url: "national-park",
             coords: [17.76, 41.31, 22.36, 46.85],
             image: "../Images/Locations/Johto/national-park.jpeg",
-            map_image: "",
+            map_image: "../Images/Locations/Johto/Maps/national-park.jpeg",
             description: "A beautiful park where Bug Catching Contests are held."
         },
         {
@@ -540,7 +539,7 @@ const locations = {
             url: "new-bark-town",
             coords: [82.51, 69.52, 87.49, 76.07],
             image: "../Images/Locations/Johto/new-bark.jpeg",
-            map_image: "",
+            map_image: "../Images/Locations/Johto/Maps/new-bark.jpeg",
             description: "A small town where the protagonist begins their journey."
         },
         {
@@ -548,7 +547,7 @@ const locations = {
             url: "olivine-city",
             coords: [24.39, 46.45, 29.75, 53.49],
             image: "../Images/Locations/Johto/olivine.jpeg",
-            map_image: "",
+            map_image: "../Images/Locations/Johto/Maps/olivine.jpeg",
             description: "A port city with a Steel-type Pokémon gym."
         },
         {
@@ -556,7 +555,7 @@ const locations = {
             url: "ruins-of-alph",
             coords: [49.58, 54.61, 54.14, 60.34],
             image: "../Images/Locations/Johto/ruins-of-alph.jpeg",
-            map_image: "",
+            map_image: "../Images/Locations/Johto/Maps/ruins-of-alph.jpeg",
             description: "Ancient ruins that are home to the mysterious Unown."
         },
         {
@@ -564,7 +563,7 @@ const locations = {
             url: "slowpoke-well",
             coords: [48.19, 87.98, 49.58, 91.63],
             image: "../Images/Locations/Johto/slowpoke-well.jpeg",
-            map_image: "",
+            map_image: "../Images/Locations/Johto/Maps/slowpoke-well.jpeg",
             description: "A well where Slowpoke are found."
         },
         {
@@ -572,7 +571,7 @@ const locations = {
             url: "sprout-tower",
             coords: [59.69, 45.48, 60.88, 49.13],
             image: "../Images/Locations/Johto/sprout-tower.jpeg",
-            map_image: "",
+            map_image: "../Images/Locations/Johto/Maps/sprout-tower.jpeg",
             description: "A tower in Violet City where monks train with Bellsprout."
         },
         {
@@ -580,7 +579,7 @@ const locations = {
             url: "union-cave",
             coords: [54.73, 86.94, 59.29, 92.67],
             image: "../Images/Locations/Johto/union-cave.jpeg",
-            map_image: "",
+            map_image: "../Images/Locations/Johto/Maps/union-cave.jpeg",
             description: "A cave that connects Route 32 to Azalea Town."
         },
         {
@@ -588,7 +587,7 @@ const locations = {
             url: "violet-city",
             coords: [54.53, 43.92, 59.49, 50.43],
             image: "../Images/Locations/Johto/violet.jpeg",
-            map_image: "",
+            map_image: "../Images/Locations/Johto/Maps/violet.jpeg",
             description: "A city with a Flying-type Pokémon gym."
         },
         {
@@ -596,7 +595,7 @@ const locations = {
             url: "whirl-islands",
             coords: [21.42, 65.82, 25.78, 71.55],
             image: "../Images/Locations/Johto/whirl-islands.jpeg",
-            map_image: "",
+            map_image: "../Images/Locations/Johto/Maps/whirl-islands.jpeg",
             description: "A group of islands where Lugia is said to reside."
         },
         {
@@ -604,7 +603,7 @@ const locations = {
             url: "azalea-town",
             coords: [43.23, 86.42, 47.99, 92.93],
             image: "../Images/Locations/Johto/azalea.jpeg",
-            map_image: "",
+            map_image: "../Images/Locations/Johto/Maps/azalea.jpeg",
             description: "A town known for its Bug-type Pokémon gym."
         },
         {
@@ -612,7 +611,7 @@ const locations = {
             url: "goldenrod-city",
             coords: [36.69, 65.82, 41.44, 72.08],
             image: "../Images/Locations/Johto/goldenrod.jpeg",
-            map_image: "",
+            map_image: "../Images/Locations/Johto/Maps/goldenrod.jpeg",
             description: "A large city with a Normal-type Pokémon gym."
         },
         {
@@ -620,7 +619,7 @@ const locations = {
             url: "mahogany-town",
             coords: [60.28, 25.66, 65.24, 32.44],
             image: "../Images/Locations/Johto/mahogany.jpeg",
-            map_image: "",
+            map_image: "../Images/Locations/Johto/Maps/mahogany.jpeg",
             description: "A town known for its Ice-type Pokémon gym."
         },
         {
@@ -628,169 +627,169 @@ const locations = {
             url: "johto-lighthouse",
             coords: [25.58, 46.26, 28.36, 43.92],
             image: "../Images/Locations/Johto/lighthouse.jpeg",
-            map_image: "",
+            map_image: "../Images/Locations/Johto/Maps/lighthouse.jpeg",
             description: "A lighthouse in Olivine City that guides ships."
         },
         {
             name: "Route 29",
             url: "johto-route-29",
             coords: [70.79, 74.35, 82.29, 70.96],
-            image: "",
-            map_image: "",
+            image: "../Images/Locations/Johto/Routes/29.png",
+            map_image: "../Images/Locations/Johto/Maps/Routes/29.jpeg",
             description: "The first route connecting New Bark Town to Cherrygrove City."
         },
         {
             name: "Route 30",
             url: "johto-route-30",
             coords: [66.83, 50.62, 69.41, 69.13],
-            image: "",
-            map_image: "",
+            image: "../Images/Locations/Johto/Routes/30.jpeg",
+            map_image: "../Images/Locations/Johto/Maps/Routes/30.jpeg",
             description: "A route that leads from Cherrygrove City to Route 31."
         },
         {
             name: "Route 31",
             url: "johto-route-31",
             coords: [59.72, 49.37, 65.85, 45.59],
-            image: "",
-            map_image: "",
+            image: "../Images/Locations/Johto/Routes/31.jpeg",
+            map_image: "../Images/Locations/Johto/Maps/Routes/31.jpeg",
             description: "A route that connects Route 30 to Violet City."
         },
         {
             name: "Route 32",
             url: "johto-route-32",
             coords: [55.72, 51.25, 58.30, 86.71],
-            image: "",
-            map_image: "",
+            image: "../Images/Locations/Johto/Routes/32.jpeg",
+            map_image: "../Images/Locations/Johto/Maps/Routes/32.jpeg",
             description: "A route that leads from Violet City to Union Cave."
         },
         {
             name: "Route 33",
             url: "johto-route-33",
             coords: [48.19, 87.76, 54.93, 91.41],
-            image: "",
-            map_image: "",
+            image: "../Images/Locations/Johto/Routes/33.png",
+            map_image: "../Images/Locations/Johto/Maps/Routes/33.jpeg",
             description: "A short route connecting Union Cave to Azalea Town."
         },
         {
             name: "Route 34",
             url: "johto-route-34",
             coords: [37.68, 72.37, 40.25, 86.71],
-            image: "",
-            map_image: "",
+            image: "../Images/Locations/Johto/Routes/34.png",
+            map_image: "../Images/Locations/Johto/Maps/Routes/34.jpeg",
             description: "A route that connects Goldenrod City to Ilex Forest."
         },
         {
             name: "Route 35",
             url: "johto-route-35",
             coords: [37.48, 50.47, 40.25, 65.07],
-            image: "",
-            map_image: "",
+            image: "../Images/Locations/Johto/Routes/35.png",
+            map_image: "../Images/Locations/Johto/Maps/Routes/35.jpeg",
             description: "A route that leads from Goldenrod City to National Park."
         },
         {
             name: "Route 36",
             url: "johto-route-36",
             coords: [41.64, 48.91, 54.33, 45.52],
-            image: "",
-            map_image: "",
+            image: "../Images/Locations/Johto/Routes/36.png",
+            map_image: "../Images/Locations/Johto/Maps/Routes/36.jpeg",
             description: "A route that connects National Park to Ecruteak City."
         },
         {
             name: "Route 37",
             url: "johto-route-37",
             coords: [45.61, 45.26, 47.99, 32.48],
-            image: "",
-            map_image: "",
+            image: "../Images/Locations/Johto/Routes/37.png",
+            map_image: "../Images/Locations/Johto/Maps/Routes/37.jpeg",
             description: "A short route that leads to Ecruteak City."
         },
         {
             name: "Route 38",
             url: "johto-route-38",
             coords: [25.78, 27.53, 44.02, 30.39],
-            image: "",
-            map_image: "",
+            image: "../Images/Locations/Johto/Routes/38.png",
+            map_image: "../Images/Locations/Johto/Maps/Routes/38.jpeg",
             description: "A route that connects Ecruteak City to Route 39."
         },
         {
             name: "Route 39",
             url: "johto-route-39",
             coords: [25.58, 46.30, 27.96, 30.66],
-            image: "",
-            map_image: "",
+            image: "../Images/Locations/Johto/Routes/39.jpeg",
+            map_image: "../Images/Locations/Johto/Maps/Routes/39.jpeg",
             description: "A route that leads from Route 38 to Olivine City."
         },
         {
             name: "Sea Route 40",
             url: "johto-sea-route-40",
             coords: [22.21, 65.85, 24.19, 48.12],
-            image: "",
-            map_image: "",
+            image: "../Images/Locations/Johto/Routes/40.png",
+            map_image: "../Images/Locations/Johto/Maps/Routes/40.jpeg",
             description: "A sea route that connects Olivine City to Route 41."
         },
         {
             name: "Sea Route 41",
             url: "johto-sea-route-41",
             coords: [15.67, 70.55, 21.02, 67.16],
-            image: "",
-            map_image: "",
+            image: "../Images/Locations/Johto/Routes/41.png",
+            map_image: "../Images/Locations/Johto/Maps/Routes/41.jpeg",
             description: "A sea route that leads from Route 40 to Cianwood City."
         },
         {
             name: "Route 42",
             url: "johto-route-42",
             coords: [49.38, 30.36, 59.89, 27.23],
-            image: "",
-            map_image: "",
+            image: "../Images/Locations/Johto/Routes/42.png",
+            map_image: "../Images/Locations/Johto/Maps/Routes/42.jpeg",
             description: "A route that connects Ecruteak City to Mahogany Town."
         },
         {
             name: "Route 43",
             url: "johto-route-43",
             coords: [61.47, 25.14, 64.05, 10.80],
-            image: "",
-            map_image: "",
+            image: "../Images/Locations/Johto/Routes/43.png",
+            map_image: "../Images/Locations/Johto/Maps/Routes/43.jpeg",
             description: "A route that leads from Mahogany Town to the Lake of Rage."
         },
         {
             name: "Route 44",
             url: "johto-route-44",
             coords: [65.44, 30.36, 78.73, 27.23],
-            image: "",
-            map_image: "",
+                image: "../Images/Locations/Johto/Routes/44.png",
+            map_image: "../Images/Locations/Johto/Maps/Routes/44.jpeg",
             description: "A route that connects Mahogany Town to the Ice Path."
         },
         {
             name: "Route 45",
             url: "johto-route-45",
             coords: [80.31, 32.44, 82.69, 60.34],
-            image: "",
-            map_image: "",
+            image: "../Images/Locations/Johto/Routes/45.jpeg",
+            map_image: "../Images/Locations/Johto/Maps/Routes/45.jpeg",
             description: "A route that leads from Blackthorn City to Route 46."
         },
         {
             name: "Route 46",
             url: "johto-route-46",
             coords: [75.16, 70.77, 77.93, 61.91],
-            image: "",
-            map_image: "",
+            image: "../Images/Locations/Johto/Routes/46.png",
+            map_image: "../Images/Locations/Johto/Maps/Routes/46.jpeg",
             description: "A route that connects Route 45 to Route 29."
         },
         {
             name: "Route 47",
             url: "johto-route-47",
             coords: [0.99, 75.20, 14.08, 72.60],
-            image: "",
-            map_image: "",
+            image: "../Images/Locations/Johto/Routes/47.jpeg",
+            map_image: "../Images/Locations/Johto/Maps/Routes/47.jpeg",
             description: "A route that leads from Cianwood City to Route 48."
         },
         {
             name: "Route 48",
             url: "johto-route-48",
             coords: [0.99, 61.39, 3.37, 72.08],
-            image: "",
-            map_image: "",
+            image: "../Images/Locations/Johto/Routes/48.jpeg",
+            map_image: "../Images/Locations/Johto/Maps/Routes/48.jpeg",
             description: "A route that connects Route 47 to the Safari Zone."
-        }
+        },
     ],
     "hoenn": [
         {
