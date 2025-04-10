@@ -1,3 +1,7 @@
+body::-webkit-scrollbar {
+    display: none;
+}
+
 .navigation-bar:not(.active) {
     background-color: #333;
     width: 100%;
