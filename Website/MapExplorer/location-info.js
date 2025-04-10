@@ -57,7 +57,7 @@ async function getLocationAreaData(area, location) {
         const pokemonCard = document.createElement('div');
         pokemonCard.classList.add('card', 'card-body', 'col-md-4', 'col-sm-12');
         const link = document.createElement('a');
-        link.href = `../PokemonSubpage/pokemon.html?pokemon=${encounter.pokemon.name}`;
+        link.href = `../PokemonSubpage/pokemon.html?pokemon=${getIdFromUrl(encounter.pokemon.url)}`;
         link.innerText = encounter.pokemon.name;
         link.classList.add('card-title', 'btn', 'btn-primary');
         pokemonCard.appendChild(link);
@@ -154,6 +154,11 @@ async function getRegionData(region) {
     div.classList.add('alert', 'alert-info');
     div.innerText = JSON.stringify(data, null, 2);
     document.body.appendChild(div);
+}
+
+function getIdFromUrl(url) {
+    const parts = url.split('/');
+    return parts[parts.length - 2];
 }
 
 async function fetchAreaEnglishName(name) {
