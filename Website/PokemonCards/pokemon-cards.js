@@ -78,7 +78,29 @@ window.addEventListener("load", () => {
         // Apply transformation
         card.style.transform = `perspective(1000px) rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
         console.log(curCardIsHolo);
+        if (curCardIsHolo) {
+            const shine = card.querySelector(".holoOverlay");
+            const shineX = ((mouseX - cardData.cardXStart) / cardData.cardWidth) * 100;
+            const shineY = ((mouseY - cardData.cardYStart) / cardData.cardHeight) * 100;
+            
+            shine.style.background = `
+                radial-gradient(circle at ${shineX}% ${shineY}%, rgba(255,255,255,0.35), transparent 80%),
+                repeating-conic-gradient(from 0deg,
+                    rgba(255, 255, 255, 0.1) 0deg 10deg,
+                    rgba(255, 255, 255, 0.2) 10deg 20deg
+                )
+            `;
+        }
+        
     }
+    cards.forEach((card, index) => {
+        if (holoCards.includes(index)) {
+            const shine = document.createElement("div");
+            shine.classList.add("holoOverlay");
+            
+            
+        }
+    });
     
 });
 
