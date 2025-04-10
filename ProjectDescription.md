@@ -26,14 +26,14 @@ Leon Marazovic, Lukas Grünzweil, Almir Hadic, Matyas Darabos
 - Explanation of Pokemon types (Common, Legendary, etc.)
 
 ## Milestones
-- [ ] Pokedex of Gen 1 completed
+- [x] Pokedex of Gen 1 completed
     - [x] Types
-    - [ ] Details for every Pokemon on Sub-Pages
+    - [x] Details for every Pokemon on Sub-Pages
         - [x] Stats (finished 5 Oct.)
         - [x] Locations/Maps (finished 6 Dec.)
-        - [ ] Evolutions (deadline 10 Jan.)
+        - [x] Evolutions (deadline 10 Jan.)
         - [x] Multi-Types (finished 20 Nov.)
-- [ ] Page on Types completed
+- [x] Page on Types completed
     - [x] Weaknesses/Resistances/Immunities
     - [x] Type-specific moves
     - [x] Fighting Style
