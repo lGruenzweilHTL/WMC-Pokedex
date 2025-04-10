@@ -163,6 +163,38 @@ ul li:hover {
     color: #e4e6eb;
 }
 
+
+#villain2 {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+    background: linear-gradient(135deg, #343a40, #23272e);
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    align-items: center;
+}
+
+#villain2 img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease-in-out;
+}
+
+#villain2 img:hover {
+    transform: scale(1.05);
+}
+
+#villain2 p {
+    margin: 0;
+    flex: 1;
+    line-height: 1.8;
+    font-size: 1.2rem;
+    color: #e4e6eb;
+}
+
 #description {
     margin-top: 30px;
     background: linear-gradient(135deg, #3b3f47, #2d3338);
