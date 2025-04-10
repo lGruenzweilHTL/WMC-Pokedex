@@ -98,7 +98,8 @@ window.addEventListener("load", () => {
             const shine = document.createElement("div");
             shine.classList.add("holoOverlay");
             
-            
+            const firstImage = card.querySelector("img");
+            card.insertBefore(shine, firstImage);
         }
     });
     
