@@ -793,812 +793,540 @@ const locations = {
     ],
     "hoenn": [
         {
-            name: "Petalburg City",
-            url: "petalburg-city",
-            coords: [5.88, 54.90, 9.61, 60.63],
-            image: "",
-            map_image: "",
-            description: "A city that is home to the Normal-type Gym Leader, Norman."
-        },
-        {
-            name: "Slateport City",
-            url: "slateport-city",
-            coords: [27.84, 59.73, 31.96, 65.76],
-            image: "",
-            map_image: "",
-            description: "A bustling port city known for its market and shipyard."
-        },
-        {
-            name: "Lilycove City",
-            url: "lilycove-city",
-            coords: [61.37, 25.64, 65.29, 31.98],
-            image: "",
-            map_image: "",
-            description: "A large city with a department store and a contest hall."
-        },
-        {
-            name: "Mossdeep City",
-            url: "mossdeep-city",
-            coords: [78.82, 34.39, 82.75, 41.33],
-            image: "",
-            map_image: "",
-            description: "A city located on an island, known for its Space Center."
-        },
-        {
-            name: "Sootopolis City",
-            url: "sootopolis-city",
-            coords: [68.63, 45.25, 72.75, 51.89],
-            image: "",
-            map_image: "",
-            description: "A city located inside a crater, known for its Water-type Gym."
-        },
-        {
-            name: "Ever Grande City",
-            url: "ever-grande-city",
-            coords: [88.63, 56.11, 91.18, 60.94],
-            image: "",
-            map_image: "",
-            description: "The location of the Pokémon League in the Hoenn region."
-        },
-        {
-            name: "Meteor Falls",
-            url: "meteor-falls",
-            coords: [6.27, 20.51, 8.43, 23.53],
-            image: "",
-            map_image: "",
-            description: "A waterfall cave where meteorites are said to have landed."
-        },
-        {
-            name: "Rusturf Tunnel",
-            url: "rusturf-tunnel",
-            coords: [12.16, 35.29, 13.73, 37.71],
-            image: "",
-            map_image: "",
-            description: "A tunnel connecting Rustboro City and Verdanturf Town."
-        },
-        {
-            name: "Granite Cave",
-            url: "granite-cave",
-            coords: [5.88, 78.73, 7.45, 81.45],
-            image: "",
-            map_image: "",
-            description: "A cave known for its granite rocks and wild Pokémon."
-        },
-        {
-            name: "Petalburg Woods",
-            url: "petalburg-woods",
-            coords: [3.14, 51.28, 5.29, 54.90],
-            image: "",
-            map_image: "",
-            description: "A dense forest located near Petalburg City."
-        },
-        {
-            name: "Jagged Pass",
-            url: "jagged-pass",
-            coords: [20.98, 19.61, 23.14, 22.93],
-            image: "",
-            map_image: "",
-            description: "A rocky path leading down from Mt. Chimney."
-        },
-        {
-            name: "Fiery Path",
-            url: "fiery-path",
-            coords: [24.31, 22.93, 26.27, 25.64],
-            image: "",
-            map_image: "",
-            description: "A volcanic cave filled with fire-type Pokémon."
-        },
-        {
-            name: "Mt. Pyre",
-            url: "mt-pyre",
-            coords: [53.92, 34.99, 56.27, 38.01],
-            image: "",
-            map_image: "",
-            description: "A mountain where departed Pokémon are laid to rest."
+            "name": "Petalburg City",
+            "url": "petalburg-city",
+            "coords": [5.88, 54.90, 9.61, 60.63],
+            "image": "../Images/Locations/Hoenn/petalburg.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/petalburg.jpeg",
+            "description": "A city that is home to the Normal-type Gym Leader, Norman."
+        },
+        {
+            "name": "Slateport City",
+            "url": "slateport-city",
+            "coords": [27.84, 59.73, 31.96, 65.76],
+            "image": "../Images/Locations/Hoenn/slateport.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/slateport.jpeg",
+            "description": "A bustling port city known for its market and shipyard."
+        },
+        {
+            "name": "Lilycove City",
+            "url": "lilycove-city",
+            "coords": [61.37, 25.64, 65.29, 31.98],
+            "image": "../Images/Locations/Hoenn/lilycove.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/lilycove.jpeg",
+            "description": "A large city with a department store and a contest hall."
+        },
+        {
+            "name": "Mossdeep City",
+            "url": "mossdeep-city",
+            "coords": [78.82, 34.39, 82.75, 41.33],
+            "image": "../Images/Locations/Hoenn/mossdeep.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/mossdeep.jpeg",
+            "description": "A city located on an island, known for its Space Center."
+        },
+        {
+            "name": "Sootopolis City",
+            "url": "sootopolis-city",
+            "coords": [68.63, 45.25, 72.75, 51.89],
+            "image": "../Images/Locations/Hoenn/sootopolis.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/sootopolis.jpeg",
+            "description": "A city located inside a crater, known for its Water-type Gym."
+        },
+        {
+            "name": "Ever Grande City",
+            "url": "ever-grande-city",
+            "coords": [88.63, 56.11, 91.18, 60.94],
+            "image": "../Images/Locations/Hoenn/evergrande.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/evergrande.jpeg",
+            "description": "The location of the Pokémon League in the Hoenn region."
+        },
+        {
+            "name": "Meteor Falls",
+            "url": "meteor-falls",
+            "coords": [6.27, 20.51, 8.43, 23.53],
+            "image": "../Images/Locations/Hoenn/meteor-falls.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/meteor-falls.jpeg",
+            "description": "A waterfall cave where meteorites are said to have landed."
+        },
+        {
+            "name": "Rusturf Tunnel",
+            "url": "rusturf-tunnel",
+            "coords": [12.16, 35.29, 13.73, 37.71],
+            "image": "../Images/Locations/Hoenn/rusturf-tunnel.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/rusturf-tunnel.jpeg",
+            "description": "A tunnel connecting Rustboro City and Verdanturf Town."
+        },
+        {
+            "name": "Granite Cave",
+            "url": "granite-cave",
+            "coords": [5.88, 78.73, 7.45, 81.45],
+            "image": "../Images/Locations/Hoenn/granite-cave.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/granite-cave.jpeg",
+            "description": "A cave known for its granite rocks and wild Pokémon."
+        },
+        {
+            "name": "Petalburg Woods",
+            "url": "petalburg-woods",
+            "coords": [3.14, 51.28, 5.29, 54.90],
+            "image": "../Images/Locations/Hoenn/petalburg-woods.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/petalburg-woods.jpeg",
+            "description": "A dense forest located near Petalburg City."
+        },
+        {
+            "name": "Jagged Pass",
+            "url": "jagged-pass",
+            "coords": [20.98, 19.61, 23.14, 22.93],
+            "image": "../Images/Locations/Hoenn/jagged-pass.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/jagged-pass.jpeg",
+            "description": "A rocky path leading down from Mt. Chimney."
+        },
+        {
+            "name": "Fiery Path",
+            "url": "fiery-path",
+            "coords": [24.31, 22.93, 26.27, 25.64],
+            "image": "../Images/Locations/Hoenn/fiery-path.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/fiery-path.jpeg",
+            "description": "A volcanic cave filled with fire-type Pokémon."
+        },
+        {
+            "name": "Mt. Pyre",
+            "url": "mt-pyre",
+            "coords": [53.92, 34.99, 56.27, 38.01],
+            "image": "../Images/Locations/Hoenn/mt-pyre.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/mt-pyre.jpeg",
+            "description": "A mountain where departed Pokémon are laid to rest."
         },
         {
-            name: "Seafloor Cavern",
-            url: "seafloor-cavern",
-            coords: [80.98, 54.90, 82.75, 57.92],
-            image: "",
-            map_image: "",
-            description: "An underwater cave where the legendary Pokémon Kyogre resides."
+            "name": "Seafloor Cavern",
+            "url": "seafloor-cavern",
+            "coords": [80.98, 54.90, 82.75, 57.92],
+            "image": "../Images/Locations/Hoenn/seafloor-cavern.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/seafloor-cavern.jpeg",
+            "description": "An underwater cave where the legendary Pokémon Kyogre resides."
         },
         {
-            name: "Hoenn Victory Road",
-            url: "hoenn-victory-road",
-            coords: [88.63, 54.30, 90.59, 56.11],
-            image: "",
-            map_image: "",
-            description: "A challenging cave leading to the Pokémon League."
+            "name": "Hoenn Victory Road",
+            "url": "hoenn-victory-road",
+            "coords": [88.63, 54.30, 90.59, 56.11],
+            "image": "../Images/Locations/Hoenn/hoenn-victory-road.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/hoenn-victory-road.jpeg",
+            "description": "A challenging cave leading to the Pokémon League."
         },
         {
-            name: "Shoal Cave",
-            url: "shoal-cave",
-            coords: [77.45, 28.05, 79.61, 31.37],
-            image: "",
-            map_image: "",
-            description: "A cave that changes with the tides, located near Mossdeep City."
+            "name": "Shoal Cave",
+            "url": "shoal-cave",
+            "coords": [77.45, 28.05, 79.61, 31.37],
+            "image": "../Images/Locations/Hoenn/shoal-cave.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/shoal-cave.jpeg",
+            "description": "A cave that changes with the tides, located near Mossdeep City."
         },
         {
-            name: "New Mauville",
-            url: "new-mauville",
-            coords: [31.96, 47.66, 34.12, 50.98],
-            image: "",
-            map_image: "",
-            description: "An underground power plant located near Mauville City."
+            "name": "New Mauville",
+            "url": "new-mauville",
+            "coords": [31.96, 47.66, 34.12, 50.98],
+            "image": "../Images/Locations/Hoenn/new-mauville.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/new-mauville.jpeg",
+            "description": "An underground power plant located near Mauville City."
         },
         {
-            name: "Abandoned Ship",
-            url: "abandoned-ship",
-            coords: [],
-            image: "",
-            map_image: "",
-            description: "A derelict ship found on Route 108."
+            "name": "Sky Pillar",
+            "url": "sky-pillar",
+            "coords": [66.86, 56.11, 68.82, 59.13],
+            "image": "../Images/Locations/Hoenn/sky-pillar.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/sky-pillar.jpeg",
+            "description": "A tall tower where the legendary Pokémon Rayquaza resides."
         },
         {
-            name: "Sky Pillar",
-            url: "sky-pillar",
-            coords: [66.86, 56.11, 68.82, 59.13],
-            image: "",
-            map_image: "",
-            description: "A tall tower where the legendary Pokémon Rayquaza resides."
+            "name": "Hoenn Safari Zone",
+            "url": "hoenn-safari-zone",
+            "coords": [54.12, 20.81, 56.27, 24.43],
+            "image": "../Images/Locations/Hoenn/safari-zone.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/safari-zone.jpeg",
+            "description": "A special area where trainers can catch a variety of Pokémon."
         },
         {
-            name: "Hoenn Route 101",
-            url: "hoenn-route-101",
-            coords: [16.27, 64.25, 18.43, 60.94],
-            image: "",
-            map_image: "",
-            description: "The first route connecting Littleroot Town to Oldale Town."
+            "name": "Dewford Town",
+            "url": "dewford-town",
+            "coords": [8.82, 79.03, 13.14, 85.67],
+            "image": "../Images/Locations/Hoenn/dewford.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/dewford.jpeg",
+            "description": "A small island town known for its Fighting-type Gym."
         },
         {
-            name: "Hoenn Route 102",
-            url: "hoenn-route-102",
-            coords: [9.80, 59.43, 15.29, 55.81],
-            image: "",
-            map_image: "",
-            description: "A route that leads from Oldale Town to Petalburg City."
+            "name": "Pacifidlog Town",
+            "url": "pacifidlog-town",
+            "coords": [56.27, 58.82, 60.39, 66.97],
+            "image": "../Images/Locations/Hoenn/pacifidlog.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/pacifidlog.jpeg",
+            "description": "A town built on wooden rafts floating on the sea."
         },
         {
-            name: "Hoenn Route 103",
-            url: "hoenn-route-103",
-            coords: [15.88, 54.00, 28.43, 49.77],
-            image: "",
-            map_image: "",
-            description: "A route that connects Oldale Town to Route 110."
+            "name": "Team Aqua/Magma Hideout",
+            "url": "magma-hideout",
+            "coords": [65.49, 21.12, 67.84, 24.43],
+            "image": "../Images/Locations/Hoenn/magma-hideout.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/magma-hideout.jpeg",
+            "description": "The secret base of Team Magma/Aqua depending on the version."
         },
         {
-            name: "Hoenn Route 104",
-            url: "hoenn-route-104",
-            coords: [4.12, 42.23, 8.04, 53.70],
-            image: "",
-            map_image: "",
-            description: "A route that leads from Petalburg City to Rustboro City."
+            "name": "Littleroot Town",
+            "url": "littleroot-town",
+            "coords": [15.29, 64.25, 19.61, 71.19],
+            "image": "../Images/Locations/Hoenn/littleroot.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/littleroot.jpeg",
+            "description": "A small town where the protagonist begins their journey."
         },
         {
-            name: "Hoenn Route 105",
-            url: "hoenn-route-105",
-            coords: [7.45, 61.54, 10.00, 70.29],
-            image: "",
-            map_image: "",
-            description: "A water route that connects Route 104 to Route 106."
+            "name": "Oldale Town",
+            "url": "oldale-town",
+            "coords": [15.10, 54.60, 19.61, 60.94],
+            "image": "../Images/Locations/Hoenn/oldale.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/oldale.jpeg",
+            "description": "A small town located between Littleroot Town and Petalburg City."
         },
         {
-            name: "Hoenn Route 106",
-            url: "hoenn-route-106",
-            coords: [9.02, 70.89, 11.37, 77.83],
-            image: "",
-            map_image: "",
-            description: "A water route that leads from Route 105 to Dewford Town."
+            "name": "Lavaridge Town",
+            "url": "lavaridge-town",
+            "coords": [18.43, 25.64, 22.35, 32.28],
+            "image": "../Images/Locations/Hoenn/lavaridge.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/lavaridge.jpeg",
+            "description": "A town known for its hot springs and Fire-type Gym."
         },
         {
-            name: "Hoenn Route 107",
-            url: "hoenn-route-107",
-            coords: [13.14, 79.94, 21.96, 83.86],
-            image: "",
-            map_image: "",
-            description: "A water route that connects Dewford Town to Route 108."
+            "name": "Fallarbor Town",
+            "url": "fallarbor-town",
+            "coords": [11.57, 10.86, 16.27, 18.10],
+            "image": "../Images/Locations/Hoenn/fallarbor.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/fallarbor.jpeg",
+            "description": "A town located near a volcano, known for its meteor showers."
         },
         {
-            name: "Hoenn Route 108",
-            url: "hoenn-route-108",
-            coords: [22.16, 80.84, 27.25, 83.26],
-            image: "",
-            map_image: "",
-            description: "A water route that leads from Route 107 to Route 109."
+            "name": "Verdanturf Town",
+            "url": "verdanturf-town",
+            "coords": [15.49, 40.12, 19.22, 47.06],
+            "image": "../Images/Locations/Hoenn/verdanturf.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/verdanturf.jpeg",
+            "description": "A peaceful town known for its clean air and beautiful flowers."
         },
         {
-            name: "Hoenn Route 109",
-            url: "hoenn-route-109",
-            coords: [26.67, 80.84, 30.39, 66.37],
-            image: "",
-            map_image: "",
-            description: "A water route that connects Route 108 to Slateport City."
+            "name": "Mauville City",
+            "url": "mauville-city",
+            "coords": [27.84, 39.22, 31.96, 46.76],
+            "image": "../Images/Locations/Hoenn/mauville.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/mauville.jpeg",
+            "description": "A large city known for its Electric-type Gym and Game Corner."
         },
         {
-            name: "Hoenn Route 110",
-            url: "hoenn-route-110",
-            coords: [28.63, 46.46, 30.59, 59.13],
-            image: "",
-            map_image: "",
-            description: "A route that leads from Slateport City to Mauville City."
+            "name": "Rustboro City",
+            "url": "rustboro-city",
+            "coords": [2.55, 34.99, 6.86, 41.33],
+            "image": "../Images/Locations/Hoenn/rustboro.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/rustboro.jpeg",
+            "description": "A city known for its large buildings and Rock-type Gym."
         },
         {
-            name: "Hoenn Route 111",
-            url: "hoenn-route-111",
-            coords: [],
-            image: "",
-            map_image: "",
-            description: "A route that connects Mauville City to Route 112."
+            "name": "Fortree City",
+            "url": "fortree-city",
+            "coords": [40.59, 10.56, 44.71, 16.59],
+            "image": "../Images/Locations/Hoenn/fortree.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/fortree.jpeg",
+            "description": "A city built in the treetops, known for its Flying-type Gym."
         },
         {
-            name: "Hoenn Route 112",
-            url: "hoenn-route-112",
-            coords: [22.35, 26.55, 29.02, 30.47],
-            image: "",
-            map_image: "",
-            description: "A route that leads from Route 111 to Fiery Path."
+            "name": "Mt. Chimney",
+            "url": "mt-chimney",
+            "coords": [23.92, 16.59, 26.27, 19.91],
+            "image": "../Images/Locations/Hoenn/mt-chimney.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/mt-chimney.jpeg",
+            "description": "A volcano located in the Hoenn region."
         },
         {
-            name: "Hoenn Route 113",
-            url: "hoenn-route-113",
-            coords: [],
-            image: "",
-            map_image: "",
-            description: "A route covered in volcanic ash, leading to Fallarbor Town."
+            "name": "Southern Island",
+            "url": "southern-island",
+            "coords": [41.37, 81.15, 43.53, 84.46],
+            "image": "../Images/Locations/Hoenn/southern-island.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/southern-island.jpeg",
+            "description": "An island where the legendary Pokémon Latios and Latias can be found."
         },
         {
-            name: "Hoenn Route 114",
-            url: "hoenn-route-114",
-            coords: [4.12, 18.40, 11.57, 13.57],
-            image: "",
-            map_image: "",
-            description: "A route that connects Fallarbor Town to Meteor Falls."
+            "name": "Scorched Slab",
+            "url": "scorched-slab",
+            "coords": [46.47, 17.19, 48.82, 20.51],
+            "image": "../Images/Locations/Hoenn/scorched-slab.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/scorched-slab.jpeg",
+            "description": "A small cave located on Route 120."
         },
         {
-            name: "Hoenn Route 115",
-            url: "hoenn-route-115",
-            coords: [3.92, 34.39, 5.29, 18.40],
-            image: "",
-            map_image: "",
-            description: "A route that leads from Rustboro City to Meteor Falls."
+            "name": "Island Cave",
+            "url": "island-cave",
+            "coords": [5.64, 68.60, 7.78, 72.13],
+            "image": "../Images/Locations/Hoenn/island-cave.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/island-cave.jpeg",
+            "description": "A cave where the legendary Pokémon Regice resides."
         },
         {
-            name: "Hoenn Route 116",
-            url: "hoenn-route-116",
-            coords: [7.25, 37.10, 14.71, 43.74],
-            image: "",
-            map_image: "",
-            description: "A route that connects Rustboro City to Rusturf Tunnel."
+            "name": "Pathless Plain",
+            "url": "pathless-plain",
+            "coords": [59.02, 71.49, 63.14, 75.72],
+            "image": "../Images/Locations/Hoenn/pathless-plain.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/pathless-plain.jpeg",
+            "description": "A vast plain with no clear paths, home to rare Pokémon."
         },
         {
-            name: "Hoenn Route 117",
-            url: "hoenn-route-117",
-            coords: [19.41, 41.33, 27.25, 44.04],
-            image: "",
-            map_image: "",
-            description: "A route that leads from Mauville City to Verdanturf Town."
+            "name": "Crescent Isle",
+            "url": "crescent-isle",
+            "coords": [88.63, 80.24, 91.57, 84.46],
+            "image": "../Images/Locations/Hoenn/crescent-isle.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/crescent-isle.jpeg",
+            "description": "A crescent-shaped island, home to rare and powerful Pokémon."
         },
         {
-            name: "Hoenn Route 118",
-            url: "hoenn-route-118",
-            coords: [32.16, 44.34, 38.43, 42.23],
-            image: "",
-            map_image: "",
-            description: "A route that connects Mauville City to Route 119."
+            "name": "Secret Shore",
+            "url": "secret-shore",
+            "coords": [89.22, 61.84, 91.76, 64.25],
+            "image": "../Images/Locations/Hoenn/secret-shore.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/secret-shore.jpeg",
+            "description": "A hidden shore, home to rare and powerful Pokémon."
         },
         {
-            name: "Hoenn Route 119",
-            url: "hoenn-route-119",
-            coords: [38.24, 42.53, 40.59, 15.99],
-            image: "",
-            map_image: "",
-            description: "A route that leads from Route 118 to Fortree City."
+            "name": "Hoenn Route 101",
+            "url": "hoenn-route-101",
+            "coords": [16.27, 64.25, 18.43, 60.94],
+            "image": "../Images/Locations/Hoenn/Routes/101.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/Routes/101.jpeg",
+            "description": "The first route connecting Littleroot Town to Oldale Town."
         },
         {
-            name: "Hoenn Route 120",
-            url: "hoenn-route-120",
-            coords: [43.53, 16.29, 46.86, 29.26],
-            image: "",
-            map_image: "",
-            description: "A route that connects Fortree City to Route 121."
+            "name": "Hoenn Route 102",
+            "url": "hoenn-route-102",
+            "coords": [9.80, 59.43, 15.29, 55.81],
+            "image": "../Images/Locations/Hoenn/Routes/102.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/Routes/102.jpeg",
+            "description": "A route that leads from Oldale Town to Petalburg City."
         },
         {
-            name: "Hoenn Route 121",
-            url: "hoenn-route-121",
-            coords: [46.86, 26.85, 60.98, 29.56],
-            image: "",
-            map_image: "",
-            description: "A route that leads from Route 120 to Lilycove City."
+            "name": "Hoenn Route 103",
+            "url": "hoenn-route-103",
+            "coords": [15.88, 54.00, 28.43, 49.77],
+            "image": "../Images/Locations/Hoenn/Routes/103.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/Routes/103.jpeg",
+            "description": "A route that connects Oldale Town to Route 110."
         },
         {
-            name: "Hoenn Route 122",
-            url: "hoenn-route-122",
-            coords: [54.71, 29.26, 55.49, 41.93],
-            image: "",
-            map_image: "",
-            description: "A water route that connects Route 121 to Mt. Pyre."
+            "name": "Hoenn Route 104",
+            "url": "hoenn-route-104",
+            "coords": [4.12, 42.23, 8.04, 53.70],
+            "image": "../Images/Locations/Hoenn/Routes/104.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/Routes/104.jpeg",
+            "description": "A route that leads from Petalburg City to Rustboro City."
         },
         {
-            name: "Hoenn Route 123",
-            url: "hoenn-route-123",
-            coords: [39.61, 44.65, 55.49, 42.53],
-            image: "",
-            map_image: "",
-            description: "A route that leads from Route 122 to Route 118."
+            "name": "Hoenn Route 105",
+            "url": "hoenn-route-105",
+            "coords": [7.45, 61.54, 10.00, 70.29],
+            "image": "../Images/Locations/Hoenn/Routes/105.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/Routes/105.jpeg",
+            "description": "A water route that connects Route 104 to Route 106."
         },
         {
-            name: "Hoenn Route 124",
-            url: "hoenn-route-124",
-            coords: [65.88, 25.34, 78.04, 39.52],
-            image: "",
-            map_image: "",
-            description: "A water route that connects Lilycove City to Mossdeep City."
+            "name": "Hoenn Route 106",
+            "url": "hoenn-route-106",
+            "coords": [9.02, 70.89, 11.37, 77.83],
+            "image": "../Images/Locations/Hoenn/Routes/106.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/Routes/106.jpeg",
+            "description": "A water route that leads from Route 105 to Dewford Town."
         },
         {
-            name: "Hoenn Route 125",
-            url: "hoenn-route-125",
-            coords: [78.24, 23.23, 87.25, 41.33],
-            image: "",
-            map_image: "",
-            description: "A water route that leads from Mossdeep City to Shoal Cave."
+            "name": "Hoenn Route 107",
+            "url": "hoenn-route-107",
+            "coords": [13.14, 79.94, 21.96, 83.86],
+            "image": "../Images/Locations/Hoenn/Routes/107.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/Routes/107.jpeg",
+            "description": "A water route that connects Dewford Town to Route 108."
         },
         {
-            name: "Hoenn Route 126",
-            url: "hoenn-route-126",
-            coords: [63.14, 38.91, 77.25, 54.90],
-            image: "",
-            map_image: "",
-            description: "A water route that connects Route 124 to Sootopolis City."
+            "name": "Hoenn Route 108",
+            "url": "hoenn-route-108",
+            "coords": [22.16, 80.84, 27.25, 83.26],
+            "image": "../Images/Locations/Hoenn/Routes/108.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/Routes/108.jpeg",
+            "description": "A water route that leads from Route 107 to Route 109."
         },
         {
-            name: "Hoenn Route 127",
-            url: "hoenn-route-127",
-            coords: [],
-            image: "",
-            map_image: "",
-            description: "A water route that leads from Route 126 to Route 128."
+            "name": "Hoenn Route 109",
+            "url": "hoenn-route-109",
+            "coords": [26.67, 80.84, 30.39, 66.37],
+            "image": "../Images/Locations/Hoenn/Routes/109.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/Routes/109.jpeg",
+            "description": "A water route that connects Route 108 to Slateport City."
         },
         {
-            name: "Hoenn Route 128",
-            url: "hoenn-route-128",
-            coords: [84.31, 61.84, 88.04, 58.22],
-            image: "",
-            map_image: "",
-            description: "A water route that connects Route 127 to Ever Grande City."
+            "name": "Hoenn Route 110",
+            "url": "hoenn-route-110",
+            "coords": [28.63, 46.46, 30.59, 59.13],
+            "image": "../Images/Locations/Hoenn/Routes/110.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/Routes/110.jpeg",
+            "description": "A route that leads from Slateport City to Mauville City."
         },
         {
-            name: "Hoenn Route 129",
-            url: "hoenn-route-129",
-            coords: [79.61, 63.95, 84.12, 60.03],
-            image: "",
-            map_image: "",
-            description: "A water route that leads from Route 128 to Route 130."
+            "name": "Hoenn Route 112",
+            "url": "hoenn-route-112",
+            "coords": [22.35, 26.55, 29.02, 30.47],
+            "image": "../Images/Locations/Hoenn/Routes/112.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/Routes/112.jpeg",
+            "description": "A route that leads from Route 111 to Fiery Path."
         },
         {
-            name: "Hoenn Route 130",
-            url: "hoenn-route-130",
-            coords: [69.41, 61.54, 80.20, 63.95],
-            image: "",
-            map_image: "",
-            description: "A water route that connects Route 129 to Route 131."
+            "name": "Hoenn Route 114",
+            "url": "hoenn-route-114",
+            "coords": [4.12, 18.40, 11.57, 13.57],
+            "image": "../Images/Locations/Hoenn/Routes/114.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/Routes/114.jpeg",
+            "description": "A route that connects Fallarbor Town to Meteor Falls."
         },
         {
-            name: "Hoenn Route 131",
-            url: "hoenn-route-131",
-            coords: [60.59, 63.95, 69.22, 61.54],
-            image: "",
-            map_image: "",
-            description: "A water route that leads from Route 130 to Pacifidlog Town."
+            "name": "Hoenn Route 115",
+            "url": "hoenn-route-115",
+            "coords": [3.92, 34.39, 5.29, 18.40],
+            "image": "../Images/Locations/Hoenn/Routes/115.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/Routes/115.jpeg",
+            "description": "A route that leads from Rustboro City to Meteor Falls."
         },
         {
-            name: "Hoenn Route 132",
-            url: "hoenn-route-132",
-            coords: [49.02, 61.84, 55.88, 64.25],
-            image: "",
-            map_image: "",
-            description: "A water route that connects Pacifidlog Town to Route 133."
+            "name": "Hoenn Route 116",
+            "url": "hoenn-route-116",
+            "coords": [7.25, 37.10, 14.71, 43.74],
+            "image": "../Images/Locations/Hoenn/Routes/116.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/Routes/116.jpeg",
+            "description": "A route that connects Rustboro City to Rusturf Tunnel."
         },
         {
-            name: "Hoenn Route 133",
-            url: "hoenn-route-133",
-            coords: [40.39, 61.84, 49.02, 64.25],
-            image: "",
-            map_image: "",
-            description: "A water route that leads from Route 132 to Route 134."
+            "name": "Hoenn Route 117",
+            "url": "hoenn-route-117",
+            "coords": [19.41, 41.33, 27.25, 44.04],
+            "image": "../Images/Locations/Hoenn/Routes/117.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/Routes/117.jpeg",
+            "description": "A route that leads from Mauville City to Verdanturf Town."
         },
         {
-            name: "Hoenn Route 134",
-            url: "hoenn-route-134",
-            coords: [32.16, 63.95, 39.80, 61.84],
-            image: "",
-            map_image: "",
-            description: "A water route that connects Route 133 to Slateport City."
+            "name": "Hoenn Route 118",
+            "url": "hoenn-route-118",
+            "coords": [32.16, 44.34, 38.43, 42.23],
+            "image": "../Images/Locations/Hoenn/Routes/118.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/Routes/118.jpeg",
+            "description": "A route that connects Mauville City to Route 119."
         },
         {
-            name: "Hoenn Safari Zone",
-            url: "hoenn-safari-zone",
-            coords: [54.12, 20.81, 56.27, 24.43],
-            image: "",
-            map_image: "",
-            description: "A special area where trainers can catch a variety of Pokémon."
+            "name": "Hoenn Route 119",
+            "url": "hoenn-route-119",
+            "coords": [38.24, 42.53, 40.59, 15.99],
+            "image": "../Images/Locations/Hoenn/Routes/119.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/Routes/119.jpeg",
+            "description": "A route that leads from Route 118 to Fortree City."
         },
         {
-            name: "Dewford Town",
-            url: "dewford-town",
-            coords: [8.82, 79.03, 13.14, 85.67],
-            image: "",
-            map_image: "",
-            description: "A small island town known for its Fighting-type Gym."
-        },
-        {
-            name: "Pacifidlog Town",
-            url: "pacifidlog-town",
-            coords: [56.27, 58.82, 60.39, 66.97],
-            image: "",
-            map_image: "",
-            description: "A town built on wooden rafts floating on the sea."
-        },
-        {
-            name: "Team Aqua/Magma Hideout",
-            url: "magma-hideout",
-            coords: [65.49, 21.12, 67.84, 24.43],
-            image: "",
-            map_image: "",
-            description: "The secret base of Team Magma/Aqua depending on the version."
-        },
-        {
-            name: "Mirage Tower",
-            url: "mirage-tower",
-            coords: [],
-            image: "",
-            map_image: "",
-            description: "A mysterious tower that appears and disappears in the desert."
-        },
-        {
-            name: "Desert Underpass",
-            url: "desert-underpass",
-            coords: [],
-            image: "",
-            map_image: "",
-            description: "A hidden tunnel located in the desert."
-        },
-        {
-            name: "Artisan Cave",
-            url: "artisan-cave",
-            coords: [],
-            image: "",
-            map_image: "",
-            description: "A cave where Smeargle can be found."
-        },
-        {
-            name: "Hoenn Altering Cave",
-            url: "hoenn-altering-cave",
-            coords: [],
-            image: "",
-            map_image: "",
-            description: "A cave that changes the Pokémon found inside based on events."
-        },
-        {
-            name: "Littleroot Town",
-            url: "littleroot-town",
-            coords: [15.29, 64.25, 19.61, 71.19],
-            image: "",
-            map_image: "",
-            description: "A small town where the protagonist begins their journey."
-        },
-        {
-            name: "Oldale Town",
-            url: "oldale-town",
-            coords: [15.10, 54.60, 19.61, 60.94],
-            image: "",
-            map_image: "",
-            description: "A small town located between Littleroot Town and Petalburg City."
-        },
-        {
-            name: "Lavaridge Town",
-            url: "lavaridge-town",
-            coords: [18.43, 25.64, 22.35, 32.28],
-            image: "",
-            map_image: "",
-            description: "A town known for its hot springs and Fire-type Gym."
-        },
-        {
-            name: "Fallarbor Town",
-            url: "fallarbor-town",
-            coords: [11.57, 10.86, 16.27, 18.10],
-            image: "",
-            map_image: "",
-            description: "A town located near a volcano, known for its meteor showers."
-        },
-        {
-            name: "Verdanturf Town",
-            url: "verdanturf-town",
-            coords: [15.49, 40.12, 19.22, 47.06],
-            image: "",
-            map_image: "",
-            description: "A peaceful town known for its clean air and beautiful flowers."
-        },
-        {
-            name: "Mauville City",
-            url: "mauville-city",
-            coords: [27.84, 39.22, 31.96, 46.76],
-            image: "",
-            map_image: "",
-            description: "A large city known for its Electric-type Gym and Game Corner."
-        },
-        {
-            name: "Rustboro City",
-            url: "rustboro-city",
-            coords: [2.55, 34.99, 6.86, 41.33],
-            image: "",
-            map_image: "",
-            description: "A city known for its large buildings and Rock-type Gym."
-        },
-        {
-            name: "Fortree City",
-            url: "fortree-city",
-            coords: [40.59, 10.56, 44.71, 16.59],
-            image: "",
-            map_image: "",
-            description: "A city built in the treetops, known for its Flying-type Gym."
-        },
-        {
-            name: "Underwater",
-            url: "underwater",
-            coords: [],
-            image: "",
-            map_image: "",
-            description: "An underwater area where various Pokémon can be found."
-        },
-        {
-            name: "Mt. Chimney",
-            url: "mt-chimney",
-            coords: [23.92, 16.59, 26.27, 19.91],
-            image: "",
-            map_image: "",
-            description: "A volcano located in the Hoenn region."
-        },
-        {
-            name: "Mirage Island",
-            url: "mirage-island",
-            coords: [],
-            image: "",
-            map_image: "",
-            description: "A rare island that appears only under certain conditions."
-        },
-        {
-            name: "Southern Island",
-            url: "southern-island",
-            coords: [41.37, 81.15, 43.53, 84.46],
-            image: "",
-            map_image: "",
-            description: "An island where the legendary Pokémon Latios and Latias can be found."
-        },
-        {
-            name: "Sealed Chamber",
-            url: "sealed-chamber",
-            coords: [],
-            image: "",
-            map_image: "",
-            description: "A mysterious chamber where the secrets to unlocking the Regi trio are found."
-        },
-        {
-            name: "Scorched Slab",
-            url: "scorched-slab",
-            coords: [46.47, 17.19, 48.82, 20.51],
-            image: "",
-            map_image: "",
-            description: "A small cave located on Route 120."
-        },
-        {
-            name: "Island Cave",
-            url: "island-cave",
-            coords: [5.64, 68.60, 7.78, 72.13],
-            image: "",
-            map_image: "",
-            description: "A cave where the legendary Pokémon Regice resides."
-        },
-        {
-            name: "Desert Ruins",
-            url: "desert-ruins",
-            coords: [],
-            image: "",
-            map_image: "",
-            description: "A mysterious ruin located in the desert, home to the legendary Pokémon Regirock."
-        },
-        {
-            name: "Ancient Tomb",
-            url: "ancient-tomb",
-            coords: [],
-            image: "",
-            map_image: "",
-            description: "An ancient tomb where the legendary Pokémon Registeel resides."
-        },
-        {
-            name: "Secret Base",
-            url: "secret-base",
-            coords: [],
-            image: "",
-            map_image: "",
-            description: "A customizable hideout where players can decorate and invite friends."
-        },
-        {
-            name: "Hoenn Battle Tower",
-            url: "hoenn-battle-tower",
-            coords: [],
-            image: "",
-            map_image: "",
-            description: "A facility where trainers can battle against each other in various challenges."
-        },
-        {
-            name: "Hoenn Pokémon League",
-            url: "hoenn-pokemon-league",
-            coords: [87.45, 47.36, 91.57, 54.00],
-            image: "",
-            map_image: "",
-            description: "The final challenge for trainers in the Hoenn region, where they face the Elite Four and the Champion."
-        },
-        {
-            name: "Sea Mauville",
-            url: "sea-mauville",
-            coords: [20.98, 76.02, 23.14, 79.64],
-            image: "",
-            map_image: "",
-            description: "An abandoned research facility located on the sea."
-        },
-        {
-            name: "Battle Resort",
-            url: "battle-resort",
-            coords: [72.55, 70.89, 75.49, 75.72],
-            image: "",
-            map_image: "",
-            description: "A resort where trainers can battle and train their Pokémon."
-        },
-        {
-            name: "S.S. Tidal",
-            url: "ss-tidal",
-            coords: [],
-            image: "",
-            map_image: "",
-            description: "A luxurious cruise ship that travels between various locations in the Hoenn region."
-        },
-        {
-            name: "Mirage Forest",
-            url: "mirage-forest",
-            coords: [],
-            image: "",
-            map_image: "",
-            description: "A mysterious forest that appears and disappears, home to rare Pokémon."
-        },
-        {
-            name: "Mirage Cave",
-            url: "mirage-cave",
-            coords: [],
-            image: "",
-            map_image: "",
-            description: "A hidden cave that appears and disappears, containing rare Pokémon."
-        },
-        {
-            name: "Mirage Mountain",
-            url: "mirage-mountain",
-            coords: [],
-            image: "",
-            map_image: "",
-            description: "A mountain that appears and disappears, home to rare Pokémon."
-        },
-        {
-            name: "Trackless Forest",
-            url: "trackless-forest",
-            coords: [],
-            image: "",
-            map_image: "",
-            description: "A dense forest with no clear paths, home to rare Pokémon."
-        },
-        {
-            name: "Pathless Plain",
-            url: "pathless-plain",
-            coords: [59.02, 71.49, 63.14, 75.72],
-            image: "",
-            map_image: "",
-            description: "A vast plain with no clear paths, home to rare Pokémon."
-        },
-        {
-            name: "Nameless Cavern",
-            url: "nameless-cavern",
-            coords: [],
-            image: "",
-            map_image: "",
-            description: "A mysterious cavern with no name, home to legendary Pokémon."
-        },
-        {
-            name: "Fabled Cave",
-            url: "fabled-cave",
-            coords: [],
-            image: "",
-            map_image: "",
-            description: "A cave of legends, home to rare and powerful Pokémon."
-        },
-        {
-            name: "Gnarled Den",
-            url: "gnarled-den",
-            coords: [],
-            image: "",
-            map_image: "",
-            description: "A twisted den, home to rare and powerful Pokémon."
-        },
-        {
-            name: "Crescent Isle",
-            url: "crescent-isle",
-            coords: [88.63, 80.24, 91.57, 84.46],
-            image: "",
-            map_image: "",
-            description: "A crescent-shaped island, home to rare and powerful Pokémon."
-        },
-        {
-            name: "Secret Islet",
-            url: "secret-islet",
-            coords: [],
-            image: "",
-            map_image: "",
-            description: "A small, hidden islet, home to rare and powerful Pokémon."
-        },
-        {
-            name: "Soaring in the Sky",
-            url: "soaring-in-the-sky",
-            coords: [],
-            image: "",
-            map_image: "",
-            description: "A location high in the sky, accessible by flying Pokémon."
-        },
-        {
-            name: "Secret Shore",
-            url: "secret-shore",
-            coords: [89.22, 61.84, 91.76, 64.25],
-            image: "",
-            map_image: "",
-            description: "A hidden shore, home to rare and powerful Pokémon."
-        },
-        {
-            name: "Terra Cave",
-            url: "terra-cave",
-            coords: [],
-            image: "",
-            map_image: "",
-            description: "A cave where the legendary Pokémon Groudon resides."
-        },
-        {
-            name: "Marine Cave",
-            url: "marine-cave",
-            coords: [],
-            image: "",
-            map_image: "",
-            description: "A cave where the legendary Pokémon Kyogre resides."
-        },
-        {
-            name: "Faraway Island",
-            url: "faraway-island",
-            coords: [],
-            image: "",
-            map_image: "",
-            description: "A distant island where the legendary Pokémon Mew can be found."
-        },
-        {
-            name: "Hoenn Battle Frontier",
-            url: "hoenn-battle-frontier",
-            coords: [],
-            image: "",
-            map_image: "",
-            description: "A facility with various battle challenges for trainers."
-        },
-        {
-            name: "Mauville Space Center",
-            url: "mauville-space-center",
-            coords: [],
-            image: "",
-            map_image: "",
-            description: "A space research facility located in Mauville City."
+            "name": "Hoenn Route 120",
+            "url": "hoenn-route-120",
+            "coords": [43.53, 16.29, 46.86, 29.26],
+            "image": "../Images/Locations/Hoenn/Routes/120.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/Routes/120.jpeg",
+            "description": "A route that connects Fortree City to Route 121."
+        },
+        {
+            "name": "Hoenn Route 121",
+            "url": "hoenn-route-121",
+            "coords": [46.86, 26.85, 60.98, 29.56],
+            "image": "../Images/Locations/Hoenn/Routes/121.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/Routes/121.jpeg",
+            "description": "A route that leads from Route 120 to Lilycove City."
+        },
+        {
+            "name": "Hoenn Route 122",
+            "url": "hoenn-route-122",
+            "coords": [54.71, 29.26, 55.49, 41.93],
+            "image": "../Images/Locations/Hoenn/Routes/122.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/Routes/122.jpeg",
+            "description": "A water route that connects Route 121 to Mt. Pyre."
+        },
+        {
+            "name": "Hoenn Route 123",
+            "url": "hoenn-route-123",
+            "coords": [39.61, 44.65, 55.49, 42.53],
+            "image": "../Images/Locations/Hoenn/Routes/123.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/Routes/123.jpeg",
+            "description": "A route that leads from Route 122 to Route 118."
+        },
+        {
+            "name": "Hoenn Route 124",
+            "url": "hoenn-route-124",
+            "coords": [65.88, 25.34, 78.04, 39.52],
+            "image": "../Images/Locations/Hoenn/Routes/124.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/Routes/124.jpeg",
+            "description": "A water route that connects Lilycove City to Mossdeep City."
+        },
+        {
+            "name": "Hoenn Route 125",
+            "url": "hoenn-route-125",
+            "coords": [78.24, 23.23, 87.25, 41.33],
+            "image": "../Images/Locations/Hoenn/Routes/125.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/Routes/125.jpeg",
+            "description": "A water route that leads from Mossdeep City to Shoal Cave."
+        },
+        {
+            "name": "Hoenn Route 126",
+            "url": "hoenn-route-126",
+            "coords": [63.14, 38.91, 77.25, 54.90],
+            "image": "../Images/Locations/Hoenn/Routes/126.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/Routes/126.jpeg",
+            "description": "A water route that connects Route 124 to Sootopolis City."
+        },
+        {
+            "name": "Hoenn Route 128",
+            "url": "hoenn-route-128",
+            "coords": [84.31, 61.84, 88.04, 58.22],
+            "image": "../Images/Locations/Hoenn/Routes/128.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/Routes/128.jpeg",
+            "description": "A water route that connects Route 127 to Ever Grande City."
+        },
+        {
+            "name": "Hoenn Route 129",
+            "url": "hoenn-route-129",
+            "coords": [79.61, 63.95, 84.12, 60.03],
+            "image": "../Images/Locations/Hoenn/Routes/129.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/Routes/129.jpeg",
+            "description": "A water route that leads from Route 128 to Route 130."
+        },
+        {
+            "name": "Hoenn Route 130",
+            "url": "hoenn-route-130",
+            "coords": [69.41, 61.54, 80.20, 63.95],
+            "image": "../Images/Locations/Hoenn/Routes/130.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/Routes/130.jpeg",
+            "description": "A water route that connects Route 129 to Route 131."
+        },
+        {
+            "name": "Hoenn Route 131",
+            "url": "hoenn-route-131",
+            "coords": [60.59, 63.95, 69.22, 61.54],
+            "image": "../Images/Locations/Hoenn/Routes/131.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/Routes/131.jpeg",
+            "description": "A water route that leads from Route 130 to Pacifidlog Town."
+        },
+        {
+            "name": "Hoenn Route 132",
+            "url": "hoenn-route-132",
+            "coords": [49.02, 61.84, 55.88, 64.25],
+            "image": "../Images/Locations/Hoenn/Routes/132.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/Routes/132.jpeg",
+            "description": "A water route that connects Pacifidlog Town to Route 133."
+        },
+        {
+            "name": "Hoenn Route 133",
+            "url": "hoenn-route-133",
+            "coords": [40.39, 61.84, 49.02, 64.25],
+            "image": "../Images/Locations/Hoenn/Routes/133.jpeg",
+            "map_image": "../Images/Locations/Hoenn/Maps/Routes/133.jpeg",
+            "description": "A water route that leads from Route 132 to Route 134."
         }
     ]
 };
