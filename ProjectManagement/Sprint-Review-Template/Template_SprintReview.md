@@ -53,10 +53,12 @@
 ## 📈 5. Feedback vom Betreuer / Lehrer (danach selbst einzugeben!)
 
 **Positiv:**  
-- …  
+- Technische implementierung  
 
 **Verbesserungsvorschläge:**  
-- …
+- Textuelle beschreibung
+- Multiplayer
+- Styling
 
 ---
 
