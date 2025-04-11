@@ -26,6 +26,18 @@ document.addEventListener("DOMContentLoaded", async function () {
                 <td><img src="${pokemon.image}" alt="${pokemon.name}"></td>
                 <td><a href="PokemonSubpage/pokemon.html?pokemon=${pokemon.id}">${formatName(pokemon.name)}</a></td>
             `;
+            const firstChild = row.children[0];
+            firstChild.style.width = "285px";
+            firstChild.style.height = "134px";
+
+            const secondChild = row.children[1];
+            secondChild.style.width = "600px";
+            secondChild.style.height = "134px";
+
+            const thirdChild = row.children[2];
+            thirdChild.style.width = "560px";
+            thirdChild.style.height = "134px";
+
             pokemonTable.appendChild(row);
         });
 
