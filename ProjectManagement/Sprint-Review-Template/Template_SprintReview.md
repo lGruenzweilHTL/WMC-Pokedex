@@ -9,9 +9,10 @@
 <!-- z. B. WebDevMasters -->
 
 ### Teammitglieder
-- Name 1  
-- Name 2  
-- Name 3  
+- Lukas Grünzweil  
+- Almir Hadcic
+- Mátyás Darabos
+- Leon Marazovic 
 
 ---
 
@@ -23,7 +24,7 @@
 ## 🔍 1. Sprintziel(e)
 <!-- Welche Ziele hatte das Team für diesen Sprint? -->
 
-> Beispiel:  
+
 > - Code clean-up
 > - Bugfixes
 > - Mehr maps für den *Map Explorer*
