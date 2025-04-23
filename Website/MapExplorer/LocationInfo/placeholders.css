@@ -1,0 +1,41 @@
+.placeholder {
+    display: inline-block;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    height: 1em;
+    width: 100%;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+.placeholder.col-4 {
+    width: 25%;
+}
+
+.placeholder.col-6 {
+    width: 50%;
+}
+
+.placeholder.col-8 {
+    width: 75%;
+}
+
+.placeholder-square {
+    display: inline-block;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    width: 100px; /* Adjust width */
+    height: 100px; /* Match height to make it square */
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.4;
+    }
+    100% {
+        opacity: 1;
+    }
+}

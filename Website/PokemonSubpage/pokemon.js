@@ -159,7 +159,7 @@ async function buildLocationMap(encounter_url) {
     for (const location of data) {
         const item = document.createElement("li");
         item.innerHTML = `<a class="location-link"
-            href="../MapExplorer/location-info.html?type=location-area&name=${location.location_area.name}">
+            href="../MapExplorer/LocationInfo/LocationAreas/location-area.html?name=${location.location_area.name}">
             ${location.location_area.name}</a>`;
         list.appendChild(item);
     }

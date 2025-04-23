@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             area.coords = city.coords.map((coord, index) => {
                 return index % 2 === 0 ? (coord / 100) * imgWidth : (coord / 100) * imgHeight;
             }).join(',');
-            area.href = `location-info.html?type=location&name=${city.url}`;
+            area.href = `LocationInfo/Locations/location.html?name=${city.url}`;
             area.alt = city.name;
             area.setAttribute("data-name", city.name);
             area.setAttribute("data-preview", city.image);
