@@ -10,7 +10,11 @@ document.addEventListener("DOMContentLoaded", async function () {
     guessInput.addEventListener("keydown", (event) => {
         if (event.key === "Enter") submit();
     });
-    nextButton.addEventListener("click", getBlackoutImage);
+    nextButton.addEventListener("click", function () {
+        guessInput.value = "";
+        guessInput.focus();
+        getBlackoutImage();
+    });
 
     // Load the first Pokémon image
     await getBlackoutImage();
