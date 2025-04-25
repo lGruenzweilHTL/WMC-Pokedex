@@ -6,11 +6,13 @@ document.addEventListener("DOMContentLoaded", async function () {
     const guessButton = document.getElementById("submit-guess");
     const nextButton = document.getElementById("next-button");
 
+    let isLoading = false; // Prevent spamming
+
     // Event listeners
     guessButton.addEventListener("click", submit);
     guessInput.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
-            if (correct) newImage();
+            if (correct || guessInput.value === "") newImage();
             else submit();
         }
     });
@@ -31,11 +33,22 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     }
 
-    function newImage() {
+    async function newImage() {
+        if (isLoading) return; // Prevent multiple triggers
+        isLoading = true;
+
         guessInput.value = "";
-        guessInput.focus();
+        guessInput.disabled = true;
+        nextButton.disabled = true;
+
         correct = false;
-        getBlackoutImage();
+        await getBlackoutImage();
+
+        guessInput.disabled = false;
+        nextButton.disabled = false;
+        guessInput.focus();
+
+        isLoading = false;
     }
 });
 
