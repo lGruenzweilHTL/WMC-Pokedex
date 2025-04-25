@@ -1,4 +1,5 @@
 let correctNames = []; // Names in all languages
+let correct = false;
 
 document.addEventListener("DOMContentLoaded", async function () {
     const guessInput = document.getElementById("guess-input");
@@ -8,13 +9,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Event listeners
     guessButton.addEventListener("click", submit);
     guessInput.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") submit();
+        if (event.key === "Enter") {
+            if (correct) newImage();
+            else submit();
+        }
     });
-    nextButton.addEventListener("click", function () {
-        guessInput.value = "";
-        guessInput.focus();
-        getBlackoutImage();
-    });
+    nextButton.addEventListener("click", newImage);
 
     // Load the first Pokémon image
     await getBlackoutImage();
@@ -29,6 +29,13 @@ document.addEventListener("DOMContentLoaded", async function () {
         } else {
             alert("Wrong guess. Try again!");
         }
+    }
+
+    function newImage() {
+        guessInput.value = "";
+        guessInput.focus();
+        correct = false;
+        getBlackoutImage();
     }
 });
 
@@ -62,6 +69,7 @@ function hideImage() {
 
 // Reveal the image
 function revealImage() {
+    correct = true;
     const image = document.getElementById("blackout-image");
     image.style.transition = "filter 0.5s ease-in-out";
     image.style.filter = "none";
