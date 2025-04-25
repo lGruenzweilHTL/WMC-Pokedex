@@ -1,112 +1,89 @@
 body {
-    font-family: Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to bottom, #f0f8ff, #ffffff);
+    background: url('https://assets.pokemon.com/static2/_ui/img/chrome/body_bg.png') center/cover no-repeat, linear-gradient(to bottom, #f7f7f7, #eaeaea);
+    background-attachment: fixed;
     color: #333;
-}
-
-.navigation-bar {
-    background-color: #ffcb05;
-    padding: 10px 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-}
-
-.navigation-bar img.navPokeball {
-    width: 40px;
-    height: 40px;
-}
-
-.navigation-bar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-}
-
-.navigation-bar li {
-    margin: 0 10px;
-}
-
-.navigation-bar a {
-    text-decoration: none;
-    color: #2a75bb;
-    font-weight: bold;
-    transition: color 0.3s;
-}
-
-.navigation-bar a:hover {
-    color: #d62828;
+    justify-content: center;
 }
 
 .container {
     max-width: 900px;
-    margin: 0 auto;
+    margin-top: 100px;
     padding: 20px;
-}
-
-.type_selector {
-    background: whitesmoke;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: rgba(200, 200, 200, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
 }
 
 .type_selector h1 {
-    font-size: 2.5rem;
-    color: #2a75bb;
+    font-size: 3rem;
+    color: #444;
     margin-bottom: 20px;
-    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .type_selector h3 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: #555;
-    margin-bottom: 10px;
-}
-
-.type_selector .form-group {
     margin-bottom: 15px;
 }
 
 .type-select {
-    width: 200px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 5px 10px;
+    width: 250px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 1rem;
+    background: #f9f9f9;
+    color: #333;
+    transition: border-color 0.3s ease, transform 0.2s ease;
+}
+
+.type-select:focus {
+    border-color: #007bff;
+    transform: scale(1.05);
+    outline: none;
 }
 
 .btn {
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
     transition: background-color 0.3s, transform 0.2s;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .btn-primary {
-    background-color: #2a75bb;
+    background-color: #007bff;
     border: none;
-    color: white;
+    color: #fff;
 }
 
 .btn-primary:hover {
-    background-color: #1c5e9e;
-    transform: scale(1.05);
+    background-color: #0056b3;
+    transform: scale(1.1);
 }
 
 .btn-secondary {
-    background-color: #ddd;
+    background-color: #6c757d;
     border: none;
-    color: #555;
+    color: #fff;
 }
 
 .btn-secondary:hover {
-    background-color: #bbb;
-    transform: scale(1.05);
+    background-color: #5a6268;
+    transform: scale(1.1);
 }
 
 .table {
@@ -114,21 +91,61 @@ body {
     width: 100%;
     border-collapse: collapse;
     text-align: center;
-    background: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    overflow: hidden;
+    animation: slideIn 0.8s ease-in-out;
 }
 
 .table th, .table td {
     padding: 10px;
     border: 1px solid #ddd;
+    color: #333;
 }
 
 .table th {
-    background: #f4f4f4;
-    color: #555;
+    background: #f1f1f1;
     font-weight: bold;
 }
 
 .table td {
-    color: #333;
+    background: #fff;
+}
+
+.table tr {
+    opacity: 0;
+    animation: fadeInRow 0.5s ease-in-out forwards;
+}
+
+
+@keyframes fadeInRow {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }

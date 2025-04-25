@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('form');
+    const form = document.getElementById('typeForm');
     const addTypeButton = document.getElementById('addType');
-    const typeContainer = document.getElementById('typeContainer');
 
     addTypeButton.addEventListener('click', function(event) {
         event.preventDefault();
@@ -18,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function addTypeField() {
     const typeContainer = document.getElementById('typeContainer');
     const newTypeField = document.createElement('div');
-    newTypeField.classList.add('form-row', 'align-items-center', 'mb-2');
+    newTypeField.classList.add('form-row', 'align-items-center', 'mb-1');
     newTypeField.innerHTML = `
         <div class="col-auto">
             <label for="type" class="col-form-label">Type:</label>
@@ -62,8 +61,9 @@ function calculateTypeEffectiveness(types) {
     const table = document.getElementById('typeEffectiveness');
     table.innerHTML = '';
 
-    Object.entries(effectiveness).forEach(([type, multiplier]) => {
+    Object.entries(effectiveness).forEach(([type, multiplier], index) => {
         const row = document.createElement('tr');
+        row.style.animationDelay = `${index * 0.1}s`; // Dynamically set delay
         row.innerHTML = `
             <td>${type}</td>
             <td>${multiplier}</td>
