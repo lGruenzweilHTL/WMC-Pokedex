@@ -1,9 +1,11 @@
 let correctNames = []; // Names in all languages
+let englishName = ""; // English name (used only for reveal)
 let correct = false;
 
 document.addEventListener("DOMContentLoaded", async function () {
     const guessInput = document.getElementById("guess-input");
     const guessButton = document.getElementById("submit-guess");
+    const revealButton = document.getElementById("reveal-button");
     const nextButton = document.getElementById("next-button");
 
     let isLoading = false; // Prevent spamming
@@ -17,6 +19,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     });
     nextButton.addEventListener("click", newImage);
+    revealButton.addEventListener("click", reveal);
 
     // Load the first Pokémon image
     await getBlackoutImage();
@@ -29,13 +32,23 @@ document.addEventListener("DOMContentLoaded", async function () {
             revealImage();
             console.log("Correct guess:", userGuess);
         } else {
-            alert("Wrong guess. Try again!");
+            triggerShake(document.body);
+            guessInput.value = "";
         }
+    }
+
+    function reveal() {
+        revealImage();
+        guessButton.disabled = true;
+        guessInput.disabled = true;
+        guessInput.value = "It's a " + englishName;
     }
 
     async function newImage() {
         if (isLoading) return; // Prevent multiple triggers
         isLoading = true;
+
+        guessButton.disabled = false;
 
         guessInput.value = "";
         guessInput.disabled = true;
@@ -71,6 +84,7 @@ async function fetchPokemonNames(id) {
 
     const speciesData = await (await fetch(data.species.url)).json();
     correctNames = speciesData.names.map((name) => name.name.toLowerCase());
+    englishName = speciesData.names.find((name) => name.language.name === "en").name.toLowerCase();
 }
 
 // Hide the image (blackout effect)
@@ -86,6 +100,13 @@ function revealImage() {
     const image = document.getElementById("blackout-image");
     image.style.transition = "filter 0.5s ease-in-out";
     image.style.filter = "none";
+}
+
+function triggerShake(element) {
+    element.classList.add('shake');
+    element.addEventListener('animationend', () => {
+        element.classList.remove('shake');
+    }, { once: true });
 }
 
 // Generate a random index within a range
