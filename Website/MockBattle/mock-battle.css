@@ -1,36 +1,70 @@
+:root {
+    --player-color: #1e6bff;
+    --enemy-color: #ff3d3d;
+    --neutral-bg: rgba(255, 255, 255, .85);
+    --neutral-border: #d1d1d1;
+    --hp-green: #4caf50;
+    --hp-yellow: #ffc107;
+    --hp-red: #dc3545;
+}
+
+html, body {
+    height: 100%;
+    margin: 0
+}
+
+body {
+    background: url("../Images/Backgrounds/battle_pixel.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
 .focusable {
     cursor: pointer;
+    transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease
+}
+
+.focusable:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .25)
 }
 
 .focusable:focus {
-    outline: 2px solid blue;
+    outline: none;
+    box-shadow: 0 0 0 3px var(--player-color)
 }
 
 img#player-pokemon, img#opponent-pokemon {
     transform-origin: bottom center;
+    max-width: 38vw;
+    height: auto
 }
 
 #player-pokemon-field {
     position: fixed;
     bottom: 11vh;
     left: 550px;
-    transform: translateX(-50%);
+    transform: translateX(-50%)
 }
+
 img#player-pokemon-platform {
     position: fixed;
     bottom: -167px;
     left: -167px;
     width: 700px;
-    height: auto;
+    height: auto
 }
+
 img#player-pokemon {
     position: relative;
     right: 9px;
     bottom: 47px;
     width: 400px;
     height: auto;
-    transform: scaleX(-1);
+    transform: scaleX(-1)
 }
+
 #player-pokemon-card {
     position: fixed;
     bottom: 168px;
@@ -38,29 +72,32 @@ img#player-pokemon {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 10px;
+    padding: 10px
 }
 
 #opponent-pokemon-field {
     position: fixed;
     top: 28vh;
     right: 304px;
-    transform: translateX(50%);
+    transform: translateX(50%)
 }
+
 img#opponent-pokemon-platform {
     position: fixed;
     bottom: -360px;
     left: -560px;
     width: 700px;
-    height: auto;
+    height: auto
 }
+
 img#opponent-pokemon {
     position: fixed;
     right: 5px;
     bottom: -145px;
     width: 400px;
-    height: auto;
+    height: auto
 }
+
 #opponent-pokemon-card {
     position: fixed;
     bottom: -33px;
@@ -68,136 +105,102 @@ img#opponent-pokemon {
     width: 350px;
     display: flex;
     justify-content: center;
-    padding: 10px;
+    padding: 10px
 }
 
 .custom-card {
-    background-color: #fffff2;
-    border: 1px solid black;
+    background: var(--neutral-bg);
+    border: 1px solid #000;
     border-radius: 20px;
     padding: 10px;
-    width: 350px;
+    width: 350px
 }
 
 .hp-bar {
-    background-color: #ccc;
+    background: #ccc;
     border-radius: 5px;
     height: 20px;
     width: 100%;
     margin-top: 10px;
+    overflow: hidden
 }
 
 .hp-bar-fill {
-    background-color: #4caf50; /* Green */
+    background: var(--hp-green);
     height: 100%;
-    width: 50%; /* Example HP percentage */
-    border-radius: 5px;
+    width: 50%;
+    border-radius: 5px 0 0 5px
 }
 
-/* Status effects */
+.hp-bar-fill.mid {
+    background: var(--hp-yellow)
+}
+
+.hp-bar-fill.low {
+    background: var(--hp-red)
+}
+
 .status {
-    border: black 1px solid;
+    border: 1px solid #000;
     border-radius: 10px;
     padding: 2px 7px;
-}
-.status-burn {
-    background-color: red;
-}
-.status-poison {
-    background-color: purple;
-}
-.status-paralysis {
-    background-color: yellow;
-}
-.status-sleep {
-    background-color: blue;
-}
-.status-frozen {
-    background-color: lightblue;
-}
-.status-confusion {
-    background-color: orange;
-}
-.status-faint { /* Used for conditional fainting e. g. with destiny bond */
-    background-color: black;
-    color: white;
+    color: #fff;
+    font-weight: 600;
+    font-size: .75rem
 }
 
-/* Move highlights */
-.move-fire {
-    background-color: #ff7f50; /* Light red */
+.status-burn {
+    background: #c0392b
 }
-.move-water {
-    background-color: #99ccff; /* Light blue */
+
+.status-poison {
+    background: #8e44ad
 }
-.move-electric {
-    background-color: #ffff99; /* Light yellow */
+
+.status-paralysis {
+    background: #f1c40f;
+    color: #000
 }
-.move-grass {
-    background-color: #99ff99; /* Light green */
+
+.status-sleep {
+    background: #2980b9
 }
-.move-ice {
-    background-color: #ccf2ff; /* Very light blue */
+
+.status-frozen {
+    background: #5dade2
 }
-.move-fighting {
-    background-color: #ffcc99; /* Light orange */
+
+.status-confusion {
+    background: #d35400
 }
-.move-poison {
-    background-color: #cc99ff; /* Light purple */
-}
-.move-ground {
-    background-color: #d2b48c; /* Tan */
-}
-.move-flying {
-    background-color: #87ceeb; /* Sky blue */
-}
-.move-psychic {
-    background-color: #ffb6c1; /* Light pink */
-}
-.move-bug {
-    background-color: #b6ff99; /* Light lime */
-}
-.move-rock {
-    background-color: #d3d3d3; /* Light gray */
-}
-.move-ghost {
-    background-color: #dda0dd; /* Plum */
-}
-.move-dragon {
-    background-color: #ff9999; /* Coral */
-}
-.move-dark {
-    background-color: #a9a9a9; /* Dark gray */
-}
-.move-steel {
-    background-color: #c0c0c0; /* Silver */
-}
-.move-fairy {
-    background-color: #ffccff; /* Light pink */
+
+.status-faint {
+    background: #000
 }
 
 .team-container {
     position: absolute;
-    width: 20%;
+    width: 18%;
+    min-width: 200px;
     text-align: center;
     border: 4px solid;
     border-radius: 12px;
     padding: 12px;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    background: var(--neutral-bg);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .25)
 }
 
 .player-team {
-    width: 18%;
     left: 2%;
     bottom: 32%;
-    border-color: blue;
+    border-color: var(--player-color)
 }
 
 .enemy-team {
-    width: 18%;
     right: 1%;
     top: 3%;
-    border-color: red; 
+    border-color: var(--enemy-color)
 }
 
 .team-title {
@@ -205,38 +208,164 @@ img#opponent-pokemon {
     font-weight: bold;
     margin-bottom: 12px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1px
 }
-.enemy-title{
-    color: red;
+
+.player-title {
+    color: var(--player-color)
 }
-.player-title{
-    color: blue;
+
+.enemy-title {
+    color: var(--enemy-color)
 }
 
 .team {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: center
 }
 
 .team img {
     height: 65px;
     width: auto;
-    border: 2px solid rgb(0, 0, 0);
+    border: 2px solid #000;
     border-radius: 8px;
-    transition: transform 0.2s ease-in-out;
-    margin: 10px;
+    transition: transform .2s ease-in-out;
+    margin: 10px
+}
+
+.team img:hover {
+    transform: scale(1.15)
+}
+
+#action-select, #move-select, #pokemon-select, #item-select, #message-display {
+    background: var(--neutral-bg) !important;
+    border: 2px solid var(--neutral-border);
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .15)
+}
+
+#action-select .focusable.card, #move-select .focusable.card, #pokemon-select .focusable.card, #item-select .focusable.card {
+    background: transparent;
+    border: 2px solid var(--neutral-border);
+    border-radius: 10px;
+    transition: background-color .2s ease, transform .15s ease, box-shadow .15s ease
+}
+
+#action-select .focusable.card:hover, #move-select .focusable.card:hover, #pokemon-select .focusable.card:hover, #item-select .focusable.card:hover {
+    background: rgba(0, 0, 0, .05)
+}
+
+#action-select .focusable.card:focus, #move-select .focusable.card:focus, #pokemon-select .focusable.card:focus, #item-select .focusable.card:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--player-color)
+}
+
+.focusable.card.active {
+    background: var(--player-color);
+    color: #fff;
+    border-color: var(--player-color)
+}
+
+#message-display {
+    color: #111;
+    font-size: 1.05rem
 }
 
 #tooltip {
     display: none;
     text-align: center;
+    max-width: 18rem;
+    background: var(--neutral-bg);
+    border: 2px solid var(--neutral-border);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .15);
+    padding: 1rem
 }
+
 #tooltip .display-4 {
-    font-size: 1.5rem;
-    margin-top: 20px;
+    font-size: 1.25rem;
+    margin-top: 1rem
 }
+
 #tooltip * {
-    font-size: 75%;
+    font-size: 75%
+}
+
+.move-fire {
+    background: #ffb6a0
+}
+
+.move-water {
+    background: #b3d9ff
+}
+
+.move-electric {
+    background: #fff9b1
+}
+
+.move-grass {
+    background: #baffba
+}
+
+.move-ice {
+    background: #e0f7ff
+}
+
+.move-fighting {
+    background: #ffd1b0
+}
+
+.move-poison {
+    background: #dab6ff
+}
+
+.move-ground {
+    background: #e7c8a7
+}
+
+.move-flying {
+    background: #b6e3ff
+}
+
+.move-psychic {
+    background: #ffcce0
+}
+
+.move-bug {
+    background: #d0ffb6
+}
+
+.move-rock {
+    background: #e6e6e6
+}
+
+.move-ghost {
+    background: #e8d0ff
+}
+
+.move-dragon {
+    background: #ffb3b3
+}
+
+.move-dark {
+    background: #bfbfbf
+}
+
+.move-steel {
+    background: #d8d8d8
+}
+
+.move-fairy {
+    background: #ffd9ff
+}
+
+@media (max-width: 768px) {
+    img#player-pokemon, img#opponent-pokemon {
+        max-width: 48vw
+    }
+
+    .team-container {
+        width: 24%
+    }
 }
