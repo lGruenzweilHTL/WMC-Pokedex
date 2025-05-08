@@ -382,7 +382,7 @@ const locations = {
         },
         {
             name: "Route 19",
-            url: "kanto-route-19",
+            url: "kanto-sea-route-19",
             coords: [53.34, 82.32, 58.90, 88.07],
             image: "../Images/Locations/Kanto/Routes/19.jpeg",
             map_image: "../Images/Locations/Kanto/Maps/Routes/19.jpeg",
@@ -390,7 +390,7 @@ const locations = {
         },
         {
             name: "Route 20",
-            url: "kanto-route-20",
+            url: "kanto-sea-route-20",
             coords: [23.60, 94.02, 58.90, 88.27],
             image: "../Images/Locations/Kanto/Routes/20.jpeg",
             map_image: "../Images/Locations/Kanto/Maps/Routes/20.jpeg",
@@ -398,7 +398,7 @@ const locations = {
         },
         {
             name: "Route 21",
-            url: "kanto-route-21",
+            url: "kanto-sea-route-21",
             coords: [17.85, 88.10, 23.40, 70.45],
             image: "../Images/Locations/Kanto/Routes/21.jpeg",
             map_image: "../Images/Locations/Kanto/Maps/Routes/21.jpeg",

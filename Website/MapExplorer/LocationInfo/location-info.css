@@ -1,0 +1,79 @@
+/* General body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-size: cover;
+    background: linear-gradient(135deg, #f0f8ff, #add8e6) no-repeat;
+    min-height: 97vh; /* Make sure the body covers the full viewport height (100 causes weird scrolling behaviour) */
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Card styling */
+.card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+    max-width: 800px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+}
+
+.card-header {
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 15px;
+    text-align: center;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* List group styling */
+.list-group-item {
+    border: none;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+}
+
+.list-group-item:last-child {
+    border-bottom: none;
+}
+
+/* Button styling */
+.btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    color: #fff;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .card {
+        margin: 10px;
+    }
+
+    .list-group-item {
+        padding: 10px;
+    }
+}
