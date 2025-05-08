@@ -3,26 +3,31 @@ document.addEventListener('keydown', function (event) {
     let currentIndex = Array.prototype.indexOf.call(focusableElements, document.activeElement);
 
     switch (event.key) {
+        case 'w':
         case 'ArrowUp':
             if (currentIndex > 1) {
                 focusableElements[currentIndex - 2].focus();
             }
             break;
+        case 's':
         case 'ArrowDown':
             if (currentIndex < focusableElements.length - 2) {
                 focusableElements[currentIndex + 2].focus();
             }
             break;
+        case 'a':
         case 'ArrowLeft':
             if (currentIndex > 0) {
                 focusableElements[currentIndex - 1].focus();
             }
             break;
+        case 'd':
         case 'ArrowRight':
             if (currentIndex < focusableElements.length - 1) {
                 focusableElements[currentIndex + 1].focus();
             }
             break;
+        case 'Enter':
         case ' ':
             if (currentIndex !== -1) {
                 focusableElements[currentIndex].click();
