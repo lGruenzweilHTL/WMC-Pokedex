@@ -369,3 +369,32 @@ img#opponent-pokemon {
         width: 24%
     }
 }
+
+:root{
+    --edge-gap: 0.5rem;
+    --field-offset: 650px;
+}
+
+.team-container.player-team{
+    left: var(--edge-gap) !important;
+    margin-bottom: 10vh;
+}
+
+.team-container.enemy-team{
+    right: var(--edge-gap) !important;
+
+}
+
+
+
+#opponent-pokemon-field{
+    right: 52vh !important;
+}
+
+#player-pokemon-card {
+    left: calc(var(--field-offset) + 40px) !important;
+}
+
+#opponent-pokemon-card{
+    left: calc(-1 * var(--field-offset) - 200px) !important;
+}
