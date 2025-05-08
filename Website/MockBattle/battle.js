@@ -122,6 +122,7 @@ class GameAction {
     }
 }
 
+const defaultNavTip = "Navigate using arrows key or wasd\nSelect with enter or spacebar\nPress escape to cancel";
 let turnOrder = [];
 
 const playerItemNames = ["potion", "super-potion", "hyper-potion", "max-potion"];
@@ -142,7 +143,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     updateDisplay();
 
-    await pushMessage("The battle begins!");
+    await pushMessage("The battle begins!\n\n(Press spacebar or enter to continue)");
 
     await gameLoop();
 });
@@ -169,6 +170,8 @@ function initTeams() {
 
 async function gameLoop() {
     while (!isGameOver()) {
+        displayMessage(`What will ${playerActivePokemon.name} do?\n\n${defaultNavTip}`);
+
         // Let player select an action
         const playerAction = await waitForPlayerAction();
         console.log(`Received "${playerAction.action}" action from player${playerAction.move ? ". Move: " + playerAction.move.name : ""}`);
@@ -258,6 +261,7 @@ async function waitForPlayerAction() {
 
 // Called by button
 function attackClicked() {
+    displayMessage(`Which move will ${playerActivePokemon.name} use?\n\n${defaultNavTip}`);
     showPlayerMoveSelect();
 
     // Populate move buttons with the player's moves
@@ -282,6 +286,7 @@ function runClicked() {
 
 // Called by button
 function bagClicked() {
+    displayMessage(`Which item will you use?\n\n${defaultNavTip}`);
     if (playerItems.length === 0) {
         return; // Can't use items if there are none
     }
@@ -297,6 +302,7 @@ function itemSelected(idx) {
 
 // Called by button
 function pokemonClicked() {
+    displayMessage(`Which Pokémon will you switch to?\n\n${defaultNavTip}`);
     if (playerTeam.length <= 1) {
         return; // Can't switch pokemon if there's only 1 left
     }
