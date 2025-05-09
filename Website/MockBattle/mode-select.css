@@ -10,13 +10,14 @@ body {
     font-weight: normal;
     font-style: normal;
     font-size: 10px;
+
 }
 .red-arrow {
     width: 0;
     height: 0;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-top: 20px solid red;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 20px solid red;
     position: relative;
   }
   
@@ -24,15 +25,24 @@ body {
     content: "";
     position: absolute;
     top: -20px;
-    right: -24px;
+    left: -20px;
     width: 0;
     height: 0;
-    border-left: 22px solid transparent;
-    border-right: 22px solid transparent;
-    border-top: 22px solid rgba(0, 0, 0, 0.5);
+    border-top: 22px solid transparent;
+    border-bottom: 22px solid transparent;
+    border-left: 22px solid rgba(0, 0, 0, 0.5); 
     z-index: -1;
   }
   
+  #trainer,
+  #wants-to-battle,
+  #mode
+  {
+    margin-left: 10px;
+  }
+  #trainer{
+    letter-spacing: -px;
+  }
   
   
 #top-menu
@@ -67,8 +77,8 @@ body {
     top: 4%;
     left: calc(1% + 4px);
     border-radius: 10px;
-
     z-index: 0;
+    letter-spacing: -3px;
 }
 
 #gameboy{
