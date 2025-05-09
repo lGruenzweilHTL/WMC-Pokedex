@@ -7,26 +7,26 @@
     <link rel="stylesheet" href="map-explorer.css">
     <link rel="stylesheet" href="../navbar.css">
     <script src="map-explorer.js"></script>
-    
+
 </head>
 <body>
-    <nav class="navigation-bar">
-        <label for="toggle-navbar" class="pokeball-icon">
-            <img src="../Images/pokeball.png" class="navPokeball" alt="Pokéball">
-          </label>
-          <ul>
-              <li><strong><a href="../../index.html">Home</a></strong></li>
-              <li><strong><a href="../pokedex.html" class="active">Pokédex</a></strong></li>
-              <li><strong><a href="../types.html">Types</a></strong></li>
-              <li><strong><a href="../items.html">Items</a></strong></li>
-              <li><strong><a href="../KindOfPokemonSubpage/kinds-of-pokemon.html">Kinds</a></strong></li>
-              <li><strong><a href="../FavoritePokemon/favoritepokemon.html">Favorites</a></strong></li>
-              <li><strong><a href="../PokemonCards/pokemon-cards.html">Cards</a></strong></li>
-              <li><strong><a href="../games.html">Games</a></strong></li>
-              <li><strong><a href="../mockbattle.html">Battle</a></strong></li>
-              <li><strong><a href="../anime.html">TV series</a></strong></li>
-          </ul>
-    </nav>
+<nav class="navigation-bar">
+    <label for="toggle-navbar" class="pokeball-icon">
+        <img src="../Images/pokeball.png" class="navPokeball" alt="Pokéball">
+    </label>
+    <ul>
+        <li><strong><a href="../../index.html">Home</a></strong></li>
+        <li><strong><a href="../pokedex.html" class="active">Pokédex</a></strong></li>
+        <li><strong><a href="../types.html">Types</a></strong></li>
+        <li><strong><a href="../items.html">Items</a></strong></li>
+        <li><strong><a href="../KindOfPokemonSubpage/kinds-of-pokemon.html">Kinds</a></strong></li>
+        <li><strong><a href="../FavoritePokemon/favoritepokemon.html">Favorites</a></strong></li>
+        <li><strong><a href="../PokemonCards/pokemon-cards.html">Cards</a></strong></li>
+        <li><strong><a href="../games.html">Games</a></strong></li>
+        <li><strong><a href="../mockbattle.html">Battle</a></strong></li>
+        <li><strong><a href="../anime.html">TV series</a></strong></li>
+    </ul>
+</nav>
 
 <div class="container" style="margin-top: 20vh">
     <div class="row">
@@ -35,17 +35,14 @@
                 <img id="region-image" src="" usemap="#image-map" alt="Map" class="img-fluid rounded shadow">
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card mt-2 mb-3 p-3 shadow" id="info-card" style="display: none">
-                <h2 id="location-name" class="card-title">Location Information</h2>
-                <p id="location-description" class="card-text">Location description</p>
-                <img id="preview-image" alt="Location preview" src="" class="img-fluid rounded mb-2">
-                <img id="old_preview" alt="Map preview" src="" class="img-fluid rounded">
-            </div>
-        </div>
     </div>
 </div>
-<div id="info-box" class="info-box"></div>
+<div class="card mt-2 mb-3 p-3 shadow" id="info-card" style="display: none">
+    <h2 id="location-name" class="card-title">Location Information</h2>
+    <p id="location-description" class="card-text">Location description</p>
+    <img id="preview-image" alt="Location preview" src="" class="img-fluid rounded mb-2">
+    <img id="old_preview" alt="Map preview" src="" class="img-fluid rounded">
+</div>
 </body>
 
 <script src="../navbar.js"></script>

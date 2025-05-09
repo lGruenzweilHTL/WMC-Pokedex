@@ -10,16 +10,6 @@ body {
     color: #333;
 }
 
-.info-box {
-    position: absolute;
-    display: none;
-    background-color: rgba(255, 255, 255, 0.9);
-    border: 1px solid #ccc;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-}
-
 #info-card {
     position: absolute;
     top: 10px;
@@ -32,6 +22,7 @@ body {
     padding: 25px; /* Increased padding */
     z-index: 1000;
     font-size: 1.2rem; /* Increased font size */
+    pointer-events: none; /* Prevents interaction */
 }
 
 area:hover {

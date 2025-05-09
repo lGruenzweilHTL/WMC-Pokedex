@@ -47,7 +47,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         document.body.appendChild(map);
 
         const areas = document.querySelectorAll('area');
-        const infoBox = document.getElementById('info-box');
         const card = document.getElementById('info-card');
         const preview = document.getElementById('preview-image');
         const oldPreview = document.getElementById('old_preview');
@@ -56,20 +55,40 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         areas.forEach(area => {
             area.addEventListener('mouseover', function (event) {
-                infoBox.textContent = event.target.getAttribute('data-name');
-                infoBox.style.display = 'block';
-                infoBox.style.left = `${event.pageX + 10}px`;
-                infoBox.style.top = `${event.pageY + 10}px`;
-
                 card.style.display = 'block';
                 preview.src = event.target.getAttribute('data-preview');
                 oldPreview.src = event.target.getAttribute('data-old-img');
                 locationName.textContent = event.target.getAttribute('data-name');
                 locationDescription.textContent = event.target.getAttribute('data-description');
+
+                // Move card to mouse position while keeping its size
+                const cardWidth = card.offsetWidth;
+                const cardHeight = card.offsetHeight;
+                const viewportWidth = window.innerWidth;
+                const viewportHeight = window.innerHeight;
+
+                let x = event.pageX;
+                let y = event.pageY;
+
+                // Constrain the card within the viewport
+                if (x + cardWidth > viewportWidth) {
+                    x = viewportWidth - cardWidth;
+                }
+                if (y + cardHeight > viewportHeight) {
+                    y = viewportHeight - cardHeight;
+                }
+                if (x < 0) {
+                    x = 0;
+                }
+                if (y < 0) {
+                    y = 0;
+                }
+
+                card.style.left = `${x}px`;
+                card.style.top = `${y}px`;
             });
 
             area.addEventListener('mouseout', function () {
-                infoBox.style.display = 'none';
                 card.style.display = 'none';
             });
 
