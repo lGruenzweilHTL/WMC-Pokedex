@@ -61,7 +61,7 @@ function calculateTypeEffectiveness(types) {
     const table = document.getElementById('typeEffectiveness');
     table.innerHTML = '';
 
-    Object.entries(effectiveness).forEach(([type, multiplier], index) => {
+    Object.entries(effectiveness).toSorted((a, b) => b[1] - a[1]).forEach(([type, multiplier], index) => {
         const row = document.createElement('tr');
         row.style.animationDelay = `${index * 0.1}s`; // Dynamically set delay
         row.innerHTML = `
