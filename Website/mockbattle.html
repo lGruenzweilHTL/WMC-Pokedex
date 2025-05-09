@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="navbar.css">
   <link rel="stylesheet" href="scroll-to-top.css">
   <script src="scroll-to-top.js"></script>
+    <script src="navbar.js" defer></script>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -19,27 +20,11 @@
 <button id="scrollToTop" onclick="scrollToTop()">
     ↑
 </button>
-<nav class="navigation-bar">
-  <label for="toggle-navbar" class="pokeball-icon">
-    <img src="Images/pokeball.png" class="navPokeball" alt="Pokéball">
-  </label>
-    <ul>
-        <li><strong><a href="../index.html">Home</a></strong></li>
-        <li><strong><a href="pokedex.html">Pokédex</a></strong></li>
-        <li><strong><a href="types.html">Types</a></strong></li>
-        <li><strong><a href="items.html">Items</a></strong></li>
-        <li><strong><a href="KindOfPokemonSubpage/kinds-of-pokemon.html">Kinds</a></strong></li>
-        <li><strong><a href="FavoritePokemon/favoritepokemon.html">Favorites</a></strong></li>
-        <li><strong><a href="PokemonCards/pokemon-cards.html">Cards</a></strong></li>
-        <li><strong><a href="games.html">Games</a></strong></li>
-        <li><strong><a href="mockbattle.html" class="active">Battle</a></strong></li>
-        <li><strong><a href="anime.html">TV series</a></strong></li>
-    </ul>
-</nav>
+<custom-navbar></custom-navbar>
 
   <!-- Battle Javascript needs to be added -->
 
-  <div class="header" onclick="document.location.href = 'MockBattle/PokemonSelect/pokemon-select.html'">
+  <div class="header" onclick="document.location.href = 'MockBattle/mode-select.html'">
     <h1>Mock battle</h1>
   </div>
 
