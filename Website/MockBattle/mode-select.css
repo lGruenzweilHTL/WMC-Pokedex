@@ -20,6 +20,7 @@ body {
 }
 
 h1 {
+    z-index:2;
     font-size: 2em;
     color: #333;
     background-image: linear-gradient(to right, #4caf50 0%, #087f23 51%, #4caf50 100%);
@@ -28,7 +29,7 @@ h1 {
     height: 50px;
     width: 270px;
     border-radius: 50px;
-    padding: 15px 25px;
+    padding: 10px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,7 +41,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 25px;
+
 }
 
 
@@ -52,14 +53,15 @@ h1 {
 }
 
 .mode-button {
+    margin-top: 19%;
     z-index: 1;
-    font-size: 1em;
+    font-size: 1.4em;
     color: #333;
     background-image: linear-gradient(to right, #3a7b99 0%, #4b98bc 51%, #69c0e9 100%);
     transition: background-position 0.4s ease;
     background-size: 200% auto;
-    height: 50px;
-    width: 100px;
+    height: 80px;
+    width: 150px;
     border-radius: 50px;
     cursor: pointer;
     padding: 15px 25px;
