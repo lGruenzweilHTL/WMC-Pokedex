@@ -7,6 +7,7 @@
     <title>Pokedex</title>
     <link rel="stylesheet" href="Website/stylesheet.css">
     <link rel="stylesheet" href="navbar-main-page.css">
+    <script src="Website/navbar.js" defer></script>
 </head>
 
 <body>
@@ -75,21 +76,7 @@
 
     </div>
 
-    <nav class="navigation-bar" id="navbar" onmouseover="keepNavbarVisible()" onmouseout="checkNavbarHover()">
-        <img src="Website/Images/pokeball.png" class="navPokeball" alt="pokeball">
-        <ul>
-            <li><strong><a href="index.html" class="active">Home</a></strong></li>
-            <li><strong><a href="Website/pokedex.html">Pokedex</a></strong></li>
-            <li><strong><a href="Website/types.html">Types</a></strong></li>
-            <li><strong><a href="Website/items.html">Items</a></strong></li>
-            <li><strong><a href="Website/KindOfPokemonSubpage/kinds-of-pokemon.html">Kinds</a></strong></li>
-            <li><strong><a href="Website/FavoritePokemon/favoritepokemon.html">Favorites</a></strong></li>
-            <li><strong><a href="Website/PokemonCards/pokemon-cards.html">Cards</a></strong></li>
-            <li><strong><a href="Website/games.html">Games</a></strong></li>
-            <li><strong><a href="Website/mockbattle.html">Battle</a></strong></li>
-            <li><strong><a href="Website/anime.html">TV series</a></strong></li>
-        </ul>
-    </nav>
+    <custom-navbar></custom-navbar>
 
     <script>
         function showNavbar() {

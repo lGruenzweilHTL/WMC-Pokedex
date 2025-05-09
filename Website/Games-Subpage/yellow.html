@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../navbar.css">
     <link rel="stylesheet" href="../scroll-to-top.css">
     <script src="../scroll-to-top.js"></script>
-
+    <script src="../navbar.js" defer></script>
 
 </head>
 
@@ -16,23 +16,7 @@
     <button id="scrollToTop" onclick="scrollToTop()">
         ↑
     </button>
-    <nav class="navigation-bar">
-        <label for="toggle-navbar" class="pokeball-icon">
-            <img src="../Images/pokeball.png" class="navPokeball" alt="Pokéball">
-        </label>
-        <ul class="exclusive">
-            <li><strong><a href="../../index.html">Home</a></strong></li>
-            <li><strong><a href="../pokedex.html">Pokédex</a></strong></li>
-            <li><strong><a href="../types.html">Types</a></strong></li>
-            <li><strong><a href="../items.html">Items</a></strong></li>
-            <li><strong><a href="../KindOfPokemonSubpage/kinds-of-pokemon.html">Kinds</a></strong></li>
-            <li><strong><a href="../FavoritePokemon/favoritepokemon.html">Favorites</a></strong></li>
-            <li><strong><a href="../PokemonCards/pokemon-cards.html">Cards</a></strong></li>
-            <li><strong><a href="../games.html" class="active">Games</a></strong></li>
-            <li><strong><a href="../mockbattle.html">Battle</a></strong></li>
-            <li><strong><a href="../anime.html">TV series</a></strong></li>
-        </ul>
-    </nav>
+    <custom-navbar></custom-navbar>
 
     <div id="head">
         <h1>Pokemon Yellow</h1>
