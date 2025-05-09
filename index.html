@@ -12,87 +12,84 @@
 
 <body>
 
-    <div class="header" onmouseover="showNavbar()" onmouseout="checkNavbarHover()">
-        Welcome to Pokesite
+<div class="header" onmouseover="showNavbar()" onmouseout="checkNavbarHover()">
+    Welcome to Pokesite
+</div>
+<div class="container">
+    <div class="section" onclick="window.location.href='Website/pokedex.html'">
+        <div class="text">Pokedex</div>
+        <img src="Website/Images/Backgrounds/pokedex.jpg" alt="Pikachu Background">
+        <img class="gif" src="Website/Images/Backgrounds/gif_calculator.gif" alt="Info GIF">
     </div>
-    <div class="container">
-        <div class="section" onclick="window.location.href='Website/pokedex.html'">
-            <div class="text">Pokedex</div>
-            <img src="Website/Images/Backgrounds/pokedex.jpg" alt="Pikachu Background">
-            <img class="gif" src="Website/Images/Backgrounds/gif_calculator.gif" alt="Info GIF">
-        </div>
-        <div class="section" onclick="window.location.href='Website/mockbattle.html'">
-            <div class="text">Battle</div>
-            <img src="Website/Images/Backgrounds/pokeball_battle.jpg" alt="Pokeball Background">
-            <img class="gif" src="Website/Images/Backgrounds/gif_battle.gif" alt="Battle GIF">
-        </div>
-        <div class="section" onclick="window.location.href='Website/TypeCalc/type-calculator.html'">
-            <div class="text">Calculator</div>
-            <img src="Website/Images/Backgrounds/calc.jpg" alt="Types Background">
-            <img class="gif" src="Website/Images/Backgrounds/evee.gif" alt="Calculator GIF">
-        </div>
-
-
-        <div class="section" onclick="window.location.href='Website/types.html'">
-            <div class="text">Types</div>
-            <img src="Website/Images/Backgrounds/types_calculator.png" alt="Types Background">
-            <img class="gif" src="Website/Images/Backgrounds/typ.gif" alt="Calculator GIF">
-        </div>
-
-
-        <div class="section" onclick="window.location.href='Website/items.html'">
-            <div class="text">Items</div>
-            <img src="Website/Images/Backgrounds/items.png" alt="Types Background">
-            <img class="gif" src="Website/Images/Backgrounds/item.gif" alt="Calculator GIF">
-        </div>
-
-        <div class="section" onclick="window.location.href='Website/KindOfPokemonSubpage/kinds-of-pokemon.html'">
-            <div class="text">Kinds</div>
-            <img src="Website/Images/Backgrounds/pickachu_info.jpg" alt="Types Background">
-            <img class="gif" src="Website/Images/Backgrounds/gif_info.gif" alt="Calculator GIF">
-        </div>
-
-
-        <div class="section" onclick="window.location.href='Website/anime.html'">
-            <div class="text">TV series</div>
-            <img src="Website/Images/Backgrounds/tv.png" alt="Types Background">
-            <img class="gif" src="Website/Images/Backgrounds/OmdR.gif" alt="Calculator GIF">
-        </div>
-
-        <div class="section" onclick="window.location.href='Website/PokemonCards/pokemon-cards.html'">
-            <div class="text">Cards</div>
-            <img src="Website/Images/Backgrounds/cards.jpg" alt="Types Background">
-            <img class="gif" src="Website/Images/Backgrounds/TAQH.gif" alt="Calculator GIF">
-        </div>
-
-        <div class="section" onclick="window.location.href='Website/games.html'">
-            <div class="text">Games</div>
-            <img src="Website/Images/Backgrounds/games.jpg" alt="Types Background">
-            <img class="gif" src="Website/Images/Backgrounds/game.gif" alt="Calculator GIF">
-        </div>
-
-
-
-
+    <div class="section" onclick="window.location.href='Website/mockbattle.html'">
+        <div class="text">Battle</div>
+        <img src="Website/Images/Backgrounds/pokeball_battle.jpg" alt="Pokeball Background">
+        <img class="gif" src="Website/Images/Backgrounds/gif_battle.gif" alt="Battle GIF">
+    </div>
+    <div class="section" onclick="window.location.href='Website/TypeCalc/type-calculator.html'">
+        <div class="text">Calculator</div>
+        <img src="Website/Images/Backgrounds/calc.jpg" alt="Types Background">
+        <img class="gif" src="Website/Images/Backgrounds/evee.gif" alt="Calculator GIF">
     </div>
 
-    <custom-navbar></custom-navbar>
 
-    <script>
-        function showNavbar() {
-            document.getElementById('navbar').style.top = '0';
-        }
+    <div class="section" onclick="window.location.href='Website/types.html'">
+        <div class="text">Types</div>
+        <img src="Website/Images/Backgrounds/types_calculator.png" alt="Types Background">
+        <img class="gif" src="Website/Images/Backgrounds/typ.gif" alt="Calculator GIF">
+    </div>
 
-        function keepNavbarVisible() {
-            document.getElementById('navbar').style.top = '0';
-        }
 
-        function checkNavbarHover() {
-            if (!document.querySelector('.navigation-bar:hover') && !document.querySelector('.header:hover')) {
-                document.getElementById('navbar').style.top = '-80px';
-            }
+    <div class="section" onclick="window.location.href='Website/items.html'">
+        <div class="text">Items</div>
+        <img src="Website/Images/Backgrounds/items.png" alt="Types Background">
+        <img class="gif" src="Website/Images/Backgrounds/item.gif" alt="Calculator GIF">
+    </div>
+
+    <div class="section" onclick="window.location.href='Website/KindOfPokemonSubpage/kinds-of-pokemon.html'">
+        <div class="text">Kinds</div>
+        <img src="Website/Images/Backgrounds/pickachu_info.jpg" alt="Types Background">
+        <img class="gif" src="Website/Images/Backgrounds/gif_info.gif" alt="Calculator GIF">
+    </div>
+
+
+    <div class="section" onclick="window.location.href='Website/anime.html'">
+        <div class="text">TV series</div>
+        <img src="Website/Images/Backgrounds/tv.png" alt="Types Background">
+        <img class="gif" src="Website/Images/Backgrounds/OmdR.gif" alt="Calculator GIF">
+    </div>
+
+    <div class="section" onclick="window.location.href='Website/PokemonCards/pokemon-cards.html'">
+        <div class="text">Cards</div>
+        <img src="Website/Images/Backgrounds/cards.jpg" alt="Types Background">
+        <img class="gif" src="Website/Images/Backgrounds/TAQH.gif" alt="Calculator GIF">
+    </div>
+
+    <div class="section" onclick="window.location.href='Website/games.html'">
+        <div class="text">Games</div>
+        <img src="Website/Images/Backgrounds/games.jpg" alt="Types Background">
+        <img class="gif" src="Website/Images/Backgrounds/game.gif" alt="Calculator GIF">
+    </div>
+
+</div>
+
+<custom-navbar></custom-navbar>
+
+<script>
+    function showNavbar() {
+        document.getElementById('navbar').style.top = '0';
+    }
+
+    function keepNavbarVisible() {
+        document.getElementById('navbar').style.top = '0';
+    }
+
+    function checkNavbarHover() {
+        if (!document.querySelector('.navigation-bar:hover') && !document.querySelector('.header:hover')) {
+            document.getElementById('navbar').style.top = '-80px';
         }
-    </script>
+    }
+</script>
 
 </body>
 
