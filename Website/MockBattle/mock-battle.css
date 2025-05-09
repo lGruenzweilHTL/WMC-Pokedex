@@ -389,6 +389,7 @@ img#opponent-pokemon {
 
 #player-pokemon-card {
     left: calc(var(--field-offset) + 40px) !important;
+    bottom: 20vh !important;
 }
 
 #opponent-pokemon-card{
