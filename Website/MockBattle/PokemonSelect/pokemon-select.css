@@ -7,6 +7,28 @@
     min-height: 100vh;
 }
 
+
+h2 {
+
+    text-align: center;
+    margin: 0 0 1.2em;
+
+
+    font-family: "Inter", sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    font-weight: 700;
+    letter-spacing: .02em;
+
+
+    background: linear-gradient(135deg, #007cf0 0%, #00dfd8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;  /* macht den Verlauf sichtbar */
+
+
+    text-shadow: 0 2px 4px rgba(0,0,0,.15);
+}
+
+
 .pokemon-selection-header {
     margin-bottom: 20px;
 }
