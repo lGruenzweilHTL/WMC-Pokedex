@@ -5,7 +5,7 @@ function updateDisplay() {
 
 function updatePlayerDisplay() {
     updatePlayerHpBar();
-    document.getElementById("player-pokemon-name").innerText = playerActivePokemon.name;
+    document.getElementById("player-pokemon-name").innerText = playerActivePokemon.name.toUpperCase();
     document.getElementById("player-pokemon-level").innerText = `Level ${playerActivePokemon.level}`;
     changePlayerPokemonImage(playerActivePokemon.id);
     displayPlayerStatusEffects();
@@ -14,7 +14,7 @@ function updatePlayerDisplay() {
 
 function updateOpponentDisplay() {
     updateOpponentHpBar();
-    document.getElementById("opponent-pokemon-name").innerText = opponentActivePokemon.name;
+    document.getElementById("opponent-pokemon-name").innerText = opponentActivePokemon.name.toUpperCase();
     document.getElementById("opponent-pokemon-level").innerText = `Level ${opponentActivePokemon.level}`;
     changeOpponentPokemonImage(opponentActivePokemon.id);
     displayOpponentStatusEffects();

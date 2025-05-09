@@ -170,7 +170,7 @@ function initTeams() {
 
 async function gameLoop() {
     while (!isGameOver()) {
-        displayMessage(`What will ${playerActivePokemon.name} do?\n\n${defaultNavTip}`);
+        displayMessage(`What will ${playerActivePokemon.name.toUpperCase()} do?\n\n${defaultNavTip}`);
 
         // Let player select an action
         const playerAction = await waitForPlayerAction();
@@ -261,13 +261,13 @@ async function waitForPlayerAction() {
 
 // Called by button
 function attackClicked() {
-    displayMessage(`Which move will ${playerActivePokemon.name} use?\n\n${defaultNavTip}`);
+    displayMessage(`Which move will ${playerActivePokemon.name.toUpperCase()} use?\n\n${defaultNavTip}`);
     showPlayerMoveSelect();
 
     // Populate move buttons with the player's moves
     const buttons = document.getElementsByClassName("move-button");
     Array.from(buttons).forEach((button, idx) => {
-        button.innerText = playerActivePokemon.moves[idx].name;
+        button.innerText = playerActivePokemon.moves[idx].name.toUpperCase();
     });
     highlightMoveButtons(playerActivePokemon.moves, buttons);
     updateMoveTooltipData(playerActivePokemon.moves, buttons);
@@ -329,7 +329,7 @@ function highlightMoveButtons(moves, buttons) {
 }
 function updateMoveTooltipData(moves, buttons) {
     for (let i = 0; i < moves.length; i++) {
-        buttons[i].setAttribute("data-title", moves[i].name);
+        buttons[i].setAttribute("data-title", moves[i].name.toUpperCase());
         buttons[i].setAttribute("data-description", moves[i].description);
     }
 }
@@ -338,10 +338,10 @@ function populateButtonList(list, buttonClass) {
     const buttons = document.getElementsByClassName(buttonClass);
     for (let i = 0; i < list.length && i < buttons.length; i++) {
         buttons[i].style.display = "block";
-        buttons[i].innerText = list[i].name;
+        buttons[i].innerText = list[i].name.toUpperCase();
 
         // Tooltip data
-        buttons[i].setAttribute("data-title", list[i].name);
+        buttons[i].setAttribute("data-title", list[i].name.toUpperCase());
         buttons[i].setAttribute("data-description", list[i].description);
     }
 
@@ -388,7 +388,7 @@ async function executeActions() {
             opponentTeam = opponentTeam.filter(pokemon => pokemon.hp > 0);
             if (opponentTeam.length > 0) {
                 opponentActivePokemon = selectRandomOpponentPokemon();
-                await pushMessage(`Opponent sent out ${opponentActivePokemon.name}!`);
+                await pushMessage(`Opponent sent out ${opponentActivePokemon.name.toUpperCase()}!`);
             } else {
                 await pushMessage("Opponent has no more Pokémon left!");
             }
@@ -509,7 +509,7 @@ async function attack(user, move, target) {
     const hitChance = move.accuracy * accuracyModifier / evasionModifier;
 
     if (random > hitChance) {
-        await pushMessage(`${user.name}'s ${move.name} missed!`);
+        await pushMessage(`${user.name}'s ${move.name.toUpperCase()} missed!`);
         return 0;
     }
 
@@ -535,7 +535,7 @@ async function attack(user, move, target) {
         updateDisplay();
     }
 
-    await pushMessage(`${user.name} used ${move.name}!`);
+    await pushMessage(`${user.name} used ${move.name.toUpperCase()}!`);
 
     if (!move.status) {
         const effectivenessMessage = getEffectivenessMessage(type1, type2);
