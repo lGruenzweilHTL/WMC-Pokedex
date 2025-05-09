@@ -4,6 +4,72 @@ body {
     margin: 0;
     padding: 0;
 }  
+@font-face {
+    font-family: 'PokemonGB';
+    src: url('Font/PokemonGb-RAeo.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-size: 10px;
+}
+.red-arrow {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid red;
+    position: relative;
+  }
+  
+  .red-arrow::after {
+    content: "";
+    position: absolute;
+    top: -20px;
+    right: -24px;
+    width: 0;
+    height: 0;
+    border-left: 22px solid transparent;
+    border-right: 22px solid transparent;
+    border-top: 22px solid rgba(0, 0, 0, 0.5);
+    z-index: -1;
+  }
+  
+  
+  
+#top-menu
+{
+    position: absolute; 
+    background-color: black;
+    top: calc(28% + 7px);
+    height: calc(21% + 8px);
+    width: calc(32% + 0px);
+    left: calc(33% + 10px);
+    border-style: solid;
+    border-color: black;
+    border-width: 6px;
+}
+#outer-menu{
+    position: absolute;
+    background-color: #ffff;
+    height: calc(94% + 1px);
+    width: 98%;
+    border-style: solid;
+    border-color: #ceaa4a;
+    border-width: 6px;
+    border-radius: 10px;
+}
+#inner-menu{
+    font-family: 'PokemonGB';
+    image-rendering: pixelated;
+    position: absolute;
+    background-color: #29516b;
+    height: 92%;
+    width: calc(95% + 10px);
+    top: 4%;
+    left: calc(1% + 4px);
+    border-radius: 10px;
+
+    z-index: 0;
+}
 
 #gameboy{
     position: absolute;
@@ -13,10 +79,7 @@ body {
 }
 #battle-start{
     position: absolute;
-    top: 11%;
-    height: 35%;
-    left: calc(39% + 12px);
-    width: calc(20% + 10px);
+    top: 200px;
 }
 
 h1 {
@@ -53,7 +116,7 @@ h1 {
 }
 
 .mode-button {
-    margin-top: 19%;
+    margin-top: 29%;
     z-index: 1;
     font-size: 1.4em;
     color: #333;
