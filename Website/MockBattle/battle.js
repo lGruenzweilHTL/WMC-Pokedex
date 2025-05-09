@@ -229,6 +229,7 @@ async function waitForPlayerAction() {
             if (event.key === "Escape") {
                 hideTooltip();
                 showPlayerActionSelect();
+                displayMessage(`What will ${playerActivePokemon.name.toUpperCase()} do?\n\n${defaultNavTip}`);
             }
         });
 
