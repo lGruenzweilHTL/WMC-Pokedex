@@ -1,40 +1,36 @@
-const positions = ["up", "down", "left", "right", "center"];
-const gridMap = {
-  center: { up: "up", down: "down", left: "left", right: "right" },
-  up: { down: "center" },
-  down: { up: "center" },
-  left: { right: "center" },
-  right: { left: "center" }
-};
+const buttons = document.querySelectorAll('.mode-button');
+    const grid = [
+      [0, 1],
+      [2, 3]
+    ];
+    let selectedRow = 0;
+    let selectedCol = 0;
 
-let current = "center";
+    function updateSelection() {
+      buttons.forEach(btn => btn.classList.remove('selected'));
+      const index = grid[selectedRow][selectedCol];
+      buttons[index].classList.add('selected');
+    }
 
-function updateSelection(newPos) {
-  if (!positions.includes(newPos)) return;
-  document.querySelectorAll('.button-container').forEach(el => el.classList.remove('selected'));
-  document.querySelector(`.button-container[data-pos="${newPos}"]`).classList.add('selected');
-  current = newPos;
-}
+    function clamp(value, min, max) {
+      return Math.max(min, Math.min(max, value));
+    }
 
-document.addEventListener('keydown', (e) => {
-  let direction = null;
-  if (e.key === "ArrowUp") direction = "up";
-  else if (e.key === "ArrowDown") direction = "down";
-  else if (e.key === "ArrowLeft") direction = "left";
-  else if (e.key === "ArrowRight") direction = "right";
-  else if (e.key === "Enter") {
-    const btn = document.querySelector(`.button-container[data-pos="${current}"] button`);
-    if (btn) btn.click();
-  }
+    document.addEventListener('keydown', (e) => {
+      const key = e.key.toLowerCase();
+      if (e.key.startsWith('Arrow')) {
+        e.preventDefault();
+      }
+      if (key === 'w' || key === 'arrowup') selectedRow = clamp(selectedRow - 1, 0, 1);
+      else if (key === 's' || key === 'arrowdown') selectedRow = clamp(selectedRow + 1, 0, 1);
+      else if (key === 'a' || key === 'arrowleft') selectedCol = clamp(selectedCol - 1, 0, 1);
+      else if (key === 'd' || key === 'arrowright') selectedCol = clamp(selectedCol + 1, 0, 1);
+      else if (key === 'b' || key === 'enter') {
+        const index = grid[selectedRow][selectedCol];
+        const url = buttons[index].getAttribute('data-url');
+        window.location.href = url;
+      }
+      updateSelection();
+    });
 
-  if (direction && gridMap[current] && gridMap[current][direction]) {
-    updateSelection(gridMap[current][direction]);
-  }
-});
-
-// Optional: Zeige einen Alert bei Button-Klick
-document.querySelectorAll('button').forEach(btn => {
-  btn.addEventListener('click', () => {
-    alert(`Button "${btn.textContent}" gedrückt`);
-  });
-});
+    updateSelection();

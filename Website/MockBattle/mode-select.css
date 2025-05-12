@@ -1,5 +1,5 @@
 body {
-    background-color: #888888;
+    background-image: url('https://assets.pokemon.com/static2/_ui/img/chrome/body_bg.png');
     font-family: Arial, sans-serif;
 }
 
@@ -165,7 +165,7 @@ h1 {
     height: calc(21% + 8px);
     width: calc(20% + 14px);
     border-style: solid;
-    top: 29%;
+    top: calc(28% + 9px);
     left: 45%;
     border: 4px solid black;
     background-color: #7778ad;
@@ -184,4 +184,17 @@ h1 {
     background-color: #ffff;
     border-radius: 10px;
     z-index: 1;
+}
+
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.selected::before {
+    content: "temp";
+    position: absolute;
+    left: -30px;
+    top: 15px;
 }
