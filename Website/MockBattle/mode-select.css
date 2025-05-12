@@ -15,8 +15,8 @@ body {
 .red-arrow {
     width: 0;
     height: 0;
-    top: 0%;
-    left: 11%;
+    top: 10%;
+    left: 43%;
     margin-left: 20px;
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
@@ -42,27 +42,28 @@ body {
     font-family: 'PokemonGB';
     image-rendering: pixelated;
     word-spacing: -6px;
-    letter-spacing: -2px;
 }
 
-#chose-one{
-    margin-left: 30px;
+#mode{
+    margin-top: 25px;
+    margin-left: 180px;
 }
-
-#mode
+#trainer
 {
-    margin-left: 66px;
+    margin-top: 25px;
+    margin-left: 65px;
 }
+
 #battle
 {
-    margin-left: 50px;
+    margin-left: 237px;
 }
 
 
 #top-menu {
     position: absolute;
     background-color: black;
-    top: calc(28% + 7px);
+    top: calc(38% + 7px);
     height: calc(21% + 8px);
     width: calc(32% + 0px); 
     left: calc(33% + 10px);
@@ -110,7 +111,7 @@ h1 {
     z-index: 2;
     font-size: 2em;
     color: #333;
-    background-image: linear-gradient(to right, #4caf50 0%, #087f23 51%, #4caf50 100%);
+    background-image: linear-gradient(to right, #bd1b1b 0%, #df6310 51%, #bd1b1b 100%);
     transition: background-position 0.4s ease;
     background-size: 200% auto;
     height: 50px;
@@ -130,34 +131,33 @@ h1 {
 }
 
 .mode-button{
-
     border-radius: 20px;
     border-style: none;
     height: 50px;
-    width: 120px;
+    width: 100px;
     z-index: 2;
     background-color: #ffff;
 }
 
 #player-v-bot {
     position: absolute;
-    top: 34%;
-    left: 48%;
+    top: 32%;
+    left: calc(34% + 5px);
 }
 #player-v-player {
     position: absolute;
-    top: 34%;
-    left: 56%;
+    top: 32%;
+    left: 42%;
 }
 #bot-v-bot {
     position: absolute;
-    top: 42%;
-    left: 48%;
+    top: 32%;
+    left: 50%;
 }
 #i-have-no-clue{
     position: absolute;
-    top: 42%;
-    left: 56%;
+    top: 32%;
+    left: calc(58% + 10px);
 }
 
 #choose-outer{
@@ -194,7 +194,47 @@ h1 {
 }
 .selected::before {
     content: "temp";
+    font-size: 20px;
+    color: wheat;
     position: absolute;
-    left: -30px;
+    left: -50px;
     top: 15px;
+}
+
+#charmander{
+    position: absolute;
+    top: 38%;
+    left: 3%;
+    scale: 2;
+    image-rendering: crisp-edges;
+}
+#charmeleon{
+    position: absolute;
+    top: 35%;
+    left: 23%;
+    scale: 2;
+    image-rendering: crisp-edges;
+}
+#charizard{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    scale: 2;
+    image-rendering: crisp-edges;
+}
+#charizard-shiny{
+    position: absolute;
+    top: 30%;
+    left: 77%;
+    scale: 2;
+    image-rendering: crisp-edges;
+}
+.select-screen{
+    background-color: black;
+    top: calc(9% + 2px);
+    left: calc(33% + 10px);
+    height: calc(29% + 8px);
+    width: calc(32% + 12px);
+    position: absolute;
+    z-index: 1;
 }
