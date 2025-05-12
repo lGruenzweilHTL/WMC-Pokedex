@@ -15,33 +15,47 @@ body {
 .red-arrow {
     width: 0;
     height: 0;
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-    border-left: 20px solid red;
+    top: 0%;
+    left: 11%;
+    margin-left: 20px;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid red; 
     position: relative;
 }
+
 
 .red-arrow::after {
     content: "";
     position: absolute;
-    top: -20px;
-    left: -20px;
+    top: -2px;
+    left: -15px;
     width: 0;
     height: 0;
-    border-top: 22px solid transparent;
-    border-bottom: 22px solid transparent;
-    border-left: 22px solid rgba(0, 0, 0, 0.5);
+    border-left: 17px solid transparent;
+    border-right: 17px solid transparent;
+    border-bottom: 17px solid rgba(0, 0, 0, 0.5);;
     z-index: -1;
 }
 
-#trainer,
-#wants-to-battle,
-#mode {
-    margin-left: 10px;
+.pokemon-font{
+    font-family: 'PokemonGB';
+    image-rendering: pixelated;
+    word-spacing: -6px;
+    letter-spacing: -2px;
 }
 
-#trainer {
-    letter-spacing: -px;
+#chose-one{
+    margin-left: 30px;
+}
+
+#mode
+{
+    margin-left: 66px;
+}
+#battle
+{
+    margin-left: 50px;
 }
 
 
@@ -50,7 +64,7 @@ body {
     background-color: black;
     top: calc(28% + 7px);
     height: calc(21% + 8px);
-    width: calc(32% + 0px);
+    width: calc(32% + 0px); 
     left: calc(33% + 10px);
     border-style: solid;
     border-color: black;
@@ -69,8 +83,6 @@ body {
 }
 
 #inner-menu {
-    font-family: 'PokemonGB';
-    image-rendering: pixelated;
     position: absolute;
     background-color: #29516b;
     height: 92%;
@@ -79,7 +91,6 @@ body {
     left: calc(1% + 4px);
     border-radius: 10px;
     z-index: 0;
-    letter-spacing: -3px;
     color: white;
 }
 
@@ -119,42 +130,47 @@ h1 {
 }
 
 .mode-button{
-    border-radius: 20px;
-    height: 50px;
 
+    border-radius: 20px;
+    border-style: none;
+    height: 50px;
+    width: 120px;
     z-index: 2;
+    background-color: #ffff;
 }
 
 #player-v-bot {
     position: absolute;
-    top: 35%;
-    left: 50%;
+    top: 34%;
+    left: 48%;
 }
 #player-v-player {
     position: absolute;
-    top: 35%;
-    left: 60%;
+    top: 34%;
+    left: 56%;
 }
 #bot-v-bot {
     position: absolute;
     top: 42%;
-    left: 50%;
+    left: 48%;
 }
 #i-have-no-clue{
     position: absolute;
     top: 42%;
-    left: 60%;
+    left: 56%;
 }
 
 #choose-outer{
     position: absolute;
     height: calc(21% + 8px);
-    width: calc(17% + 14px);
+    width: calc(20% + 14px);
     border-style: solid;
     top: 29%;
-    left: 48%;
+    left: 45%;
     border: 4px solid black;
     background-color: #7778ad;
+    border-radius: 10px;
+    border-color: black;
     z-index: 1;
 }
 #choose-inner{
@@ -163,7 +179,7 @@ h1 {
     width: 88%;
     border-style: solid;
     top: 8px;
-    left: 12px;
+    left: 16px;
     border: 8px solid #736b82;
     background-color: #ffff;
     border-radius: 10px;
