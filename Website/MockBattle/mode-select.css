@@ -1,9 +1,8 @@
 body {
     background-color: #888888;
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}  
+}
+
 @font-face {
     font-family: 'PokemonGB';
     src: url('Font/PokemonGb-RAeo.ttf') format('truetype');
@@ -12,6 +11,7 @@ body {
     font-size: 10px;
 
 }
+
 .red-arrow {
     width: 0;
     height: 0;
@@ -19,9 +19,9 @@ body {
     border-bottom: 20px solid transparent;
     border-left: 20px solid red;
     position: relative;
-  }
-  
-  .red-arrow::after {
+}
+
+.red-arrow::after {
     content: "";
     position: absolute;
     top: -20px;
@@ -30,24 +30,23 @@ body {
     height: 0;
     border-top: 22px solid transparent;
     border-bottom: 22px solid transparent;
-    border-left: 22px solid rgba(0, 0, 0, 0.5); 
+    border-left: 22px solid rgba(0, 0, 0, 0.5);
     z-index: -1;
-  }
-  
-  #trainer,
-  #wants-to-battle,
-  #mode
-  {
+}
+
+#trainer,
+#wants-to-battle,
+#mode {
     margin-left: 10px;
-  }
-  #trainer{
+}
+
+#trainer {
     letter-spacing: -px;
-  }
-  
-  
-#top-menu
-{
-    position: absolute; 
+}
+
+
+#top-menu {
+    position: absolute;
     background-color: black;
     top: calc(28% + 7px);
     height: calc(21% + 8px);
@@ -57,7 +56,8 @@ body {
     border-color: black;
     border-width: 6px;
 }
-#outer-menu{
+
+#outer-menu {
     position: absolute;
     background-color: #ffff;
     height: calc(94% + 1px);
@@ -67,7 +67,8 @@ body {
     border-width: 6px;
     border-radius: 10px;
 }
-#inner-menu{
+
+#inner-menu {
     font-family: 'PokemonGB';
     image-rendering: pixelated;
     position: absolute;
@@ -79,21 +80,23 @@ body {
     border-radius: 10px;
     z-index: 0;
     letter-spacing: -3px;
+    color: white;
 }
 
-#gameboy{
+#gameboy {
     position: absolute;
     left: 30%;
     height: 110%;
     width: 40%;
 }
-#battle-start{
+
+#battle-start {
     position: absolute;
     top: 200px;
 }
 
 h1 {
-    z-index:2;
+    z-index: 2;
     font-size: 2em;
     color: #333;
     background-image: linear-gradient(to right, #4caf50 0%, #087f23 51%, #4caf50 100%);
@@ -109,39 +112,60 @@ h1 {
     box-shadow: 0 5px 7px rgba(0, 0, 0, 0.2);
 }
 
-
 .header {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
+.mode-button{
+    border-radius: 20px;
+    height: 50px;
 
-.mode-selection {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 25px;
+    z-index: 2;
 }
 
-.mode-button {
-    margin-top: 29%;
+#player-v-bot {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+}
+#player-v-player {
+    position: absolute;
+    top: 35%;
+    left: 60%;
+}
+#bot-v-bot {
+    position: absolute;
+    top: 42%;
+    left: 50%;
+}
+#i-have-no-clue{
+    position: absolute;
+    top: 42%;
+    left: 60%;
+}
+
+#choose-outer{
+    position: absolute;
+    height: calc(21% + 8px);
+    width: calc(17% + 14px);
+    border-style: solid;
+    top: 29%;
+    left: 48%;
+    border: 4px solid black;
+    background-color: #7778ad;
     z-index: 1;
-    font-size: 1.4em;
-    color: #333;
-    background-image: linear-gradient(to right, #3a7b99 0%, #4b98bc 51%, #69c0e9 100%);
-    transition: background-position 0.4s ease;
-    background-size: 200% auto;
-    height: 80px;
-    width: 150px;
-    border-radius: 50px;
-    cursor: pointer;
-    padding: 15px 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.2);
-    margin-left: 10px;
 }
-
+#choose-inner{
+    position: absolute;
+    height: 84%;
+    width: 88%;
+    border-style: solid;
+    top: 8px;
+    left: 12px;
+    border: 8px solid #736b82;
+    background-color: #ffff;
+    border-radius: 10px;
+    z-index: 1;
+}

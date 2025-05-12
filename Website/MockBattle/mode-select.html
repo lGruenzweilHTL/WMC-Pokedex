@@ -9,11 +9,9 @@
   <div class="gameboy">
     <div class="top-section"></div>
     <div class="screen">
-      <!-- Dein Content hier -->
     </div>
     <div class="bottom-section"></div>
   </div>
-  
 
   <img id="gameboy" src="../Images/Backgrounds/gameboy.webp">
   <img id="battle-start" src="../Images/Battle/what-will-charmander-do.png">
@@ -31,11 +29,18 @@
     <h1> Select Mode</h1>
   </div>
 
-<div class="mode-selection">
-  <button id="player-V-Bot" class="mode-button" onclick="document.location.href = 'PokemonSelect/pokemon-select.html'">Player vs. Bot</button>
-  <button id="player-V-player" class="mode-button">Coming Soon</button>
-  <button id="bot-V-bot" class="mode-button">Coming Soon</button>
-</div>
+  <div id="choose-outer">
+    <div id="choose-inner">
+
+    </div>
+  </div>
+
+<button id="player-v-bot" class="mode-button" onclick="document.location.href = 'PokemonSelect/pokemon-select.html'">Player vs. Bot</button>
+<button id="player-v-player" class="mode-button">Coming Soon</button>
+<button id="bot-v-bot" class="mode-button">Coming Soon</button>
+<button id="i-have-no-clue" class="mode-button">Coming Soon</button>
+
+<script src="mode-select.js"></script>
 
 </body>
 </html>
