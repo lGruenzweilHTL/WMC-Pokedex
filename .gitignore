@@ -43,3 +43,5 @@ Thumbs.db
 *.war
 *.ear
 *.swp
+
+navbar.js
