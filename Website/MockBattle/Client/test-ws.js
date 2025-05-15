@@ -48,10 +48,13 @@ fetch(url, {
         socket.onopen = () => {
             console.log('WebSocket connection established');
 
-            // Send a message to the server
+            // Send an attack message
             const message = {
-                type: 'message',
-                content: 'Hello from the client!'
+                "type": "Attack",
+                "move": "Flamethrower",
+                "item": "n.a.",
+                "switch_to": "n.a.",
+                "player_id": 1
             };
             socket.send(JSON.stringify(message));
         };
