@@ -41,20 +41,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     confirmButton.addEventListener("click", () => {
-    console.log("Selected Pokémon:", selectedPokemon);
+        console.log("Selected Pokémon:", selectedPokemon);
 
-    // Add animation class
-    confirmButton.classList.add("clicked");
+        // Build the URL parameters
+        const urlParams = new URLSearchParams();
+        selectedPokemon.forEach(name => urlParams.append('player', name));
+        const opponentPokemon = pokemonNames.filter(name => !selectedPokemon.includes(name));
+        opponentPokemon.forEach(name => urlParams.append('opponent', name));
 
-    // Prepare the URL
-    const urlParams = new URLSearchParams();
-    selectedPokemon.forEach(name => urlParams.append('player', name));
-    const opponentPokemon = pokemonNames.filter(name => !selectedPokemon.includes(name));
-    opponentPokemon.forEach(name => urlParams.append('opponent', name));
+        // Trigger page animation
+        const page = document.querySelector('.pokemon-selection-page');
+        page.classList.add('fade-out');
 
-    // Delay redirect to allow animation to play
-    setTimeout(() => {
-        window.location.href = `../mock-battle.html?${urlParams.toString()}`;
-    }, 400); // match the duration of your animation
-});
+        // Delay redirect to allow animation to play
+        setTimeout(() => {
+            window.location.href = `../mock-battle.html?${urlParams.toString()}`;
+        }, 400); // match animation duration
+    });
+
 });

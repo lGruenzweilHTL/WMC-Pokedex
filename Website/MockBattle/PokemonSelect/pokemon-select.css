@@ -80,17 +80,17 @@ h2 {
     transition: transform 0.1s ease;
 }
 
-.confirm-button.clicked {
-    animation: fadeOutScale 0.4s ease forwards;
+.pokemon-selection-page.fade-out {
+    animation: pageFadeOutScale 0.4s ease forwards;
 }
 
-@keyframes fadeOutScale {
+@keyframes pageFadeOutScale {
     0% {
         opacity: 1;
         transform: scale(1);
     }
     100% {
         opacity: 0;
-        transform: scale(0.9);
+        transform: scale(0.96);
     }
 }
