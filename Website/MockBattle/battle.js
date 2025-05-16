@@ -361,6 +361,36 @@ function pokemonSelected(idx) {
 
 async function executeActions() {
     for (const action of turnOrder) {
+
+        const isPlayer = action.pokemon === playerActivePokemon;
+
+         if (action.action === "attack") {
+            // Get the image element to animate
+            const pokemonImg = isPlayer
+                ? document.getElementById("player-pokemon")
+                : document.getElementById("opponent-pokemon");
+
+            const className = isPlayer
+                ? "animate-player-attack"
+                : "animate-enemy-attack";
+
+            // Trigger animation
+            pokemonImg.classList.add(className);
+
+            // Wait for the animation to finish
+            await new Promise(resolve => {
+                pokemonImg.addEventListener("animationend", function handler() {
+                    pokemonImg.classList.remove(className);
+                    pokemonImg.removeEventListener("animationend", handler);
+                    resolve();
+                });
+            });
+
+            // Simulate move execution (damage, status, etc.)
+            await pushMessage(`${action.pokemon.name} used ${action.move.name}!`);
+            // Insert logic here for damage/status effects
+        }
+
         // Execute action
         await executeAction(action);
 
@@ -370,6 +400,7 @@ async function executeActions() {
 
         // Handle status effects
         await handleStatusEffects(action.pokemon);
+
 
         // Check if any Pokémon has fainted
         // Do that after handling status and conditional effects to prevent possible edge cases (like fainting from destiny bond)
@@ -668,4 +699,18 @@ async function useItem(item, pokemon) {
         updatePlayerHpBar()
         await pushMessage(`${pokemon.name} was healed by ${item.healing_amount}!`);
     }
+}
+
+function animateAttack(targetId, className) {
+    const target = document.getElementById(targetId);
+    if (!target) return;
+
+    target.classList.remove(className); // Reset in case it's still applied
+    void target.offsetWidth; // Force reflow
+    target.classList.add(className);
+
+    // Remove class after animation ends to allow re-triggering
+    setTimeout(() => {
+        target.classList.remove(className);
+    }, 300);
 }

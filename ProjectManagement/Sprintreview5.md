@@ -1,0 +1,27 @@
+# Gemacht:
+    - Guess the Pokemon page
+    - Mode select page
+    - Backend
+    - Mockbattle css
+    - Mockbattle logic
+    - Generell css update
+    - Login Page
+
+# Probleme:
+    - Login Page nicht fertig gemacht wegen Technische probleme
+    - Datenbank integriern ging schwer
+    - Websocket
+    - Navbar war komisch
+    - Css hatte probleme
+
+# Commits:
+
+    Insgesamt: 50   
+
+# Geplant:
+    - Login page fertig machen
+    - Backend integrieren
+    - Items und Trainer integrieren
+    - Pokemon catching simulator
+    - Verschiedene arten von Battle
+    - Noch mehr css updates 

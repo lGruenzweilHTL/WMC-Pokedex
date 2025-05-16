@@ -439,3 +439,23 @@ body {
 #tooltip * {
     line-height: 1.45;
 }
+
+@keyframes attack-player {
+    0%   { transform: translate(0, 0); }
+    50%  { transform: translate(20px, -20px); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes attack-enemy {
+    0%   { transform: translate(0, 0); }
+    50%  { transform: translate(-20px, 20px); }
+    100% { transform: translate(0, 0); }
+}
+
+.animate-player-attack {
+    animation: attack-player 0.4s ease-in-out;
+}
+
+.animate-enemy-attack {
+    animation: attack-enemy 0.4s ease-in-out;
+}
