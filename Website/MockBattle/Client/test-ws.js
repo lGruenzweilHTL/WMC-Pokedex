@@ -1,4 +1,4 @@
-const url = 'http://localhost:5052/battle/start';
+const url = 'http://localhost:5052/battle/start/new';
 
 const data = {
     "player1": {
@@ -27,7 +27,7 @@ const data = {
             }
         ]
     }
-}
+};
 
 fetch(url, {
     method: 'POST',
@@ -42,19 +42,22 @@ fetch(url, {
         console.log("Player 2: ", data.player2);
 
         const socketUrl = data.websocket_url;
+        const battleGuid = data.battle_guid;
+        // You need to know the player_guid for the player you want to control.
+        // This should be returned by the server or tracked after join.
+        const player1Guid = data.player1.guid;
+
         const socket = new WebSocket(socketUrl);
 
-        // Handle WebSocket events
         socket.onopen = () => {
             console.log('WebSocket connection established');
 
             // Send an attack message
             const message = {
-                "type": "Attack",
-                "move": "Flamethrower",
-                "item": "n.a.",
-                "switch_to": "n.a.",
-                "player_id": 1
+                "type": "attack",
+                "object": "Flamethrower",
+                "battle_guid": battleGuid,
+                "player_guid": player1Guid
             };
             socket.send(JSON.stringify(message));
         };
