@@ -74,3 +74,23 @@ h2 {
     background-color: #ccc;
     cursor: not-allowed;
 }
+
+.confirm-button:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+}
+
+.confirm-button.clicked {
+    animation: fadeOutScale 0.4s ease forwards;
+}
+
+@keyframes fadeOutScale {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+}
