@@ -193,12 +193,12 @@ h1 {
     gap: 20px;
 }
 .selected::before {
-    content: "temp";
-    font-size: 20px;
-    color: wheat;
+    content: ">";
+    font-size: 50px;
+    color: white;
     position: absolute;
-    left: -50px;
-    top: 15px;
+    left: -30px;
+    top: -13px;
 }
 
 #charmander{
