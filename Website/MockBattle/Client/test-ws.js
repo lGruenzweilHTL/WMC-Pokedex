@@ -1,32 +1,35 @@
 const url = 'http://localhost:5052/battle/start/new';
 
 const data = {
-    "player1": {
-        "name": "Player 1",
-        "human": true,
-        "pokemon": [
-            {
-                "name": "Charizard",
-                "level": 50,
-                "moves": [
-                    "Flamethrower"
-                ]
-            }
-        ]
-    },
-    "player2": {
-        "name": "Player 2",
-        "human": false,
-        "pokemon": [
-            {
-                "name": "Blastoise",
-                "level": 50,
-                "moves": [
-                    "Flamethrower"
-                ]
-            }
-        ]
-    }
+    "players": [
+        {
+            "name": "Player 1",
+            "human": true,
+            "pokemon": [
+                {
+                    "name": "Charizard",
+                    "level": 50,
+                    "moves": [
+                        "Flamethrower"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Player 2",
+            "human": false,
+            "behaviour": "max",
+            "pokemon": [
+                {
+                    "name": "Blastoise",
+                    "level": 50,
+                    "moves": [
+                        "Flamethrower"
+                    ]
+                }
+            ]
+        }
+    ],
 };
 
 fetch(url, {
@@ -38,32 +41,27 @@ fetch(url, {
 })
     .then(response => response.json())
     .then(data => {
-        console.log("Player 1: ", data.player1);
-        console.log("Player 2: ", data.player2);
+        console.log("Players: ", data.players);
 
         const socketUrl = data.websocket_url;
         const battleGuid = data.battle_guid;
         // You need to know the player_guid for the player you want to control.
         // This should be returned by the server or tracked after join.
-        const player1Guid = data.player1.guid;
+        const player1Guid = data.players[0].guid;
 
         const socket = new WebSocket(socketUrl);
 
         socket.onopen = () => {
             console.log('WebSocket connection established');
 
-            // Send an attack message
-            const message = {
-                "type": "attack",
-                "object": "Flamethrower",
-                "battle_guid": battleGuid,
-                "player_guid": player1Guid
-            };
-            socket.send(JSON.stringify(message));
+            sendAttackMessage();
         };
 
         socket.onmessage = (event) => {
             console.log('Message received:', event.data);
+
+            if (event.data === "done") // if the turn is completed
+                sendAttackMessage(); // send the next move
         };
 
         socket.onerror = (error) => {
@@ -73,5 +71,15 @@ fetch(url, {
         socket.onclose = () => {
             console.log('WebSocket connection closed');
         };
+
+        function sendAttackMessage() {
+            const message = {
+                "type": "attack",
+                "object": "Flamethrower",
+                "battle_guid": battleGuid,
+                "player_guid": player1Guid
+            };
+            socket.send(JSON.stringify(message));
+        }
     })
     .catch(error => console.error('Error:', error));
