@@ -1,85 +1,96 @@
-const url = 'http://localhost:5052/battle/start/new';
+const url = 'http://localhost:5052/battle/start/bot';
+let battleGuid = null;
+let websocketUrl = null;
+let socket = null;
 
 const data = {
-    "players": [
-        {
-            "name": "Player 1",
-            "human": true,
-            "pokemon": [
-                {
-                    "name": "Charizard",
-                    "level": 50,
-                    "moves": [
-                        "Flamethrower"
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "Player 2",
-            "human": false,
-            "behaviour": "max",
-            "pokemon": [
-                {
-                    "name": "Blastoise",
-                    "level": 50,
-                    "moves": [
-                        "Flamethrower"
-                    ]
-                }
-            ]
-        }
-    ],
+    "player": {
+        "name": "Player1",
+        "pokemon": [
+            {
+                "name": "Charizard",
+                "level": 50,
+                "moves": [
+                    "Flamethrower"
+                ]
+            }
+        ]
+    },
+    "bot": {
+        "name": "Bot1",
+        "behaviour": "max",
+        "pokemon": [
+            {
+                "name": "Blastoise",
+                "level": 50,
+                "moves": [
+                    "Flamethrower"
+                ]
+            }
+        ]
+    }
 };
 
-fetch(url, {
-    method: 'POST',
-    body: JSON.stringify(data),
-    headers: {
-        'Content-Type': 'application/json'
-    },
-})
-    .then(response => response.json())
-    .then(data => {
-        console.log("Players: ", data.players);
-
-        const socketUrl = data.websocket_url;
-        const battleGuid = data.battle_guid;
-        // You need to know the player_guid for the player you want to control.
-        // This should be returned by the server or tracked after join.
-        const player1Guid = data.players[0].guid;
-
-        const socket = new WebSocket(socketUrl);
-
-        socket.onopen = () => {
-            console.log('WebSocket connection established');
-
-            sendAttackMessage();
-        };
-
-        socket.onmessage = (event) => {
-            console.log('Message received:', event.data);
-
-            if (event.data === "done") // if the turn is completed
-                sendAttackMessage(); // send the next move
-        };
-
-        socket.onerror = (error) => {
-            console.error('WebSocket error:', error);
-        };
-
-        socket.onclose = () => {
-            console.log('WebSocket connection closed');
-        };
-
-        function sendAttackMessage() {
-            const message = {
-                "type": "attack",
-                "object": "Flamethrower",
-                "battle_guid": battleGuid,
-                "player_guid": player1Guid
-            };
-            socket.send(JSON.stringify(message));
-        }
+function createBattle() {
+    fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        },
     })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            websocketUrl = data.websocket_url;
+            battleGuid = data.battle_guid;
+        })
     .catch(error => console.error('Error:', error));
+}
+
+function connectWebSocket() {
+    socket = new WebSocket(websocketUrl);
+
+    socket.onopen = () => {
+        console.log('WebSocket connection established');
+    };
+
+    socket.onmessage = (event) => {
+        const message = JSON.parse(event.data);
+
+        // Log as a table if it's an array or object
+        if (Array.isArray(message) || typeof message === 'object') {
+            console.table(message);
+        } else {
+            // Log as a string for other types
+            console.log(message);
+        }
+
+        // Optionally, log the full object for debugging
+        console.dir(message, { depth: null });
+    };
+
+    socket.onerror = (error) => {
+        console.error('WebSocket error:', error);
+    };
+
+    socket.onclose = () => {
+        console.log('WebSocket connection closed');
+    };
+}
+
+function sendMessage() {
+    const actionType = document.getElementById('type').value;
+    const actionObject = document.getElementById('object').value;
+    const message = {
+        "type": actionType,
+        "object": actionObject,
+        "battle_guid": battleGuid
+    };
+    socket.send(JSON.stringify(message));
+}
+
+
+
+
+

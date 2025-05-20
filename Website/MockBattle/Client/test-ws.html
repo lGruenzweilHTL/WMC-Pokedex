@@ -6,6 +6,25 @@
     <script src="test-ws.js"></script>
 </head>
 <body>
+<button onclick="createBattle()">Create Battle</button>
+<br>
+<button onclick="connectWebSocket()">Connect to Websocket</button>
 
+<br><br>
+<label for="type">Select action type: </label>
+<select id="type">
+    <option value="attack">Attack</option>
+    <option value="switch">Switch</option>
+    <option value="item">Item</option>
+</select>
+
+<br><br>
+
+<label for="object">Enter action object [move, pokémon, item]: </label>
+<input type="text" id="object" placeholder="Flamethrower">
+
+<br><br>
+
+<button onclick="sendMessage()">Submit Action</button>
 </body>
 </html>
