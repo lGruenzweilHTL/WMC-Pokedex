@@ -56,12 +56,13 @@ body {
 h1 {
     font-size: 55px;
     font-weight: bold;
+    margin-top: 50px;
     margin-bottom: 20px;
 }
 
 #blackout-image {
-    width: 400px;
-    height: 400px;
+    width: 350px;
+    height: 350px;
     margin: 20px auto;
     display: block;
     border-radius: 15px;
@@ -142,6 +143,20 @@ button:active {
     background-color: red;
 }
 
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* spacing between buttons */
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.button-container button {
+    flex: 1 1 calc(50% - 900px); 
+    max-width: 300px;
+}
 
 @keyframes shake {
     0% { transform: translateX(0); }
