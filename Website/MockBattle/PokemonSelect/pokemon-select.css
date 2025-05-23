@@ -86,7 +86,7 @@ h2::after {
     left: 50%;
     bottom: -.35rem;
     width: 85%;
-    height: 4px;
+    height: 3px;
     background: #508BE9;
     transform: translateX(-50%) scaleX(0);
     transform-origin: center;
