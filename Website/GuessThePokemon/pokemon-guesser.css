@@ -118,6 +118,14 @@ button:active {
     transform: translateY(0);
 }
 
+#hint {
+    background-color: #ffee00ea;
+}
+
+#hint:hover {
+    background-color: #ffc400ea;
+}
+
 #next-button {
     background-color: #28a745;
 }

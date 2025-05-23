@@ -6,6 +6,8 @@
     - Mockbattle logic
     - Generell css update
     - Login Page
+    - Games Subpage
+    - Animations im Battle
 
 # Probleme:
     - Login Page nicht fertig gemacht wegen Technische probleme
@@ -17,6 +19,7 @@
 # Commits:
 
     Insgesamt: 50   
+    und Backend in ein Separaten Project
 
 # Geplant:
     - Login page fertig machen

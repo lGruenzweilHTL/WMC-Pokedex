@@ -7,8 +7,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     const guessButton = document.getElementById("submit-guess");
     const revealButton = document.getElementById("reveal-button");
     const nextButton = document.getElementById("next-button");
+    const hintButton = document.getElementById("hint");
 
     let isLoading = false; // Prevent spamming
+    let hintIndex = 0; 
 
     // Event listeners
     guessButton.addEventListener("click", submit);
@@ -20,6 +22,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     });
     nextButton.addEventListener("click", newImage);
     revealButton.addEventListener("click", reveal);
+    hintButton.addEventListener("click", showHint);
 
     // Load the first Pokémon image
     await getBlackoutImage();
@@ -44,6 +47,17 @@ document.addEventListener("DOMContentLoaded", async function () {
         guessInput.value = "It's a " + englishName;
     }
 
+    function showHint() {
+        if (hintIndex < englishName.length) {
+            let hint = englishName
+                .split('')
+                .map((char, idx) => (idx <= hintIndex ? char : '_'))
+                .join('');
+            guessInput.value = hint;
+            hintIndex++;
+        }
+    }
+
     async function newImage() {
         if (isLoading) return; // Prevent multiple triggers
         isLoading = true;
@@ -62,6 +76,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         guessInput.focus();
 
         isLoading = false;
+        hintIndex = 0; // Reset hint index
     }
 });
 
