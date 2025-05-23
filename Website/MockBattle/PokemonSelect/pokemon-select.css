@@ -1,159 +1,210 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
-:root{--accent:#3B82F6;--accent-dark:#2563EB;--text:#111827}
+:root {
+    --accent: #3B82F6;
+    --accent-dark: #2563EB;
+    --text: #111827
+}
 
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+}
 
-body{
-    font-family:'Inter',sans-serif;
-    background:#eef2f5;
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    overflow-x:hidden;
-    color:var(--text);
+body {
+    font-family: 'Inter', sans-serif;
+    background: #eef2f5;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    color: var(--text);
 }
 
 /* decorative blurs outside the card */
-body::before,body::after{
-    content:'';
-    position:absolute;
-    width:480px;
-    height:480px;
-    border-radius:50%;
-    filter:blur(120px);
-    z-index:-1;
-}
-body::before{
-    background:rgba(59,130,246,.35);
-    top:-120px;
-    left:-120px;
-}
-body::after{
-    background:rgba(99,102,241,.25);
-    bottom:-120px;
-    right:-120px;
+body::before, body::after {
+    content: '';
+    position: absolute;
+    width: 480px;
+    height: 480px;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: -1;
 }
 
-.pokemon-selection-page{
-    position:relative;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:1.8rem;
-    width:min(100%,1100px);
-    padding:4rem 3rem;
-    backdrop-filter:blur(18px) saturate(160%);
-    background:rgba(255,255,255,.72);
-    border:1px solid rgba(0,0,0,.05);
-    border-radius:2rem;
-    box-shadow:0 12px 28px rgba(0,0,0,.12);
-    transition:transform .28s cubic-bezier(.4,.2,.2,1),box-shadow .28s cubic-bezier(.4,.2,.2,1);
+body::before {
+    background: rgba(59, 130, 246, .35);
+    top: -120px;
+    left: -120px;
 }
 
-.pokemon-selection-page:hover{
-    transform:translateY(-4px);
-    box-shadow:0 16px 36px rgba(0,0,0,.18);
+body::after {
+    background: rgba(99, 102, 241, .25);
+    bottom: -120px;
+    right: -120px;
 }
 
-h2{
-    font-size:clamp(2.5rem,5vw,4.2rem);
-    font-weight:700;
-    letter-spacing:.015em;
-    line-height:1.1;
-    background:linear-gradient(135deg,var(--accent) 0%,var(--accent-dark) 100%);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    position:relative;
+.pokemon-selection-page {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.8rem;
+    width: min(100%, 1100px);
+    padding: 4rem 3rem;
+    backdrop-filter: blur(18px) saturate(160%);
+    background: rgba(255, 255, 255, .72);
+    border: 1px solid rgba(0, 0, 0, .05);
+    border-radius: 2rem;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, .12);
+    transition: transform .28s cubic-bezier(.4, .2, .2, 1), box-shadow .28s cubic-bezier(.4, .2, .2, 1);
 }
 
-h2::after{
-    content:'';
-    position:absolute;
-    left:50%;
-    bottom:-.35rem;
-    width:48%;
-    height:2px;
-    background:var(--accent);
-    transform:translateX(-50%) scaleX(0);
-    transform-origin:center;
-    transition:transform .45s cubic-bezier(.4,.2,.2,1);
+.pokemon-selection-page:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, .18);
 }
 
-.pokemon-selection-page:hover h2::after{transform:translateX(-50%) scaleX(1)}
-
-.pokemon-selection-body{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-    gap:1.6rem;
-    width:100%;
+h2 {
+    font-size: clamp(6rem, 511vw, 4.5rem);
+    font-weight: 800;
+    letter-spacing: .025em;
+    line-height: 1.08;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    text-shadow: 0 2px 30px rgba(255, 255, 255, 0.75), 0 1px 0 #2757C8, 0 2px 12px rgba(255, 255, 255, 0.55), 0 1px 0 #fff;
+    filter: drop-shadow(0 4px 16px rgba(59, 130, 246, 0.10));
+    margin-bottom: 1.5rem;
 }
 
-.pokemon-option{
-    position:relative;
-    cursor:pointer;
-    border-radius:.9rem;
-    transition:transform .24s cubic-bezier(.4,.2,.2,1),box-shadow .24s;
-    overflow:hidden;
+h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -.35rem;
+    width: 85%;
+    height: 3px;
+    background: #508BE9;
+    transform: translateX(-50%) scaleX(0);
+    transform-origin: center;
+    transition: transform .45s cubic-bezier(.4, .2, .2, 1);
 }
 
-.pokemon-option img{
-    width:100%;
-    height:auto;
-    display:block;
-    border-radius:.9rem;
-    box-shadow:0 3px 10px rgba(0,0,0,.18);
-    user-select:none;
-    pointer-events:none;
+.pokemon-selection-page:hover h2::after {
+    transform: translateX(-50%) scaleX(1)
 }
 
-.pokemon-option::before{
-    content:'';
-    position:absolute;
-    inset:0;
-    background:linear-gradient(135deg,rgba(255,255,255,.12)0%,rgba(255,255,255,0)65%);
-    opacity:0;
-    transition:opacity .24s;
+.pokemon-selection-body {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.6rem;
+    width: 100%;
 }
 
-.pokemon-option:hover{transform:translateY(-6px) scale(1.05)}
-
-.pokemon-option:hover::before{opacity:1}
-
-.pokemon-option.selected{
-    outline:3px solid var(--accent);
-    box-shadow:0 0 12px var(--accent-dark),0 0 24px rgba(59,130,246,.5);
+.pokemon-option > *:not(img) {
+    font-size: 1.18rem;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 0.5rem;
+    color: var(--text);
+    letter-spacing: 1px;
+    display: block;
 }
 
-.confirm-button{
-    padding:1rem 2.8rem;
-    font-size:1.1rem;
-    font-weight:600;
-    border:none;
-    border-radius:2.5rem;
-    background:var(--accent);
-    color:#fff;
-    cursor:pointer;
-    box-shadow:0 5px 14px rgba(0,0,0,.16);
-    transition:background .25s,transform .25s,box-shadow .25s;
+.pokemon-option {
+    position: relative;
+    cursor: pointer;
+    border-radius: .9rem;
+    transition: transform .24s cubic-bezier(.4, .2, .2, 1), box-shadow .24s;
+    overflow: hidden;
 }
 
-.confirm-button:hover:not(:disabled){
-    background:var(--accent-dark);
-    box-shadow:0 6px 18px rgba(0,0,0,.22);
+.pokemon-option img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: .9rem;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .18);
+    user-select: none;
+    pointer-events: none;
 }
 
-.confirm-button:disabled{
-    background:#9ca3af;
-    cursor:not-allowed;
-    box-shadow:none;
+.pokemon-option::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, .12) 0%, rgba(255, 255, 255, 0) 65%);
+    opacity: 0;
+    transition: opacity .24s;
 }
 
-.confirm-button:active:not(:disabled){transform:scale(.94)}
+.pokemon-option:hover {
+    transform: translateY(-6px) scale(1.05)
+}
 
-.pokemon-selection-page.fade-out{animation:pageFadeOutScale .4s ease forwards}
+.pokemon-option:hover::before {
+    opacity: 1
+}
 
-@keyframes pageFadeOutScale{0%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.96)}}
+.pokemon-option.selected {
+    outline: 3px solid var(--accent);
+    box-shadow: 0 0 12px var(--accent-dark), 0 0 24px rgba(59, 130, 246, .5);
+}
 
-@keyframes bgShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.confirm-button {
+    padding: 1rem 2.8rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 2.5rem;
+    background: var(--accent);
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 5px 14px rgba(0, 0, 0, .16);
+    transition: background .25s, transform .25s, box-shadow .25s;
+}
+
+.confirm-button:hover:not(:disabled) {
+    background: var(--accent-dark);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .22);
+}
+
+.confirm-button:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.confirm-button:active:not(:disabled) {
+    transform: scale(.94)
+}
+
+.pokemon-selection-page.fade-out {
+    animation: pageFadeOutScale .4s ease forwards
+}
+
+@keyframes pageFadeOutScale {
+    0% {
+        opacity: 1;
+        transform: scale(1)
+    }
+    100% {
+        opacity: 0;
+        transform: scale(.96)
+    }
+}
+
+@keyframes bgShift {
+    0% {
+        background-position: 0 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0 50%
+    }
+}
