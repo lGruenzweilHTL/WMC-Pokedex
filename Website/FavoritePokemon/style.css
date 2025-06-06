@@ -29,6 +29,8 @@ div {
     outline: darkgrey inset 2px;
     max-width: 800px;
     box-sizing: border-box;
+    font-family: 'Inter', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+
 }
 
 h2 {
