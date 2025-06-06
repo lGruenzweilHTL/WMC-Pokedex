@@ -5,7 +5,7 @@ body {
             radial-gradient(circle, rgba(255, 255, 255, 0.1) 2px, transparent 3px),
             linear-gradient(45deg, rgba(255, 255, 255, 0.03) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.03) 50%, rgba(255, 255, 255, 0.03) 75%, transparent 75%, transparent);
     color: #e4e6eb;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Inter', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
     line-height: 1.6;
 }
 .navigation-bar
@@ -119,7 +119,7 @@ ul:not(.exclusive) li {
     border-bottom: 1px solid #3e4c59;
     font-size: 1.2rem;
     transition: background-color 0.3s, color 0.3s;
-    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-family: 'Inter', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
 }
 
 ul li:last-child {

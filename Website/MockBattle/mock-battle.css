@@ -9,7 +9,8 @@
 }
 
 @font-face {
-    font-family: 'Inter', 'Segoe UI', 'Roboto', 'Arial', sans-serif;    src: url('Font/PokemonGb-RAeo.ttf') format('truetype');
+    font-family: 'PokemonGB';
+    src: url('Font/PokemonGb-RAeo.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 
@@ -27,7 +28,8 @@ body {
     background-size: cover;
     image-rendering: pixelated; /* Makes fonts look sharper if pixel-style */
 
-    font-family: 'Inter', 'Segoe UI', 'Roboto', 'Arial', sans-serif;}
+    font-family: 'PokemonGB';
+}
 
 .focusable {
     cursor: pointer;
