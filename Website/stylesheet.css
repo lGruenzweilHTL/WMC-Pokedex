@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Inter', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
     background: linear-gradient(135deg, #3b3b3b, #4a4a4a);
     /* statt height: 100vh; overflow: hidden; */
     min-height: 100vh;       /* damit der Inhalt wenigstens Bildschirmhöhe hat */

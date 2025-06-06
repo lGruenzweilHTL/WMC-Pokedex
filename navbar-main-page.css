@@ -14,7 +14,7 @@ body::-webkit-scrollbar {
     justify-content: center;
     z-index: 2;
     border-radius: 10px;
-    font-family: Verdana, sans-serif;
+    font-family: 'Inter', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
     transition: top 0.3s ease-in-out;
 }
 

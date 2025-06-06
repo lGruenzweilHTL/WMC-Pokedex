@@ -1,10 +1,9 @@
 body {
     background-image: url('https://assets.pokemon.com/static2/_ui/img/chrome/body_bg.png');
-    font-family: Arial, sans-serif;
-}
+    font-family: 'Inter', 'Segoe UI', 'Roboto', 'Arial', sans-serif;}
 
 @font-face {
-    font-family: 'PokemonGB';
+    font-family: 'Inter', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
     src: url('Font/PokemonGb-RAeo.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
