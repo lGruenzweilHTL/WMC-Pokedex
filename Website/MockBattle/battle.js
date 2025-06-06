@@ -1,207 +1,134 @@
-class Pokemon {
-    constructor(string) {
-        const data = pokemon[string];
-        this.id = data.id;
-        this.name = data.display_name;
-        this.description = data.description;
-        this.level = data.level;
-        this.stats = data.stats;
-        this.types = data.types;
-        this.hp = calculateHp(data);
-        this.maxHp = this.hp;
-        this.moves = data.moves.map(move => new Move(move));
-        this.statusEffects = []; // Status effect (like burn, poison) are applied every turn of that pokemon
-        this.conditionalEffects = []; // Conditional effects (like faint from destiny bond) are triggered by events
-        this.statModifiers = {
-            attack: 0,
-            defense: 0,
-            spAttack: 0,
-            spDefense: 0,
-            speed: 0,
-            accuracy: 0,
-            evasion: 0,
-        }
-    }
-
-    getModifiedStat(statName) {
-        const multipliers = {
-            "-6": 0.25,
-            "-5": 0.285,
-            "-4": 0.33,
-            "-3": 0.4,
-            "-2": 0.5,
-            "-1": 0.67,
-            "0": 1,
-            "1": 1.5,
-            "2": 2,
-            "3": 2.5,
-            "4": 3,
-            "5": 3.5,
-            "6": 4
-        }
-
-        // Make sure the stat modifier is within the bounds of -6 and 6
-        const clamped = Math.max(-6, Math.min(6, this.statModifiers[statName]));
-        const multiplier = multipliers[clamped];
-        return this.stats[statName] * multiplier;
-    }
-
-    getAccuracyModifier() {
-        return this.getModifiedStat("accuracy");
-    }
-
-    getEvasionModifier() {
-        return this.getModifiedStat("evasion");
-    }
-}
-
-class Move {
-    constructor(string) {
-        const data = moves[string];
-        this.name = data["display_name"];
-        this.description = data.description;
-        this.type = data.type;
-        this.special = data.special;
-        this.priority = data.priority;
-        this.status = data.status;
-        this.power = data.power;
-        this.accuracy = data.accuracy;
-        this.effect = data.effect === null ? null : new Effect(data.effect);
-    }
-}
-
-class Effect {
-    constructor(json) {
-        this.name = json.name;
-        this.duration = json.duration;
-        this.chance = json.chance;
-        this.target = json.target;
-        this.options = null;
-    }
-}
-
-class Item {
-    constructor(type, name) {
-        const data = items[type][name];
-        this.name = data.name;
-        this.healing_amount = data.healing_amount;
-        this.description = data.description;
-        this.quantity = data.quantity;
-        this.type = data.type;
-    }
-}
-
 class GameAction {
-    constructor(action, move, pokemon, target) {
-        this.action = action;
-        this.move = move;
-        this.pokemon = pokemon;
-        this.target = target;
+    constructor(type, object) {
+        this.actionType = type; // e.g. "attack", "bag", "pokemon", "run"
+        this.object = object; // e.g. move, item, pokemon
     }
-
-    goesBefore(otherAction) {
-        const actionPriorities = {
-            "attack": 0,
-            "bag": 1,
-            "pokemon": 2,
-            "run": 3
-        };
-
-        const actionPriority = actionPriorities[this.action];
-        const otherPriority = actionPriorities[otherAction.action];
-
-        if (actionPriority !== otherPriority) {
-            return actionPriority > otherPriority;
-        }
-
-        if (this.move.priority !== otherAction.move.priority) {
-            return this.move.priority === true;
-        }
-
-        return this.pokemon.getModifiedStat("speed") > otherAction.pokemon.getModifiedStat("speed");
+}
+class Pokemon {
+    constructor(name, id, moves) {
+        this.name = name;
+        this.id = id;
+        this.moves = moves;
     }
 }
 
 const defaultNavTip = "Navigate using arrows key or wasd\nSelect with enter or spacebar\nPress escape to cancel";
-let turnOrder = [];
+const url = 'http://localhost:5052/battle/start/bot';
+let battleGuid = null;
+let websocketUrl = null;
+let socket = null;
+let connectionClosed = false;
 
-const playerItemNames = ["potion", "super-potion", "hyper-potion", "max-potion"];
+let playerActivePokemon = new Pokemon("Charizard", 6, ["Flamethrower"]);
 
-let playerTeam;
-let opponentTeam;
-let playerActivePokemon;
-let opponentActivePokemon;
-let playerItems;
-
-let pokemon = [];
-let moves = [];
-let items = [];
+const battleData = {
+    "player": {
+        "name": "Player1",
+        "pokemon": [
+            {
+                "name": "Charizard",
+                "level": 50,
+                "moves": [
+                    "Flamethrower"
+                ]
+            }
+        ]
+    },
+    "bot": {
+        "name": "Bot1",
+        "behaviour": "max",
+        "pokemon": [
+            {
+                "name": "Blastoise",
+                "level": 50,
+                "moves": [
+                    "Flamethrower"
+                ]
+            }
+        ]
+    }
+};
 
 document.addEventListener("DOMContentLoaded", async () => {
-    await initJson();
-    initTeams();
-
-    updateDisplay();
+    await createBattle();
+    await connectWebSocket();
 
     await pushMessage("The battle begins!\n\n(Press spacebar or enter to continue)");
 
     await gameLoop();
 });
 
-async function initJson() {
-    pokemon = await fetchBattlePokemon();
-    moves = await fetchMoves();
-    items = await fetchItems();
+async function createBattle() {
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(battleData),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+        const json = await response.json();
+        console.log("Successfully created battle");
+        websocketUrl = json.websocket_url;
+        battleGuid = json.battle_guid;
+    }
+    catch(e) {
+        console.error('Error:', error);
+    }
 }
 
-function initTeams() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const playerPokemon = urlParams.getAll("player");
-    const opponentPokemon = urlParams.getAll("opponent");
+async function connectWebSocket() {
+    await new Promise(resolve => {
+        socket = new WebSocket(websocketUrl);
 
-    playerTeam = playerPokemon.map(pokemon => new Pokemon(pokemon));
-    opponentTeam = opponentPokemon.map(pokemon => new Pokemon(pokemon));
+        socket.onopen = () => {
+            console.log('WebSocket connection established');
+            resolve();
+        };
 
-    playerActivePokemon = playerTeam[0];
-    opponentActivePokemon = opponentTeam[0];
+        socket.onmessage = (event) => {
+            const message = JSON.parse(event.data);
+            console.log('Received message', message);
+            processMessage(message);
+        };
 
-    playerItems = playerItemNames.map(item => new Item("healing_potions", item));
+        socket.onerror = (error) => {
+            console.error('WebSocket error:', error);
+        };
+
+        socket.onclose = () => {
+            console.log('WebSocket connection closed');
+            connectionClosed = true;
+        };
+    });
+}
+
+function sendMessage(actionType, actionObject) {
+    const message = {
+        "type": actionType,
+        "object": actionObject,
+        "battle_guid": battleGuid
+    };
+    socket.send(JSON.stringify(message));
+}
+
+function processMessage(message) {
+    const json = JSON.parse(message);
+    const messages = json.messages;
+    console.table(messages);
+
+    // TODO: Update the updateDisplay method to handle message content
 }
 
 async function gameLoop() {
-    while (!isGameOver()) {
+    while (!connectionClosed) {
         displayMessage(`What will ${playerActivePokemon.name.toUpperCase()} do?\n\n${defaultNavTip}`);
 
         // Let player select an action
         const playerAction = await waitForPlayerAction();
-        console.log(`Received "${playerAction.action}" action from player${playerAction.move ? ". Move: " + playerAction.move.name : ""}`);
-
-        // Opponent selects move automatically (at random)
-        const opponentAction = selectOpponentMove();
-
-        // Determine turn order
-        calculateTurnOrder(playerAction, opponentAction);
-
-        // Execute moves 1 by 1
-        // Handle status effects (apply, then decrement)
-        await executeActions();
+        sendMessage(playerAction.actionType, playerAction.object);
     }
     hideAll();
-}
-
-function isGameOver() {
-    return playerTeam.length === 0 || opponentTeam.length === 0;
-}
-
-function calculateTurnOrder(playerAction, opponentAction) {
-    turnOrder = playerAction.goesBefore(opponentAction)
-        ? [playerAction, opponentAction]
-        : [opponentAction, playerAction];
-}
-
-function selectOpponentMove() {
-    const idx = Math.floor(Math.random() * 4);
-    return new GameAction("attack", opponentActivePokemon.moves[idx], opponentActivePokemon, "player");
 }
 
 async function waitForPlayerAction() {
@@ -268,7 +195,7 @@ function attackClicked() {
     // Populate move buttons with the player's moves
     const buttons = document.getElementsByClassName("move-button");
     Array.from(buttons).forEach((button, idx) => {
-        button.innerText = playerActivePokemon.moves[idx].name.toUpperCase();
+        button.innerText = playerActivePokemon.moves[idx].toUpperCase();
     });
     highlightMoveButtons(playerActivePokemon.moves, buttons);
     updateMoveTooltipData(playerActivePokemon.moves, buttons);
@@ -277,12 +204,12 @@ function attackClicked() {
 
 function moveSelected(idx) {
     hidePlayerMoveSelect();
-    return new GameAction("attack", playerActivePokemon.moves[idx], playerActivePokemon, "opponent");
+    return new GameAction("attack", playerActivePokemon.moves[idx]);
 }
 
 function runClicked() {
     hidePlayerActionSelect();
-    return new GameAction("run", null, playerActivePokemon, null);
+    return new GameAction("run", null);
 }
 
 // Called by button
@@ -298,7 +225,7 @@ function bagClicked() {
 
 function itemSelected(idx) {
     hidePlayerItemSelect();
-    return new GameAction("bag", null, playerActivePokemon, playerItems[idx]);
+    return new GameAction("bag", playerItems[idx]);
 }
 
 // Called by button
@@ -356,361 +283,5 @@ function populateButtonList(list, buttonClass) {
 
 function pokemonSelected(idx) {
     hidePlayerPokemonSelect();
-    return new GameAction("pokemon", null, filterPlayerPokemon()[idx], "player");
-}
-
-async function executeActions() {
-    for (const action of turnOrder) {
-
-        const isPlayer = action.pokemon === playerActivePokemon;
-
-         if (action.action === "attack") {
-            // Get the image element to animate
-            const pokemonImg = isPlayer
-                ? document.getElementById("player-pokemon")
-                : document.getElementById("opponent-pokemon");
-
-            const className = isPlayer
-                ? "animate-player-attack"
-                : "animate-enemy-attack";
-
-            // Trigger animation
-            pokemonImg.classList.add(className);
-
-            // Wait for the animation to finish
-            await new Promise(resolve => {
-                pokemonImg.addEventListener("animationend", function handler() {
-                    pokemonImg.classList.remove(className);
-                    pokemonImg.removeEventListener("animationend", handler);
-                    resolve();
-                });
-            });
-
-            // Simulate move execution (damage, status, etc.)
-            await pushMessage(`${action.pokemon.name} used ${action.move.name}!`);
-            // Insert logic here for damage/status effects
-        }
-
-        // Execute action
-        await executeAction(action);
-
-        // Handle conditional effects (like faint from destiny bond)
-        await handleConditionalEffects(action.pokemon);
-        decrementConditionalEffects(action.pokemon);
-
-        // Handle status effects
-        await handleStatusEffects(action.pokemon);
-
-
-        // Check if any Pokémon has fainted
-        // Do that after handling status and conditional effects to prevent possible edge cases (like fainting from destiny bond)
-        if (playerActivePokemon.hp <= 0) {
-            await pushMessage(`${playerActivePokemon.name} has fainted!`);
-            playerTeam = playerTeam.filter(pokemon => pokemon.hp > 0);
-            if (playerTeam.length > 0) {
-                await pushMessage("Choose a new Pokémon!");
-                playerActivePokemon = await waitForPlayerPokemonSelection();
-            } else {
-                await pushMessage("You have no more Pokémon left!");
-            }
-        }
-
-        if (opponentActivePokemon.hp <= 0) {
-            await pushMessage(`${opponentActivePokemon.name} has fainted!`);
-            opponentTeam = opponentTeam.filter(pokemon => pokemon.hp > 0);
-            if (opponentTeam.length > 0) {
-                opponentActivePokemon = selectRandomOpponentPokemon();
-                await pushMessage(`Opponent sent out ${opponentActivePokemon.name.toUpperCase()}!`);
-            } else {
-                await pushMessage("Opponent has no more Pokémon left!");
-            }
-        }
-
-        // Check for a tie
-        if (playerTeam.length === 0 && opponentTeam.length === 0) {
-            await pushMessage("Both teams have no more Pokémon left!");
-            await pushMessage("It's a tie!");
-            break;
-        }
-
-        // Check if the game is over
-        if (playerTeam.length === 0) {
-            await pushMessage("You lost!");
-            break;
-        }
-
-        if (opponentTeam.length === 0) {
-            await pushMessage("You won!");
-            break;
-        }
-
-        updateDisplay();
-    }
-}
-
-async function waitForPlayerPokemonSelection() {
-    showPlayerPokemonSelect();
-    const selectedPokemon = await new Promise((resolve) => {
-        const pokemonButtons = document.getElementsByClassName("pokemon-button");
-        pokemonButtons[0].focus();
-        Array.from(pokemonButtons).forEach((button, idx) => {
-            if (!playerTeam[idx]) {
-                button.style.display = "none";
-                return;
-            }
-
-            button.innerText = playerTeam[idx].name;
-            button.addEventListener("click", () => {
-                resolve(playerTeam[idx]);
-            }, {once: true});
-        });
-    });
-    hidePlayerPokemonSelect();
-    return selectedPokemon;
-}
-
-function selectRandomOpponentPokemon() {
-    const randomIndex = Math.floor(Math.random() * opponentTeam.length);
-    return opponentTeam[randomIndex];
-}
-
-async function executeAction(action) {
-    if (action.pokemon.hp <= 0) {
-        return; // Pokémon can't do anything if it has fainted; fixes edge case where a fainted Pokémon could still attack
-    }
-
-    switch (action.action) {
-        case "run":
-            document.location.href = "../mockbattle.html";
-            break;
-        case "bag":
-            await pushMessage("You reached into your bag!");
-            if (playerItems.length === 0) {
-                await pushMessage("But it was empty!");
-            } else {
-                await useItem(action.target, action.pokemon);
-            }
-            break;
-        case "pokemon":
-            switch (action.target) {
-                case "player":
-                    playerActivePokemon = action.pokemon;
-                    break;
-                case "opponent":
-                    opponentActivePokemon = action.pokemon;
-                    break;
-                default:
-                    console.error("Invalid switch target: " + action.target);
-                    break;
-            }
-            await pushMessage(`Go, ${action.pokemon.name}!`);
-            break;
-        case "attack":
-            await handleAttack(action);
-            break;
-        default:
-            console.error("Invalid action: " + action.action);
-            break;
-    }
-}
-
-async function handleAttack(action) {
-    const move = action.move;
-    const target = action.target === "opponent" ? opponentActivePokemon : playerActivePokemon;
-    await attack(action.pokemon, move, target);
-
-    if (move.effect === null) {
-        return;
-    }
-
-    if (move.effect.name === "faint") {
-        move.effect.options = {
-            target: action.pokemon
-        }
-    }
-
-    const effectTarget = move.effect.target === "self" ? action.pokemon : target;
-    await applyStatusEffect(effectTarget, move.effect);
-}
-
-async function attack(user, move, target) {
-    // Take the accuracy and evasion modifiers into account when calculating the hit chance
-    const random = Math.floor(Math.random() * 100);
-    const accuracyModifier = user.getAccuracyModifier();
-    const evasionModifier = target.getEvasionModifier();
-    const hitChance = move.accuracy * accuracyModifier / evasionModifier;
-
-    if (random > hitChance) {
-        await pushMessage(`${user.name}'s ${move.name.toUpperCase()} missed!`);
-        return 0;
-    }
-
-    // Check if it should flinch
-    if (user.conditionalEffects.includes("flinch")) {
-        await pushMessage(`${user.name} flinched!`);
-        return 0;
-    }
-
-    // Status moves don't deal damage
-    let type1 = 1, type2 = 1;
-    if (!move.status) {
-        const level = user.level;
-        const attack = move.special ? user.getModifiedStat("spAttack") : user.getModifiedStat("attack");
-        const defense = move.special ? target.getModifiedStat("spDefense") : target.getModifiedStat("defense");
-        const power = move.power;
-        type1 = typeEffectiveness(move.type, target.types[0]);
-        type2 = target.types.length > 1 ? typeEffectiveness(move.type, target.types[1]) : 1;
-        const stab = user.types.includes(move.type) ? 1.5 : 1;
-        const critical = isCritical(user.stats.speed) ? 2 : 1; // calculated with base speed
-
-        target.hp -= calculateDamage(level, critical, power, attack, defense, stab, type1, type2);
-        updateDisplay();
-    }
-
-    await pushMessage(`${user.name} used ${move.name.toUpperCase()}!`);
-
-    if (!move.status) {
-        const effectivenessMessage = getEffectivenessMessage(type1, type2);
-        if (effectivenessMessage) {
-            await pushMessage(effectivenessMessage);
-        }
-    }
-}
-
-function getEffectivenessMessage(type1, type2) {
-    const effectiveness = type1 * type2;
-    return effectiveness > 1 ? "It's super effective!" : effectiveness < 1 ? "It's not very effective..." : "";
-}
-
-async function applyStatusEffect(pokemon, effect) {
-    if (effect === null) {
-        return;
-    }
-
-    // Check if the effect should be applied
-    const random = Math.floor(Math.random() * 100);
-    if (random > effect.chance) {
-        return;
-    }
-
-    if (effect.name === "faint" || effect.name === "flinch") {
-        // faint and flinch are not status effects
-        pokemon.conditionalEffects.push(effect);
-    } else if (effect.duration === 0) {
-        // Apply immediately
-        await calculateStatusEffect(pokemon, effect);
-    } else {
-        pokemon.statusEffects.push(effect);
-        console.log(effect);
-        await pushMessage(`${pokemon.name} was affected by ${effect.name}!`);
-    }
-
-    updateDisplay();
-}
-
-async function handleStatusEffects(pokemon) {
-    for (const effect of pokemon.statusEffects) {
-        // Calculate effects
-        await calculateStatusEffect(pokemon, effect);
-
-        // Decrement counters
-        effect.duration--;
-    }
-
-    // Remove expired effects
-    pokemon.statusEffects = pokemon.statusEffects.filter(effect => effect.duration > 0);
-}
-
-async function calculateStatusEffect(pokemon, effect) {
-    switch (effect.name) {
-        case "burn":
-            await pushMessage(`${pokemon.name} was burned!`);
-            pokemon.hp -= Math.floor(pokemon.maxHp / 16);
-            break;
-        case "poison":
-            await pushMessage(`${pokemon.name} was hurt by poison!`);
-            pokemon.hp -= Math.floor(pokemon.maxHp / 8);
-            break;
-        case "lower-sp-defense":
-            await pushMessage(`${pokemon.name}'s special defense was lowered!`);
-            pokemon.statModifiers.spDefense--;
-            break;
-        case "raise-attack-speed":
-            await pushMessage(`${pokemon.name}'s attack and speed were raised!`);
-            pokemon.statModifiers.attack++;
-            pokemon.statModifiers.speed++;
-            break;
-        case "raise-sp-attack":
-            await pushMessage(`${pokemon.name}'s special attack was raised!`);
-            pokemon.statModifiers.spAttack++;
-            break;
-        case "raise-defense":
-            await pushMessage(`${pokemon.name}'s defense was raised!`);
-            pokemon.statModifiers.defense++;
-            break;
-        case "death":
-            await pushMessage(`${pokemon.name} fainted due to explosion!`);
-            pokemon.hp = 0;
-            break;
-        default:
-            console.error("Unknown status effect: " + effect.name);
-            break;
-    }
-}
-
-async function handleConditionalEffects(pokemon) {
-    for (const effect of pokemon.conditionalEffects) {
-        await handleConditionalEffect(pokemon, effect);
-    }
-}
-
-function decrementConditionalEffects(pokemon) {
-    pokemon.conditionalEffects.forEach(effect => effect.duration--);
-    pokemon.conditionalEffects = pokemon.conditionalEffects.filter(effect => effect.duration > 0);
-}
-
-async function handleConditionalEffect(pokemon, effect) {
-    switch (effect.name) {
-        case "faint":
-            // Check if target has fainted
-            if (effect.options.target.hp <= 0) {
-                await pushMessage(`${pokemon.name} has fainted due to destiny bond!`);
-                pokemon.hp = 0;
-            }
-            break;
-        case "flinch":
-            // Flinch is checked before the pokemon's turn
-            break;
-    }
-}
-
-async function useItem(item, pokemon) {
-    if (item.type !== "healing") {
-        console.error("Unknown item type: " + item.type);
-        return;
-    }
-
-    if (item.healing_amount === "full") {
-        pokemon.hp = pokemon.maxHp;
-        updatePlayerHpBar();
-        await pushMessage(`${pokemon.name} was healed to full health!`);
-    } else {
-        pokemon.hp = Math.min(pokemon.hp + item.healing_amount, pokemon.maxHp);
-        updatePlayerHpBar()
-        await pushMessage(`${pokemon.name} was healed by ${item.healing_amount}!`);
-    }
-}
-
-function animateAttack(targetId, className) {
-    const target = document.getElementById(targetId);
-    if (!target) return;
-
-    target.classList.remove(className); // Reset in case it's still applied
-    void target.offsetWidth; // Force reflow
-    target.classList.add(className);
-
-    // Remove class after animation ends to allow re-triggering
-    setTimeout(() => {
-        target.classList.remove(className);
-    }, 300);
+    return new GameAction("switch", filterPlayerPokemon()[idx]);
 }
