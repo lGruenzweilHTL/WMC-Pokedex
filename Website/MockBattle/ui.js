@@ -9,7 +9,7 @@ function updatePlayerDisplay() {
     document.getElementById("player-pokemon-level").innerText = `Level ${playerActivePokemon.level}`;
     changePlayerPokemonImage(playerActivePokemon.id);
     displayPlayerStatusEffects();
-    updatePlayerTeamDisplay();
+    //updatePlayerTeamDisplay(); TODO: Uncomment when team display is implemented
 }
 
 function updateOpponentDisplay() {
@@ -18,7 +18,7 @@ function updateOpponentDisplay() {
     document.getElementById("opponent-pokemon-level").innerText = `Level ${opponentActivePokemon.level}`;
     changeOpponentPokemonImage(opponentActivePokemon.id);
     displayOpponentStatusEffects();
-    updateOpponentTeamDisplay();
+    //updateOpponentTeamDisplay(); TODO: Uncomment when team display is implemented
 }
 
 function updatePlayerHpBar() {

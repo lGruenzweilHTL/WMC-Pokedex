@@ -5,10 +5,14 @@ class GameAction {
     }
 }
 class Pokemon {
-    constructor(name, id, moves) {
+    constructor(name, id, level, moves, currentHp, maxHp, statusEffects) {
         this.name = name;
         this.id = id;
         this.moves = moves;
+        this.level = level;
+        this.hp = currentHp;
+        this.maxHp = maxHp;
+        this.statusEffects = statusEffects;
     }
 }
 
@@ -19,8 +23,13 @@ let websocketUrl = null;
 let socket = null;
 let connectionClosed = false;
 
-let playerActivePokemon = new Pokemon("Charizard", 6, ["Flamethrower"]);
+let playerActivePokemon = new Pokemon("Charizard", 6, 50, ["Flamethrower"], 150, 150, []);
+let opponentActivePokemon = new Pokemon("Blastoise", 9, 50, ["Flamethrower"], 150, 150, []);
+let playerSwitches;
+let playerItems;
+let gameState = "NotStarted";
 
+// TODO: Get JSON from pokemon select page
 const battleData = {
     "player": {
         "name": "Player1",
@@ -29,7 +38,7 @@ const battleData = {
                 "name": "Charizard",
                 "level": 50,
                 "moves": [
-                    "Flamethrower"
+                    "Flamethrower", "Dragon Claw", "Air Slash", "Fire Blast"
                 ]
             }
         ]
@@ -39,10 +48,10 @@ const battleData = {
         "behaviour": "max",
         "pokemon": [
             {
-                "name": "Blastoise",
+                "name": "Gengar",
                 "level": 50,
                 "moves": [
-                    "Flamethrower"
+                    "Shadow Ball", "Sludge Bomb", "Dark Pulse", "Destiny Bond"
                 ]
             }
         ]
@@ -54,6 +63,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     await connectWebSocket();
 
     await pushMessage("The battle begins!\n\n(Press spacebar or enter to continue)");
+
+    gameState = "InProgress";
 
     await gameLoop();
 });
@@ -69,11 +80,11 @@ async function createBattle() {
         });
         const json = await response.json();
         console.log("Successfully created battle");
-        websocketUrl = json.websocket_url;
+        websocketUrl = json["websocket_url"];
         battleGuid = json.battle_guid;
     }
     catch(e) {
-        console.error('Error:', error);
+        console.error('Error:', e);
     }
 }
 
@@ -112,23 +123,65 @@ function sendMessage(actionType, actionObject) {
     socket.send(JSON.stringify(message));
 }
 
-function processMessage(message) {
+async function processMessage(message) {
     const json = JSON.parse(message);
-    const messages = json.messages;
-    console.table(messages);
+    const messages = json["messages"];
+    const player1 = json["player1"];
+    const player2 = json["player2"];
+    const state = json["game_state"];
 
-    // TODO: Update the updateDisplay method to handle message content
+    console.log(json);
+
+    gameState = state;
+    if (gameState !== "InProgress") endGame();
+
+    playerSwitches = player1["switches"];
+    playerItems = player1["items"];
+
+    // Update player and opponent active Pokémon
+    playerActivePokemon = new Pokemon(
+        player1.pokemon.name,
+        player1.pokemon.id,
+        player1.pokemon.level,
+        player1.pokemon.moves,
+        player1.pokemon["current_hp"],
+        player1.pokemon["max_hp"],
+        player1.pokemon["effects"]);
+    opponentActivePokemon = new Pokemon(
+        player2.pokemon.name,
+        player2.pokemon.id,
+        player2.pokemon.level,
+        player2.pokemon.moves,
+        player2.pokemon["current_hp"],
+        player2.pokemon["max_hp"],
+        player2.pokemon["effects"]);
+
+    for (const msg of messages) {
+        await pushMessage(msg);
+    }
+
+    updateDisplay();
 }
 
 async function gameLoop() {
-    while (!connectionClosed) {
+    while (!connectionClosed && gameState === "InProgress") {
         displayMessage(`What will ${playerActivePokemon.name.toUpperCase()} do?\n\n${defaultNavTip}`);
 
         // Let player select an action
         const playerAction = await waitForPlayerAction();
+        if (playerAction.actionType === "run") {
+            await pushMessage("You ran away from the battle!");
+            document.location.href = "../mockbattle.html"; // Redirect to battle page
+        }
+
         sendMessage(playerAction.actionType, playerAction.object);
     }
+    endGame();
+}
+
+function endGame() {
     hideAll();
+    // TODO: win or lose screen
 }
 
 async function waitForPlayerAction() {
@@ -195,7 +248,7 @@ function attackClicked() {
     // Populate move buttons with the player's moves
     const buttons = document.getElementsByClassName("move-button");
     Array.from(buttons).forEach((button, idx) => {
-        button.innerText = playerActivePokemon.moves[idx].toUpperCase();
+        button.innerText = (playerActivePokemon.moves[idx] || "").toUpperCase();
     });
     highlightMoveButtons(playerActivePokemon.moves, buttons);
     updateMoveTooltipData(playerActivePokemon.moves, buttons);
@@ -220,7 +273,7 @@ function bagClicked() {
     }
 
     showPlayerItemSelect();
-    populateButtonList(playerItems, "item-button");
+    populateButtonList(playerItems.map(i => (name = i)), "item-button");
 }
 
 function itemSelected(idx) {
@@ -231,19 +284,14 @@ function itemSelected(idx) {
 // Called by button
 function pokemonClicked() {
     displayMessage(`Which Pokémon will you switch to?\n\n${defaultNavTip}`);
-    if (playerTeam.length <= 1) {
+    if (playerSwitches.length <= 1) {
         return; // Can't switch pokemon if there's only 1 left
     }
 
     showPlayerPokemonSelect();
 
     // Populate pokemon buttons with the player's pokemon
-    const pokemonToShow = filterPlayerPokemon();
-    populateButtonList(pokemonToShow, "pokemon-button");
-}
-
-function filterPlayerPokemon() {
-    return playerTeam.filter(pokemon => pokemon !== playerActivePokemon);
+    populateButtonList(playerSwitches.map(s => (name = s)), "pokemon-button");
 }
 
 function highlightMoveButtons(moves, buttons) {
@@ -257,11 +305,12 @@ function highlightMoveButtons(moves, buttons) {
 }
 function updateMoveTooltipData(moves, buttons) {
     for (let i = 0; i < moves.length; i++) {
-        buttons[i].setAttribute("data-title", moves[i].name.toUpperCase());
+        buttons[i].setAttribute("data-title", (moves[i].name || "").toUpperCase());
         buttons[i].setAttribute("data-description", moves[i].description);
     }
 }
 
+// List must be an array of objects with 'name' and optionally 'description' properties
 function populateButtonList(list, buttonClass) {
     const buttons = document.getElementsByClassName(buttonClass);
     for (let i = 0; i < list.length && i < buttons.length; i++) {
@@ -270,7 +319,7 @@ function populateButtonList(list, buttonClass) {
 
         // Tooltip data
         buttons[i].setAttribute("data-title", list[i].name.toUpperCase());
-        buttons[i].setAttribute("data-description", list[i].description);
+        buttons[i].setAttribute("data-description", list[i].description || "No description available");
     }
 
     buttons[0].focus();
