@@ -121,16 +121,16 @@ class CustomNavbar extends HTMLElement {
                 <img src="/Website/Images/pokeball.png" class="navPokeball" alt="Pokéball">
             </label>
             <ul>
-                <li><strong><a href="/WMC-Pokedex/index.html">Home</a></strong></li>
-                <li><strong><a href="/WMC-Pokedex/Website/pokedex.html">Pokédex</a></strong></li>
-                <li><strong><a href="/WMC-Pokedex/Website/types.html">Types</a></strong></li>
-                <li><strong><a href="/WMC-Pokedex/Website/items.html">Items</a></strong></li>
-                <li><strong><a href="/WMC-Pokedex/Website/KindOfPokemonSubpage/kinds-of-pokemon.html">Kinds</a></strong></li>
-                <li><strong><a href="/WMC-Pokedex/Website/FavoritePokemon/favoritepokemon.html">Favorites</a></strong></li>
-                <li><strong><a href="/WMC-Pokedex/Website/PokemonCards/pokemon-cards.html">Cards</a></strong></li>
-                <li><strong><a href="/WMC-Pokedex/Website/games.html">Games</a></strong></li>
-                <li><strong><a href="/WMC-Pokedex/Website/mockbattle.html">Battle</a></strong></li>
-                <li><strong><a href="/WMC-Pokedex/Website/anime.html">TV series</a></strong></li>
+                <li><strong><a href="/index.html">Home</a></strong></li>
+                <li><strong><a href="/Website/pokedex.html">Pokédex</a></strong></li>
+                <li><strong><a href="/Website/types.html">Types</a></strong></li>
+                <li><strong><a href="/Website/items.html">Items</a></strong></li>
+                <li><strong><a href="/Website/KindOfPokemonSubpage/kinds-of-pokemon.html">Kinds</a></strong></li>
+                <li><strong><a href="/Website/FavoritePokemon/favoritepokemon.html">Favorites</a></strong></li>
+                <li><strong><a href="/Website/PokemonCards/pokemon-cards.html">Cards</a></strong></li>
+                <li><strong><a href="/Website/games.html">Games</a></strong></li>
+                <li><strong><a href="/Website/mockbattle.html">Battle</a></strong></li>
+                <li><strong><a href="/Website/anime.html">TV series</a></strong></li>
             </ul>
         `;
 
@@ -142,18 +142,11 @@ class CustomNavbar extends HTMLElement {
         const currentPage = window.location.pathname;
         const links = shadow.querySelectorAll('a');
 
-        // Sortiere nach längstem Pfad zuerst, um spezifischere Übereinstimmungen zu bevorzugen
-        const sortedLinks = Array.from(links).sort((a, b) => b.getAttribute('href').length - a.getAttribute('href').length);
-
-        for (const link of sortedLinks) {
-            const href = link.getAttribute('href');
-
-            // Markiere als aktiv, wenn href Teil des aktuellen Pfads ist
-            if (currentPage.startsWith(href)) {
+        links.forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
                 link.classList.add('active');
-                break; // Nur den ersten passenden Link markieren
             }
-        }
+        });
 
         function toggleNavbar() {
             const nav = shadow.querySelector('.navigation-bar');
