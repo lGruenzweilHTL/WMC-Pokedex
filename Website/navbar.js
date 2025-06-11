@@ -4,7 +4,7 @@ class CustomNavbar extends HTMLElement {
         super();
 
         // Attach a shadow DOM
-        const shadow = this.attachShadow({mode: 'open'});
+        const shadow = this.attachShadow({ mode: 'open' });
 
         // Add styles
         const style = document.createElement('style');
@@ -141,11 +141,19 @@ class CustomNavbar extends HTMLElement {
         // Highlight current page
         const currentPage = window.location.pathname;
         const links = shadow.querySelectorAll('a');
-        links.forEach(link => {
-            if (link.getAttribute('href') === currentPage) {
+
+        // Sortiere nach längstem Pfad zuerst, um spezifischere Übereinstimmungen zu bevorzugen
+        const sortedLinks = Array.from(links).sort((a, b) => b.getAttribute('href').length - a.getAttribute('href').length);
+
+        for (const link of sortedLinks) {
+            const href = link.getAttribute('href');
+
+            // Markiere als aktiv, wenn href Teil des aktuellen Pfads ist
+            if (currentPage.startsWith(href)) {
                 link.classList.add('active');
+                break; // Nur den ersten passenden Link markieren
             }
-        });
+        }
 
         function toggleNavbar() {
             const nav = shadow.querySelector('.navigation-bar');
