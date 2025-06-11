@@ -9,109 +9,108 @@ class CustomNavbar extends HTMLElement {
         // Add styles
         const style = document.createElement('style');
         style.textContent = `
-            body::-webkit-scrollbar {
-    display: none;
-}
+        body::-webkit-scrollbar {
+            display: none;
+        }
 
-.navigation-bar:not(.active) {
-    background-color: #333;
-    width: 100%;
-    margin-top: 1%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding: 10px 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    display: flex;
-    justify-content: center;
-    z-index: 2;
-    border-radius: 10px;
-    font-family: Verdana, sans-serif;
-}
-
-.navigation-bar ul:not(.active) {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-.navigation-bar ul li:not(.active) {
-    margin: 0 20px;
-}
-
-.navigation-bar ul li a:not(.active) {
-    text-decoration: none;
-    color: white;
-    font-size: 20px;
-    padding: 5px 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.navigation-bar ul li a:hover:not(.active) {
-    background-color: wheat;
-    color: black;
-}
-
-.active {
-    text-decoration: underline;
-    color: black;
-    font-size: 20px;
-    padding: 5px 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
-    background-color: wheat;
-}
-
-.active:hover {
-    background-color: #333;
-    color: white;
-}
-
-.navPokeball {
-    position: absolute;
-    left: 5px;
-    top: 7%;
-    width: 40px;
-}
-
-.navPokeball:hover {
-    animation: spin 1.5s linear infinite;
-}
-
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-
-@media (max-width: 768px) {
-    .navigation-bar ul {
-        display: none;
-        flex-direction: column;
-        width: 70%;
-        text-align: center;
-        padding: 0;
-        margin: 0;
-    }
-}
-
-.navigation-bar.hide {
-    visibility: hidden;
-}
-.navigation-bar.hide .pokeball-icon {
-    visibility: visible;
-}
-#toggle-navbar {
-    display: none;
-}
-        `;
+        .navigation-bar:not(.active) {
+            background-color: #333;
+            width: 100%;
+            margin-top: 1%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 10px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            z-index: 2;
+            border-radius: 10px;
+            font-family: Verdana, sans-serif;
+        }
+            
+        .navigation-bar ul:not(.active) {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+            
+        .navigation-bar ul li:not(.active) {
+            margin: 0 20px;
+        }
+            
+        .navigation-bar ul li a:not(.active) {
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+            
+        .navigation-bar ul li a:hover:not(.active) {
+            background-color: wheat;
+            color: black;
+        }
+            
+        .active {
+            text-decoration: underline;
+            color: black;
+            font-size: 20px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: wheat;
+        }
+            
+        .active:hover {
+            background-color: #333;
+            color: white;
+        }
+            
+        .navPokeball {
+            position: absolute;
+            left: 5px;
+            top: 7%;
+            width: 40px;
+        }
+            
+        .navPokeball:hover {
+            animation: spin 1.5s linear infinite;
+        }
+            
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            
+            to {
+                transform: rotate(360deg);
+            }
+        }
+            
+            
+        @media (max-width: 768px) {
+            .navigation-bar ul {
+                display: none;
+                flex-direction: column;
+                width: 70%;
+                text-align: center;
+                padding: 0;
+                margin: 0;
+            }
+        }
+            
+        .navigation-bar.hide {
+            visibility: hidden;
+        }
+        .navigation-bar.hide .pokeball-icon {
+            visibility: visible;
+        }
+        #toggle-navbar {
+            display: none;
+        }`;
 
         // Add HTML structure
         const navbar = document.createElement('nav');
