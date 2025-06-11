@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,27 +9,29 @@
     <link rel="stylesheet" href="pokemon-guesser.css">
     <script src="../navbar.js" defer></script>
 </head>
+
 <body>
-<custom-navbar></custom-navbar>
+    <custom-navbar></custom-navbar>
 
-<h1>Who's that Pokémon?</h1>
+    <h1>Who's that Pokémon?</h1>
 
-<img src="output-onlinepngtools.png" class="question-mark" id="img1">
-<img src="output-onlinepngtools.png" class="question-mark" id="img2">
-<img src="output-onlinepngtools.png" class="question-mark" id="img3">
-<img src="output-onlinepngtools.png" class="question-mark" id="img4">
+    <img src="output-onlinepngtools.png" class="question-mark" id="question-mark-1">
+    <img src="output-onlinepngtools.png" class="question-mark" id="question-mark-2">
+    <img src="output-onlinepngtools.png" class="question-mark" id="question-mark-3">
+    <img src="output-onlinepngtools.png" class="question-mark" id="question-mark-4">
 
-<div style="background-color: white;">
-    <img src="" alt="unknown pokemon" id="blackout-image" style="margin: 0px;">
-</div>
+    <div style="background-color: white;">
+        <img src="" alt="unknown pokemon" id="blackout-image" style="margin: 0px;">
+    </div>
 
-<label for="guess-input">Guess the Pokémon:</label>
-<input type="text" id="guess-input" placeholder="Enter your guess">
-<div class="button-container">
-    <button id="hint">Hint</button>
-    <button id="submit-guess">Submit Guess</button>
-    <button id="reveal-button">Reveal</button>
-    <button id="next-button">Next Pokémon</button>
-</div>
+    <label for="guess-input">Guess the Pokémon:</label>
+    <input type="text" id="guess-input" placeholder="Enter your guess">
+    <div class="button-container">
+        <button id="hint">Hint</button>
+        <button id="submit-guess">Submit Guess</button>
+        <button id="reveal-button">Reveal</button>
+        <button id="next-button">Next Pokémon</button>
+    </div>
 </body>
+
 </html>

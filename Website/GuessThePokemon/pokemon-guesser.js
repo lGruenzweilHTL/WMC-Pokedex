@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const hintButton = document.getElementById("hint");
 
     let isLoading = false; // Prevent spamming
-    let hintIndex = 0; 
+    let hintIndex = 0;
 
     // Event listeners
     guessButton.addEventListener("click", submit);

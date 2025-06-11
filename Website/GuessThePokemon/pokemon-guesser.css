@@ -16,12 +16,13 @@ body {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-.question-mark{
+.question-mark {
     height: 150px;
     width: 150px;
     opacity: 0.1;
 }
-#img1{
+
+#question-mark-1 {
     position: absolute;
     top: 16%;
     margin-right: 38%;
@@ -30,14 +31,16 @@ body {
     height: 250px;
     width: 250px;
 }
-#img4{
+
+#question-mark-4 {
     position: absolute;
     margin-right: 32%;
     rotate: 30deg;
     height: 140px;
     width: 140px;
 }
-#img2{
+
+#question-mark-2 {
     height: 80px;
     width: 80px;
     position: absolute;
@@ -45,7 +48,8 @@ body {
     margin-left: 35%;
     rotate: -20deg;
 }
-#img3{
+
+#question-mark-3 {
     position: absolute;
     top: 25%;
     margin-left: 30%;
@@ -148,22 +152,37 @@ button:active {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px; /* spacing between buttons */
+    gap: 20px;
+    /* spacing between buttons */
     max-width: 700px;
     margin: 0 auto;
 }
 
 .button-container button {
-    flex: 1 1 calc(50% - 900px); 
+    flex: 1 1 calc(50% - 900px);
     max-width: 300px;
 }
 
 @keyframes shake {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    50% { transform: translateX(5px); }
-    75% { transform: translateX(-5px); }
-    100% { transform: translateX(0); }
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    75% {
+        transform: translateX(-5px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
 }
 
 .shake {
