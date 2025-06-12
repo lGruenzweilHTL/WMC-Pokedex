@@ -1,5 +1,37 @@
-let correctNames = []; // Names in all languages
-let englishName = ""; // English name (used only for reveal)
+const allPokemonNames = [
+  "bulbasaur", "ivysaur", "venusaur",
+  "charmander", "charmeleon", "charizard",
+  "squirtle", "wartortle", "blastoise",
+  "caterpie", "metapod", "butterfree",
+  "weedle", "kakuna", "beedrill",
+  "pidgey", "pidgeotto", "pidgeot",
+  "rattata", "raticate", "spearow", "fearow",
+  "ekans", "arbok", "pikachu", "raichu",
+  "sandshrew", "sandslash", "nidoran♀", "nidorina", "nidoqueen",
+  "nidoran♂", "nidorino", "nidoking", "clefairy", "clefable",
+  "vulpix", "ninetales", "jigglypuff", "wigglytuff", "zubat", "golbat",
+  "oddish", "gloom", "vileplume", "paras", "parasect",
+  "venonat", "venomoth", "diglett", "dugtrio", "meowth", "persian",
+  "psyduck", "golduck", "mankey", "primeape", "growlithe", "arcanine",
+  "poliwag", "poliwhirl", "poliwrath", "abra", "kadabra", "alakazam",
+  "machop", "machoke", "machamp", "bellsprout", "weepinbell", "victreebel",
+  "tentacool", "tentacruel", "geodude", "graveler", "golem", "ponyta",
+  "rapidash", "slowpoke", "slowbro", "magnemite", "magneton",
+  "farfetch’d", "doduo", "dodrio", "seel", "dewgong", "grimer", "muk",
+  "shellder", "cloyster", "gastly", "haunter", "gengar", "onix", "drowzee",
+  "hypno", "krabby", "kingler", "voltorb", "electrode", "exeggcute",
+  "exeggutor", "cubone", "marowak", "hitmonlee", "hitmonchan", "lickitung",
+  "koffing", "weezing", "rhyhorn", "rhydon", "chansey", "tangela",
+  "kangaskhan", "horsea", "seadra", "goldeen", "seaking", "staryu",
+  "starmie", "mr. mime", "scyther", "jynx", "electabuzz", "magmar",
+  "pinsir", "tauros", "magikarp", "gyarados", "lapras", "ditto",
+  "eevee", "vaporeon", "jolteon", "flareon", "porygon", "omanyte",
+  "omastar", "kabuto", "kabutops", "aerodactyl", "snorlax", "articuno",
+  "zapdos", "moltres", "dratini", "dragonair", "dragonite", "mewtwo", "mew"
+];
+
+let correctNames = [];
+let englishName = "";
 let correct = false;
 
 document.addEventListener("DOMContentLoaded", async function () {
@@ -20,7 +52,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     guessInput.addEventListener("input", () => {
         const input = guessInput.value.toLowerCase();
-        const match = correctNames.find(name => name.startsWith(input) && name !== input);
+        const match = allPokemonNames.find(name => name.startsWith(input) && name !== input);
         if (input && match) {
             ghostText.textContent = match;
         } else {
@@ -35,7 +67,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         } else if (event.key === "Tab") {
             event.preventDefault();
             const input = guessInput.value.toLowerCase();
-            const match = correctNames.find(name => name.startsWith(input) && name !== input);
+            const match = allPokemonNames.find(name => name.startsWith(input) && name !== input);
             if (match) {
                 guessInput.value = match;
                 ghostText.textContent = "";
@@ -43,7 +75,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     });
 
-    // Load the first Pokémon
     await getBlackoutImage();
 
     function submit() {
@@ -101,7 +132,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 });
 
-// Fetch and display a new Pokémon image
 async function getBlackoutImage() {
     const randomIndex = getRandomIndex(1, 151);
     const pokemonImage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${randomIndex}.png?timestamp=${Date.now()}`;
@@ -113,7 +143,6 @@ async function getBlackoutImage() {
     await fetchPokemonNames(randomIndex);
 }
 
-// Fetch Pokémon names in all languages
 async function fetchPokemonNames(id) {
     const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
     const data = await (await fetch(url)).json();
@@ -123,14 +152,12 @@ async function fetchPokemonNames(id) {
     englishName = speciesData.names.find((name) => name.language.name === "en").name.toLowerCase();
 }
 
-// Hide the image (blackout effect)
 function hideImage() {
     const image = document.getElementById("blackout-image");
     image.style.transition = "none";
     image.style.filter = "brightness(0)";
 }
 
-// Reveal the image
 function revealImage() {
     correct = true;
     const image = document.getElementById("blackout-image");
