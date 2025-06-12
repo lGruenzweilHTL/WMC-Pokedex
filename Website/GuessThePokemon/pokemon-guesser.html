@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Who's that Pokémon?</title>
-    <script src="pokemon-guesser.js"></script>
+    <script src="pokemon-guesser.js" defer></script>
     <link rel="stylesheet" href="pokemon-guesser.css">
     <script src="../navbar.js" defer></script>
 </head>
@@ -25,7 +25,14 @@
     </div>
 
     <label for="guess-input">Guess the Pokémon:</label>
-    <input type="text" id="guess-input" placeholder="Enter your guess">
+
+    <div id="autocomplete-wrapper" style="position: relative; width: max-content;">
+        <input type="text" id="guess-input" placeholder="Enter your guess" autocomplete="off" spellcheck="false"
+            style="background: transparent; position: relative; z-index: 2;">
+        <div id="ghost-text" style="
+        "></div>
+    </div>
+
     <div class="button-container">
         <button id="hint">Hint</button>
         <button id="submit-guess">Submit Guess</button>

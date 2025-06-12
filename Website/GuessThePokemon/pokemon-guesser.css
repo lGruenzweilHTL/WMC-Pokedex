@@ -31,6 +31,10 @@ body {
     height: 250px;
     width: 250px;
 }
+#ghost-text
+{
+    
+}
 
 #question-mark-4 {
     position: absolute;

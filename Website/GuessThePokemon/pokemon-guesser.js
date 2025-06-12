@@ -8,26 +8,44 @@ document.addEventListener("DOMContentLoaded", async function () {
     const revealButton = document.getElementById("reveal-button");
     const nextButton = document.getElementById("next-button");
     const hintButton = document.getElementById("hint");
+    const ghostText = document.getElementById("ghost-text");
 
-    let isLoading = false; // Prevent spamming
+    let isLoading = false;
     let hintIndex = 0;
 
-    // Event listeners
     guessButton.addEventListener("click", submit);
-    guessInput.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") {
-            if (correct || guessInput.value === "") newImage();
-            else submit();
-        }
-    });
     nextButton.addEventListener("click", newImage);
     revealButton.addEventListener("click", reveal);
     hintButton.addEventListener("click", showHint);
 
-    // Load the first Pokémon image
+    guessInput.addEventListener("input", () => {
+        const input = guessInput.value.toLowerCase();
+        const match = correctNames.find(name => name.startsWith(input) && name !== input);
+        if (input && match) {
+            ghostText.textContent = match;
+        } else {
+            ghostText.textContent = "";
+        }
+    });
+
+    guessInput.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            if (correct || guessInput.value === "") newImage();
+            else submit();
+        } else if (event.key === "Tab") {
+            event.preventDefault();
+            const input = guessInput.value.toLowerCase();
+            const match = correctNames.find(name => name.startsWith(input) && name !== input);
+            if (match) {
+                guessInput.value = match;
+                ghostText.textContent = "";
+            }
+        }
+    });
+
+    // Load the first Pokémon
     await getBlackoutImage();
 
-    // Submit guess logic
     function submit() {
         const userGuess = guessInput.value.trim().toLowerCase();
 
@@ -45,6 +63,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         guessButton.disabled = true;
         guessInput.disabled = true;
         guessInput.value = "It's a " + englishName;
+        ghostText.textContent = "";
     }
 
     function showHint() {
@@ -54,17 +73,19 @@ document.addEventListener("DOMContentLoaded", async function () {
                 .map((char, idx) => (idx <= hintIndex ? char : '_'))
                 .join('');
             guessInput.value = hint;
+            ghostText.textContent = "";
             hintIndex++;
         }
     }
 
     async function newImage() {
-        if (isLoading) return; // Prevent multiple triggers
+        if (isLoading) return;
         isLoading = true;
 
         guessButton.disabled = false;
 
         guessInput.value = "";
+        ghostText.textContent = "";
         guessInput.disabled = true;
         nextButton.disabled = true;
 
@@ -76,7 +97,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         guessInput.focus();
 
         isLoading = false;
-        hintIndex = 0; // Reset hint index
+        hintIndex = 0;
     }
 });
 
@@ -124,7 +145,6 @@ function triggerShake(element) {
     }, { once: true });
 }
 
-// Generate a random index within a range
 function getRandomIndex(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
