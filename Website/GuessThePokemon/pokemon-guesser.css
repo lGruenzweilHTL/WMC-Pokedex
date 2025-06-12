@@ -33,7 +33,15 @@ body {
 }
 #ghost-text
 {
-    
+    position: absolute;
+    top: 28%;
+    left: 40%;
+    color: #0000008c;
+    pointer-events: none;
+    z-index: 1;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0.375rem 0.75rem;
 }
 
 #question-mark-4 {
